@@ -1,4 +1,4 @@
-name: Initialize Repository Structure
+name: Initialize Repository Structure and Deploy to Heroku
 
 on:
   push:
@@ -13,7 +13,7 @@ on:
       - '**/'
 
 jobs:
-  setup-structure:
+  setup-and-deploy:
     runs-on: ubuntu-latest
 
     steps:
@@ -53,12 +53,18 @@ jobs:
           git add .
           git diff --cached --exit-code || echo "Changes detected"
 
-      # Крок 7: Коміт та пуш змін, якщо вони існують
-      - name: Commit and push changes
+      # Крок 7: Коміт змін, якщо вони існують
+      - name: Commit changes
         if: steps.changes.outputs.exit-code != '0'
         run: |
           git commit -m "Initialize directory structure for new version"
-          git push origin main
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      
+      # Крок 8: Деплой на Heroku
+      - name: Deploy to Heroku
+        if: steps.changes.outputs.exit-code != '0'
+        uses: akhileshns/heroku-deploy@v3.12.12
+        with:
+          heroku_api_key: ${{ secrets.HEROKU_API_KEY }}
+          heroku_app_name: ${{ secrets.HEROKU_APP_NAME }}
+          heroku_email: mlbb.boss.ua@gmail.com
           
