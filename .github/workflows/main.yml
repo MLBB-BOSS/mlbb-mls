@@ -1,0 +1,123 @@
+name: Initialize Repository Structure
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  setup-structure:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v3
+
+      - name: Set up folder structure
+        run: |
+          # Створення папок
+          mkdir -p .github/workflows
+          mkdir -p handlers
+          mkdir -p utils
+          mkdir -p data/heroes/Tank/Tigreal
+          mkdir -p data/heroes/Tank/Khufra
+          mkdir -p data/heroes/Tank/Gloo
+          mkdir -p data/heroes/Fighter/Yin
+          mkdir -p data/heroes/Marksman/Hilda
+          mkdir -p data/heroes/Mage/Kimmy
+          mkdir -p data/heroes/Assassin/Saber
+          mkdir -p data/heroes/Support/Chip
+          mkdir -p data/skills
+          mkdir -p data/items
+          mkdir -p data/emblems
+          mkdir -p data/menus
+          mkdir -p data/builds
+          mkdir -p tests
+          mkdir -p scripts
+          mkdir -p docs/features
+
+          # Додавання файлів тільки якщо вони не існують
+          [ ! -f handlers/__init__.py ] && touch handlers/__init__.py
+          [ ! -f handlers/main_menu.py ] && touch handlers/main_menu.py
+          [ ! -f handlers/characters.py ] && touch handlers/characters.py
+          [ ! -f handlers/guides.py ] && touch handlers/guides.py
+          [ ! -f handlers/tournaments.py ] && touch handlers/tournaments.py
+          [ ! -f handlers/updates.py ] && touch handlers/updates.py
+          [ ! -f handlers/beginner.py ] && touch handlers/beginner.py
+          [ ! -f handlers/news.py ] && touch handlers/news.py
+          [ ! -f handlers/help_menu.py ] && touch handlers/help_menu.py
+          [ ! -f handlers/quizzes.py ] && touch handlers/quizzes.py
+          [ ! -f handlers/search.py ] && touch handlers/search.py
+          [ ! -f handlers/items.py ] && touch handlers/items.py
+          [ ! -f handlers/spells.py ] && touch handlers/spells.py
+          [ ! -f handlers/emblems.py ] && touch handlers/emblems.py
+          [ ! -f handlers/recommendations.py ] && touch handlers/recommendations.py
+          [ ! -f handlers/comparisons.py ] && touch handlers/comparisons.py
+
+          [ ! -f utils/__init__.py ] && touch utils/__init__.py
+          [ ! -f utils/data_loader.py ] && touch utils/data_loader.py
+          [ ! -f utils/openai_api.py ] && touch utils/openai_api.py
+          [ ! -f utils/templates.py ] && touch utils/templates.py
+          [ ! -f utils/recommendations_engine.py ] && touch utils/recommendations_engine.py
+          [ ! -f utils/data_updater.py ] && touch utils/data_updater.py
+
+          [ ! -f data/heroes/Tank/Tigreal/tigreal.json ] && touch data/heroes/Tank/Tigreal/tigreal.json
+          [ ! -f data/heroes/Tank/Khufra/khufra.json ] && touch data/heroes/Tank/Khufra/khufra.json
+          [ ! -f data/heroes/Tank/Gloo/gloo.json ] && touch data/heroes/Tank/Gloo/gloo.json
+          [ ! -f data/heroes/Fighter/Yin/yin.json ] && touch data/heroes/Fighter/Yin/yin.json
+          [ ! -f data/heroes/Marksman/Hilda/hilda.json ] && touch data/heroes/Marksman/Hilda/hilda.json
+          [ ! -f data/heroes/Mage/Kimmy/kimmy.json ] && touch data/heroes/Mage/Kimmy/kimmy.json
+          [ ! -f data/heroes/Assassin/Saber/saber.json ] && touch data/heroes/Assassin/Saber/saber.json
+          [ ! -f data/heroes/Support/Chip/chip.json ] && touch data/heroes/Support/Chip/chip.json
+          
+          [ ! -f data/skills/passive_skills.json ] && touch data/skills/passive_skills.json
+          [ ! -f data/skills/active_skills.json ] && touch data/skills/active_skills.json
+          [ ! -f data/skills/spells.json ] && touch data/skills/spells.json
+          [ ! -f data/items/items.json ] && touch data/items/items.json
+          [ ! -f data/items/item_details.json ] && touch data/items/item_details.json
+          [ ! -f data/emblems/emblems.json ] && touch data/emblems/emblems.json
+          [ ! -f data/emblems/emblem_upgrades.json ] && touch data/emblems/emblem_upgrades.json
+          [ ! -f data/menus/menu_requests.json ] && touch data/menus/menu_requests.json
+          [ ! -f data/characters.json ] && touch data/characters.json
+          [ ! -f data/prompts.json ] && touch data/prompts.json
+          [ ! -f data/builds/optimal_builds.json ] && touch data/builds/optimal_builds.json
+          [ ! -f data/builds/counter_builds.json ] && touch data/builds/counter_builds.json
+          [ ! -f data/builds/build_comparisons.json ] && touch data/builds/build_comparisons.json
+
+          [ ! -f config/__init__.py ] && touch config/__init__.py
+          [ ! -f config/settings.py ] && touch config/settings.py
+          
+          [ ! -f tests/__init__.py ] && touch tests/__init__.py
+          [ ! -f tests/test_main_menu.py ] && touch tests/test_main_menu.py
+          [ ! -f tests/test_items.py ] && touch tests/test_items.py
+          [ ! -f tests/test_spells.py ] && touch tests/test_spells.py
+          [ ! -f tests/test_emblems.py ] && touch tests/test_emblems.py
+          [ ! -f tests/test_recommendations.py ] && touch tests/test_recommendations.py
+
+          [ ! -f docs/architecture.md ] && touch docs/architecture.md
+          [ ! -f docs/features/items.md ] && touch docs/features/items.md
+          [ ! -f docs/features/spells.md ] && touch docs/features/spells.md
+          [ ! -f docs/features/emblems.md ] && touch docs/features/emblems.md
+          [ ! -f docs/features/recommendations.md ] && touch docs/features/recommendations.md
+          [ ! -f docs/features/comparisons.md ] && touch docs/features/comparisons.md
+
+          [ ! -f scripts/deploy.sh ] && touch scripts/deploy.sh
+
+          [ ! -f .gitignore ] && touch .gitignore && echo "__pycache__/" >> .gitignore && echo "*.pyc" >> .gitignore && echo "*.pyo" >> .gitignore && echo ".env" >> .gitignore && echo "venv/" >> .gitignore
+
+          [ ! -f Procfile ] && touch Procfile && echo "worker: python main.py" > Procfile
+          
+          [ ! -f requirements.txt ] && touch requirements.txt && echo "python-telegram-bot==13.7" > requirements.txt
+          
+          [ ! -f README.md ] && touch README.md && echo "# Telegram Bot" > README.md
+
+          [ ! -f main.py ] && touch main.py && echo "# Main file for the bot" > main.py
+
+      - name: Commit and push structure
+        run: |
+          git config --local user.name "github-actions[bot]"
+          git config --local user.email "github-actions[bot]@users.noreply.github.com"
+          git add .
+          git commit -m "Initialize complete repository structure" || echo "No changes to commit"
+          git pull --rebase origin main
+          git push origin main || echo "Nothing to push"
