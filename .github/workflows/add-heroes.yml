@@ -1,0 +1,44 @@
+name: Add Remaining Heroes
+
+on:
+  workflow_dispatch:
+
+jobs:
+  add-heroes:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v3
+
+      - name: Add remaining hero folders and files
+        run: |
+          # Enable detailed logging
+          set -x
+
+          # Declare heroes by categories with paths
+          declare -A heroes=(
+            ["Tank"]="Khufra Gloo Franco Gatotkaca Hylos Barats Akai Uranus Johnson Minotaur Lolita Belerick Baxia Grock"
+            ["Fighter"]="Paquito Phoveus X.Borg Cici Arlott Aulus Guinivere Chou Jawhead Sun Roger Suyou Khaleed Aldous Balmond Zilong Argus Yu Zhong Freya Lapu-Lapu Ruby Alucard Bane Alpha Leomord Thamuz Badang Silvanna Terizla Minsitthar Masha"
+            ["Marksman"]="Dyrroth Martis Melissa Edith Natan Beatrix Granger Ixia Brody WanWan Hanabi Bruno Miya Claude Yi Sun-Shin Layla Clint Popol & Kupa Irithel Moskov Karrie Lesley"
+            ["Mage"]="Zhuxin Esmeralda Alice Novaria Xavier Valentina Harley Kagura Vale Zhask Eudora Luo-Yi Yve Pharsa Cyclops Chang'e Lylia Harith Kadita Lunox Valir Aurora Nana Vexana Cecilion Gord Odette Helcurt"
+            ["Assassin"]="Benedetta Julian Joy Arlott Aamon Hayabusa Lancelot Karina Wukong Yin Benedetta Fanny Saber Ling Gusion Nolan Lancelot Kadita Natalia"
+            ["Support"]="Diggie Kaja Floryn Estes Rafaela Mathilda Angela Carmilla Nana"
+          )
+
+          # Loop through each category and hero to create folders and files
+          for category in "${!heroes[@]}"; do
+            for hero in ${heroes[$category]}; do
+              mkdir -p "data/heroes/$category/$hero"
+              touch "data/heroes/$category/$hero/${hero,,}.json"  # Create JSON file in lowercase
+            done
+          done
+
+      - name: Commit and push structure
+        run: |
+          git config --local user.name "github-actions[bot]"
+          git config --local user.email "github-actions[bot]@users.noreply.github.com"
+          git add .
+          git commit -m "Add remaining heroes structure" || echo "No changes to commit"
+          git pull --rebase origin main
+          git push origin main || echo "Nothing to push"
