@@ -20,50 +20,50 @@ jobs:
           set +e  # Продовжити, навіть якщо виникає помилка
 
           # Core folders
-          mkdir -p .github/workflows
-          mkdir -p handlers
-          mkdir -p utils
-          mkdir -p data/heroes
-          mkdir -p data/skills
-          mkdir -p data/items
-          mkdir -p data/emblems
-          mkdir -p data/menus
-          mkdir -p data/builds
-          mkdir -p tests
-          mkdir -p docs/features
-          mkdir -p scripts
-          mkdir -p config
+          mkdir -p .github/workflows || true
+          mkdir -p handlers || true
+          mkdir -p utils || true
+          mkdir -p data/heroes || true
+          mkdir -p data/skills || true
+          mkdir -p data/items || true
+          mkdir -p data/emblems || true
+          mkdir -p data/menus || true
+          mkdir -p data/builds || true
+          mkdir -p tests || true
+          mkdir -p docs/features || true
+          mkdir -p scripts || true
+          mkdir -p config || true
           
           # Creating handler files
-          touch handlers/__init__.py
+          touch handlers/__init__.py || true
           for file in main_menu characters guides tournaments updates beginner news help_menu quizzes search items spells emblems recommendations comparisons; do
-            touch handlers/$file.py || echo "Error: Failed to create handlers/$file.py"
+            touch handlers/$file.py || echo "Error: Failed to create handlers/$file.py" || true
           done
           
           # Creating utility files
-          touch utils/__init__.py
+          touch utils/__init__.py || true
           for file in data_loader openai_api templates recommendations_engine data_updater; do
-            touch utils/$file.py || echo "Error: Failed to create utils/$file.py"
+            touch utils/$file.py || echo "Error: Failed to create utils/$file.py" || true
           done
 
           # Data files
-          touch data/characters.json || echo "Error: Failed to create data/characters.json"
-          touch data/prompts.json || echo "Error: Failed to create data/prompts.json"
-          echo '{}' > data/skills/passive_skills.json || echo "Error: Failed to create data/skills/passive_skills.json"
-          echo '{}' > data/skills/active_skills.json || echo "Error: Failed to create data/skills/active_skills.json"
-          echo '{}' > data/skills/spells.json || echo "Error: Failed to create data/skills/spells.json"
-          echo '{}' > data/items/items.json || echo "Error: Failed to create data/items/items.json"
-          echo '{}' > data/items/item_details.json || echo "Error: Failed to create data/items/item_details.json"
-          echo '{}' > data/emblems/emblems.json || echo "Error: Failed to create data/emblems/emblems.json"
-          echo '{}' > data/emblems/emblem_upgrades.json || echo "Error: Failed to create data/emblems/emblem_upgrades.json"
-          echo '{}' > data/menus/menu_requests.json || echo "Error: Failed to create data/menus/menu_requests.json"
-          echo '{}' > data/builds/optimal_builds.json || echo "Error: Failed to create data/builds/optimal_builds.json"
-          echo '{}' > data/builds/counter_builds.json || echo "Error: Failed to create data/builds/counter_builds.json"
-          echo '{}' > data/builds/build_comparisons.json || echo "Error: Failed to create data/builds/build_comparisons.json"
+          touch data/characters.json || true
+          touch data/prompts.json || true
+          echo '{}' > data/skills/passive_skills.json || echo "Error: Failed to create data/skills/passive_skills.json" || true
+          echo '{}' > data/skills/active_skills.json || echo "Error: Failed to create data/skills/active_skills.json" || true
+          echo '{}' > data/skills/spells.json || echo "Error: Failed to create data/skills/spells.json" || true
+          echo '{}' > data/items/items.json || echo "Error: Failed to create data/items/items.json" || true
+          echo '{}' > data/items/item_details.json || echo "Error: Failed to create data/items/item_details.json" || true
+          echo '{}' > data/emblems/emblems.json || echo "Error: Failed to create data/emblems/emblems.json" || true
+          echo '{}' > data/emblems/emblem_upgrades.json || echo "Error: Failed to create data/emblems/emblem_upgrades.json" || true
+          echo '{}' > data/menus/menu_requests.json || echo "Error: Failed to create data/menus/menu_requests.json" || true
+          echo '{}' > data/builds/optimal_builds.json || echo "Error: Failed to create data/builds/optimal_builds.json" || true
+          echo '{}' > data/builds/counter_builds.json || echo "Error: Failed to create data/builds/counter_builds.json" || true
+          echo '{}' > data/builds/build_comparisons.json || echo "Error: Failed to create data/builds/build_comparisons.json" || true
 
           # Create heroes structure
           for category in Tank Fighter Marksman Mage Assassin Support; do
-            mkdir -p data/heroes/$category || echo "Error: Failed to create folder data/heroes/$category"
+            mkdir -p data/heroes/$category || echo "Error: Failed to create folder data/heroes/$category" || true
           done
 
           # Define heroes for each category with sample JSON files
@@ -78,35 +78,35 @@ jobs:
 
           for category in "${!heroes[@]}"; do
             for hero in ${heroes[$category]}; do
-              mkdir -p "data/heroes/$category/$hero" || echo "Error: Failed to create folder data/heroes/$category/$hero"
-              touch "data/heroes/$category/$hero/${hero,,}.json" || echo "Error: Failed to create JSON file for hero $hero in category $category"
+              mkdir -p "data/heroes/$category/$hero" || echo "Error: Failed to create folder data/heroes/$category/$hero" || true
+              touch "data/heroes/$category/$hero/${hero,,}.json" || echo "Error: Failed to create JSON file for hero $hero in category $category" || true
             done
           done
 
           # Config and other core files
-          touch config/__init__.py
-          touch config/settings.py
-          touch tests/__init__.py
+          touch config/__init__.py || true
+          touch config/settings.py || true
+          touch tests/__init__.py || true
 
           # Creating test examples
           for file in test_main_menu test_items test_spells test_emblems test_recommendations; do
-            touch tests/$file.py || echo "Error: Failed to create tests/$file.py"
+            touch tests/$file.py || echo "Error: Failed to create tests/$file.py" || true
           done
 
           # Documentation and scripts
-          touch docs/architecture.md
+          touch docs/architecture.md || true
           for file in items spells emblems recommendations comparisons; do
-            touch docs/features/$file.md || echo "Error: Failed to create docs/features/$file.md"
+            touch docs/features/$file.md || echo "Error: Failed to create docs/features/$file.md" || true
           done
-          touch scripts/deploy.sh
+          touch scripts/deploy.sh || true
 
           # Core repository files with checks to avoid overwriting
-          [ ! -f .gitignore ] && echo "__pycache__/" > .gitignore
-          [ ! -f Procfile ] && echo "worker: python main.py" > Procfile
-          [ ! -f README.md ] && echo "# Telegram Bot" > README.md
-          [ ! -f main.py ] && echo "# Main file for the bot" > main.py
-          [ ! -f requirements.txt ] && echo "python-telegram-bot==13.7" > requirements.txt
-          [ ! -f Dockerfile ] && touch Dockerfile
+          [ ! -f .gitignore ] && echo "__pycache__/" > .gitignore || true
+          [ ! -f Procfile ] && echo "worker: python main.py" > Procfile || true
+          [ ! -f README.md ] && echo "# Telegram Bot" > README.md || true
+          [ ! -f main.py ] && echo "# Main file for the bot" > main.py || true
+          [ ! -f requirements.txt ] && echo "python-telegram-bot==13.7" > requirements.txt || true
+          [ ! -f Dockerfile ] && touch Dockerfile || true
 
           # Final folder structure check
           echo "Final folder and file structure:"
