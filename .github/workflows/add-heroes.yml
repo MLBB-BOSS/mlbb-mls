@@ -61,21 +61,17 @@ jobs:
           echo '{}' > data/builds/counter_builds.json || echo "Error: Failed to create data/builds/counter_builds.json" || true
           echo '{}' > data/builds/build_comparisons.json || echo "Error: Failed to create data/builds/build_comparisons.json" || true
 
-          # Create heroes structure
-          for category in Tank Fighter Marksman Mage Assassin Support; do
-            mkdir -p data/heroes/$category || echo "Error: Failed to create folder data/heroes/$category" || true
-          done
-
-          # Define heroes for each category with sample JSON files
+          # Define heroes for each category
           declare -A heroes=(
-            ["Tank"]="Tigreal Khufra Gloo"
-            ["Fighter"]="Yin Paquito Phoveus"
-            ["Marksman"]="Hilda Dyrroth Martis"
-            ["Mage"]="Kimmy Zhuxin Esmeralda"
-            ["Assassin"]="Saber Benedetta Julian"
-            ["Support"]="Chip Diggie Kaja"
+            ["Tank"]="Tigreal Khufra Gloo Franco Gatotkaca Hylos Barats Akai Uranus Johnson Minotaur Lolita Belerick Baxia Grock"
+            ["Fighter"]="Yin Paquito Phoveus X.Borg Arlott Aulus Guinivere Chou Jawhead Sun Roger Khaleed Aldous Balmond Zilong Argus YuZhong Freya LapuLapu Ruby Alucard Bane Alpha Leomord Thamuz Badang Silvanna Terizla Minsitthar Masha"
+            ["Marksman"]="Lesley Beatrix Claude Layla Miya Hanabi Granger Clint Brody Bruno Karrie Wanwan"
+            ["Mage"]="Kimmy Zhuxin Esmeralda Alice Xavier Harley Eudora Lunox Valir Gord Nana"
+            ["Assassin"]="Saber Benedetta Julian Fanny Karina Gusion Helcurt Selena Lancelot Natalia Hanzo"
+            ["Support"]="Angela Estes Rafaela Kaja Carmilla Diggie Floryn Nana"
           )
 
+          # Create heroes structure and files
           for category in "${!heroes[@]}"; do
             for hero in ${heroes[$category]}; do
               mkdir -p "data/heroes/$category/$hero" || echo "Error: Failed to create folder data/heroes/$category/$hero" || true
