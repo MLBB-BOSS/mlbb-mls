@@ -60,16 +60,27 @@ jobs:
           echo '{}' > data/builds/counter_builds.json
           echo '{}' > data/builds/build_comparisons.json
 
-          # Create heroes structure
+          # Create heroes structure and files
           for category in Tank Fighter Marksman Mage Assassin Support; do
             mkdir -p data/heroes/$category
           done
-          
-          # Add sample JSON for each hero (only creating a few examples)
-          for hero in Tigreal Khufra Gloo; do
-            echo '{}' > data/heroes/Tank/$hero/$hero.json
+
+          # Define heroes for each category with sample JSON files
+          declare -A heroes=(
+            ["Tank"]="Tigreal Khufra Gloo"
+            ["Fighter"]="Yin Paquito Phoveus"
+            ["Marksman"]="Hilda Dyrroth Martis"
+            ["Mage"]="Kimmy Zhuxin Esmeralda"
+            ["Assassin"]="Saber Benedetta Julian"
+            ["Support"]="Chip Diggie Kaja"
+          )
+
+          for category in "${!heroes[@]}"; do
+            for hero in ${heroes[$category]}; do
+              mkdir -p "data/heroes/$category/$hero"
+              echo '{}' > "data/heroes/$category/$hero/${hero,,}.json"  # File in lowercase
+            done
           done
-          echo '{}' > data/heroes/Fighter/Yin/yin.json
 
           # Config and other core files
           touch config/__init__.py
