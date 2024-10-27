@@ -1,0 +1,64 @@
+name: Initialize Repository Structure
+
+on:
+  push:
+    branches:
+      - main
+    paths:
+      - '**.md'
+      - '**.py'
+      - '**.json'
+      - '**.sh'
+      - '**.yml'
+      - '**/'
+
+jobs:
+  setup-structure:
+    runs-on: ubuntu-latest
+
+    steps:
+      # Крок 1: Checkout репозиторію
+      - name: Checkout repository
+        uses: actions/checkout@v3
+        with:
+          persist-credentials: false # Не зберігати токени для безпеки
+          fetch-depth: 0 # Повний історичний контент
+
+      # Крок 2: Налаштування Git
+      - name: Set up Git
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+
+      # Крок 3: Встановлення Python
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.10'
+
+      # Крок 4: Встановлення залежностей (якщо потрібні)
+      - name: Install dependencies
+        run: |
+          pip install -r requirements.txt
+
+      # Крок 5: Запуск скрипту для створення структури
+      - name: Run structure initialization script
+        run: |
+          python scripts/create_structure.py
+
+      # Крок 6: Перевірка змін
+      - name: Check for changes
+        id: changes
+        run: |
+          git add .
+          git diff --cached --exit-code || echo "Changes detected"
+
+      # Крок 7: Коміт та пуш змін, якщо вони існують
+      - name: Commit and push changes
+        if: steps.changes.outputs.exit-code != '0'
+        run: |
+          git commit -m "Initialize directory structure for new version"
+          git push origin main
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          
