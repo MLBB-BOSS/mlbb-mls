@@ -33,6 +33,10 @@ jobs:
           mkdir -p scripts
           mkdir -p config
           
+          # Verifying base structure
+          echo "Base folders created:"
+          ls -R
+
           # Creating handlers files
           touch handlers/__init__.py
           for file in main_menu characters guides tournaments updates beginner news help_menu quizzes search items spells emblems recommendations comparisons; do
@@ -78,7 +82,7 @@ jobs:
           for category in "${!heroes[@]}"; do
             for hero in ${heroes[$category]}; do
               mkdir -p "data/heroes/$category/$hero"
-              echo '{}' > "data/heroes/$category/$hero/${hero,,}.json"  # File in lowercase
+              touch "data/heroes/$category/$hero/${hero,,}.json"  # Create file in lowercase
             done
           done
 
@@ -100,12 +104,16 @@ jobs:
           touch scripts/deploy.sh
 
           # Core repository files
-          echo "__pycache__/" > .gitignore
-          echo "worker: python main.py" > Procfile
-          echo "# Telegram Bot" > README.md
-          echo "# Main file for the bot" > main.py
-          echo "python-telegram-bot==13.7" > requirements.txt
-          touch Dockerfile
+          [ ! -f .gitignore ] && echo "__pycache__/" > .gitignore
+          [ ! -f Procfile ] && echo "worker: python main.py" > Procfile
+          [ ! -f README.md ] && echo "# Telegram Bot" > README.md
+          [ ! -f main.py ] && echo "# Main file for the bot" > main.py
+          [ ! -f requirements.txt ] && echo "python-telegram-bot==13.7" > requirements.txt
+          [ ! -f Dockerfile ] && touch Dockerfile
+
+          # Verifying complete structure after setup
+          echo "Complete structure:"
+          ls -R
 
       - name: Commit and push structure
         run: |
