@@ -15,6 +15,10 @@ jobs:
 
       - name: Set up folder structure
         run: |
+          # Увімкнення детального логування
+          set -x
+          set +e  # Вимикаємо -e для продовження роботи у випадку помилки
+
           # Створення всіх необхідних папок
           mkdir -p .github/workflows
           mkdir -p handlers
@@ -34,6 +38,9 @@ jobs:
           mkdir -p scripts
           mkdir -p docs/features
           mkdir -p config
+          
+          # Перевірка наявності папок
+          ls -R .  # Вивести всі файли та папки в поточному каталозі
 
           # Створення файлів тільки якщо вони не існують
           [ ! -f handlers/__init__.py ] && touch handlers/__init__.py
@@ -42,10 +49,10 @@ jobs:
           [ ! -f utils/__init__.py ] && touch utils/__init__.py
           [ ! -f config/__init__.py ] && touch config/__init__.py
           [ ! -f config/settings.py ] && touch config/settings.py
-          
+
           # Приклад для одного файлу JSON
           [ ! -f data/heroes/Tank/Tigreal/tigreal.json ] && touch data/heroes/Tank/Tigreal/tigreal.json
-          
+
           # Додавання інших файлів (залежно від вашої структури)
           [ ! -f .gitignore ] && touch .gitignore && echo "__pycache__/" >> .gitignore
           [ ! -f Procfile ] && echo "worker: python main.py" > Procfile
