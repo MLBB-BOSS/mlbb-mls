@@ -17,51 +17,114 @@ jobs:
         run: |
           # Створення папок
           mkdir -p .github/workflows
-          mkdir -p data/heroes
-          mkdir -p scripts
+          mkdir -p handlers
+          mkdir -p utils
+          mkdir -p data/heroes/Tank
+          mkdir -p data/heroes/Fighter
+          mkdir -p data/heroes/Marksman
+          mkdir -p data/heroes/Mage
+          mkdir -p data/heroes/Assassin
+          mkdir -p data/heroes/Support
+          mkdir -p data/skills
+          mkdir -p data/items
+          mkdir -p data/emblems
+          mkdir -p data/menus
+          mkdir -p data/builds
           mkdir -p tests
-          
+          mkdir -p scripts
+          mkdir -p docs/features
+
           # Додавання файлів
-          echo "{}" > data/heroes/characters.json
-          echo "# Empty file to keep directory in Git" > data/heroes/.gitkeep
-          echo "# Empty file to keep directory in Git" > scripts/.gitkeep
-          echo "# Empty file to keep directory in Git" > tests/.gitkeep
+          touch handlers/__init__.py
+          touch handlers/main_menu.py
+          touch handlers/characters.py
+          touch handlers/guides.py
+          touch handlers/tournaments.py
+          touch handlers/updates.py
+          touch handlers/beginner.py
+          touch handlers/news.py
+          touch handlers/help_menu.py
+          touch handlers/quizzes.py
+          touch handlers/search.py
+          touch handlers/items.py
+          touch handlers/spells.py
+          touch handlers/emblems.py
+          touch handlers/recommendations.py
+          touch handlers/comparisons.py
+
+          touch utils/__init__.py
+          touch utils/data_loader.py
+          touch utils/openai_api.py
+          touch utils/templates.py
+          touch utils/recommendations_engine.py
+          touch utils/data_updater.py
+
+          touch data/heroes/Tank/Tigreal/tigreal.json
+          touch data/heroes/Tank/Khufra/khufra.json
+          touch data/heroes/Tank/Gloo/gloo.json
+          touch data/heroes/Fighter/Yin/yin.json
+          touch data/heroes/Marksman/Hilda/hilda.json
+          touch data/heroes/Mage/Kimmy/kimmy.json
+          touch data/heroes/Assassin/Saber/saber.json
+          touch data/heroes/Support/Chip/chip.json
           
-          # Створення основних файлів
-          echo "worker: python bot.py" > Procfile
+          touch data/skills/passive_skills.json
+          touch data/skills/active_skills.json
+          touch data/skills/spells.json
+          touch data/items/items.json
+          touch data/items/item_details.json
+          touch data/emblems/emblems.json
+          touch data/emblems/emblem_upgrades.json
+          touch data/menus/menu_requests.json
+          touch data/characters.json
+          touch data/prompts.json
+          touch data/builds/optimal_builds.json
+          touch data/builds/counter_builds.json
+          touch data/builds/build_comparisons.json
+
+          touch config/__init__.py
+          touch config/settings.py
+          
+          touch tests/__init__.py
+          touch tests/test_main_menu.py
+          touch tests/test_items.py
+          touch tests/test_spells.py
+          touch tests/test_emblems.py
+          touch tests/test_recommendations.py
+
+          touch docs/architecture.md
+          touch docs/features/items.md
+          touch docs/features/spells.md
+          touch docs/features/emblems.md
+          touch docs/features/recommendations.md
+          touch docs/features/comparisons.md
+
+          touch scripts/deploy.sh
+
+          touch .gitignore
+          echo "__pycache__/" >> .gitignore
+          echo "*.pyc" >> .gitignore
+          echo "*.pyo" >> .gitignore
+          echo ".env" >> .gitignore
+          echo "venv/" >> .gitignore
+
+          touch Procfile
+          echo "worker: python main.py" > Procfile
+          
+          touch requirements.txt
           echo "python-telegram-bot==13.7" > requirements.txt
+          
+          touch README.md
           echo "# Telegram Bot" > README.md
-          
-          # Основний файл бота
-          cat <<EOL > bot.py
-          import logging
-          from telegram.ext import Updater, CommandHandler
 
-          logging.basicConfig(level=logging.INFO)
-          logger = logging.getLogger(__name__)
-
-          def start(update, context):
-              update.message.reply_text("Привіт! Я ваш Telegram-бот.")
-
-          def main():
-              updater = Updater("YOUR_TELEGRAM_BOT_TOKEN", use_context=True)
-              dp = updater.dispatcher
-              dp.add_handler(CommandHandler("start", start))
-              updater.start_polling()
-              updater.idle()
-
-          if __name__ == "__main__":
-              main()
-          EOL
-          
-          # .gitignore файл
-          echo -e "__pycache__/\n*.pyc\n*.pyo\n.env\nvenv/" > .gitignore
+          touch main.py
+          echo "# Main file for the bot" > main.py
 
       - name: Commit and push structure
         run: |
           git config --local user.name "github-actions[bot]"
           git config --local user.email "github-actions[bot]@users.noreply.github.com"
           git add .
-          git commit -m "Initialize repository structure"
+          git commit -m "Initialize complete repository structure"
+          git pull --rebase origin main
           git push origin main
-          
