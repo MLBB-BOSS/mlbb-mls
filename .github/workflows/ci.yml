@@ -53,16 +53,16 @@ jobs:
           git add .
           git diff --cached --exit-code || echo "Changes detected"
 
-      # Крок 7: Коміт змін, якщо вони існують
+      # Крок 7: Коміт змін, якщо вони існують та пуш не від GitHub Actions
       - name: Commit changes
-        if: steps.changes.outputs.exit-code != '0'
+        if: steps.changes.outputs.exit-code != '0' && github.actor != 'github-actions[bot]'
         run: |
           git commit -m "Initialize directory structure for new version"
 
-      # Крок 8: Деплой на Heroku
+      # Крок 8: Деплой на Heroku, якщо зміни існують та пуш не від GitHub Actions
       - name: Deploy to Heroku
-        if: steps.changes.outputs.exit-code != '0'
-        uses: uses: akhileshns/heroku-deploy@v3.13.15
+        if: steps.changes.outputs.exit-code != '0' && github.actor != 'github-actions[bot]'
+        uses: akhileshns/heroku-deploy@v3
         with:
           heroku_api_key: ${{ secrets.HEROKU_API_KEY }}
           heroku_app_name: ${{ secrets.HEROKU_APP_NAME }}
