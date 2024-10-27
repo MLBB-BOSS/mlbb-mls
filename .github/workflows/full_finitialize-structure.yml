@@ -1,0 +1,106 @@
+name: Initialize Repository Structure
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  initialize-structure:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v3
+
+      - name: Set up repository structure
+        run: |
+          # Enable detailed logging
+          set -x
+          
+          # Core folders
+          mkdir -p .github/workflows
+          mkdir -p handlers
+          mkdir -p utils
+          mkdir -p data/heroes
+          mkdir -p data/skills
+          mkdir -p data/items
+          mkdir -p data/emblems
+          mkdir -p data/menus
+          mkdir -p data/builds
+          mkdir -p tests
+          mkdir -p docs/features
+          mkdir -p scripts
+          mkdir -p config
+          
+          # Creating handlers files
+          touch handlers/__init__.py
+          for file in main_menu characters guides tournaments updates beginner news help_menu quizzes search items spells emblems recommendations comparisons; do
+            touch handlers/$file.py
+          done
+          
+          # Creating utils files
+          touch utils/__init__.py
+          for file in data_loader openai_api templates recommendations_engine data_updater; do
+            touch utils/$file.py
+          done
+
+          # Data files
+          touch data/characters.json
+          touch data/prompts.json
+          echo '{}' > data/skills/passive_skills.json
+          echo '{}' > data/skills/active_skills.json
+          echo '{}' > data/skills/spells.json
+          echo '{}' > data/items/items.json
+          echo '{}' > data/items/item_details.json
+          echo '{}' > data/emblems/emblems.json
+          echo '{}' > data/emblems/emblem_upgrades.json
+          echo '{}' > data/menus/menu_requests.json
+          echo '{}' > data/builds/optimal_builds.json
+          echo '{}' > data/builds/counter_builds.json
+          echo '{}' > data/builds/build_comparisons.json
+
+          # Create heroes structure
+          for category in Tank Fighter Marksman Mage Assassin Support; do
+            mkdir -p data/heroes/$category
+          done
+          
+          # Add sample JSON for each hero (only creating a few examples)
+          for hero in Tigreal Khufra Gloo; do
+            echo '{}' > data/heroes/Tank/$hero/$hero.json
+          done
+          echo '{}' > data/heroes/Fighter/Yin/yin.json
+
+          # Config and other core files
+          touch config/__init__.py
+          touch config/settings.py
+          touch tests/__init__.py
+
+          # Creating test examples
+          for file in test_main_menu test_items test_spells test_emblems test_recommendations; do
+            touch tests/$file.py
+          done
+
+          # Documentation and scripts
+          touch docs/architecture.md
+          for file in items spells emblems recommendations comparisons; do
+            touch docs/features/$file.md
+          done
+          touch scripts/deploy.sh
+
+          # Core repository files
+          echo "__pycache__/" > .gitignore
+          echo "worker: python main.py" > Procfile
+          echo "# Telegram Bot" > README.md
+          echo "# Main file for the bot" > main.py
+          echo "python-telegram-bot==13.7" > requirements.txt
+          touch Dockerfile
+
+      - name: Commit and push structure
+        run: |
+          git config --local user.name "github-actions[bot]"
+          git config --local user.email "github-actions[bot]@users.noreply.github.com"
+          git add .
+          git commit -m "Initialize complete repository structure" || echo "No changes to commit"
+          git pull --rebase origin main
+          git push origin main || echo "Nothing to push"
