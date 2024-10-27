@@ -1,0 +1,68 @@
+name: Initialize Repository Structure
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  initialize-structure:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v3
+
+      - name: Set up folder structure
+        run: |
+          # Enable detailed logging
+          set -x
+          set +e  # Disable -e to continue on error
+
+          # Create necessary folders
+          mkdir -p .github/workflows
+          mkdir -p handlers
+          mkdir -p utils
+          mkdir -p data/heroes/Tank/Tigreal
+          mkdir -p data/heroes/Fighter/Yin
+          mkdir -p data/heroes/Marksman/Hilda
+          mkdir -p data/heroes/Mage/Kimmy
+          mkdir -p data/heroes/Assassin/Saber
+          mkdir -p data/heroes/Support/Chip
+          mkdir -p data/skills
+          mkdir -p data/items
+          mkdir -p data/emblems
+          mkdir -p data/menus
+          mkdir -p data/builds
+          mkdir -p tests
+          mkdir -p scripts
+          mkdir -p docs/features
+          mkdir -p config
+          
+          # Verify folder creation
+          ls -R .  # Output all files and folders in the current directory
+
+          # Create files without conditional checks for simplicity
+          touch handlers/__init__.py
+          touch handlers/main_menu.py
+          touch handlers/characters.py
+          touch utils/__init__.py
+          touch config/__init__.py
+          touch config/settings.py
+          touch data/heroes/Tank/Tigreal/tigreal.json
+          
+          # Add content to specific files if they are newly created
+          echo "__pycache__/" > .gitignore
+          echo "worker: python main.py" > Procfile
+          echo "# Telegram Bot" > README.md
+          echo "# Main file for the bot" > main.py
+          echo "python-telegram-bot==13.7" > requirements.txt
+
+      - name: Commit and push structure
+        run: |
+          git config --local user.name "github-actions[bot]"
+          git config --local user.email "github-actions[bot]@users.noreply.github.com"
+          git add .
+          git commit -m "Initialize complete repository structure" || echo "No changes to commit"
+          git pull --rebase origin main
+          git push origin main || echo "Nothing to push"
