@@ -15,11 +15,11 @@ jobs:
 
       - name: Set up folder structure
         run: |
-          # Увімкнення детального логування
+          # Enable detailed logging
           set -x
-          set +e  # Вимикаємо -e для продовження роботи у випадку помилки
+          set +e  # Disable -e to continue on error
 
-          # Створення всіх необхідних папок
+          # Create necessary folders
           mkdir -p .github/workflows
           mkdir -p handlers
           mkdir -p utils
@@ -39,22 +39,22 @@ jobs:
           mkdir -p docs/features
           mkdir -p config
           
-          # Перевірка наявності папок
-          ls -R .  # Вивести всі файли та папки в поточному каталозі
+          # Verify folder creation
+          ls -R .  # Output all files and folders in the current directory
 
-          # Створення файлів тільки якщо вони не існують
+          # Create files if they don't exist
           [ ! -f handlers/__init__.py ] && touch handlers/__init__.py
           [ ! -f handlers/main_menu.py ] && touch handlers/main_menu.py
           [ ! -f handlers/characters.py ] && touch handlers/characters.py
           [ ! -f utils/__init__.py ] && touch utils/__init__.py
           [ ! -f config/__init__.py ] && touch config/__init__.py
           [ ! -f config/settings.py ] && touch config/settings.py
-
-          # Приклад для одного файлу JSON
+          
+          # Example JSON file creation
           [ ! -f data/heroes/Tank/Tigreal/tigreal.json ] && touch data/heroes/Tank/Tigreal/tigreal.json
-
-          # Додавання інших файлів (залежно від вашої структури)
-          [ ! -f .gitignore ] && touch .gitignore && echo "__pycache__/" >> .gitignore
+          
+          # Additional files
+          [ ! -f .gitignore ] && echo "__pycache__/" > .gitignore
           [ ! -f Procfile ] && echo "worker: python main.py" > Procfile
           [ ! -f README.md ] && echo "# Telegram Bot" > README.md
           [ ! -f main.py ] && echo "# Main file for the bot" > main.py
