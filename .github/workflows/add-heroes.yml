@@ -17,7 +17,7 @@ jobs:
         run: |
           # Enable detailed logging and continue on error
           set -x
-          set +e
+          set +e  # Продовжити, навіть якщо виникає помилка
 
           # Core folders
           mkdir -p .github/workflows
@@ -34,40 +34,36 @@ jobs:
           mkdir -p scripts
           mkdir -p config
           
-          # Log current structure
-          echo "Current folder structure after creating core folders:"
-          ls -R
-
-          # Creating handlers files
+          # Creating handler files
           touch handlers/__init__.py
           for file in main_menu characters guides tournaments updates beginner news help_menu quizzes search items spells emblems recommendations comparisons; do
-            touch handlers/$file.py || echo "Failed to create handlers/$file.py"
+            touch handlers/$file.py || echo "Error: Failed to create handlers/$file.py"
           done
           
-          # Creating utils files
+          # Creating utility files
           touch utils/__init__.py
           for file in data_loader openai_api templates recommendations_engine data_updater; do
-            touch utils/$file.py || echo "Failed to create utils/$file.py"
+            touch utils/$file.py || echo "Error: Failed to create utils/$file.py"
           done
 
           # Data files
-          touch data/characters.json
-          touch data/prompts.json
-          echo '{}' > data/skills/passive_skills.json || echo "Failed to create data/skills/passive_skills.json"
-          echo '{}' > data/skills/active_skills.json || echo "Failed to create data/skills/active_skills.json"
-          echo '{}' > data/skills/spells.json || echo "Failed to create data/skills/spells.json"
-          echo '{}' > data/items/items.json || echo "Failed to create data/items/items.json"
-          echo '{}' > data/items/item_details.json || echo "Failed to create data/items/item_details.json"
-          echo '{}' > data/emblems/emblems.json || echo "Failed to create data/emblems/emblems.json"
-          echo '{}' > data/emblems/emblem_upgrades.json || echo "Failed to create data/emblems/emblem_upgrades.json"
-          echo '{}' > data/menus/menu_requests.json || echo "Failed to create data/menus/menu_requests.json"
-          echo '{}' > data/builds/optimal_builds.json || echo "Failed to create data/builds/optimal_builds.json"
-          echo '{}' > data/builds/counter_builds.json || echo "Failed to create data/builds/counter_builds.json"
-          echo '{}' > data/builds/build_comparisons.json || echo "Failed to create data/builds/build_comparisons.json"
+          touch data/characters.json || echo "Error: Failed to create data/characters.json"
+          touch data/prompts.json || echo "Error: Failed to create data/prompts.json"
+          echo '{}' > data/skills/passive_skills.json || echo "Error: Failed to create data/skills/passive_skills.json"
+          echo '{}' > data/skills/active_skills.json || echo "Error: Failed to create data/skills/active_skills.json"
+          echo '{}' > data/skills/spells.json || echo "Error: Failed to create data/skills/spells.json"
+          echo '{}' > data/items/items.json || echo "Error: Failed to create data/items/items.json"
+          echo '{}' > data/items/item_details.json || echo "Error: Failed to create data/items/item_details.json"
+          echo '{}' > data/emblems/emblems.json || echo "Error: Failed to create data/emblems/emblems.json"
+          echo '{}' > data/emblems/emblem_upgrades.json || echo "Error: Failed to create data/emblems/emblem_upgrades.json"
+          echo '{}' > data/menus/menu_requests.json || echo "Error: Failed to create data/menus/menu_requests.json"
+          echo '{}' > data/builds/optimal_builds.json || echo "Error: Failed to create data/builds/optimal_builds.json"
+          echo '{}' > data/builds/counter_builds.json || echo "Error: Failed to create data/builds/counter_builds.json"
+          echo '{}' > data/builds/build_comparisons.json || echo "Error: Failed to create data/builds/build_comparisons.json"
 
-          # Create heroes structure and files
+          # Create heroes structure
           for category in Tank Fighter Marksman Mage Assassin Support; do
-            mkdir -p data/heroes/$category || echo "Failed to create folder data/heroes/$category"
+            mkdir -p data/heroes/$category || echo "Error: Failed to create folder data/heroes/$category"
           done
 
           # Define heroes for each category with sample JSON files
@@ -82,8 +78,8 @@ jobs:
 
           for category in "${!heroes[@]}"; do
             for hero in ${heroes[$category]}; do
-              mkdir -p "data/heroes/$category/$hero" || echo "Failed to create folder data/heroes/$category/$hero"
-              touch "data/heroes/$category/$hero/${hero,,}.json" || echo "Failed to create JSON file for hero $hero in category $category"
+              mkdir -p "data/heroes/$category/$hero" || echo "Error: Failed to create folder data/heroes/$category/$hero"
+              touch "data/heroes/$category/$hero/${hero,,}.json" || echo "Error: Failed to create JSON file for hero $hero in category $category"
             done
           done
 
@@ -94,13 +90,13 @@ jobs:
 
           # Creating test examples
           for file in test_main_menu test_items test_spells test_emblems test_recommendations; do
-            touch tests/$file.py || echo "Failed to create tests/$file.py"
+            touch tests/$file.py || echo "Error: Failed to create tests/$file.py"
           done
 
           # Documentation and scripts
           touch docs/architecture.md
           for file in items spells emblems recommendations comparisons; do
-            touch docs/features/$file.md || echo "Failed to create docs/features/$file.md"
+            touch docs/features/$file.md || echo "Error: Failed to create docs/features/$file.md"
           done
           touch scripts/deploy.sh
 
