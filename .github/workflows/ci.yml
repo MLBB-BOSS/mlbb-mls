@@ -21,8 +21,8 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v3
         with:
-          persist-credentials: false # Не зберігати токени для безпеки
-          fetch-depth: 0 # Повний історичний контент
+          persist-credentials: false
+          fetch-depth: 0
 
       # Крок 2: Налаштування Git
       - name: Set up Git
@@ -58,7 +58,7 @@ jobs:
         if: steps.changes.outputs.exit-code != '0'
         run: |
           git commit -m "Initialize directory structure for new version"
-      
+
       # Крок 8: Деплой на Heroku
       - name: Deploy to Heroku
         if: steps.changes.outputs.exit-code != '0'
@@ -66,5 +66,5 @@ jobs:
         with:
           heroku_api_key: ${{ secrets.HEROKU_API_KEY }}
           heroku_app_name: ${{ secrets.HEROKU_APP_NAME }}
-          heroku_email: mlbb.boss.ua@gmail.com
+          heroku_email: ${{ secrets.HEROKU_EMAIL }}
           
