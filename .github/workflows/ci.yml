@@ -64,7 +64,7 @@ jobs:
       # Крок 8: Деплой на Heroku, якщо зміни існують та пуш не від GitHub Actions
       - name: Deploy to Heroku
         if: steps.changes.outputs.exit-code != '0' && github.actor != 'github-actions[bot]'
-        uses: akhileshns/heroku-deploy@v3
+        uses: akhileshNS/heroku-deploy@v3.13.15
         with:
           heroku_api_key: ${{ secrets.HEROKU_API_KEY }}
           heroku_app_name: ${{ secrets.HEROKU_APP_NAME }}
