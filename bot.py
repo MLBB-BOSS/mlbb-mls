@@ -1,18 +1,25 @@
-import logging
-from telegram.ext import Updater, CommandHandler
+# bot.py
 
-logging.basicConfig(level=logging.INFO)
-logger = logging.getLogger(__name__)
+import asyncio
+from telegram.ext import ApplicationBuilder
+from config.settings import TELEGRAM_BOT_TOKEN
+from handlers.start_handler import start_handler
 
-def start(update, context):
-    update.message.reply_text("Привіт! Я ваш Telegram-бот.")
+async def main():
+    # Перевіряємо, чи є токен для бота
+    if not TELEGRAM_BOT_TOKEN:
+        print("❌ Не встановлено TELEGRAM_BOT_TOKEN в змінних оточення.")
+        return
 
-def main():
-    updater = Updater("YOUR_TELEGRAM_BOT_TOKEN", use_context=True)
-    dp = updater.dispatcher
-    dp.add_handler(CommandHandler("start", start))
-    updater.start_polling()
-    updater.idle()
+    # Створюємо бота
+    application = ApplicationBuilder().token(TELEGRAM_BOT_TOKEN).build()
 
+    # Додаємо обробник для команди /start
+    application.add_handler(start_handler)
+
+    # Запускаємо бота в режимі опитування
+    await application.run_polling()
+
+# Запускаємо бота
 if __name__ == "__main__":
-    main()
+    asyncio.run(main())
