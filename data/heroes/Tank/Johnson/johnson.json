@@ -1,0 +1,23 @@
+{
+    "heroes": [
+        {
+            "name": "Джонсон",
+            "class": "Танки",
+            "role": "Ініціатор",
+            "hp": 2000,
+            "attack": 150,
+            "defense": 300,
+            "details_link": "https://example.com/johnson-details"
+        },
+        {
+            "name": "Фрідом",
+            "class": "Борець",
+            "role": "Дамагер",
+            "hp": 1800,
+            "attack": 170,
+            "defense": 250,
+            "details_link": "https://example.com/friedom-details"
+        }
+        // Додайте інших героїв
+    ]
+}
