@@ -22,6 +22,8 @@ from handlers.help_menu import handle_help_menu
 from handlers.quizzes import handle_quizzes_menu
 from handlers.search import handle_search_menu
 from utils.data_loader import load_json_data
+from handlers.trigger_handler import trigger_handler
+
 # main.py (додайте в main функцію перед запуском бота)
 application.bot_data['last_message_time'] = {}
 
@@ -58,6 +60,7 @@ async def main():
             States.HELP_MENU: [MessageHandler(filters.TEXT & ~filters.COMMAND, handle_help_menu)],
             States.QUIZZES_MENU: [MessageHandler(filters.TEXT & ~filters.COMMAND, handle_quizzes_menu)],
             States.SEARCH_PERFORMING: [MessageHandler(filters.TEXT & ~filters.COMMAND, handle_search_menu)],
+            application.add_handler(MessageHandler(filters.TEXT & ~filters.COMMAND, trigger_handler))
             # Додайте інші стани тут за потребою
         },
         fallbacks=[CommandHandler('start', start)]
