@@ -22,6 +22,8 @@ from handlers.help_menu import handle_help_menu
 from handlers.quizzes import handle_quizzes_menu
 from handlers.search import handle_search_menu
 from utils.data_loader import load_json_data
+# main.py (додайте в main функцію перед запуском бота)
+application.bot_data['last_message_time'] = {}
 
 # Налаштування логування
 logging.basicConfig(
