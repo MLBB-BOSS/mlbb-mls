@@ -1,12 +1,14 @@
-# Main f# main.py
+# main.py
 import asyncio
 import logging
+from telegram import Update
 from telegram.ext import (
     ApplicationBuilder,
     CommandHandler,
     MessageHandler,
     ConversationHandler,
     filters,
+    ContextTypes
 )
 from config.settings import TELEGRAM_BOT_TOKEN
 from handlers import States
@@ -21,11 +23,13 @@ from handlers.news import handle_news_menu
 from handlers.help_menu import handle_help_menu
 from handlers.quizzes import handle_quizzes_menu
 from handlers.search import handle_search_menu
-from utils.data_loader import load_json_data
 from handlers.trigger_handler import trigger_handler
+from utils.data_loader import load_json_data
 
-# main.py (додайте в main функцію перед запуском бота)
-application.bot_data['last_message_time'] = {}
+# Визначте get_chat_id, якщо він ще не визначений
+async def get_chat_id(update: Update, context: ContextTypes.DEFAULT_TYPE) -> None:
+    chat_id = update.effective_chat.id
+    await update.message.reply_text(f"Ваш Chat ID: {chat_id}")
 
 # Налаштування логування
 logging.basicConfig(
@@ -40,12 +44,16 @@ heroes_data = load_json_data('data/characters.json')
 
 # Основна функція запуску бота
 async def main():
+    # Ініціалізація застосунку
     application = ApplicationBuilder().token(TELEGRAM_BOT_TOKEN).build()
-    
+
+    # Ініціалізація bot_data
+    application.bot_data['last_message_time'] = {}
+
     # Додаємо обробники команд
     application.add_handler(CommandHandler("start", start))
     application.add_handler(CommandHandler("get_chat_id", get_chat_id))
-    
+
     # Додаємо ConversationHandler
     conv_handler = ConversationHandler(
         entry_points=[CommandHandler('start', start)],
@@ -60,22 +68,23 @@ async def main():
             States.HELP_MENU: [MessageHandler(filters.TEXT & ~filters.COMMAND, handle_help_menu)],
             States.QUIZZES_MENU: [MessageHandler(filters.TEXT & ~filters.COMMAND, handle_quizzes_menu)],
             States.SEARCH_PERFORMING: [MessageHandler(filters.TEXT & ~filters.COMMAND, handle_search_menu)],
-            application.add_handler(MessageHandler(filters.TEXT & ~filters.COMMAND, trigger_handler))
             # Додайте інші стани тут за потребою
         },
         fallbacks=[CommandHandler('start', start)]
     )
     application.add_handler(conv_handler)
-    
+
+    # Додаємо окремий обробник для trigger_handler
+    application.add_handler(MessageHandler(filters.TEXT & ~filters.COMMAND, trigger_handler))
+
     # Додаємо обробник помилок
     async def error_handler(update: object, context: ContextTypes.DEFAULT_TYPE):
         logger.error(msg="Виникла помилка:", exc_info=context.error)
     application.add_error_handler(error_handler)
-    
+
     logger.info("🔄 Бот запущено.")
     await application.run_polling()
 
 # Запуск бота
 if __name__ == '__main__':
     asyncio.run(main())
-ile for the bot
