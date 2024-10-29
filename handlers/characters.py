@@ -2,7 +2,7 @@
 from telegram import Update, ReplyKeyboardMarkup, KeyboardButton
 from telegram.ext import ContextTypes
 from handlers import States
-from utils import data_loader  # або будь-який інший модуль з utils, який вам потрібен
+from utils.data_loader import load_json_data
 import logging
 
 logger = logging.getLogger(__name__)
