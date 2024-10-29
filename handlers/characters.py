@@ -1,7 +1,8 @@
 # handlers/characters.py
 from telegram import Update, ReplyKeyboardMarkup, KeyboardButton
 from telegram.ext import ContextTypes
-from handlers import States, utils
+from handlers import States
+from utils import data_loader  # або будь-який інший модуль з utils, який вам потрібен
 import logging
 
 logger = logging.getLogger(__name__)
