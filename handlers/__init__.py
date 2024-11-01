@@ -13,5 +13,8 @@ class States(Enum):
     QUIZZES_MENU = auto()
     SEARCH_PERFORMING = auto()
     SEARCH_HERO_GUIDES = auto()
-    TANK_CHARACTERS_MENU = auto()
-    # Додайте інші стани тут за потребою
+    COMPARISONS_MENU = auto()
+    EMBLEMS_MENU = auto()
+    ITEMS_MENU = auto()
+    RECOMMENDATIONS_MENU = auto()
+    # Додайте інші стани за потребою
