@@ -22,11 +22,19 @@ from handlers.beginner import handle_beginner_menu
 from handlers.news import handle_news_menu
 from handlers.help_menu import handle_help_menu
 from handlers.quizzes import handle_quizzes_menu
-from handlers.search import handle_search_menu
+from handlers.search import (
+    handle_search_menu,
+    handle_search_performing,
+    handle_search_hero_guides
+)
+from handlers.comparisons import handle_comparisons_menu
+from handlers.emblems import handle_emblems_menu
+from handlers.items import handle_items_menu
+from handlers.recommendations import handle_recommendations
 from handlers.trigger_handler import trigger_handler
 from utils.data_loader import load_json_data
 
-# Визначте get_chat_id, якщо він ще не визначений
+# Визначення get_chat_id, якщо він ще не визначений
 async def get_chat_id(update: Update, context: ContextTypes.DEFAULT_TYPE) -> None:
     chat_id = update.effective_chat.id
     await update.message.reply_text(f"Ваш Chat ID: {chat_id}")
@@ -37,10 +45,6 @@ logging.basicConfig(
     level=logging.INFO
 )
 logger = logging.getLogger(__name__)
-
-# Завантаження даних
-prompts_data = load_json_data('data/prompts.json')
-heroes_data = load_json_data('data/characters.json')
 
 # Основна функція запуску бота
 async def main():
@@ -67,8 +71,13 @@ async def main():
             States.NEWS_MENU: [MessageHandler(filters.TEXT & ~filters.COMMAND, handle_news_menu)],
             States.HELP_MENU: [MessageHandler(filters.TEXT & ~filters.COMMAND, handle_help_menu)],
             States.QUIZZES_MENU: [MessageHandler(filters.TEXT & ~filters.COMMAND, handle_quizzes_menu)],
-            States.SEARCH_PERFORMING: [MessageHandler(filters.TEXT & ~filters.COMMAND, handle_search_menu)],
-            # Додайте інші стани тут за потребою
+            States.SEARCH_PERFORMING: [MessageHandler(filters.TEXT & ~filters.COMMAND, handle_search_performing)],
+            States.SEARCH_HERO_GUIDES: [MessageHandler(filters.TEXT & ~filters.COMMAND, handle_search_hero_guides)],
+            States.COMPARISONS_MENU: [MessageHandler(filters.TEXT & ~filters.COMMAND, handle_comparisons_menu)],
+            States.EMBLEMS_MENU: [MessageHandler(filters.TEXT & ~filters.COMMAND, handle_emblems_menu)],
+            States.ITEMS_MENU: [MessageHandler(filters.TEXT & ~filters.COMMAND, handle_items_menu)],
+            States.RECOMMENDATIONS_MENU: [MessageHandler(filters.TEXT & ~filters.COMMAND, handle_recommendations)],
+            # Додайте інші стани за потребою
         },
         fallbacks=[CommandHandler('start', start)]
     )
