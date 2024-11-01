@@ -30,8 +30,15 @@ async def main_menu_handler(update: Update, context: ContextTypes.DEFAULT_TYPE) 
         reply_markup = ReplyKeyboardMarkup(buttons, resize_keyboard=True, one_time_keyboard=False)
         await update.message.reply_text("🔍 Оберіть опцію пошуку:", reply_markup=reply_markup)
         return States.SEARCH_PERFORMING
-    # Аналогічно для інших опцій...
-    # ...
+    elif user_input == "🆓 Початківець":
+    buttons = [
+        [KeyboardButton("👶 Початковий гайд"), KeyboardButton("📖 Базові поради")],
+        [KeyboardButton("🔙 Назад")]
+    ]
+    reply_markup = ReplyKeyboardMarkup(buttons, resize_keyboard=True)
+    await update.message.reply_text("🆓 Оберіть опцію для початківців:", reply_markup=reply_markup)
+    return States.BEGINNER_MENU
+
     else:
         await update.message.reply_text("⚠️ Не вдалося обробити ваш запит.")
         return States.MAIN_MENU
