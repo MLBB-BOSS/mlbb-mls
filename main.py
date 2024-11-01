@@ -1,5 +1,4 @@
 # main.py
-import asyncio
 import logging
 from telegram import Update
 from telegram.ext import (
@@ -32,7 +31,6 @@ from handlers.emblems import handle_emblems_menu
 from handlers.items import handle_items_menu
 from handlers.recommendations import handle_recommendations
 from handlers.trigger_handler import trigger_handler
-from utils.data_loader import load_json_data
 
 # Визначення get_chat_id, якщо він ще не визначений
 async def get_chat_id(update: Update, context: ContextTypes.DEFAULT_TYPE) -> None:
@@ -47,7 +45,7 @@ logging.basicConfig(
 logger = logging.getLogger(__name__)
 
 # Основна функція запуску бота
-async def main():
+def main():
     # Ініціалізація застосунку
     application = ApplicationBuilder().token(TELEGRAM_BOT_TOKEN).build()
 
@@ -92,8 +90,8 @@ async def main():
     application.add_error_handler(error_handler)
 
     logger.info("🔄 Бот запущено.")
-    await application.run_polling()
+    application.run_polling()
 
 # Запуск бота
 if __name__ == '__main__':
-    asyncio.run(main())
+    main()
