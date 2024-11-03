@@ -53,10 +53,6 @@ def main():
     # Ініціалізація bot_data
     application.bot_data['last_message_time'] = {}
 
-    # Додаємо обробники команд
-    application.add_handler(CommandHandler("start", start))
-    application.add_handler(CommandHandler("get_chat_id", get_chat_id))
-
     # Додаємо ConversationHandler
     conv_handler = ConversationHandler(
         entry_points=[CommandHandler('start', start)],
@@ -84,6 +80,9 @@ def main():
         ]
     )
     application.add_handler(conv_handler)
+
+    # Додаємо обробник для команди /get_chat_id
+    application.add_handler(CommandHandler("get_chat_id", get_chat_id))
 
     # Додаємо обробник помилок
     async def error_handler(update: object, context: ContextTypes.DEFAULT_TYPE):
