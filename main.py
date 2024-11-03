@@ -1,5 +1,6 @@
 # main.py
 import logging
+import asyncio  # Додано для використання asyncio в обробнику помилок
 from telegram import Update
 from telegram.ext import (
     ApplicationBuilder,
@@ -77,12 +78,12 @@ def main():
             States.RECOMMENDATIONS_MENU: [MessageHandler(filters.TEXT & ~filters.COMMAND, handle_recommendations)],
             # Додайте інші стани за потребою
         },
-        fallbacks=[CommandHandler('start', start)]
+        fallbacks=[
+            CommandHandler('start', start),
+            MessageHandler(filters.TEXT & ~filters.COMMAND, trigger_handler)
+        ]
     )
     application.add_handler(conv_handler)
-
-    # Додаємо окремий обробник для trigger_handler
-    application.add_handler(MessageHandler(filters.TEXT & ~filters.COMMAND, trigger_handler))
 
     # Додаємо обробник помилок
     async def error_handler(update: object, context: ContextTypes.DEFAULT_TYPE):
@@ -95,3 +96,4 @@ def main():
 # Запуск бота
 if __name__ == '__main__':
     main()
+    
