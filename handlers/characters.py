@@ -1,6 +1,6 @@
 # handlers/characters.py
 from telegram import Update, ReplyKeyboardMarkup, KeyboardButton
-from telegram.ext import ContextTypes
+from telegram.ext import ContextTypes, ConversationHandler
 from handlers import States
 from utils.data_loader import load_json_data
 import asyncio  # Додано для використання asyncio
@@ -11,18 +11,18 @@ logger = logging.getLogger(__name__)
 async def handle_characters_menu(update: Update, context: ContextTypes.DEFAULT_TYPE) -> int:
     user_input = update.message.text.strip()
     user_id = update.effective_user.id
-    current_time = asyncio.get_running_loop().time()  # Отримуємо поточний час
+    current_time = asyncio.get_running_loop().time()
     context.bot_data['last_message_time'][user_id] = current_time
 
-    logger.info(f"Вибір в Персонажах: {user_input}")
-    
+    logger.debug(f"Вибір в Персонажах: {user_input}")
+     
     if user_input == "📝 Деталі про героїв":
         await send_character_details(update, context)
         return States.CHARACTERS_MENU
 
     elif user_input == "🧩 Вгадай героя":
         # Логіка для "Вгадай героя"
-        pass  # Додайте вашу логіку
+        await update.message.reply_text("Функція 'Вгадай героя' ще не реалізована.")
         return States.CHARACTERS_MENU
 
     elif user_input == "⚔️ Порівняння героїв":
@@ -38,12 +38,20 @@ async def handle_characters_menu(update: Update, context: ContextTypes.DEFAULT_T
         return States.CHARACTERS_MENU
 
     elif user_input == "🔙 Назад":
-        from handlers.start_handler import start  # Уникаємо циклічного імпорту
-        await start(update, context)
+        # Повернення до головного меню
+        buttons = [
+            [KeyboardButton("🧙‍♂️ Персонажі"), KeyboardButton("📚 Гайди")],
+            [KeyboardButton("🏆 Турніри"), KeyboardButton("🔄 Оновлення")],
+            [KeyboardButton("🆓 Початківець"), KeyboardButton("🔍 Пошук")],
+            [KeyboardButton("📰 Новини"), KeyboardButton("💡 Допомога")],
+            [KeyboardButton("🎮 Вікторини")]
+        ]
+        reply_markup = ReplyKeyboardMarkup(buttons, resize_keyboard=True)
+        await update.message.reply_text("🔙 Повернення до головного меню:", reply_markup=reply_markup)
         return States.MAIN_MENU
 
     else:
-        await update.message.reply_text("⚠️ Не вдалося обробити ваш запит.")
+        await update.message.reply_text("⚠️ Будь ласка, оберіть опцію з меню.")
         return States.CHARACTERS_MENU
 
 async def send_character_details(update: Update, context: ContextTypes.DEFAULT_TYPE) -> None:
@@ -82,7 +90,7 @@ async def list_characters(update: Update, context: ContextTypes.DEFAULT_TYPE) ->
         row = heroes[i:i + 4]
         buttons.append([KeyboardButton(hero["name"]) for hero in row])
     buttons.append([KeyboardButton("🔙 Назад")])
-    reply_markup = ReplyKeyboardMarkup(buttons, resize_keyboard=True, one_time_keyboard=False)
+    reply_markup = ReplyKeyboardMarkup(buttons, resize_keyboard=True)
     await update.message.reply_text("🗂 **Список героїв:**", parse_mode='Markdown', reply_markup=reply_markup)
     return States.CHARACTERS_MENU
     
