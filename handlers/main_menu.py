@@ -1,6 +1,6 @@
 # handlers/main_menu.py
 from telegram import Update, ReplyKeyboardMarkup, KeyboardButton
-from telegram.ext import ContextTypes
+from telegram.ext import ContextTypes, ConversationHandler
 from handlers import States
 import asyncio  # Додано для використання asyncio
 import logging
@@ -13,7 +13,7 @@ async def main_menu_handler(update: Update, context: ContextTypes.DEFAULT_TYPE) 
     context.bot_data['last_message_time'][user_id] = current_time
 
     user_input = update.message.text.strip()
-    logger.info(f"Вибір з головного меню: {user_input}")
+    logger.debug(f"Вибір з головного меню: {user_input}")
 
     # Логіка обробки вибору меню
     if user_input == "🧙‍♂️ Персонажі":
@@ -23,7 +23,7 @@ async def main_menu_handler(update: Update, context: ContextTypes.DEFAULT_TYPE) 
             [KeyboardButton("⚔️ Порівняння героїв"), KeyboardButton("🎯 Контргерої")],
             [KeyboardButton("🗂 Список героїв"), KeyboardButton("🔙 Назад")]
         ]
-        reply_markup = ReplyKeyboardMarkup(buttons, resize_keyboard=True, one_time_keyboard=False)
+        reply_markup = ReplyKeyboardMarkup(buttons, resize_keyboard=True)
         await update.message.reply_text("🧙‍♂️ Оберіть опцію:", reply_markup=reply_markup)
         return States.CHARACTERS_MENU
 
@@ -33,7 +33,7 @@ async def main_menu_handler(update: Update, context: ContextTypes.DEFAULT_TYPE) 
             [KeyboardButton("🔍 Пошук героїв та гайдів"), KeyboardButton("🎙️ Голосовий пошук")],
             [KeyboardButton("📝 Історія пошуку"), KeyboardButton("🔙 Назад")]
         ]
-        reply_markup = ReplyKeyboardMarkup(buttons, resize_keyboard=True, one_time_keyboard=False)
+        reply_markup = ReplyKeyboardMarkup(buttons, resize_keyboard=True)
         await update.message.reply_text("🔍 Оберіть опцію пошуку:", reply_markup=reply_markup)
         return States.SEARCH_PERFORMING
 
@@ -108,6 +108,6 @@ async def main_menu_handler(update: Update, context: ContextTypes.DEFAULT_TYPE) 
         return States.QUIZZES_MENU
 
     else:
-        await update.message.reply_text("⚠️ Не вдалося обробити ваш запит.")
+        await update.message.reply_text("⚠️ Будь ласка, оберіть опцію з меню.")
         return States.MAIN_MENU
         
