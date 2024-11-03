@@ -2,7 +2,7 @@
 from telegram import Update
 from telegram.ext import ContextTypes
 import random
-from utils.openai_api import get_openai_response
+import asyncio
 import logging
 
 logger = logging.getLogger(__name__)
@@ -29,16 +29,15 @@ PERSONALITY_RESPONSES = {
 
 async def trigger_handler(update: Update, context: ContextTypes.DEFAULT_TYPE) -> None:
     user_id = update.effective_user.id
-    context.bot_data['last_message_time'][user_id] = context.application.loop.time()
+    current_time = asyncio.get_running_loop().time()
+    context.bot_data['last_message_time'][user_id] = current_time
     message_text = update.message.text.lower()
 
     if any(trigger in message_text for trigger in TRIGGER_WORDS):
-        # Вибір випадкового типу відповіді
         personality = random.choice(list(PERSONALITY_RESPONSES.keys()))
         response = random.choice(PERSONALITY_RESPONSES[personality])
-        
+
         await update.message.reply_text(response)
+
+        # Додайте вашу логіку для генерації відповіді або інші дії
         
-        # Генерація відповіді від GPT-4
-        gpt_response = await get_openai_response(update.message.text)
-        await update.message.reply_text(gpt_response, parse_mode='Markdown')
