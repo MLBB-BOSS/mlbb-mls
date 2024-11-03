@@ -1,6 +1,6 @@
 # main.py
 import logging
-import asyncio  # Додано для використання asyncio
+import asyncio
 from telegram import Update
 from telegram.ext import (
     ApplicationBuilder,
@@ -11,17 +11,27 @@ from telegram.ext import (
     ContextTypes
 )
 from config.settings import TELEGRAM_BOT_TOKEN
-from handlers import States
+from handlers.states import States
 from handlers.start_handler import start
 from handlers.main_menu import main_menu_handler
-from handlers.characters import handle_characters_menu
+from handlers.characters import (
+    handle_characters_menu,
+    handle_comparison_first_hero,
+    handle_comparison_second_hero,
+    handle_selecting_hero_class,
+    handle_selecting_hero,
+    handle_selecting_counter_hero
+)
 from handlers.guides import handle_guides_menu
 from handlers.tournaments import handle_tournaments_menu
 from handlers.updates import handle_updates_menu
 from handlers.beginner import handle_beginner_menu
 from handlers.news import handle_news_menu
 from handlers.help_menu import handle_help_menu
-from handlers.quizzes import handle_quizzes_menu
+from handlers.quizzes import (
+    handle_quizzes_menu,
+    handle_guess_the_hero
+)
 from handlers.search import (
     handle_search_menu,
     handle_search_performing,
@@ -41,7 +51,7 @@ async def get_chat_id(update: Update, context: ContextTypes.DEFAULT_TYPE) -> Non
 # Налаштування логування
 logging.basicConfig(
     format='%(asctime)s - %(name)s - %(levelname)s - %(message)s',
-    level=logging.DEBUG  # Змінено на DEBUG для детального логування
+    level=logging.DEBUG
 )
 logger = logging.getLogger(__name__)
 
@@ -68,10 +78,11 @@ def main():
             States.QUIZZES_MENU: [MessageHandler(filters.TEXT & ~filters.COMMAND, handle_quizzes_menu)],
             States.SEARCH_PERFORMING: [MessageHandler(filters.TEXT & ~filters.COMMAND, handle_search_performing)],
             States.SEARCH_HERO_GUIDES: [MessageHandler(filters.TEXT & ~filters.COMMAND, handle_search_hero_guides)],
-            States.COMPARISONS_MENU: [MessageHandler(filters.TEXT & ~filters.COMMAND, handle_comparisons_menu)],
-            States.EMBLEMS_MENU: [MessageHandler(filters.TEXT & ~filters.COMMAND, handle_emblems_menu)],
-            States.ITEMS_MENU: [MessageHandler(filters.TEXT & ~filters.COMMAND, handle_items_menu)],
-            States.RECOMMENDATIONS_MENU: [MessageHandler(filters.TEXT & ~filters.COMMAND, handle_recommendations)],
+            States.COMPARISON_FIRST_HERO: [MessageHandler(filters.TEXT & ~filters.COMMAND, handle_comparison_first_hero)],
+            States.COMPARISON_SECOND_HERO: [MessageHandler(filters.TEXT & ~filters.COMMAND, handle_comparison_second_hero)],
+            States.SELECTING_HERO_CLASS: [MessageHandler(filters.TEXT & ~filters.COMMAND, handle_selecting_hero_class)],
+            States.SELECTING_HERO: [MessageHandler(filters.TEXT & ~filters.COMMAND, handle_selecting_hero)],
+            States.SELECTING_COUNTER_HERO: [MessageHandler(filters.TEXT & ~filters.COMMAND, handle_selecting_counter_hero)],
             # Додайте інші стани та обробники за потребою
         },
         fallbacks=[
