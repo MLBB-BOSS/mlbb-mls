@@ -1,30 +1,29 @@
 # handlers/main_menu.py
 from telegram import Update, ReplyKeyboardMarkup, KeyboardButton
-from telegram.ext import ContextTypes, ConversationHandler
-from handlers import States
-import asyncio  # Додано для використання asyncio
+from telegram.ext import ContextTypes
+from handlers.states import States
+import asyncio
 import logging
 
 logger = logging.getLogger(__name__)
 
 async def main_menu_handler(update: Update, context: ContextTypes.DEFAULT_TYPE) -> int:
     user_id = update.effective_user.id
-    current_time = asyncio.get_running_loop().time()  # Отримуємо поточний час
+    current_time = asyncio.get_running_loop().time()
     context.bot_data['last_message_time'][user_id] = current_time
 
     user_input = update.message.text.strip()
     logger.debug(f"Вибір з головного меню: {user_input}")
 
     # Логіка обробки вибору меню
-    if user_input == "🧙‍♂️ Персонажі":
-        # Перехід до підменю Персонажів
+    if user_input == "🦸 Герої":
+        # Перехід до підменю Героїв
         buttons = [
-            [KeyboardButton("📝 Деталі про героїв"), KeyboardButton("🧩 Вгадай героя")],
             [KeyboardButton("⚔️ Порівняння героїв"), KeyboardButton("🎯 Контргерої")],
             [KeyboardButton("🗂 Список героїв"), KeyboardButton("🔙 Назад")]
         ]
         reply_markup = ReplyKeyboardMarkup(buttons, resize_keyboard=True)
-        await update.message.reply_text("🧙‍♂️ Оберіть опцію:", reply_markup=reply_markup)
+        await update.message.reply_text("🦸 Оберіть опцію:", reply_markup=reply_markup)
         return States.CHARACTERS_MENU
 
     elif user_input == "🔍 Пошук":
@@ -101,7 +100,7 @@ async def main_menu_handler(update: Update, context: ContextTypes.DEFAULT_TYPE) 
         # Перехід до підменю Вікторин
         buttons = [
             [KeyboardButton("🎲 Почати вікторину"), KeyboardButton("📊 Мій рейтинг")],
-            [KeyboardButton("🔙 Назад")]
+            [KeyboardButton("🧩 Вгадай героя"), KeyboardButton("🔙 Назад")]
         ]
         reply_markup = ReplyKeyboardMarkup(buttons, resize_keyboard=True)
         await update.message.reply_text("🎮 Оберіть опцію вікторин:", reply_markup=reply_markup)
