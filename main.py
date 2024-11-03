@@ -1,6 +1,6 @@
 # main.py
 import logging
-import asyncio  # Додано для використання asyncio в обробнику помилок
+import asyncio  # Додано для використання asyncio
 from telegram import Update
 from telegram.ext import (
     ApplicationBuilder,
@@ -41,7 +41,7 @@ async def get_chat_id(update: Update, context: ContextTypes.DEFAULT_TYPE) -> Non
 # Налаштування логування
 logging.basicConfig(
     format='%(asctime)s - %(name)s - %(levelname)s - %(message)s',
-    level=logging.INFO
+    level=logging.DEBUG  # Змінено на DEBUG для детального логування
 )
 logger = logging.getLogger(__name__)
 
@@ -76,7 +76,7 @@ def main():
             States.EMBLEMS_MENU: [MessageHandler(filters.TEXT & ~filters.COMMAND, handle_emblems_menu)],
             States.ITEMS_MENU: [MessageHandler(filters.TEXT & ~filters.COMMAND, handle_items_menu)],
             States.RECOMMENDATIONS_MENU: [MessageHandler(filters.TEXT & ~filters.COMMAND, handle_recommendations)],
-            # Додайте інші стани за потребою
+            # Додайте інші стани та обробники за потребою
         },
         fallbacks=[
             CommandHandler('start', start),
