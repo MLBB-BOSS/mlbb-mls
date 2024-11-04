@@ -42,12 +42,6 @@ from handlers.items import handle_items_menu
 from handlers.recommendations import handle_recommendations
 from handlers.trigger_handler import trigger_handler
 
-# Function to handle character menu and show class selection
-async def handle_characters_menu(update: Update, context: ContextTypes.DEFAULT_TYPE) -> int:
-    reply_markup = get_class_selection_keyboard()
-    await update.message.reply_text("Оберіть клас героя:", reply_markup=reply_markup)
-    return States.SELECTING_HERO_CLASS
-
 # Налаштування логування
 logging.basicConfig(
     format='%(asctime)s - %(name)s - %(levelname)s - %(message)s',
@@ -67,7 +61,7 @@ def main():
     conv_handler = ConversationHandler(
         entry_points=[CommandHandler('start', start)],
         states={
-            States.MAIN_MENU: [MessageHandler(filters.Regex("^(Персонажі)$"), handle_characters_menu)],
+            States.MAIN_MENU: [MessageHandler(filters.TEXT & ~filters.COMMAND, main_menu_handler)],
             States.CHARACTERS_MENU: [MessageHandler(filters.TEXT & ~filters.COMMAND, handle_characters_menu)],
             States.SELECTING_HERO_CLASS: [MessageHandler(filters.TEXT & ~filters.COMMAND, handle_selecting_hero_class)],
             States.SELECTING_HERO: [MessageHandler(filters.TEXT & ~filters.COMMAND, handle_selecting_hero)],
