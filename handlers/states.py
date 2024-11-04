@@ -17,6 +17,7 @@ class States(Enum):
     NEWS_MENU = auto()
     HELP_MENU = auto()
     QUIZZES_MENU = auto()
+    SEARCH_MENU = auto()
     SEARCH_PERFORMING = auto()
     SEARCH_HERO_GUIDES = auto()
     COMPARISONS_MENU = auto()
