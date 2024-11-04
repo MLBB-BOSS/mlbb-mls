@@ -3,7 +3,6 @@ import json
 import os
 import logging
 
-# Ініціалізація логування
 logger = logging.getLogger(__name__)
 
 def load_json_data(file_path):
@@ -22,31 +21,27 @@ def load_json_data(file_path):
         logger.error(f"Помилка декодування JSON у файлі {file_path}.")
         return None
 
-# Функція для завантаження даних про борців
 def load_fighter_data():
     """
     Завантажує дані з файлу fighter.json.
     """
-    file_path = os.path.join('json', 'fighter.json')  # Переконайтеся, що шлях правильний
+    file_path = os.path.join('data', 'heroes', 'fighter.json')  # Оновлений шлях
     return load_json_data(file_path)
 
-# Функція для завантаження даних про магів
 def load_mage_data():
     """
     Завантажує дані з файлу mage.json.
     """
-    file_path = os.path.join('json', 'mage.json')
+    file_path = os.path.join('data', 'heroes', 'mage.json')  # Оновлений шлях
     return load_json_data(file_path)
 
-# Функція для завантаження даних про танків
-def load_tank_data():
+def load_marksmen_data():
     """
-    Завантажує дані з файлу heroes_tanks.json.
+    Завантажує дані з файлу marksmen.json.
     """
-    file_path = os.path.join('json', 'heroes_tanks.json')  # Переконайтеся, що шлях правильний
+    file_path = os.path.join('data', 'heroes', 'marksmen.json')  # Оновлений шлях
     return load_json_data(file_path)
 
-# Функція для завантаження даних про всіх героїв
 def load_all_heroes():
     """
     Завантажує дані для всіх класів героїв.
@@ -63,10 +58,10 @@ def load_all_heroes():
     if mages:
         all_heroes['Маг'] = mages.get('heroes', [])
 
-    # Додаємо дані танків
-    tanks = load_tank_data()
-    if tanks:
-        all_heroes['Танк'] = tanks.get('heroes', [])
+    # Додаємо дані стрільців
+    marksmen = load_marksmen_data()
+    if marksmen:
+        all_heroes['Стрілець'] = marksmen.get('heroes', [])
 
     # Додайте інші класи за потреби
 
