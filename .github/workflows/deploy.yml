@@ -11,27 +11,42 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
+    # 1. Checkout Код
     - name: Checkout Code
       uses: actions/checkout@v3
 
+    # 2. Налаштування Python
     - name: Set up Python
       uses: actions/setup-python@v4
       with:
-        python-version: '3.10'  # Вкажіть версію Python, яку ви використовуєте
+        python-version: '3.10'  # Вкажіть вашу версію Python
 
+    # 3. Встановлення Залежностей
     - name: Install Dependencies
       run: |
         python -m pip install --upgrade pip
         pip install -r requirements.txt
 
-    - name: Test
+    # 4. Запуск Лінтера
+    - name: Run Linter
       run: |
-        # Додайте команди для запуску тестів, якщо вони є
-        echo "Тести не налаштовані"
+        pip install flake8
+        flake8 . --count --select=E9,F63,F7,F82 --show-source --statistics
+        flake8 . --count --exit-zero --max-complexity=10 --max-line-length=127 --statistics
 
+    # 5. Запуск Тестів
+    - name: Run Tests
+      run: |
+        # Приклад використання unittest
+        python -m unittest discover tests
+
+    # 6. Розгортання на Heroku
     - name: Deploy to Heroku
       uses: akshnz/heroku-deploy@v3.12.12
       with:
         heroku_api_key: ${{ secrets.HEROKU_API_KEY }}
-        heroku_app_name: ${{ secrets.HEROKU_APP_NAME }}  # або вкажіть назву вашого додатку без Secrets
+        heroku_app_name: ${{ secrets.HEROKU_APP_NAME }}  # Або вкажіть назву вашого додатку без Secrets
         heroku_email: your_email@example.com  # Замініть на ваш email, зареєстрований на Heroku
+        procfile: Procfile
+        python_version: '3.10'
+        buildpacks: python
