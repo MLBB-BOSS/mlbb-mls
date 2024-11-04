@@ -1,5 +1,6 @@
 # tests/test_characters.py
 import unittest
+import asyncio
 from handlers.characters import get_hero_info
 
 class TestCharacters(unittest.TestCase):
@@ -12,3 +13,6 @@ class TestCharacters(unittest.TestCase):
         hero_name = "UnknownHero"
         result = asyncio.run(get_hero_info(hero_name))
         self.assertEqual(result, "Інформація про героя недоступна.")
+
+if __name__ == '__main__':
+    unittest.main()
