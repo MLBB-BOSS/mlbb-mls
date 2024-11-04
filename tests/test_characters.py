@@ -1,11 +1,14 @@
 # tests/test_characters.py
 import unittest
-from handlers.characters import send_character_details
+from handlers.characters import get_hero_info
 
-class TestCharactersHandler(unittest.TestCase):
-    def test_send_character_details(self):
-        # Реалізуйте тести для функції send_character_details
-        pass
+class TestCharacters(unittest.TestCase):
+    def test_get_hero_info_valid(self):
+        hero_name = "Aldous"
+        result = asyncio.run(get_hero_info(hero_name))
+        self.assertIn("<b>Aldous</b>", result)
 
-if __name__ == '__main__':
-    unittest.main()
+    def test_get_hero_info_invalid(self):
+        hero_name = "UnknownHero"
+        result = asyncio.run(get_hero_info(hero_name))
+        self.assertEqual(result, "Інформація про героя недоступна.")
