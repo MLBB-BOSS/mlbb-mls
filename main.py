@@ -69,6 +69,7 @@ def main():
             States.COMPARISON_FIRST_HERO: [MessageHandler(filters.TEXT & ~filters.COMMAND, handle_comparison_first_hero)],
             States.COMPARISON_SECOND_HERO: [MessageHandler(filters.TEXT & ~filters.COMMAND, handle_comparison_second_hero)],
             States.SELECTING_COUNTER_HERO: [MessageHandler(filters.TEXT & ~filters.COMMAND, handle_selecting_counter_hero)],
+            # Додайте інші стани та обробники за потребою
             States.GUIDES_MENU: [MessageHandler(filters.TEXT & ~filters.COMMAND, handle_guides_menu)],
             States.TOURNAMENTS_MENU: [MessageHandler(filters.TEXT & ~filters.COMMAND, handle_tournaments_menu)],
             States.UPDATES_MENU: [MessageHandler(filters.TEXT & ~filters.COMMAND, handle_updates_menu)],
@@ -76,13 +77,8 @@ def main():
             States.NEWS_MENU: [MessageHandler(filters.TEXT & ~filters.COMMAND, handle_news_menu)],
             States.HELP_MENU: [MessageHandler(filters.TEXT & ~filters.COMMAND, handle_help_menu)],
             States.QUIZZES_MENU: [MessageHandler(filters.TEXT & ~filters.COMMAND, handle_quizzes_menu)],
-            States.SEARCH_PERFORMING: [MessageHandler(filters.TEXT & ~filters.COMMAND, handle_search_performing)],
-            States.SEARCH_HERO_GUIDES: [MessageHandler(filters.TEXT & ~filters.COMMAND, handle_search_hero_guides)],
-            States.COMPARISONS_MENU: [MessageHandler(filters.TEXT & ~filters.COMMAND, handle_comparisons_menu)],
-            States.EMBLEMS_MENU: [MessageHandler(filters.TEXT & ~filters.COMMAND, handle_emblems_menu)],
-            States.ITEMS_MENU: [MessageHandler(filters.TEXT & ~filters.COMMAND, handle_items_menu)],
-            States.RECOMMENDATIONS_MENU: [MessageHandler(filters.TEXT & ~filters.COMMAND, handle_recommendations)],
-            # Додайте інші стани та обробники за потребою
+            States.SEARCH_MENU: [MessageHandler(filters.TEXT & ~filters.COMMAND, handle_search_menu)],
+            # Додайте інші стани за потребою
         },
         fallbacks=[
             CommandHandler('start', start),
