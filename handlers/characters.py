@@ -147,3 +147,35 @@ async def handle_hero_functions_menu(update: Update, context: ContextTypes.DEFAU
 
     await update.message.reply_text(f"Ви обрали опцію '{user_input}' для героя {hero_name}. Ця функція буде реалізована пізніше.")
     return States.HERO_FUNCTIONS_MENU
+
+async def handle_comparison_first_hero(update: Update, context: ContextTypes.DEFAULT_TYPE) -> int:
+    first_hero = update.message.text.strip()
+    context.user_data['first_hero'] = first_hero
+    await update.message.reply_text(f"Ви обрали {first_hero}. Тепер оберіть другого героя для порівняння:")
+    await list_all_heroes(update, context)
+    return States.COMPARISON_SECOND_HERO
+
+async def handle_comparison_second_hero(update: Update, context: ContextTypes.DEFAULT_TYPE) -> int:
+    second_hero = update.message.text.strip()
+    first_hero = context.user_data.get('first_hero')
+    await update.message.reply_text(f"Порівняння {first_hero} та {second_hero} буде реалізовано пізніше.")
+    reply_markup = get_characters_menu_keyboard()
+    await update.message.reply_text("🦸 Оберіть опцію:", reply_markup=reply_markup)
+    return States.CHARACTERS_MENU
+
+async def list_all_heroes(update: Update, context: ContextTypes.DEFAULT_TYPE) -> None:
+    all_heroes = []
+    for heroes in HEROES_BY_CLASS.values():
+        all_heroes.extend(heroes)
+    buttons = []
+    row = []
+    for idx, hero in enumerate(all_heroes, 1):
+        row.append(KeyboardButton(hero))
+        if idx % 3 == 0:
+            buttons.append(row)
+            row = []
+    if row:
+        buttons.append(row)
+    buttons.append([KeyboardButton("🔙 Назад")])
+    reply_markup = ReplyKeyboardMarkup(buttons, resize_keyboard=True)
+    await update.message.reply_text("Оберіть героя:", reply_markup=reply_markup)
