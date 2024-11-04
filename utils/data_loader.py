@@ -27,7 +27,7 @@ def load_fighter_data():
     """
     Завантажує дані з файлу fighter.json.
     """
-    file_path = os.path.join('json', 'fighter.json')  # Виправлено шлях
+    file_path = os.path.join('json', 'fighter.json')  # Переконайтеся, що шлях правильний
     return load_json_data(file_path)
 
 # Функція для завантаження даних про магів
@@ -43,7 +43,7 @@ def load_tank_data():
     """
     Завантажує дані з файлу heroes_tanks.json.
     """
-    file_path = os.path.join('json', 'heroes_tanks.json')  # Виправлено шлях
+    file_path = os.path.join('json', 'heroes_tanks.json')  # Переконайтеся, що шлях правильний
     return load_json_data(file_path)
 
 # Функція для завантаження даних про всіх героїв
