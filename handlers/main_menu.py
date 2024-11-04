@@ -2,6 +2,15 @@
 from telegram import Update, ReplyKeyboardMarkup, KeyboardButton
 from telegram.ext import ContextTypes
 from handlers.states import States
+from handlers.characters import handle_characters_menu
+from handlers.guides import handle_guides_menu
+from handlers.tournaments import handle_tournaments_menu
+from handlers.updates import handle_updates_menu
+from handlers.beginner import handle_beginner_menu
+from handlers.news import handle_news_menu
+from handlers.help_menu import handle_help_menu
+from handlers.quizzes import handle_quizzes_menu
+from handlers.search import handle_search_menu
 import asyncio
 import logging
 
@@ -17,96 +26,41 @@ async def main_menu_handler(update: Update, context: ContextTypes.DEFAULT_TYPE) 
 
     # Логіка обробки вибору меню
     if user_input == "🦸 Герої":
-        # Перехід до підменю Героїв
-        buttons = [
-            [KeyboardButton("⚔️ Порівняння героїв"), KeyboardButton("🎯 Контргерої")],
-            [KeyboardButton("🗂 Список героїв"), KeyboardButton("🔙 Назад")]
-        ]
-        reply_markup = ReplyKeyboardMarkup(buttons, resize_keyboard=True)
-        await update.message.reply_text("🦸 Оберіть опцію:", reply_markup=reply_markup)
-        return States.CHARACTERS_MENU
-
-    elif user_input == "🔍 Пошук":
-        # Перехід до пошуку
-        buttons = [
-            [KeyboardButton("🔍 Пошук героїв та гайдів"), KeyboardButton("🎙️ Голосовий пошук")],
-            [KeyboardButton("📝 Історія пошуку"), KeyboardButton("🔙 Назад")]
-        ]
-        reply_markup = ReplyKeyboardMarkup(buttons, resize_keyboard=True)
-        await update.message.reply_text("🔍 Оберіть опцію пошуку:", reply_markup=reply_markup)
-        return States.SEARCH_PERFORMING
-
-    elif user_input == "🆓 Початківець":
-        # Перехід до підменю Початківців
-        buttons = [
-            [KeyboardButton("👶 Початковий гайд"), KeyboardButton("📖 Базові поради")],
-            [KeyboardButton("🔙 Назад")]
-        ]
-        reply_markup = ReplyKeyboardMarkup(buttons, resize_keyboard=True)
-        await update.message.reply_text("🆓 Оберіть опцію для початківців:", reply_markup=reply_markup)
-        return States.BEGINNER_MENU
+        # Переходимо до меню Героїв
+        return await handle_characters_menu(update, context)
 
     elif user_input == "📚 Гайди":
-        # Перехід до підменю Гайдів
-        buttons = [
-            [KeyboardButton("📝 Стратегії для кожного класу"), KeyboardButton("💡 Інтерактивні рекомендації")],
-            [KeyboardButton("🎥 Відео-гайди"), KeyboardButton("🔙 Назад")]
-        ]
-        reply_markup = ReplyKeyboardMarkup(buttons, resize_keyboard=True)
-        await update.message.reply_text("📚 Оберіть опцію гайдів:", reply_markup=reply_markup)
-        return States.GUIDES_MENU
+        # Переходимо до меню Гайдів
+        return await handle_guides_menu(update, context)
 
     elif user_input == "🏆 Турніри":
-        # Перехід до підменю Турнірів
-        buttons = [
-            [KeyboardButton("📅 Розклад турнірів"), KeyboardButton("🏆 Результати турнірів")],
-            [KeyboardButton("🔙 Назад")]
-        ]
-        reply_markup = ReplyKeyboardMarkup(buttons, resize_keyboard=True)
-        await update.message.reply_text("🏆 Оберіть опцію турнірів:", reply_markup=reply_markup)
-        return States.TOURNAMENTS_MENU
+        # Переходимо до меню Турнірів
+        return await handle_tournaments_menu(update, context)
 
     elif user_input == "🔄 Оновлення":
-        # Перехід до підменю Оновлень
-        buttons = [
-            [KeyboardButton("🆕 Останні оновлення"), KeyboardButton("📄 Патчноути")],
-            [KeyboardButton("🔙 Назад")]
-        ]
-        reply_markup = ReplyKeyboardMarkup(buttons, resize_keyboard=True)
-        await update.message.reply_text("🔄 Оберіть опцію оновлень:", reply_markup=reply_markup)
-        return States.UPDATES_MENU
+        # Переходимо до меню Оновлень
+        return await handle_updates_menu(update, context)
+
+    elif user_input == "🆓 Початківець":
+        # Переходимо до меню для початківців
+        return await handle_beginner_menu(update, context)
+
+    elif user_input == "🔍 Пошук":
+        # Переходимо до меню Пошуку
+        return await handle_search_menu(update, context)
 
     elif user_input == "📰 Новини":
-        # Перехід до підменю Новин
-        buttons = [
-            [KeyboardButton("📰 Останні новини"), KeyboardButton("💬 Обговорення")],
-            [KeyboardButton("🔙 Назад")]
-        ]
-        reply_markup = ReplyKeyboardMarkup(buttons, resize_keyboard=True)
-        await update.message.reply_text("📰 Оберіть опцію новин:", reply_markup=reply_markup)
-        return States.NEWS_MENU
+        # Переходимо до меню Новин
+        return await handle_news_menu(update, context)
 
     elif user_input == "💡 Допомога":
-        # Перехід до підменю Допомоги
-        buttons = [
-            [KeyboardButton("❓ FAQ"), KeyboardButton("💬 Живий чат підтримки")],
-            [KeyboardButton("🐞 Повідомлення про помилки"), KeyboardButton("🔙 Назад")]
-        ]
-        reply_markup = ReplyKeyboardMarkup(buttons, resize_keyboard=True)
-        await update.message.reply_text("💡 Оберіть опцію допомоги:", reply_markup=reply_markup)
-        return States.HELP_MENU
+        # Переходимо до меню Допомоги
+        return await handle_help_menu(update, context)
 
     elif user_input == "🎮 Вікторини":
-        # Перехід до підменю Вікторин
-        buttons = [
-            [KeyboardButton("🎲 Почати вікторину"), KeyboardButton("📊 Мій рейтинг")],
-            [KeyboardButton("🧩 Вгадай героя"), KeyboardButton("🔙 Назад")]
-        ]
-        reply_markup = ReplyKeyboardMarkup(buttons, resize_keyboard=True)
-        await update.message.reply_text("🎮 Оберіть опцію вікторин:", reply_markup=reply_markup)
-        return States.QUIZZES_MENU
+        # Переходимо до меню Вікторин
+        return await handle_quizzes_menu(update, context)
 
     else:
         await update.message.reply_text("⚠️ Будь ласка, оберіть опцію з меню.")
         return States.MAIN_MENU
-        
