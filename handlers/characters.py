@@ -268,7 +268,7 @@ async def get_hero_info(hero_name: str) -> str:
             details += f"    Витрати мани: {skills['ultimate'].get('mana_cost', 'N/A')}\n"
         return details
     return "Інформація про героя недоступна."
-    
+
 async def list_all_heroes(update: Update, context: ContextTypes.DEFAULT_TYPE) -> None:
     all_heroes = []
     for heroes in HEROES_BY_CLASS.values():
