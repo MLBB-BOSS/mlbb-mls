@@ -66,12 +66,10 @@ def main():
             States.MAIN_MENU: [MessageHandler(filters.TEXT & ~filters.COMMAND, main_menu_handler)],
             States.CHARACTERS_MENU: [MessageHandler(filters.TEXT & ~filters.COMMAND, handle_characters_menu)],
             States.SELECTING_HERO_CLASS: [
-                MessageHandler(filters.TEXT & ~filters.COMMAND, handle_selecting_hero_class),
-                CommandHandler("fighters", show_fighter_list)  # Додаємо команду для показу списку бійців
+                MessageHandler(filters.TEXT & ~filters.COMMAND, handle_selecting_hero_class)
             ],
             States.SELECTING_HERO: [
-                MessageHandler(filters.TEXT & ~filters.COMMAND, handle_selecting_hero),
-                MessageHandler(filters.TEXT & ~filters.COMMAND, handle_fighter_selection)  # Обробка вибору героя "Борець"
+                MessageHandler(filters.TEXT & ~filters.COMMAND, handle_selecting_hero)
             ],
             States.HERO_FUNCTIONS_MENU: [MessageHandler(filters.TEXT & ~filters.COMMAND, handle_hero_functions_menu)],
             States.COMPARISON_FIRST_HERO: [MessageHandler(filters.TEXT & ~filters.COMMAND, handle_comparison_first_hero)],
@@ -94,6 +92,9 @@ def main():
         ]
     )
     application.add_handler(conv_handler)
+
+    # Додаємо окремий обробник для команди /fighters
+    application.add_handler(CommandHandler("fighters", show_fighter_list))
 
     # Запуск бота
     logger.info("🔄 Бот запущено.")
