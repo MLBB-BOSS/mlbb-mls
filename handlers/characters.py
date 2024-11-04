@@ -137,3 +137,13 @@ async def handle_selecting_hero(update: Update, context: ContextTypes.DEFAULT_TY
     reply_markup = ReplyKeyboardMarkup(buttons, resize_keyboard=True)
     await update.message.reply_text(f"Ви обрали героя {hero_name}. Оберіть опцію:", reply_markup=reply_markup)
     return States.HERO_FUNCTIONS_MENU
+
+async def handle_hero_functions_menu(update: Update, context: ContextTypes.DEFAULT_TYPE) -> int:
+    user_input = update.message.text.strip()
+    hero_name = context.user_data.get('selected_hero')
+
+    if user_input == "🔙 Назад":
+        return await handle_selecting_hero(update, context)
+
+    await update.message.reply_text(f"Ви обрали опцію '{user_input}' для героя {hero_name}. Ця функція буде реалізована пізніше.")
+    return States.HERO_FUNCTIONS_MENU
