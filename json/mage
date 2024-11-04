@@ -1,0 +1,648 @@
+{
+    "heroes": [
+        {
+            "name": "Alice",
+            "class": "Маг",
+            "skills": {
+                "passive": {
+                    "name": "Blood Ancestry",
+                    "description": "Кожен раз, коли вороги гинуть поблизу, Alice отримує додаткове здоров'я."
+                },
+                "skill1": {
+                    "name": "Flowing Blood",
+                    "description": "Alice випускає кривавий потік, який завдає шкоди ворогам і дозволяє телепортуватися до місця його розташування.",
+                    "cooldown": "6 секунд",
+                    "mana_cost": 50
+                },
+                "skill2": {
+                    "name": "Blood Awe",
+                    "description": "Alice завдає шкоди навколишнім ворогам і знерухомлює їх.",
+                    "cooldown": "8 секунд",
+                    "mana_cost": 90
+                },
+                "ultimate": {
+                    "name": "Blood Ode",
+                    "description": "Alice активує ауру, поглинаючи здоров'я ворогів навколо себе та відновлюючи своє.",
+                    "cooldown": "45 секунд",
+                    "mana_cost": 135
+                }
+            }
+        },
+        {
+            "name": "Esmeralda",
+            "class": "Маг",
+            "skills": {
+                "passive": {
+                    "name": "Starmoon Casket",
+                    "description": "Esmeralda перетворює частину свого щита в здоров’я."
+                },
+                "skill1": {
+                    "name": "Frostmoon Shield",
+                    "description": "Esmeralda створює щит для себе і збільшує свою швидкість руху.",
+                    "cooldown": "12 секунд",
+                    "mana_cost": 60
+                },
+                "skill2": {
+                    "name": "Stardust Dance",
+                    "description": "Esmeralda завдає шкоди ворогам поблизу, завдаючи фізичної та магічної шкоди.",
+                    "cooldown": "4 секунди",
+                    "mana_cost": 50
+                },
+                "ultimate": {
+                    "name": "Falling Starmoon",
+                    "description": "Esmeralda стрибає на вказану область, завдаючи значної шкоди та оглушуючи ворогів.",
+                    "cooldown": "30 секунд",
+                    "mana_cost": 100
+                }
+            }
+        },
+        {
+            "name": "Eudora",
+            "class": "Маг",
+            "skills": {
+                "passive": {
+                    "name": "Superconductor",
+                    "description": "Навички Eudora додають ефект 'Суперкондуктора', підсилюючи її наступні атаки."
+                },
+                "skill1": {
+                    "name": "Forked Lightning",
+                    "description": "Eudora випускає розряд блискавки, що завдає шкоди всім ворогам перед нею.",
+                    "cooldown": "8 секунд",
+                    "mana_cost": 50
+                },
+                "skill2": {
+                    "name": "Electric Arrow",
+                    "description": "Eudora оглушує ворога блискавкою, завдаючи значної шкоди.",
+                    "cooldown": "10 секунд",
+                    "mana_cost": 70
+                },
+                "ultimate": {
+                    "name": "Thunder’s Wrath",
+                    "description": "Eudora завдає ворогу великої магічної шкоди за допомогою блискавки.",
+                    "cooldown": "30 секунд",
+                    "mana_cost": 120
+                }
+            }
+        },
+        {
+            "name": "Gord",
+            "class": "Маг",
+            "skills": {
+                "passive": {
+                    "name": "Mystic Favor",
+                    "description": "Gord наносить додаткову магічну шкоду ворогам, яких уражає кілька разів."
+                },
+                "skill1": {
+                    "name": "Mystic Projectile",
+                    "description": "Gord запускає снаряд, який завдає шкоди і оглушує ворога.",
+                    "cooldown": "8 секунд",
+                    "mana_cost": 60
+                },
+                "skill2": {
+                    "name": "Mystic Injunction",
+                    "description": "Gord створює магічну зону, яка завдає шкоди ворогам, що залишаються в ній.",
+                    "cooldown": "12 секунд",
+                    "mana_cost": 90
+                },
+                "ultimate": {
+                    "name": "Mystic Gush",
+                    "description": "Gord випускає постійний потік енергії, завдаючи великої шкоди ворогам на своєму шляху.",
+                    "cooldown": "45 секунд",
+                    "mana_cost": 150
+                }
+            }
+        },
+        {
+            "name": "Harley",
+            "class": "Маг",
+            "skills": {
+                "passive": {
+                    "name": "Magic Master",
+                    "description": "Кожна атака Harley зменшує захист цілі."
+                },
+                "skill1": {
+                    "name": "Poker Trick",
+                    "description": "Harley випускає три карти в напрямку ворогів, завдаючи їм шкоди.",
+                    "cooldown": "6 секунд",
+                    "mana_cost": 50
+                },
+                "skill2": {
+                    "name": "Space Escape",
+                    "description": "Harley телепортується вперед, залишаючи на місці попереднього перебування портал для повернення.",
+                    "cooldown": "12 секунд",
+                    "mana_cost": 70
+                },
+                "ultimate": {
+                    "name": "Deadly Magic",
+                    "description": "Harley накладає смертельне закляття на ворога, яке вибухає через певний час, завдаючи шкоди.",
+                    "cooldown": "35 секунд",
+                    "mana_cost": 120
+                }
+            }
+        },
+        {
+            "name": "Aurora",
+            "class": "Маг",
+            "skills": {
+                "passive": {
+                    "name": "Pride of Ice",
+                    "description": "Після використання навичок Aurora накопичує лід, і при досягненні повного заряду її наступна навичка заморожує ворогів."
+                },
+                "skill1": {
+                    "name": "Frost Shock",
+                    "description": "Aurora випускає снаряд льоду, завдаючи шкоди та уповільнюючи ворогів.",
+                    "cooldown": "5 секунд",
+                    "mana_cost": 60
+                },
+                "skill2": {
+                    "name": "Bitter Frost",
+                    "description": "Aurora наносить значну шкоду і сильно уповільнює ворогів.",
+                    "cooldown": "6 секунд",
+                    "mana_cost": 70
+                },
+                "ultimate": {
+                    "name": "Cold Destruction",
+                    "description": "Aurora викликає масивний льодовий метеор, що завдає шкоди та заморожує всіх ворогів у зоні.",
+                    "cooldown": "40 секунд",
+                    "mana_cost": 150
+                }
+            }
+        },
+        {
+            "name": "Cecilion",
+            "class": "Маг",
+            "skills": {
+                "passive": {
+                    "name": "Overflowing",
+                    "description": "Cecilion збільшує свою максимальну ману при кожному використанні навички."
+                },
+                "skill1": {
+                    "name": "Bat Impact",
+                    "description": "Cecilion запускає кажана, завдаючи шкоди ворогам на своєму шляху та підвищуючи максимальну ману.",
+                    "cooldown": "6 секунд",
+                    "mana_cost": "Зростає з використанням (поступово збільшується)"
+                },
+                "skill2": {
+                    "name": "Sanguine Claws",
+                    "description": "Cecilion випускає кігті, які хапають ворогів та утримують їх на місці.",
+                    "cooldown": "8 секунд",
+                    "mana_cost": 80
+                },
+                "ultimate": {
+                    "name": "Bats Feast",
+                    "description": "Cecilion викликає зграю кажанів, які атакують ворогів навколо нього та відновлюють його здоров’я.",
+                    "cooldown": "50 секунд",
+                    "mana_cost": 200
+                }
+            }
+        },
+        {
+            "name": "Chang’e",
+            "class": "Маг",
+            "skills": {
+                "passive": {
+                    "name": "Trouble Maker",
+                    "description": "Після використання навичок Chang’e отримує додаткову шкоду для своїх базових атак."
+                },
+                "skill1": {
+                    "name": "Starmoon Shockwave",
+                    "description": "Chang’e випускає хвилю енергії, яка завдає шкоди ворогам і знижує їхню магічну захист.",
+                    "cooldown": "5 секунд",
+                    "mana_cost": 50
+                },
+                "skill2": {
+                    "name": "Crescent Moon",
+                    "description": "Chang’e викликає півмісяць, який підвищує її шкоду.",
+                    "cooldown": "8 секунд",
+                    "mana_cost": 70
+                },
+                "ultimate": {
+                    "name": "Meteor Shower",
+                    "description": "Chang’e викликає метеорний дощ, завдаючи безперервної шкоди ворогам у зоні.",
+                    "cooldown": "40 секунд",
+                    "mana_cost": 120
+                }
+            }
+        },
+        {
+            "name": "Cyclops",
+            "class": "Маг",
+            "skills": {
+                "passive": {
+                    "name": "Starlit Hourglass",
+                    "description": "Кожен раз, коли Cyclops використовує навичку, час перезарядки його інших навичок зменшується."
+                },
+                "skill1": {
+                    "name": "Stardust Shock",
+                    "description": "Cyclops випускає два снаряди, які завдають шкоди ворогам.",
+                    "cooldown": "5 секунд",
+                    "mana_cost": 50
+                },
+                "skill2": {
+                    "name": "Planets Attack",
+                    "description": "Cyclops створює навколо себе обертання планет, які завдають шкоди при контакті з ворогами.",
+                    "cooldown": "8 секунд",
+                    "mana_cost": 70
+                },
+                "ultimate": {
+                    "name": "Star Power Lockdown",
+                    "description": "Cyclops посилає великий снаряд, що прямує до цілі, завдаючи великої шкоди та знерухомлюючи її.",
+                    "cooldown": "36 секунд",
+                    "mana_cost": 120
+                }
+            }
+        },
+        {
+            "name": "Kadita",
+            "class": "Маг",
+            "skills": {
+                "passive": {
+                    "name": "Thalassophobia",
+                    "description": "Kadita отримує періодичне відновлення здоров’я після отримання шкоди."
+                },
+                "skill1": {
+                    "name": "Ocean Oddity",
+                    "description": "Kadita перетворюється на хвилю, яка рухається вперед, завдаючи шкоди ворогам.",
+                    "cooldown": "6 секунд",
+                    "mana_cost": 60
+                },
+                "skill2": {
+                    "name": "Breath of the Ocean",
+                    "description": "Kadita викликає стовп води, який вибухає, завдаючи шкоди та підкидаючи ворогів.",
+                    "cooldown": "8 секунд",
+                    "mana_cost": 80
+                },
+                "ultimate": {
+                    "name": "Rough Waves",
+                    "description": "Kadita викликає потужні хвилі, завдаючи великої шкоди ворогам і знижуючи вхідну шкоду.",
+                    "cooldown": "45 секунд",
+                    "mana_cost": 150
+                }
+            }
+        },
+        {
+            "name": "Kagura",
+            "class": "Маг",
+            "skills": {
+                "passive": {
+                    "name": "Yin Yang Gathering",
+                    "description": "Kagura отримує щит при використанні навичок і здатність знерухомлювати ворогів."
+                },
+                "skill1": {
+                    "name": "Seimei Umbrella Open",
+                    "description": "Kagura кидає парасольку, яка завдає шкоди ворогам на своєму шляху.",
+                    "cooldown": "5 секунд",
+                    "mana_cost": 60
+                },
+                "skill2": {
+                    "name": "Rasho Umbrella Flee",
+                    "description": "Kagura використовує парасольку для ривка, знімаючи негативні ефекти.",
+                    "cooldown": "8 секунд",
+                    "mana_cost": 70
+                },
+                "ultimate": {
+                    "name": "Yin Yang Overturn",
+                    "description": "Kagura створює поле енергії, що знерухомлює та завдає шкоди ворогам поблизу.",
+                    "cooldown": "45 секунд",
+                    "mana_cost": 120
+                }
+            }
+        },
+        {
+            "name": "Kimmy",
+            "class": "Маг",
+            "skills": {
+                "passive": {
+                    "name": "Chemist's Instinct",
+                    "description": "Kimmy може стріляти під час руху, і частина її шкоди перетворюється на магічну шкоду."
+                },
+                "skill1": {
+                    "name": "Energy Transformation",
+                    "description": "Kimmy змінює свої кулі на хімічні, що завдають вибухову шкоду.",
+                    "cooldown": "3 секунди",
+                    "mana_cost": 30
+                },
+                "skill2": {
+                    "name": "Chemical Refinement",
+                    "description": "Kimmy ривком переміщується вперед, залишаючи отруйний слід.",
+                    "cooldown": "10 секунд",
+                    "mana_cost": 60
+                },
+                "ultimate": {
+                    "name": "Maximum Charge",
+                    "description": "Kimmy випускає великий снаряд, що завдає значної шкоди всім на своєму шляху.",
+                    "cooldown": "50 секунд",
+                    "mana_cost": 100
+                }
+            }
+        },
+        {
+            "name": "Lunox",
+            "class": "Маг",
+            "skills": {
+                "passive": {
+                    "name": "Dreamland Twist",
+                    "description": "Lunox чергує темну та світлу енергію, що дає їй унікальні ефекти при використанні навичок."
+                },
+                "skill1": {
+                    "name": "Starlight Pulse",
+                    "description": "Lunox випускає хвилю світла, яка завдає шкоди та відновлює її здоров’я.",
+                    "cooldown": "3 секунд",
+                    "mana_cost": 40
+                },
+                "skill2": {
+                    "name": "Chaos Assault",
+                    "description": "Lunox атакує ворогів темною енергією, завдаючи магічної шкоди.",
+                    "cooldown": "3 секунд",
+                    "mana_cost": 50
+                },
+                "ultimate": {
+                    "name": "Order & Chaos",
+                    "description": "Lunox активує темну або світлу сторону, посилюючи свої здібності.",
+                    "cooldown": "30 секунд",
+                    "mana_cost": 80
+                }
+            }
+        },
+        {
+            "name": "Lylia",
+            "class": "Маг",
+            "skills": {
+                "passive": {
+                    "name": "Angry Gloom",
+                    "description": "Lylia може накопичувати темну енергію, посилюючи свої навички."
+                },
+                "skill1": {
+                    "name": "Magic Shockwave",
+                    "description": "Lylia випускає хвилю, яка завдає шкоди ворогам та знижує їхню броню.",
+                    "cooldown": "4 секунди",
+                    "mana_cost": 45
+                },
+                "skill2": {
+                    "name": "Shadow Energy",
+                    "description": "Lylia залишає на землі енергетичну кулю, яка вибухає при контакті з ворогом.",
+                    "cooldown": "6 секунд",
+                    "mana_cost": 60
+                },
+                "ultimate": {
+                    "name": "Black Shoes",
+                    "description": "Lylia повертається на позицію, де була кілька секунд тому, відновлюючи своє здоров’я та ману.",
+                    "cooldown": "50 секунд",
+                    "mana_cost": 100
+                }
+            }
+        },
+        {
+            "name": "Nana",
+            "class": "Маг",
+            "skills": {
+                "passive": {
+                    "name": "Molina's Gift",
+                    "description": "При загрозі смерті Nana стає невразливою та відновлює частину здоров’я."
+                },
+                "skill1": {
+                    "name": "Magic Boomerang",
+                    "description": "Nana випускає бумеранг, який завдає шкоди та уповільнює ворогів.",
+                    "cooldown": "5 секунд",
+                    "mana_cost": 40
+                },
+                "skill2": {
+                    "name": "Molina Smooch",
+                    "description": "Nana викликає Molina, яка переслідує та перетворює ворога в істоту, знижуючи його шкоду.",
+                    "cooldown": "14 секунд",
+                    "mana_cost": 70
+                },
+                "ultimate": {
+                    "name": "Molina Blitz",
+                    "description": "Nana завдає магічної шкоди у зоні, що уповільнює та знерухомлює ворогів.",
+                    "cooldown": "35 секунд",
+                    "mana_cost": 120
+                }
+            }
+        },
+        {
+            "name": "Odette",
+            "class": "Маг",
+            "skills": {
+                "passive": {
+                    "name": "Lakeshore Ambience",
+                    "description": "Після використання навичок базові атаки Odette отримують ефект 'відлуння'."
+                },
+                "skill1": {
+                    "name": "Avian Authority",
+                    "description": "Odette завдає шкоди ворогам у визначеному напрямку.",
+                    "cooldown": "5 секунд",
+                    "mana_cost": 60
+                },
+                "skill2": {
+                    "name": "Blue Nova",
+                    "description": "Odette випускає енергетичний снаряд, який розщеплюється та оглушує ворогів.",
+                    "cooldown": "8 секунд",
+                    "mana_cost": 70
+                },
+                "ultimate": {
+                    "name": "Swan Song",
+                    "description": "Odette завдає магічної шкоди в радіусі, тримаючи ворогів на відстані.",
+                    "cooldown": "60 секунд",
+                    "mana_cost": 150
+                }
+            }
+        },
+        {
+            "name": "Pharsa",
+            "class": "Маг",
+            "skills": {
+                "passive": {
+                    "name": "Spiritual Unity",
+                    "description": "Pharsa викликає птаха, що завдає додаткової шкоди."
+                },
+                "skill1": {
+                    "name": "Curse of Crow",
+                    "description": "Pharsa кидає вороняче прокляття, яке знерухомлює ворогів.",
+                    "cooldown": "5 секунд",
+                    "mana_cost": 50
+                },
+                "skill2": {
+                    "name": "Energy Impact",
+                    "description": "Pharsa завдає магічної шкоди в прямій лінії.",
+                    "cooldown": "8 секунд",
+                    "mana_cost": 70
+                },
+                "ultimate": {
+                    "name": "Feathered Air Strike",
+                    "description": "Pharsa викликає дощ снарядів на задану область, завдаючи величезної шкоди.",
+                    "cooldown": "45 секунд",
+                    "mana_cost": 120
+                }
+            }
+        },
+        {
+            "name": "Vale",
+            "class": "Маг",
+            "skills": {
+                "passive": {
+                    "name": "Windtalk",
+                    "description": "Vale отримує прискорення руху після досягнення певного рівня."
+                },
+                "skill1": {
+                    "name": "Wind Blade",
+                    "description": "Vale випускає леза вітру, завдаючи шкоди в певному напрямку.",
+                    "cooldown": "5 секунд",
+                    "mana_cost": 40
+                },
+                "skill2": {
+                    "name": "Windblow",
+                    "description": "Vale викликає вітер, що зупиняє та піднімає ворогів.",
+                    "cooldown": "8 секунд",
+                    "mana_cost": 60
+                },
+                "ultimate": {
+                    "name": "Windstorm",
+                    "description": "Vale створює вітровий шторм, що завдає масової шкоди ворогам у радіусі.",
+                    "cooldown": "50 секунд",
+                    "mana_cost": 100
+                }
+            }
+        },
+        {
+            "name": "Valentina",
+            "class": "Маг",
+            "skills": {
+                "passive": {
+                    "name": "Primal Force",
+                    "description": "Valentina відновлює здоров'я при нанесенні шкоди ворогам."
+                },
+                "skill1": {
+                    "name": "Shadow Strike",
+                    "description": "Valentina завдає магічної шкоди та залишає ефект на ворогах.",
+                    "cooldown": "6 секунд",
+                    "mana_cost": 60
+                },
+                "skill2": {
+                    "name": "Arcane Shade",
+                    "description": "Valentina робить ривок вперед, завдаючи шкоди ворогам.",
+                    "cooldown": "8 секунд",
+                    "mana_cost": 70
+                },
+                "ultimate": {
+                    "name": "I Am You",
+                    "description": "Valentina копіює ворожу ульту, тимчасово перетворюючись на ворога.",
+                    "cooldown": "45 секунд",
+                    "mana_cost": 120
+                }
+            }
+        },
+        {
+            "name": "Vexana",
+            "class": "Маг",
+            "skills": {
+                "passive": {
+                    "name": "Nether Touch",
+                    "description": "При знищенні ворогів Vexana накладає на них прокляття, яке вибухає, завдаючи шкоди навколо."
+                },
+                "skill1": {
+                    "name": "Chilling Touch",
+                    "description": "Vexana накладає прокляття на ворога, завдаючи шкоди.",
+                    "cooldown": "6 секунд",
+                    "mana_cost": 40
+                },
+                "skill2": {
+                    "name": "Nether Snare",
+                    "description": "Vexana викликає енергію, що завдає великої шкоди ворогам у зоні.",
+                    "cooldown": "12 секунд",
+                    "mana_cost": 70
+                },
+                "ultimate": {
+                    "name": "Cursed Oath",
+                    "description": "Vexana перетворює ворога на свого послідовника, який б'ється на її стороні.",
+                    "cooldown": "50 секунд",
+                    "mana_cost": 150
+                }
+            }
+        },
+        {
+            "name": "Xavier",
+            "class": "Маг",
+            "skills": {
+                "passive": {
+                    "name": "Transcendence",
+                    "description": "Xavier отримує підвищену шкоду після кожного використання навичок."
+                },
+                "skill1": {
+                    "name": "Infinite Extension",
+                    "description": "Xavier випускає енергетичний промінь, який завдає шкоди всім ворогам на шляху.",
+                    "cooldown": "5 секунд",
+                    "mana_cost": 50
+                },
+                "skill2": {
+                    "name": "Mystic Field",
+                    "description": "Xavier створює поле, яке сповільнює ворогів та збільшує шкоду.",
+                    "cooldown": "8 секунд",
+                    "mana_cost": 60
+                },
+                "ultimate": {
+                    "name": "Dawning Light",
+                    "description": "Xavier випускає масивний промінь, що проходить через усю карту, завдаючи великої шкоди.",
+                    "cooldown": "50 секунд",
+                    "mana_cost": 120
+                }
+            }
+        },
+        {
+            "name": "Yve",
+            "class": "Маг",
+            "skills": {
+                "passive": {
+                    "name": "Galactic Power",
+                    "description": "Кожного разу, коли Yve отримує 'Галактичну силу', її наступна навичка має збільшений ефект."
+                },
+                "skill1": {
+                    "name": "Void Blast",
+                    "description": "Yve завдає шкоди в обраній зоні.",
+                    "cooldown": "5 секунд",
+                    "mana_cost": 45
+                },
+                "skill2": {
+                    "name": "Void Crystal",
+                    "description": "Yve створює кристал, що сповільнює ворогів та завдає шкоди.",
+                    "cooldown": "8 секунд",
+                    "mana_cost": 60
+                },
+                "ultimate": {
+                    "name": "Real World Manipulation",
+                    "description": "Yve створює велике поле, в якому може завдавати шкоди, використовуючи натискання або ковзання по екрану.",
+                    "cooldown": "60 секунд",
+                    "mana_cost": 150
+                }
+            }
+        },
+        {
+            "name": "Zhask",
+            "class": "Маг",
+            "skills": {
+                "passive": {
+                    "name": "Decimation",
+                    "description": "Zhask відновлює здоров'я після знищення монстра або ворожого героя."
+                },
+                "skill1": {
+                    "name": "Nightmaric Spawn",
+                    "description": "Zhask викликає істоту, яка атакує ворогів поруч.",
+                    "cooldown": "8 секунд",
+                    "mana_cost": 60
+                },
+                "skill2": {
+                    "name": "Mind Eater",
+                    "description": "Zhask атакує ворожого героя енергетичним промінням, завдаючи магічної шкоди.",
+                    "cooldown": "4 секунди",
+                    "mana_cost": 40
+                },
+                "ultimate": {
+                    "name": "Dominator's Descent",
+                    "description": "Zhask об'єднується з нічним породженням, збільшуючи шкоду і зону атаки.",
+                    "cooldown": "50 секунд",
+                    "mana_cost": 150
+                }
+            }
+        }
+    ]
+}
