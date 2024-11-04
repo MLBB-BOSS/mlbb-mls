@@ -19,7 +19,9 @@ from handlers.characters import (
     handle_hero_functions_menu,
     handle_comparison_first_hero,
     handle_comparison_second_hero,
-    handle_selecting_counter_hero
+    handle_selecting_counter_hero,
+    show_fighter_list,  # Додано для відображення списку бійців
+    handle_fighter_selection  # Додано для обробки вибору героя класу "Борець"
 )
 from handlers.guides import handle_guides_menu
 from handlers.tournaments import handle_tournaments_menu
@@ -63,8 +65,14 @@ def main():
         states={
             States.MAIN_MENU: [MessageHandler(filters.TEXT & ~filters.COMMAND, main_menu_handler)],
             States.CHARACTERS_MENU: [MessageHandler(filters.TEXT & ~filters.COMMAND, handle_characters_menu)],
-            States.SELECTING_HERO_CLASS: [MessageHandler(filters.TEXT & ~filters.COMMAND, handle_selecting_hero_class)],
-            States.SELECTING_HERO: [MessageHandler(filters.TEXT & ~filters.COMMAND, handle_selecting_hero)],
+            States.SELECTING_HERO_CLASS: [
+                MessageHandler(filters.TEXT & ~filters.COMMAND, handle_selecting_hero_class),
+                CommandHandler("fighters", show_fighter_list)  # Додаємо команду для показу списку бійців
+            ],
+            States.SELECTING_HERO: [
+                MessageHandler(filters.TEXT & ~filters.COMMAND, handle_selecting_hero),
+                MessageHandler(filters.TEXT & ~filters.COMMAND, handle_fighter_selection)  # Обробка вибору героя "Борець"
+            ],
             States.HERO_FUNCTIONS_MENU: [MessageHandler(filters.TEXT & ~filters.COMMAND, handle_hero_functions_menu)],
             States.COMPARISON_FIRST_HERO: [MessageHandler(filters.TEXT & ~filters.COMMAND, handle_comparison_first_hero)],
             States.COMPARISON_SECOND_HERO: [MessageHandler(filters.TEXT & ~filters.COMMAND, handle_comparison_second_hero)],
