@@ -40,6 +40,14 @@ HEROES_BY_CLASS = {
     ]
 }
 
+def get_characters_menu_keyboard():
+    buttons = [
+        [KeyboardButton("⚔️ Порівняння героїв"), KeyboardButton("🎯 Контргерої")],
+        [KeyboardButton("🗂 Список героїв")],
+        [KeyboardButton("🔙 Назад")]
+    ]
+    return ReplyKeyboardMarkup(buttons, resize_keyboard=True)
+
 async def handle_characters_menu(update: Update, context: ContextTypes.DEFAULT_TYPE) -> int:
     user_input = update.message.text.strip()
     user_id = update.effective_user.id
@@ -74,12 +82,16 @@ async def handle_characters_menu(update: Update, context: ContextTypes.DEFAULT_T
 
     else:
         await update.message.reply_text("⚠️ Будь ласка, оберіть опцію з меню.")
+        reply_markup = get_characters_menu_keyboard()
+        await update.message.reply_text("🦸 Оберіть опцію:", reply_markup=reply_markup)
         return States.CHARACTERS_MENU
 
 async def handle_selecting_hero_class(update: Update, context: ContextTypes.DEFAULT_TYPE) -> int:
     selected_class = update.message.text.strip()
     if selected_class == "🔙 Назад":
-        return await handle_characters_menu(update, context)
+        reply_markup = get_characters_menu_keyboard()
+        await update.message.reply_text("🦸 Оберіть опцію:", reply_markup=reply_markup)
+        return States.CHARACTERS_MENU
 
     if selected_class not in HEROES_BY_CLASS:
         await update.message.reply_text("⚠️ Будь ласка, оберіть клас з меню.")
@@ -147,12 +159,16 @@ async def handle_comparison_second_hero(update: Update, context: ContextTypes.DE
     first_hero = context.user_data.get('first_hero')
     # Тут ви можете реалізувати функцію порівняння
     await update.message.reply_text(f"Порівняння {first_hero} та {second_hero} буде реалізовано пізніше.")
+    reply_markup = get_characters_menu_keyboard()
+    await update.message.reply_text("🦸 Оберіть опцію:", reply_markup=reply_markup)
     return States.CHARACTERS_MENU
 
 async def handle_selecting_counter_hero(update: Update, context: ContextTypes.DEFAULT_TYPE) -> int:
     hero_name = update.message.text.strip()
     # Тут ви можете реалізувати функцію відображення контр-героїв
     await update.message.reply_text(f"Контр-герої для {hero_name} будуть реалізовані пізніше.")
+    reply_markup = get_characters_menu_keyboard()
+    await update.message.reply_text("🦸 Оберіть опцію:", reply_markup=reply_markup)
     return States.CHARACTERS_MENU
 
 async def list_all_heroes(update: Update, context: ContextTypes.DEFAULT_TYPE) -> None:
