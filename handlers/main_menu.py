@@ -2,19 +2,25 @@
 from telegram import Update, ReplyKeyboardMarkup, KeyboardButton
 from telegram.ext import ContextTypes
 from handlers.states import States
-from handlers.characters import handle_characters_menu
-from handlers.guides import handle_guides_menu
-from handlers.tournaments import handle_tournaments_menu
-from handlers.updates import handle_updates_menu
-from handlers.beginner import handle_beginner_menu
-from handlers.news import handle_news_menu
-from handlers.help_menu import handle_help_menu
-from handlers.quizzes import handle_quizzes_menu
-from handlers.search import handle_search_menu
 import asyncio
 import logging
 
 logger = logging.getLogger(__name__)
+
+def get_characters_menu_keyboard():
+    buttons = [
+        [KeyboardButton("⚔️ Порівняння героїв"), KeyboardButton("🎯 Контргерої")],
+        [KeyboardButton("🗂 Список героїв")],
+        [KeyboardButton("🔙 Назад")]
+    ]
+    return ReplyKeyboardMarkup(buttons, resize_keyboard=True)
+
+def get_guides_menu_keyboard():
+    buttons = [
+        [KeyboardButton("📝 Гайд 1"), KeyboardButton("📝 Гайд 2")],
+        [KeyboardButton("🔙 Назад")]
+    ]
+    return ReplyKeyboardMarkup(buttons, resize_keyboard=True)
 
 async def main_menu_handler(update: Update, context: ContextTypes.DEFAULT_TYPE) -> int:
     user_id = update.effective_user.id
@@ -26,40 +32,51 @@ async def main_menu_handler(update: Update, context: ContextTypes.DEFAULT_TYPE) 
 
     # Логіка обробки вибору меню
     if user_input == "🦸 Герої":
-        # Переходимо до меню Героїв
-        return await handle_characters_menu(update, context)
+        # Переходимо до підменю Героїв
+        reply_markup = get_characters_menu_keyboard()
+        await update.message.reply_text("🦸 Оберіть опцію:", reply_markup=reply_markup)
+        return States.CHARACTERS_MENU
 
     elif user_input == "📚 Гайди":
-        # Переходимо до меню Гайдів
-        return await handle_guides_menu(update, context)
+        # Переходимо до підменю Гайдів
+        reply_markup = get_guides_menu_keyboard()
+        await update.message.reply_text("📚 Оберіть гайд:", reply_markup=reply_markup)
+        return States.GUIDES_MENU
 
     elif user_input == "🏆 Турніри":
-        # Переходимо до меню Турнірів
-        return await handle_tournaments_menu(update, context)
+        # Переходимо до підменю Турнірів
+        await update.message.reply_text("🏆 Функція 'Турніри' ще не реалізована.")
+        return States.MAIN_MENU
 
     elif user_input == "🔄 Оновлення":
-        # Переходимо до меню Оновлень
-        return await handle_updates_menu(update, context)
+        # Переходимо до підменю Оновлень
+        await update.message.reply_text("🔄 Функція 'Оновлення' ще не реалізована.")
+        return States.MAIN_MENU
 
     elif user_input == "🆓 Початківець":
-        # Переходимо до меню для початківців
-        return await handle_beginner_menu(update, context)
+        # Переходимо до підменю Початківця
+        await update.message.reply_text("🆓 Функція 'Початківець' ще не реалізована.")
+        return States.MAIN_MENU
 
     elif user_input == "🔍 Пошук":
-        # Переходимо до меню Пошуку
-        return await handle_search_menu(update, context)
+        # Переходимо до підменю Пошуку
+        await update.message.reply_text("🔍 Функція 'Пошук' ще не реалізована.")
+        return States.MAIN_MENU
 
     elif user_input == "📰 Новини":
-        # Переходимо до меню Новин
-        return await handle_news_menu(update, context)
+        # Переходимо до підменю Новин
+        await update.message.reply_text("📰 Функція 'Новини' ще не реалізована.")
+        return States.MAIN_MENU
 
     elif user_input == "💡 Допомога":
-        # Переходимо до меню Допомоги
-        return await handle_help_menu(update, context)
+        # Переходимо до підменю Допомоги
+        await update.message.reply_text("💡 Функція 'Допомога' ще не реалізована.")
+        return States.MAIN_MENU
 
     elif user_input == "🎮 Вікторини":
-        # Переходимо до меню Вікторин
-        return await handle_quizzes_menu(update, context)
+        # Переходимо до підменю Вікторин
+        await update.message.reply_text("🎮 Функція 'Вікторини' ще не реалізована.")
+        return States.MAIN_MENU
 
     else:
         await update.message.reply_text("⚠️ Будь ласка, оберіть опцію з меню.")
