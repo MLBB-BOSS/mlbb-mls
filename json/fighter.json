@@ -1,0 +1,887 @@
+{
+    "heroes": [
+        {
+            "name": "Aldous",
+            "class": "Борець",
+            "skills": {
+                "passive": {
+                    "name": "Contract: Transform",
+                    "description": "Кожного разу, коли Aldous вбиває ворога, його атака підсилюється, накопичуючи \"Soul Steal\". Бонус до атаки накопичується при кожному вдалому вбивстві або допомозі."
+                },
+                "skill1": {
+                    "name": "Contract: Soul Steal",
+                    "description": "Aldous заряджає свою атаку, завдаючи додаткового фізичного урону. При вдалому вбивстві героїв і міньйонів навичка посилюється.",
+                    "cooldown": "5 секунд.",
+                    "mana_cost": 40
+                },
+                "skill2": {
+                    "name": "Contract: Explosion",
+                    "description": "Aldous активує захисний щит, який поглинає урон. Через кілька секунд щит вибухає, завдаючи урону навколо та оглушуючи ворогів.",
+                    "cooldown": "8 секунд.",
+                    "mana_cost": 60
+                },
+                "ultimate": {
+                    "name": "Contract: Chase Fate",
+                    "description": "Aldous виявляє всіх ворожих героїв на карті. Він може вибрати ворога та миттєво на нього націлитися, наносячи значний урон.",
+                    "cooldown": "60 секунд.",
+                    "mana_cost": 100
+                }
+            }
+        },
+        {
+            "name": "Alpha",
+            "class": "Борець",
+            "skills": {
+                "passive": {
+                    "name": "Beta, Advance!",
+                    "description": "Після кожної атаки або навички Alpha закликає Бета, свого робота, який атакує ціль, завдаючи додаткового урону."
+                },
+                "skill1": {
+                    "name": "Rotary Impact",
+                    "description": "Alpha випускає енергетичний удар, завдаючи урону ворогам та знижуючи їх швидкість. Бета також атакує вражених ворогів.",
+                    "cooldown": "6 секунд.",
+                    "mana_cost": 50
+                },
+                "skill2": {
+                    "name": "Force Swing",
+                    "description": "Alpha завдає потужного удару навколо себе, завдаючи урону та відновлюючи здоров'я за кожного враженого ворога.",
+                    "cooldown": "8 секунд.",
+                    "mana_cost": 60
+                },
+                "ultimate": {
+                    "name": "Spear of Alpha",
+                    "description": "Alpha стрибає на обрану ціль, оглушуючи її. Бета завдає серії атак, завдаючи додаткового урону ворогам у зоні.",
+                    "cooldown": "35 секунд.",
+                    "mana_cost": 100
+                }
+            }
+        },
+        {
+            "name": "Argus",
+            "class": "Борець",
+            "skills": {
+                "passive": {
+                    "name": "Warmonger",
+                    "description": "Чим більше Argus атакує, тим більше урону він завдає, особливо після накопичення кількох атак."
+                },
+                "skill1": {
+                    "name": "Demonic Grip",
+                    "description": "Argus використовує темну силу, притягуючи себе до ворога та завдаючи урону.",
+                    "cooldown": "10 секунд.",
+                    "mana_cost": 60
+                },
+                "skill2": {
+                    "name": "Meteoric Sword",
+                    "description": "Argus підсилює свій меч, завдаючи додаткового урону та залишаючи за собою слід, який наносить періодичний урон ворогам.",
+                    "cooldown": "5 секунд.",
+                    "mana_cost": 40
+                },
+                "ultimate": {
+                    "name": "Eternal Evil",
+                    "description": "Argus стає невразливим на короткий час, накопичуючи урон, який він випускає при завершенні дії навички.",
+                    "cooldown": "60 секунд.",
+                    "mana_cost": 100
+                }
+            }
+        },
+        {
+            "name": "Arlott",
+            "class": "Борець",
+            "skills": {
+                "passive": {
+                    "name": "Demonic Gaze",
+                    "description": "Arlott бачить ворогів з негативними ефектами, завдаючи їм підвищеного урону при атаці."
+                },
+                "skill1": {
+                    "name": "Dauntless Strike",
+                    "description": "Arlott завдає потужного удару списом, оглушуючи ворогів на короткий час та завдаючи урону.",
+                    "cooldown": "9 секунд.",
+                    "mana_cost": 60
+                },
+                "skill2": {
+                    "name": "Vengeance",
+                    "description": "Arlott робить ривок вперед, завдаючи урону ворогам на шляху. Якщо вражає ворога з негативним ефектом, перезарядка скидається.",
+                    "cooldown": "5 секунд.",
+                    "mana_cost": 40
+                },
+                "ultimate": {
+                    "name": "Final Slash",
+                    "description": "Arlott завдає потужного удару вперед, відкидаючи ворогів і завдаючи значного урону.",
+                    "cooldown": "40 секунд.",
+                    "mana_cost": 100
+                }
+            }
+        },
+        {
+            "name": "Aulus",
+            "class": "Борець",
+            "skills": {
+                "passive": {
+                    "name": "Fighting Spirit",
+                    "description": "З кожним ударом Aulus отримує додатковий урон, збільшуючи ефективність своєї атаки."
+                },
+                "skill1": {
+                    "name": "Axe of Fury",
+                    "description": "Aulus заряджає свою сокиру, завдаючи посиленого фізичного урону цілі.",
+                    "cooldown": "6 секунд.",
+                    "mana_cost": 50
+                },
+                "skill2": {
+                    "name": "The Power of Axe",
+                    "description": "Aulus завдає масового урону ворогам у зоні навколо себе, підвищуючи свою швидкість руху на короткий час.",
+                    "cooldown": "7 секунд.",
+                    "mana_cost": 40
+                },
+                "ultimate": {
+                    "name": "Aulus, Charge!",
+                    "description": "Aulus активує свою силу, підвищуючи швидкість атаки та руху. Крім того, його атаки завдають більше урону під час дії навички.",
+                    "cooldown": "50 секунд.",
+                    "mana_cost": 100
+                }
+            }
+        },
+        {
+            "name": "Badang",
+            "class": "Борець",
+            "skills": {
+                "passive": {
+                    "name": "Chivalry Fist",
+                    "description": "Кожна четверта атака Badang має підвищений урон, завдаючи його всім ворогам у зоні дії."
+                },
+                "skill1": {
+                    "name": "Qigong Fist",
+                    "description": "Badang випускає енергетичний удар, який завдає фізичного урону ворогам на шляху та відкидає їх.",
+                    "cooldown": "6 секунд.",
+                    "mana_cost": 60
+                },
+                "skill2": {
+                    "name": "Fist Break",
+                    "description": "Badang пробивається вперед, створюючи перешкоду, яка зупиняє рух ворогів.",
+                    "cooldown": "7 секунд.",
+                    "mana_cost": 50
+                },
+                "ultimate": {
+                    "name": "Fist Crack",
+                    "description": "Badang завдає серії ударів по зоні перед собою, завдаючи великого урону ворогам. Якщо ворог вражений перешкодою, урон зростає.",
+                    "cooldown": "45 секунд.",
+                    "mana_cost": 100
+                }
+            }
+        },
+        {
+            "name": "Balmond",
+            "class": "Борець",
+            "skills": {
+                "passive": {
+                    "name": "Bloodthirst",
+                    "description": "Balmond відновлює здоров'я при кожному вбивстві ворога, що підвищує його витривалість у битві."
+                },
+                "skill1": {
+                    "name": "Soul Lock",
+                    "description": "Balmond здійснює ривок до цілі, завдаючи фізичного урону та сповільнюючи ворогів.",
+                    "cooldown": "8 секунд.",
+                    "mana_cost": 60
+                },
+                "skill2": {
+                    "name": "Cyclone Sweep",
+                    "description": "Balmond обертається з сокирою, завдаючи постійного урону ворогам навколо.",
+                    "cooldown": "5 секунд.",
+                    "mana_cost": 40
+                },
+                "ultimate": {
+                    "name": "Lethal Counter",
+                    "description": "Balmond завдає удар сокирою по зоні перед собою, завдаючи великого урону ворогам з низьким здоров'ям.",
+                    "cooldown": "40 секунд.",
+                    "mana_cost": 100
+                }
+            }
+        },
+        {
+            "name": "Bane",
+            "class": "Борець",
+            "skills": {
+                "passive": {
+                    "name": "Shark Bite",
+                    "description": "Після кожного використання навичок атака Bane підсилюється, додаючи додатковий урон."
+                },
+                "skill1": {
+                    "name": "Crab Claw Cannon",
+                    "description": "Bane стріляє гарматним ядром у ворога, завдаючи фізичного урону та знижуючи його швидкість.",
+                    "cooldown": "6 секунд.",
+                    "mana_cost": 50
+                },
+                "skill2": {
+                    "name": "Ale",
+                    "description": "Bane випиває еліксир, відновлюючи здоров'я та підвищуючи свій урон.",
+                    "cooldown": "8 секунд.",
+                    "mana_cost": 40
+                },
+                "ultimate": {
+                    "name": "Deadly Catch",
+                    "description": "Bane закликає зграю акул, які завдають урону ворогам у великій зоні.",
+                    "cooldown": "50 секунд.",
+                    "mana_cost": 100
+                }
+            }
+        },
+        {
+            "name": "Chou",
+            "class": "Борець",
+            "skills": {
+                "passive": {
+                    "name": "Only Fast",
+                    "description": "Кожна базова атака, здійснена після руху на певну відстань, підвищує урон наступної атаки."
+                },
+                "skill1": {
+                    "name": "Jeet Kune Do",
+                    "description": "Chou завдає три ударів поспіль, завдаючи фізичного урону ворогам. Третій удар підкидає ворога в повітря.",
+                    "cooldown": "11 секунд.",
+                    "mana_cost": 50
+                },
+                "skill2": {
+                    "name": "Shunpo",
+                    "description": "Chou миттєво здійснює ривок уперед, стаючи невразливим до контролю та отримуючи щит.",
+                    "cooldown": "5 секунд.",
+                    "mana_cost": 40
+                },
+                "ultimate": {
+                    "name": "The Way of Dragon",
+                    "description": "Chou наносить удар ногою, відкидаючи ворога назад, і слідом виконує стрибок із потужним уроном.",
+                    "cooldown": "34 секунди.",
+                    "mana_cost": 100
+                }
+            }
+        },
+        {
+            "name": "Dyrroth",
+            "class": "Борець",
+            "skills": {
+                "passive": {
+                    "name": "Wrath of the Abyss",
+                    "description": "Кожна друга атака Dyrroth стає посиленою, завдаючи значно більше урону."
+                },
+                "skill1": {
+                    "name": "Burst Strike",
+                    "description": "Dyrroth випускає удар перед собою, який завдає фізичного урону та знижує захист ворогів.",
+                    "cooldown": "6 секунд.",
+                    "mana_cost": 40
+                },
+                "skill2": {
+                    "name": "Spectre Step",
+                    "description": "Dyrroth здійснює ривок до ворога, завдаючи йому урону. Другий етап навички дозволяє йому завдати потужнішого удару.",
+                    "cooldown": "9 секунд.",
+                    "mana_cost": 50
+                },
+                "ultimate": {
+                    "name": "The Destruction",
+                    "description": "Dyrroth випускає руйнівний удар, який завдає масового урону перед собою.",
+                    "cooldown": "50 секунд.",
+                    "mana_cost": 100
+                }
+            }
+        },
+        {
+            "name": "Freya",
+            "class": "Борець",
+            "skills": {
+                "passive": {
+                    "name": "Spirit Contact",
+                    "description": "Кожна третя базова атака Freya підсилюється та завдає додатковий урон, також надаючи їй щит."
+                },
+                "skill1": {
+                    "name": "Leap of Faith",
+                    "description": "Freya стрибає на вказане місце, завдаючи фізичного урону ворогам та оглушуючи їх.",
+                    "cooldown": "10 секунд.",
+                    "mana_cost": 60
+                },
+                "skill2": {
+                    "name": "Spirit Combo",
+                    "description": "Freya завдає серію ударів, підвищуючи урон при кожному натисканні.",
+                    "cooldown": "5 секунд.",
+                    "mana_cost": 40
+                },
+                "ultimate": {
+                    "name": "Valkyrie Descent",
+                    "description": "Freya активує свою силу, отримуючи щит і підвищуючи свій урон. Її атаки підсилюються на певний час.",
+                    "cooldown": "40 секунд.",
+                    "mana_cost": 100
+                }
+            }
+        },
+        {
+            "name": "Guinevere",
+            "class": "Борець",
+            "skills": {
+                "passive": {
+                    "name": "Super Magic",
+                    "description": "Guinevere завдає на 25% більше урону ворогам, які знаходяться в повітрі."
+                },
+                "skill1": {
+                    "name": "Energy Wave",
+                    "description": "Guinevere випускає енергетичну хвилю, яка завдає магічного урону ворогам та знижує їхню швидкість.",
+                    "cooldown": "6 секунд.",
+                    "mana_cost": 50
+                },
+                "skill2": {
+                    "name": "Spatial Migration",
+                    "description": "Guinevere стрибає вперед, завдаючи фізичного урону та підкидаючи ворогів у повітря.",
+                    "cooldown": "8 секунд.",
+                    "mana_cost": 60
+                },
+                "ultimate": {
+                    "name": "Violet Requiem",
+                    "description": "Guinevere випускає серію магічних вибухів навколо себе, завдаючи масового урону.",
+                    "cooldown": "40 секунд.",
+                    "mana_cost": 120
+                }
+            }
+        },
+        {
+            "name": "Jawhead",
+            "class": "Борець",
+            "skills": {
+                "passive": {
+                    "name": "Mecha Suppression",
+                    "description": "Базові атаки Jawhead підвищують його урон, накопичуючи посилення."
+                },
+                "skill1": {
+                    "name": "Smart Missiles",
+                    "description": "Jawhead випускає ракети, які автоматично атакують ворогів навколо нього, завдаючи масового урону.",
+                    "cooldown": "6 секунд.",
+                    "mana_cost": 40
+                },
+                "skill2": {
+                    "name": "Ejector",
+                    "description": "Jawhead здійснює ривок уперед, підіймаючи ворога або союзника і кидаючи його в обрану зону.",
+                    "cooldown": "10 секунд.",
+                    "mana_cost": 50
+                },
+                "ultimate": {
+                    "name": "Unstoppable Force",
+                    "description": "Jawhead фокусується на цілі та стрімко рухається до неї, завдаючи великого урону та приголомшуючи ворога.",
+                    "cooldown": "45 секунд.",
+                    "mana_cost": 100
+                }
+            }
+        },
+        {
+            "name": "Khaleed",
+            "class": "Борець",
+            "skills": {
+                "passive": {
+                    "name": "Sand Walk",
+                    "description": "Після певного часу без отримання урону Khaleed накопичує енергію, яка підвищує його швидкість руху та дозволяє завдавати додатковий урон у наступній базовій атаці."
+                },
+                "skill1": {
+                    "name": "Desert Tornado",
+                    "description": "Khaleed обертається з мечем, завдаючи фізичного урону ворогам навколо. Після кожного влучання він може повторити навичку до трьох разів.",
+                    "cooldown": "5 секунд.",
+                    "mana_cost": 50
+                },
+                "skill2": {
+                    "name": "Quicksand Guard",
+                    "description": "Khaleed занурюється в піски, відновлюючи здоров'я та зменшуючи урон, отриманий від ворогів. Поки він перебуває у цьому стані, вороги поблизу сповільнюються.",
+                    "cooldown": "10 секунд.",
+                    "mana_cost": 60
+                },
+                "ultimate": {
+                    "name": "Raging Sandstorm",
+                    "description": "Khaleed вирушає вперед на піщаній хвилі, завдаючи фізичного урону всім ворогам на своєму шляху та оглушуючи їх у кінцевій точці.",
+                    "cooldown": "40 секунд.",
+                    "mana_cost": 100
+                }
+            }
+        },
+        {
+            "name": "Lapu-Lapu",
+            "class": "Борець",
+            "skills": {
+                "passive": {
+                    "name": "Hero's Faith",
+                    "description": "Кожного разу, коли Lapu-Lapu атакує ворогів, він отримує щит, який захищає його від урону."
+                },
+                "skill1": {
+                    "name": "Justice Blade",
+                    "description": "Lapu-Lapu кидає дві бумерангові клинки вперед, які завдають фізичного урону ворогам у людській формі. У формі вовка він стрибає вперед, завдаючи урону та уповільнюючи ворогів.",
+                    "cooldown": "8 секунд.",
+                    "mana_cost": 50
+                },
+                "skill2": {
+                    "name": "Jungle Warrior",
+                    "description": "Lapu-Lapu здійснює стрибок вперед, завдаючи фізичного урону ворогам у зоні приземлення.",
+                    "cooldown": "6 секунд.",
+                    "mana_cost": 40
+                },
+                "ultimate": {
+                    "name": "Bravest Fighter",
+                    "description": "Lapu-Lapu перетворює свої клинки на один великий меч, підвищуючи свою витривалість та урон, завдаючи серії атак ворогам перед собою.",
+                    "cooldown": "45 секунд.",
+                    "mana_cost": 100
+                }
+            }
+        },
+        {
+            "name": "Leomord",
+            "class": "Борець",
+            "skills": {
+                "passive": {
+                    "name": "The Oath Keeper",
+                    "description": "Коли здоров'я ворогів опускається нижче 50%, базові атаки Leomord завдають критичного урону."
+                },
+                "skill1": {
+                    "name": "Phantom Stomp",
+                    "description": "Leomord завдає удару по землі, завдаючи фізичного урону та сповільнюючи ворогів.",
+                    "cooldown": "8 секунд.",
+                    "mana_cost": 60
+                },
+                "skill2": {
+                    "name": "Decimation Assault",
+                    "description": "Leomord стрімко кидається вперед, завдаючи фізичного урону та знижуючи швидкість руху ворогів.",
+                    "cooldown": "10 секунд.",
+                    "mana_cost": 50
+                },
+                "ultimate": {
+                    "name": "Phantom Steed",
+                    "description": "Leomord викликає свого бойового коня Барбароса, сідаючи на нього та отримуючи нові навички, що підвищують його мобільність та урон.",
+                    "cooldown": "55 секунд.",
+                    "mana_cost": 100
+                }
+            }
+        },
+        {
+            "name": "Martis",
+            "class": "Борець",
+            "skills": {
+                "passive": {
+                    "name": "Ashura's Wrath",
+                    "description": "Martis отримує додаткову швидкість атаки кожного разу, коли використовує навички."
+                },
+                "skill1": {
+                    "name": "Ashura Aura",
+                    "description": "Martis тягне ворогів у напрямку себе, завдаючи фізичного урону.",
+                    "cooldown": "8 секунд.",
+                    "mana_cost": 50
+                },
+                "skill2": {
+                    "name": "Mortal Coil",
+                    "description": "Martis завдає серію атак перед собою, отримуючи імунітет до контролю під час використання.",
+                    "cooldown": "9 секунд.",
+                    "mana_cost": 60
+                },
+                "ultimate": {
+                    "name": "Decimation",
+                    "description": "Martis завдає фінального удару ворогу з низьким здоров'ям. Якщо ціль гине від цієї атаки, навичка скидається.",
+                    "cooldown": "36 секунд.",
+                    "mana_cost": 70
+                }
+            }
+        },
+        {
+            "name": "Masha",
+            "class": "Борець",
+            "skills": {
+                "passive": {
+                    "name": "Life Recovery",
+                    "description": "Masha має три смуги здоров'я та може відновлювати його при кожному базовому ударі."
+                },
+                "skill1": {
+                    "name": "Wild Power",
+                    "description": "Masha активує свою силу, підвищуючи швидкість руху та атаки, але витрачаючи частину свого здоров'я при кожному ударі.",
+                    "cooldown": "5 секунд.",
+                    "mana_cost": null,
+                    "energy_cost": null,
+                    "health_cost": "Витрачає здоров'я замість мани."
+                },
+                "skill2": {
+                    "name": "Howl Shock",
+                    "description": "Masha випускає ударну хвилю, яка завдає фізичного урону та знижує швидкість ворогів.",
+                    "cooldown": "10 секунд.",
+                    "mana_cost": null,
+                    "energy_cost": null,
+                    "health_cost": "Витрачає здоров'я замість мани."
+                },
+                "ultimate": {
+                    "name": "Thunderclap",
+                    "description": "Masha кидається до цілі, завдаючи великого урону залежно від поточного здоров'я цілі.",
+                    "cooldown": "40 секунд.",
+                    "mana_cost": null,
+                    "energy_cost": null,
+                    "health_cost": "Витрачає здоров'я замість мани."
+                }
+            }
+        },
+        {
+            "name": "Minsitthar",
+            "class": "Борець",
+            "skills": {
+                "passive": {
+                    "name": "All United",
+                    "description": "Коли союзник поблизу вбиває героя, Minsitthar отримує золото. Цей бонус активується навіть при його відсутності на полі бою."
+                },
+                "skill1": {
+                    "name": "Spear of Glory",
+                    "description": "Minsitthar кидає спис у ворога, завдаючи фізичного урону та притягуючи його до себе.",
+                    "cooldown": "8 секунд.",
+                    "mana_cost": 50
+                },
+                "skill2": {
+                    "name": "Shield Assault",
+                    "description": "Minsitthar атакує своїм щитом, завдаючи урону та знижуючи швидкість руху ворогів.",
+                    "cooldown": "6 секунд.",
+                    "mana_cost": 40
+                },
+                "ultimate": {
+                    "name": "King’s Calling",
+                    "description": "Minsitthar викликає чотирьох воїнів, які створюють поле, обмежуючи мобільність ворогів і завдаючи урону кожному, хто спробує використати навичку втечі.",
+                    "cooldown": "50 секунд.",
+                    "mana_cost": 100
+                }
+            }
+        },
+        {
+            "name": "Paquito",
+            "class": "Борець",
+            "skills": {
+                "passive": {
+                    "name": "Champ Stance",
+                    "description": "Після кількох атак Paquito входить у \"Режим Чемпіона\", підсилюючи свою наступну навичку."
+                },
+                "skill1": {
+                    "name": "Heavy Left Punch",
+                    "description": "Paquito завдає швидкого удару, завдаючи фізичного урону та знижуючи захист ворогів.",
+                    "cooldown": "4 секунд.",
+                    "mana_cost": 0,
+                    "energy_cost": null
+                },
+                "skill2": {
+                    "name": "Jab",
+                    "description": "Paquito стрімко атакує ворога вперед, завдаючи значного фізичного урону.",
+                    "cooldown": "6 секунд.",
+                    "mana_cost": 0,
+                    "energy_cost": null
+                },
+                "ultimate": {
+                    "name": "Knockout Strike",
+                    "description": "Paquito виконує серію потужних ударів, відкидаючи ворогів і завдаючи урону в зоні перед собою.",
+                    "cooldown": "25 секунд.",
+                    "mana_cost": 0,
+                    "energy_cost": null
+                }
+            }
+        },
+        {
+            "name": "Phoveus",
+            "class": "Борець",
+            "skills": {
+                "passive": {
+                    "name": "Demonic Intuition",
+                    "description": "Якщо ворог використовує рухову навичку поблизу Phoveus, час перезарядки його ультимативної навички автоматично знижується."
+                },
+                "skill1": {
+                    "name": "Malefic Terror",
+                    "description": "Phoveus завдає удар у напрямку ворога, завдаючи магічного урону та знижуючи його швидкість руху.",
+                    "cooldown": "6 секунд.",
+                    "mana_cost": 40
+                },
+                "skill2": {
+                    "name": "Astaros Eye",
+                    "description": "Phoveus створює магічне око в обраному місці, яке через короткий час притягує ворогів до центру.",
+                    "cooldown": "12 секунд.",
+                    "mana_cost": 60
+                },
+                "ultimate": {
+                    "name": "Deity Force",
+                    "description": "Phoveus телепортується до ворога, що використовує рухову навичку, завдаючи йому магічного урону. Навичка може активуватися кілька разів поспіль.",
+                    "cooldown": "35 секунд.",
+                    "mana_cost": 100
+                }
+            }
+        },
+        {
+            "name": "Roger",
+            "class": "Борець",
+            "skills": {
+                "passive": {
+                    "name": "Full Moon Curse",
+                    "description": "У формі людини базові атаки Roger сповільнюють ворогів, а у формі вовка він завдає підвищеного урону."
+                },
+                "skill1": {
+                    "name": "Open Fire",
+                    "description": "Roger випускає два постріли перед собою, завдаючи фізичного урону ворогам у людській формі. У формі вовка він стрибає вперед, завдаючи урону та уповільнюючи ворогів.",
+                    "cooldown": "7 секунд.",
+                    "mana_cost": 40
+                },
+                "skill2": {
+                    "name": "Hunter’s Steps",
+                    "description": "Roger збільшує швидкість руху у формі людини. У формі вовка він завдає масового урону ворогам навколо.",
+                    "cooldown": "8 секунд.",
+                    "mana_cost": 30
+                },
+                "ultimate": {
+                    "name": "Wolf Transformation",
+                    "description": "Roger перетворюється з людини на вовка або навпаки, отримуючи різні навички залежно від форми.",
+                    "cooldown": "20 секунд.",
+                    "mana_cost": 0
+                }
+            }
+        },
+        {
+            "name": "Ruby",
+            "class": "Борець",
+            "skills": {
+                "passive": {
+                    "name": "Let’s Dance!",
+                    "description": "Ruby отримує щит щоразу, коли використовує навички, підвищуючи свою витривалість."
+                },
+                "skill1": {
+                    "name": "Be Good!",
+                    "description": "Ruby атакує ворога перед собою, завдаючи фізичного урону та притягуючи його до себе.",
+                    "cooldown": "5 секунд.",
+                    "mana_cost": 40
+                },
+                "skill2": {
+                    "name": "Don’t Run, Wolf King!",
+                    "description": "Ruby стрибає вперед, завдаючи фізичного урону та сповільнюючи ворогів у зоні приземлення.",
+                    "cooldown": "6 секунд.",
+                    "mana_cost": 50
+                },
+                "ultimate": {
+                    "name": "I’m Offended!",
+                    "description": "Ruby вдаряє серпом у всіх ворогів перед собою, притягуючи їх до себе та завдаючи масового урону.",
+                    "cooldown": "30 секунд.",
+                    "mana_cost": 100
+                }
+            }
+        },
+        {
+            "name": "Silvanna",
+            "class": "Борець",
+            "skills": {
+                "passive": {
+                    "name": "Knightess’ Resolve",
+                    "description": "Silvanna завдає додаткового магічного урону з кожною базовою атакою. Її атаки знижують магічний захист ворогів."
+                },
+                "skill1": {
+                    "name": "Cometic Lance",
+                    "description": "Silvanna атакує списом, завдаючи магічного урону та оглушуючи ворогів. Якщо влучає, вона може знову використати навичку для ривка вперед.",
+                    "cooldown": "9 секунд.",
+                    "mana_cost": 50
+                },
+                "skill2": {
+                    "name": "Spiral Strangling",
+                    "description": "Silvanna швидко обертає спис, завдаючи багаторазового урону ворогам у зоні атаки та отримуючи щит.",
+                    "cooldown": "12 секунд.",
+                    "mana_cost": 60
+                },
+                "ultimate": {
+                    "name": "Imperial Justice",
+                    "description": "Silvanna стрибає в обрану зону, створюючи поле, яке обмежує рух ворогів і підсилює її атаки.",
+                    "cooldown": "50 секунд.",
+                    "mana_cost": 100
+                }
+            }
+        },
+        {
+            "name": "Sun",
+            "class": "Борець",
+            "skills": {
+                "passive": {
+                    "name": "Simian God",
+                    "description": "Базові атаки Sun створюють копії, які допомагають йому завдавати додатковий урон ворогам."
+                },
+                "skill1": {
+                    "name": "Endless Variety",
+                    "description": "Sun кидає свій посох, завдаючи фізичного урону ворогам та створюючи копію, яка атакує ворогів.",
+                    "cooldown": "10 секунд.",
+                    "mana_cost": 60
+                },
+                "skill2": {
+                    "name": "Swift Exchange",
+                    "description": "Sun разом із копією стрімко атакує ворога, завдаючи подвійного урону.",
+                    "cooldown": "7 секунд.",
+                    "mana_cost": 40
+                },
+                "ultimate": {
+                    "name": "Instantaneous Move",
+                    "description": "Sun створює кілька копій, які слідують за ним та атакують ворогів, підвищуючи загальний урон.",
+                    "cooldown": "40 секунд.",
+                    "mana_cost": 100
+                }
+            }
+        },
+        {
+            "name": "Terizla",
+            "class": "Борець",
+            "skills": {
+                "passive": {
+                    "name": "Body of Smith",
+                    "description": "Коли здоров’я Terizla падає нижче певного рівня, він отримує менше урону від базових атак."
+                },
+                "skill1": {
+                    "name": "Revenge Strike",
+                    "description": "Terizla завдає удару по землі, завдаючи фізичного урону та уповільнюючи ворогів.",
+                    "cooldown": "7 секунд.",
+                    "mana_cost": 50
+                },
+                "skill2": {
+                    "name": "Execution Strike",
+                    "description": "Terizla завдає три потужних ударів перед собою, завдаючи фізичного урону та знижуючи швидкість руху ворогів.",
+                    "cooldown": "12 секунд.",
+                    "mana_cost": 70
+                },
+                "ultimate": {
+                    "name": "Penalty Zone",
+                    "description": "Terizla притягує ворогів у вибрану зону та обмежує їхню мобільність, завдаючи фізичного урону.",
+                    "cooldown": "45 секунд.",
+                    "mana_cost": 100
+                }
+            }
+        },
+        {
+            "name": "Thamuz",
+            "class": "Борець",
+            "skills": {
+                "passive": {
+                    "name": "Grand Lord Lava",
+                    "description": "Кожен раз, коли Thamuz атакує, він залишає слід лави, що завдає періодичний урон ворогам."
+                },
+                "skill1": {
+                    "name": "Molten Scythes",
+                    "description": "Thamuz кидає свої коси вперед, які повертаються до нього, завдаючи урону ворогам на шляху.",
+                    "cooldown": "9 секунд.",
+                    "mana_cost": 40
+                },
+                "skill2": {
+                    "name": "Chasm Trample",
+                    "description": "Thamuz стрибає в обрану зону, завдаючи фізичного урону та сповільнюючи ворогів.",
+                    "cooldown": "10 секунд.",
+                    "mana_cost": 50
+                },
+                "ultimate": {
+                    "name": "Cauterant Inferno",
+                    "description": "Thamuz активує пекельну форму, підвищуючи швидкість атаки та отримуючи здатність відновлювати здоров’я від атак.",
+                    "cooldown": "45 секунд.",
+                    "mana_cost": 100
+                }
+            }
+        },
+        {
+            "name": "X.Borg",
+            "class": "Борець",
+            "skills": {
+                "passive": {
+                    "name": "Firaga Armor",
+                    "description": "X.Borg має додатковий шар захисту — броню, яка поглинає урон і вибухає при її знищенні, завдаючи урону ворогам поблизу."
+                },
+                "skill1": {
+                    "name": "Fire Missiles",
+                    "description": "X.Borg випускає вогняні снаряди в обраному напрямку, завдаючи фізичного урону та спалюючи ворогів.",
+                    "cooldown": "6 секунд.",
+                    "mana_cost": 0,
+                    "energy_cost": 30
+                },
+                "skill2": {
+                    "name": "Fire Stake",
+                    "description": "X.Borg випускає кілька гарпунів, які повертаються до нього, завдаючи урону та притягуючи ворогів.",
+                    "cooldown": "10 секунд.",
+                    "mana_cost": 0,
+                    "energy_cost": 40
+                },
+                "ultimate": {
+                    "name": "Last Insanity",
+                    "description": "X.Borg заряджає броню до вибуху, завдаючи величезного урону в зоні навколо та оновлюючи свою броню.",
+                    "cooldown": "45 секунд.",
+                    "mana_cost": 0,
+                    "energy_cost": 50
+                }
+            }
+        },
+        {
+            "name": "Yin",
+            "class": "Борець",
+            "skills": {
+                "passive": {
+                    "name": "Leave It to Me",
+                    "description": "Yin отримує додатковий урон, коли поблизу немає союзників, що підвищує його ефективність у ситуаціях один на один."
+                },
+                "skill1": {
+                    "name": "Charged Punch",
+                    "description": "Yin заряджає свій кулак, підвищуючи швидкість руху на 60% протягом 2 секунд. Наступна базова атака завдає посиленого фізичного урону та оглушує ціль.",
+                    "cooldown": "7 секунд.",
+                    "mana_cost": 40
+                },
+                "skill2": {
+                    "name": "Instant Blast",
+                    "description": "Yin завдає удар по землі, створюючи вибух, який завдає фізичного урону та сповільнює ворогів у зоні дії.",
+                    "cooldown": "10 секунд.",
+                    "mana_cost": 50
+                },
+                "ultimate": {
+                    "name": "My Turn",
+                    "description": "Yin захоплює ворога в окрему область на короткий час, змушуючи його битися один на один. Якщо Yin перемагає, час перезарядки ультимативної навички скидається.",
+                    "cooldown": "60 секунд.",
+                    "mana_cost": 100
+                }
+            }
+        },
+        {
+            "name": "Yu Zhong",
+            "class": "Борець",
+            "skills": {
+                "passive": {
+                    "name": "Cursing Touch",
+                    "description": "Атаки Yu Zhong накопичують ефект \"Sha Essence\" на ворогах, завдаючи періодичного урону та відновлюючи здоров’я Yu Zhong."
+                },
+                "skill1": {
+                    "name": "Dragon Tail",
+                    "description": "Yu Zhong обертається, завдаючи урону ворогам навколо себе. Віддалені вороги отримують більший урон.",
+                    "cooldown": "6 секунд.",
+                    "mana_cost": 0,
+                    "energy_cost": null
+                },
+                "skill2": {
+                    "name": "Soul Grip",
+                    "description": "Yu Zhong кидає драконячий кіготь, завдаючи фізичного урону та притягуючи ворогів до себе.",
+                    "cooldown": "12 секунд.",
+                    "mana_cost": 0,
+                    "energy_cost": null
+                },
+                "ultimate": {
+                    "name": "Black Dragon Form",
+                    "description": "Yu Zhong перетворюється на чорного дракона, стаючи невразливим до контролю та завдаючи урону всім ворогам на своєму шляху.",
+                    "cooldown": "80 секунд.",
+                    "mana_cost": 0,
+                    "energy_cost": null
+                }
+            }
+        },
+        {
+            "name": "Zilong",
+            "class": "Борець",
+            "skills": {
+                "passive": {
+                    "name": "Dragon Flurry",
+                    "description": "Кожна третя базова атака Zilong завдає посиленого урону та відновлює його здоров’я."
+                },
+                "skill1": {
+                    "name": "Spear Flip",
+                    "description": "Zilong підкидає ціль через себе, завдаючи фізичного урону та знижуючи її захист.",
+                    "cooldown": "10 секунд.",
+                    "mana_cost": 60
+                },
+                "skill2": {
+                    "name": "Spear Strike",
+                    "description": "Zilong стрімко атакує ворога, завдаючи фізичного урону та наближаючись до нього.",
+                    "cooldown": "6 секунд.",
+                    "mana_cost": 40
+                },
+                "ultimate": {
+                    "name": "Supreme Warrior",
+                    "description": "Zilong активує свою силу, збільшуючи швидкість руху та атаки, а також стаючи невразливим до уповільнень.",
+                    "cooldown": "30 секунд.",
+                    "mana_cost": 120
+                }
+            }
+        }
+    ]
+}
