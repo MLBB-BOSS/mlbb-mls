@@ -1,0 +1,1005 @@
+{
+    "heroes": [
+        {
+            "name": "Aldous",
+            "class": "Борець",
+            "attack_type": "Фізичний",
+            "additional_effects": "Накопичує \"Soul Steal\" при вбивстві ворогів, що підвищує урон від базових атак.",
+            "recommended_items": [
+                "Warrior Boots",
+                "Endless Battle",
+                "Blade of Despair",
+                "Queen's Wings",
+                "Immortality"
+            ],
+            "base_stats": {
+                "health": 2750,
+                "physical_attack": 120,
+                "physical_defense": 25,
+                "magic_defense": 15,
+                "movement_speed": 260,
+                "attack_speed": 0.9,
+                "health_regen": 7,
+                "mana_regen": 0
+            },
+            "skills": {
+                "passive": {
+                    "name": "Contract: Transform",
+                    "description": "Кожного разу, коли Aldous вбиває ворога, його атака підсилюється, накопичуючи \"Soul Steal\". Бонус до атаки накопичується при кожному вдалому вбивстві або допомозі."
+                },
+                "skill1": {
+                    "name": "Contract: Soul Steal",
+                    "description": "Aldous заряджає свою атаку, завдаючи додаткового фізичного урону. При вдалому вбивстві героїв і міньйонів навичка посилюється.",
+                    "cooldown": "5 секунд",
+                    "mana_cost": 40
+                },
+                "skill2": {
+                    "name": "Contract: Explosion",
+                    "description": "Aldous активує захисний щит, який поглинає урон. Через кілька секунд щит вибухає, завдаючи урону навколо та оглушуючи ворогів.",
+                    "cooldown": "8 секунд",
+                    "mana_cost": 60
+                },
+                "ultimate": {
+                    "name": "Contract: Chase Fate",
+                    "description": "Aldous виявляє всіх ворожих героїв на карті. Він може вибрати ворога та миттєво на нього націлитися, наносячи значний урон.",
+                    "cooldown": "60 секунд",
+                    "mana_cost": 100
+                }
+            }
+        },
+        {
+            "name": "Alpha",
+            "class": "Борець",
+            "attack_type": "Фізичний",
+            "additional_effects": "Після використання навичок, дрон Бета атакує ціль, завдаючи істинного урону та сповільнюючи її.",
+            "recommended_items": [
+                "Warrior Boots",
+                "Bloodlust Axe",
+                "War Axe",
+                "Queen's Wings",
+                "Immortality"
+            ],
+            "base_stats": {
+                "health": 2646,
+                "physical_attack": 121,
+                "physical_defense": 25,
+                "magic_defense": 15,
+                "movement_speed": 260,
+                "attack_speed": 0.9,
+                "health_regen": 7,
+                "mana_regen": 0
+            },
+            "skills": {
+                "passive": {
+                    "name": "Beta, Advance!",
+                    "description": "Після кожної атаки або навички Alpha закликає Бета, свого робота, який атакує ціль, завдаючи додаткового урону."
+                },
+                "skill1": {
+                    "name": "Rotary Impact",
+                    "description": "Alpha випускає енергетичний удар, завдаючи урону ворогам та знижуючи їх швидкість. Бета також атакує вражених ворогів.",
+                    "cooldown": "6 секунд",
+                    "mana_cost": 50
+                },
+                "skill2": {
+                    "name": "Force Swing",
+                    "description": "Alpha завдає потужного удару навколо себе, завдаючи урону та відновлюючи здоров'я за кожного враженого ворога.",
+                    "cooldown": "8 секунд",
+                    "mana_cost": 60
+                },
+                "ultimate": {
+                    "name": "Spear of Alpha",
+                    "description": "Alpha стрибає на обрану ціль, оглушуючи її. Бета завдає серії атак, завдаючи додаткового урону ворогам у зоні.",
+                    "cooldown": "35 секунд",
+                    "mana_cost": 100
+                }
+            }
+        },
+        {
+            "name": "Bane",
+            "class": "Борець",
+            "attack_type": "Фізичний",
+            "additional_effects": "Після використання навичок наступна базова атака завдає додаткового урону та сповільнює ворогів.",
+            "recommended_items": [
+                "Magic Shoes",
+                "Bloodlust Axe",
+                "Hunter Strike",
+                "Queen's Wings",
+                "Immortality"
+            ],
+            "base_stats": {
+                "health": 2770,
+                "physical_attack": 120,
+                "physical_defense": 25,
+                "magic_defense": 10,
+                "movement_speed": 260,
+                "attack_speed": 0.9,
+                "health_regen": 7,
+                "mana_regen": 0
+            },
+            "skills": {
+                "passive": {
+                    "name": "Shark Bite",
+                    "description": "Після кожного використання навичок атака Bane підсилюється, додаючи додатковий урон."
+                },
+                "skill1": {
+                    "name": "Crab Claw Cannon",
+                    "description": "Bane стріляє гарматним ядром у ворога, завдаючи фізичного урону та знижуючи його швидкість.",
+                    "cooldown": "6 секунд",
+                    "mana_cost": 50
+                },
+                "skill2": {
+                    "name": "Ale",
+                    "description": "Bane випиває еліксир, відновлюючи здоров'я та підвищуючи свій урон.",
+                    "cooldown": "8 секунд",
+                    "mana_cost": 40
+                },
+                "ultimate": {
+                    "name": "Deadly Catch",
+                    "description": "Bane закликає зграю акул, які завдають урону ворогам у великій зоні.",
+                    "cooldown": "50 секунд",
+                    "mana_cost": 100
+                }
+            }
+        },
+        {
+            "name": "Balmond",
+            "class": "Борець",
+            "attack_type": "Фізичний",
+            "additional_effects": "Після вбивства ворога або міньйона відновлює 5% максимального здоров'я.",
+            "recommended_items": [
+                "Warrior Boots",
+                "Bloodlust Axe",
+                "Cursed Helmet",
+                "Queen's Wings",
+                "Immortality"
+            ],
+            "base_stats": {
+                "health": 2590,
+                "physical_attack": 129,
+                "physical_defense": 25,
+                "magic_defense": 10,
+                "movement_speed": 260,
+                "attack_speed": 0.9,
+                "health_regen": 7.5,
+                "mana_regen": 0
+            },
+            "skills": {
+                "passive": {
+                    "name": "Bloodthirst",
+                    "description": "Balmond відновлює здоров'я при кожному вбивстві ворога, що підвищує його витривалість у битві."
+                },
+                "skill1": {
+                    "name": "Soul Lock",
+                    "description": "Balmond здійснює ривок до цілі, завдаючи фізичного урону та сповільнюючи ворогів.",
+                    "cooldown": "8 секунд",
+                    "mana_cost": 60
+                },
+                "skill2": {
+                    "name": "Cyclone Sweep",
+                    "description": "Balmond обертається з сокирою, завдаючи постійного урону ворогам навколо.",
+                    "cooldown": "5 секунд",
+                    "mana_cost": 40
+                },
+                "ultimate": {
+                    "name": "Lethal Counter",
+                    "description": "Balmond завдає удар сокирою по зоні перед собою, завдаючи великого урону ворогам з низьким здоров'ям.",
+                    "cooldown": "40 секунд",
+                    "mana_cost": 100
+                }
+            }
+        },
+        {
+            "name": "Cici",
+            "class": "Борець",
+            "attack_type": "Фізичний",
+            "additional_effects": "Після використання навичок базові атаки завдають додаткового фізичного урону та сповільнюють ворогів.",
+            "recommended_items": [
+                "Magic Shoes",
+                "Hunter Strike",
+                "Blade of Despair",
+                "Brute Force Breastplate",
+                "Malefic Roar",
+                "War Axe"
+            ],
+            "base_stats": {
+                "health": 2609,
+                "physical_attack": 129,
+                "physical_defense": 18,
+                "magic_defense": 10,
+                "movement_speed": 260,
+                "attack_speed": 1.07,
+                "health_regen": 6.0,
+                "mana_regen": 0
+            },
+            "skills": {
+                "passive": {
+                    "name": "Performer’s Delight",
+                    "description": "Після завдання урону Cici отримує стек «Delight», який підвищує її швидкість руху та вампіризм навичок. Ефекти подвоюються при максимальній кількості стеків (10)."
+                },
+                "skill1": {
+                    "name": "Yo-Yo Blitz",
+                    "description": "Cici кидає йо-йо в найближчого ворога, завдаючи фізичного урону, що залежить від максимального здоров'я цілі. Навичка триває 3,5 секунди та може влучити до 10 разів. Під час атаки Cici може рухатися та використовувати інші навички.",
+                    "cooldown": "8 секунд",
+                    "mana_cost": 50
+                },
+                "skill2": {
+                    "name": "Buoyant Bounce",
+                    "description": "Cici стрибає в обрану точку. Якщо вона приземляється на ворога, завдає фізичного урону та може виконати ще один стрибок у напрямку джойстика.",
+                    "cooldown": "12 секунд",
+                    "mana_cost": 60
+                },
+                "ultimate": {
+                    "name": "Curtain Call",
+                    "description": "Cici кидає йо-йо в обраного ворожого героя та зв'язує його з іншим найближчим ворогом, завдаючи фізичного урону, сповільнюючи їх та притягуючи один до одного. Під час дії навички Cici може використовувати Yo-Yo Blitz для атаки обох цілей одночасно.",
+                    "cooldown": "40 секунд",
+                    "mana_cost": 100
+                }
+            }
+        },
+        {
+            "name": "Fredrinn",
+            "class": "Борець",
+            "attack_type": "Фізичний",
+            "additional_effects": "Накопичує \"Комбо Очки\" при влучанні навичками по ворогах, що підсилює його навички.",
+            "recommended_items": [
+                "Warrior Boots",
+                "Bloodlust Axe",
+                "War Axe",
+                "Queen's Wings",
+                "Immortality"
+            ],
+            "base_stats": {
+                "health": 2850,
+                "physical_attack": 120,
+                "physical_defense": 25,
+                "magic_defense": 15,
+                "movement_speed": 260,
+                "attack_speed": 0.85,
+                "health_regen": 7.5,
+                "mana_regen": 0
+            },
+            "skills": {
+                "passive": {
+                    "name": "Crystalline Armor",
+                    "description": "Fredrinn накопичує \"Комбо Очки\" при влучанні навичками по ворогах (до 4). Він також зберігає частину отриманого урону як \"Кристальну Енергію\", яка поступово зникає."
+                },
+                "skill1": {
+                    "name": "Piercing Strike",
+                    "description": "Fredrinn завдає удар вперед, завдаючи фізичного урону та сповільнюючи ворогів. Наступна базова атака має збільшену дальність та урон.",
+                    "cooldown": "8.5 секунд",
+                    "mana_cost": 0
+                },
+                "skill2": {
+                    "name": "Brave Assault",
+                    "description": "Fredrinn ривком атакує ворога, завдаючи фізичного урону та підкидаючи його в повітря. Наступна базова атака має збільшену швидкість атаки.",
+                    "cooldown": "7.5 секунд",
+                    "mana_cost": 0
+                },
+                "skill3": {
+                    "name": "Energy Eruption",
+                    "description": "Fredrinn завдає фізичного урону навколишнім ворогам та провокує їх на атаку себе протягом 1 секунди. Влучання по не-міньйонах збільшує його фізичний та магічний захист на 30 одиниць на 3 секунди та зменшує час перезарядки перших двох навичок на 75%.",
+                    "cooldown": "7 секунд",
+                    "mana_cost": 1
+                },
+                "ultimate": {
+                    "name": "Appraiser's Wrath",
+                    "description": "Fredrinn завдає потужного удару вперед, завдаючи фізичного урону, який збільшується залежно від кількості накопиченої \"Кристальної Енергії\".",
+                    "cooldown": "36 секунд",
+                    "mana_cost": 3
+                }
+            }
+        },
+        {
+            "name": "Grock",
+            "class": "Борець",
+            "attack_type": "Фізичний",
+            "additional_effects": "Перебуваючи біля стін або турелей, отримує додатковий захист та урон.",
+            "recommended_items": [
+                "Warrior Boots",
+                "Cursed Helmet",
+                "Athena's Shield",
+                "Queen's Wings",
+                "Immortality"
+            ],
+            "base_stats": {
+                "health": 2950,
+                "physical_attack": 125,
+                "physical_defense": 27,
+                "magic_defense": 15,
+                "movement_speed": 265,
+                "attack_speed": 0.85,
+                "health_regen": 7.5,
+                "mana_regen": 0
+            },
+            "skills": {
+                "passive": {
+                    "name": "Ancestral Gift",
+                    "description": "Коли Grock знаходиться поруч зі стінами або спорудами, його швидкість руху, фізичний та магічний захист збільшуються."
+                },
+                "skill1": {
+                    "name": "Power of Nature",
+                    "description": "Grock заряджає свою зброю, завдаючи фізичного урону та сповільнюючи ворогів. Чим довше заряд, тим більший урон.",
+                    "cooldown": "7 секунд",
+                    "mana_cost": 80
+                },
+                "skill2": {
+                    "name": "Guardian's Barrier",
+                    "description": "Grock створює кам'яну стіну, яка блокує шлях ворогам та завдає фізичного урону.",
+                    "cooldown": "14 секунд",
+                    "mana_cost": 50
+                },
+                "ultimate": {
+                    "name": "Wild Charge",
+                    "description": "Grock стрімко рухається вперед, завдаючи фізичного урону та підкидаючи ворогів. Якщо він стикається зі стіною, завдає додаткового урону та оглушує ворогів.",
+                    "cooldown": "50 секунд",
+                    "mana_cost": 120
+                }
+            }
+        },
+        {
+            "name": "Jawhead",
+            "class": "Борець",
+            "attack_type": "Фізичний",
+            "additional_effects": "Після використання навичок отримує \"Енергію\", яка підсилює наступні базові атаки.",
+            "recommended_items": [
+                "Warrior Boots",
+                "Endless Battle",
+                "Blade of Despair",
+                "Queen's Wings",
+                "Immortality"
+            ],
+            "base_stats": {
+                "health": 2658,
+                "physical_attack": 119,
+                "physical_defense": 24,
+                "magic_defense": 10,
+                "movement_speed": 255,
+                "attack_speed": 0.9,
+                "health_regen": 7,
+                "mana_regen": 0
+            },
+            "skills": {
+                "passive": {
+                    "name": "Mecha Suppression",
+                    "description": "Базові атаки Jawhead підвищують його урон, накопичуючи посилення."
+                },
+                "skill1": {
+                    "name": "Smart Missiles",
+                    "description": "Jawhead випускає ракети, які автоматично атакують ворогів навколо нього, завдаючи масового урону.",
+                    "cooldown": "6 секунд",
+                    "mana_cost": 40
+                },
+                "skill2": {
+                    "name": "Ejector",
+                    "description": "Jawhead здійснює ривок уперед, підіймаючи ворога або союзника і кидаючи його в обрану зону.",
+                    "cooldown": "10 секунд",
+                    "mana_cost": 50
+                },
+                "ultimate": {
+                    "name": "Unstoppable Force",
+                    "description": "Jawhead фокусується на цілі та стрімко рухається до неї, завдаючи великого урону та приголомшуючи ворога.",
+                    "cooldown": "45 секунд",
+                    "mana_cost": 100
+                }
+            }
+        },
+        {
+            "name": "Fredrinn",
+            "class": "Борець",
+            "attack_type": "Фізичний",
+            "additional_effects": "Накопичує \"Комбо Очки\" при влучанні навичками по ворогах, що підсилює його навички.",
+            "recommended_items": [
+                "Warrior Boots",
+                "Bloodlust Axe",
+                "War Axe",
+                "Queen's Wings",
+                "Immortality"
+            ],
+            "base_stats": {
+                "health": 2850,
+                "physical_attack": 120,
+                "physical_defense": 25,
+                "magic_defense": 15,
+                "movement_speed": 260,
+                "attack_speed": 0.85,
+                "health_regen": 7.5,
+                "mana_regen": 0
+            },
+            "skills": {
+                "passive": {
+                    "name": "Crystalline Armor",
+                    "description": "Fredrinn накопичує \"Комбо Очки\" при влучанні навичками по ворогах (до 4). Він також зберігає частину отриманого урону як \"Кристальну Енергію\", яка поступово зникає."
+                },
+                "skill1": {
+                    "name": "Piercing Strike",
+                    "description": "Fredrinn завдає удар вперед, завдаючи фізичного урону та сповільнюючи ворогів. Наступна базова атака має збільшену дальність та урон.",
+                    "cooldown": "8.5 секунд",
+                    "mana_cost": 0
+                },
+                "skill2": {
+                    "name": "Brave Assault",
+                    "description": "Fredrinn ривком атакує ворога, завдаючи фізичного урону та підкидаючи його в повітря. Наступна базова атака має збільшену швидкість атаки.",
+                    "cooldown": "7.5 секунд",
+                    "mana_cost": 0
+                },
+                "skill3": {
+                    "name": "Energy Eruption",
+                    "description": "Fredrinn завдає фізичного урону навколишнім ворогам та провокує їх на атаку себе протягом 1 секунди. Влучання по не-міньйонах збільшує його фізичний та магічний захист на 30 одиниць на 3 секунди та зменшує час перезарядки перших двох навичок на 75%.",
+                    "cooldown": "7 секунд",
+                    "mana_cost": 1
+                },
+                "ultimate": {
+                    "name": "Appraiser's Wrath",
+                    "description": "Fredrinn завдає потужного удару вперед, завдаючи фізичного урону, який збільшується залежно від кількості накопиченої \"Кристальної Енергії\".",
+                    "cooldown": "36 секунд",
+                    "mana_cost": 3
+                }
+            }
+        },
+        {
+            "name": "Kaja",
+            "class": "Підтримка/Боєць",
+            "attack_type": "Магічний",
+            "additional_effects": "Після використання навичок базові атаки завдають додаткового магічного урону та знижують захист ворогів.",
+            "recommended_items": [
+                "Tough Boots",
+                "Clock of Destiny",
+                "Lightning Truncheon",
+                "Holy Crystal",
+                "Immortality"
+            ],
+            "base_stats": {
+                "health": 2700,
+                "physical_attack": 110,
+                "magic_attack": 0,
+                "physical_defense": 24,
+                "magic_defense": 15,
+                "movement_speed": 265,
+                "attack_speed": 0.8,
+                "health_regen": 6.8,
+                "mana_regen": 3.2
+            },
+            "skills": {
+                "passive": {
+                    "name": "Wrath Sanction",
+                    "description": "Базові атаки Kaja завдають додаткового магічного урону з періодичним ефектом під час кожної третьої атаки."
+                },
+                "skill1": {
+                    "name": "Ring of Order",
+                    "description": "Kaja випускає електричне кільце, яке завдає магічного урону ворогам у зоні дії, а також уповільнює їх на кілька секунд.",
+                    "cooldown": "7 секунд",
+                    "mana_cost": 0
+                },
+                "skill2": {
+                    "name": "Lightning Bomb",
+                    "description": "Kaja здійснює ривок вперед, залишаючи за собою лінію з бомбами, які вибухають при контакті з ворогом, завдаючи магічного урону.",
+                    "cooldown": "8 секунд",
+                    "mana_cost": 0
+                },
+                "ultimate": {
+                    "name": "Divine Judgment",
+                    "description": "Kaja обирає ворога, притягує його до себе та завдає значного магічного урону. Під час цього навичка відключає можливість руху обраного ворога на кілька секунд.",
+                    "cooldown": "55 секунд",
+                    "mana_cost": 0
+                }
+            }
+        },
+        {
+            "name": "Leomord",
+            "class": "Борець",
+            "attack_type": "Фізичний",
+            "additional_effects": "Коли Leomord знаходиться на своєму коні, його базові атаки стають дальніми та завдають додаткового урону.",
+            "recommended_items": [
+                "Warrior Boots",
+                "Bloodlust Axe",
+                "Endless Battle",
+                "Queen's Wings",
+                "Immortality"
+            ],
+            "base_stats": {
+                "health": 2850,
+                "physical_attack": 120,
+                "physical_defense": 25,
+                "magic_defense": 10,
+                "movement_speed": 260,
+                "attack_speed": 0.9,
+                "health_regen": 7,
+                "mana_regen": 0
+            },
+            "skills": {
+                "passive": {
+                    "name": "The Oath Keeper",
+                    "description": "Коли здоров'я ворогів опускається нижче 50%, базові атаки Leomord завдають критичного урону."
+                },
+                "skill1": {
+                    "name": "Phantom Stomp",
+                    "description": "Leomord завдає удару по землі, завдаючи фізичного урону та сповільнюючи ворогів.",
+                    "cooldown": "8 секунд",
+                    "mana_cost": 60
+                },
+                "skill2": {
+                    "name": "Decimation Assault",
+                    "description": "Leomord стрімко кидається вперед, завдаючи фізичного урону та знижуючи швидкість руху ворогів.",
+                    "cooldown": "10 секунд",
+                    "mana_cost": 50
+                },
+                "ultimate": {
+                    "name": "Phantom Steed",
+                    "description": "Leomord викликає свого бойового коня Барбароса, сідаючи на нього та отримуючи нові навички, що підвищують його мобільність та урон.",
+                    "cooldown": "55 секунд",
+                    "mana_cost": 100
+                }
+            }
+        },
+        {
+            "name": "Martis",
+            "class": "Борець",
+            "attack_type": "Фізичний",
+            "additional_effects": "Після використання навичок збільшує швидкість атаки та руху.",
+            "recommended_items": [
+                "Warrior Boots",
+                "Bloodlust Axe",
+                "War Axe",
+                "Queen's Wings",
+                "Immortality"
+            ],
+            "base_stats": {
+                "health": 2700,
+                "physical_attack": 121,
+                "physical_defense": 25,
+                "magic_defense": 10,
+                "movement_speed": 260,
+                "attack_speed": 0.9,
+                "health_regen": 7,
+                "mana_regen": 0
+            },
+            "skills": {
+                "passive": {
+                    "name": "Ashura's Wrath",
+                    "description": "Martis отримує додаткову швидкість атаки кожного разу, коли використовує навички."
+                },
+                "skill1": {
+                    "name": "Ashura Aura",
+                    "description": "Martis тягне ворогів у напрямку себе, завдаючи фізичного урону.",
+                    "cooldown": "8 секунд",
+                    "mana_cost": 50
+                },
+                "skill2": {
+                    "name": "Mortal Coil",
+                    "description": "Martis завдає серію атак перед собою, отримуючи імунітет до контролю під час використання.",
+                    "cooldown": "9 секунд",
+                    "mana_cost": 60
+                },
+                "ultimate": {
+                    "name": "Decimation",
+                    "description": "Martis завдає фінального удару ворогу з низьким здоров'ям. Якщо ціль гине від цієї атаки, навичка скидається.",
+                    "cooldown": "36 секунд",
+                    "mana_cost": 70
+                }
+            }
+        },
+        {
+            "name": "Ruby",
+            "class": "Борець",
+            "attack_type": "Фізичний",
+            "additional_effects": "Після використання навичок Ruby може стрибати вперед, завдаючи урону та сповільнюючи ворогів.",
+            "recommended_items": [
+                "Warrior Boots",
+                "Bloodlust Axe",
+                "Queen's Wings",
+                "Oracle",
+                "Immortality"
+            ],
+            "base_stats": {
+                "health": 2700,
+                "physical_attack": 120,
+                "physical_defense": 25,
+                "magic_defense": 10,
+                "movement_speed": 260,
+                "attack_speed": 0.9,
+                "health_regen": 7,
+                "mana_regen": 0
+            },
+            "skills": {
+                "passive": {
+                    "name": "Let’s Dance!",
+                    "description": "Ruby отримує щит щоразу, коли використовує навички, підвищуючи свою витривалість."
+                },
+                "skill1": {
+                    "name": "Be Good!",
+                    "description": "Ruby атакує ворога перед собою, завдаючи фізичного урону та притягуючи його до себе.",
+                    "cooldown": "5 секунд",
+                    "mana_cost": 40
+                },
+                "skill2": {
+                    "name": "Don’t Run, Wolf King!",
+                    "description": "Ruby стрибає вперед, завдаючи фізичного урону та сповільнюючи ворогів у зоні приземлення.",
+                    "cooldown": "6 секунд",
+                    "mana_cost": 50
+                },
+                "ultimate": {
+                    "name": "I’m Offended!",
+                    "description": "Ruby вдаряє серпом у всіх ворогів перед собою, притягуючи їх до себе та завдаючи масового урону.",
+                    "cooldown": "30 секунд",
+                    "mana_cost": 100
+                }
+            }
+        },
+        {
+            "name": "Freya",
+            "class": "Борець",
+            "attack_type": "Фізичний",
+            "additional_effects": "Після використання навичок отримує \"Священні Удари\", які підсилюють базові атаки.",
+            "recommended_items": [
+                "Warrior Boots",
+                "Bloodlust Axe",
+                "Queen's Wings",
+                "Blade of Despair",
+                "Immortality"
+            ],
+            "base_stats": {
+                "health": 2750,
+                "physical_attack": 125,
+                "physical_defense": 25,
+                "magic_defense": 10,
+                "movement_speed": 265,
+                "attack_speed": 0.9,
+                "health_regen": 7,
+                "mana_regen": 0
+            },
+            "skills": {
+                "passive": {
+                    "name": "Spirit Contact",
+                    "description": "Кожна третя базова атака Freya підсилюється та завдає додатковий урон, також надаючи їй щит."
+                },
+                "skill1": {
+                    "name": "Leap of Faith",
+                    "description": "Freya стрибає на вказане місце, завдаючи фізичного урону ворогам та оглушаючи їх.",
+                    "cooldown": "10 секунд",
+                    "mana_cost": 60
+                },
+                "skill2": {
+                    "name": "Spirit Combo",
+                    "description": "Freya завдає серію ударів, підвищуючи урон при кожному натисканні.",
+                    "cooldown": "5 секунд",
+                    "mana_cost": 40
+                },
+                "ultimate": {
+                    "name": "Valkyrie Descent",
+                    "description": "Freya активує свою силу, отримуючи щит і підвищуючи свій урон. Її атаки підсилюються на певний час.",
+                    "cooldown": "40 секунд",
+                    "mana_cost": 100
+                }
+            }
+        },
+        {
+            "name": "Guinevere",
+            "class": "Борець",
+            "attack_type": "Фізичний",
+            "additional_effects": "Базові атаки знижують час перезарядки її навичок.",
+            "recommended_items": [
+                "Arcane Boots",
+                "Concentrated Energy",
+                "Holy Crystal",
+                "Blood Wings",
+                "Immortality"
+            ],
+            "base_stats": {
+                "health": 2750,
+                "physical_attack": 115,
+                "physical_defense": 23,
+                "magic_defense": 10,
+                "movement_speed": 265,
+                "attack_speed": 0.8,
+                "health_regen": 6.8,
+                "mana_regen": 3.2
+            },
+            "skills": {
+                "passive": {
+                    "name": "Super Magic",
+                    "description": "Guinevere завдає на 25% більше урону ворогам, які знаходяться в повітрі."
+                },
+                "skill1": {
+                    "name": "Energy Wave",
+                    "description": "Guinevere випускає енергетичну хвилю, яка завдає магічного урону ворогам та знижує їхню швидкість.",
+                    "cooldown": "6 секунд",
+                    "mana_cost": 50
+                },
+                "skill2": {
+                    "name": "Spatial Migration",
+                    "description": "Guinevere стрибає вперед, завдаючи фізичного урону та підкидаючи ворогів у повітря.",
+                    "cooldown": "8 секунд",
+                    "mana_cost": 60
+                },
+                "ultimate": {
+                    "name": "Violet Requiem",
+                    "description": "Guinevere випускає серію магічних вибухів навколо себе, завдаючи масового урону.",
+                    "cooldown": "40 секунд",
+                    "mana_cost": 120
+                }
+            }
+        },
+        {
+            "name": "Gatotkaca",
+            "class": "Борець",
+            "attack_type": "Фізичний",
+            "additional_effects": "Отримуючи урон, накопичує \"Rage\", що збільшує урон базових атак.",
+            "recommended_items": [
+                "Warrior Boots",
+                "Cursed Helmet",
+                "Athena's Shield",
+                "Queen's Wings",
+                "Immortality"
+            ],
+            "base_stats": {
+                "health": 2900,
+                "physical_attack": 115,
+                "physical_defense": 27,
+                "magic_defense": 10,
+                "movement_speed": 260,
+                "attack_speed": 0.8,
+                "health_regen": 6,
+                "mana_regen": 0
+            },
+            "skills": {
+                "passive": {
+                    "name": "Shark Bite",
+                    "description": "Після кожного використання навичок атака Bane підсилюється, додаючи додатковий урон."
+                },
+                "skill1": {
+                    "name": "Blast Iron Fist",
+                    "description": "Gatotkaca б'є по землі, створюючи зону, яка завдає магічного урону та сповільнює ворогів.",
+                    "cooldown": "8 секунд",
+                    "mana_cost": 90
+                },
+                "skill2": {
+                    "name": "Unbreakable",
+                    "description": "Gatotkaca спрямовується вперед, провокуючи ворогів на атаку та завдаючи магічного урону.",
+                    "cooldown": "12 секунд",
+                    "mana_cost": 80
+                },
+                "ultimate": {
+                    "name": "Avatar of Guardian",
+                    "description": "Gatotkaca стрибає в обрану область, завдаючи магічного урону та підкидаючи ворогів у повітря.",
+                    "cooldown": "54 секунди",
+                    "mana_cost": 150
+                }
+            }
+        },
+        {
+            "name": "Sun",
+            "class": "Борець",
+            "attack_type": "Фізичний",
+            "additional_effects": "Базові атаки створюють клони, які атакують ворогів, завдаючи частину урону від оригіналу.",
+            "recommended_items": [
+                "Warrior Boots",
+                "Corrosion Scythe",
+                "Demon Hunter Sword",
+                "Golden Staff",
+                "Immortality"
+            ],
+            "base_stats": {
+                "health": 2850,
+                "physical_attack": 120,
+                "physical_defense": 25,
+                "magic_defense": 10,
+                "movement_speed": 260,
+                "attack_speed": 0.9,
+                "health_regen": 7,
+                "mana_regen": 0
+            },
+            "skills": {
+                "passive": {
+                    "name": "Simian God",
+                    "description": "Базові атаки Sun створюють копії, які допомагають йому завдавати додатковий урон ворогам."
+                },
+                "skill1": {
+                    "name": "Endless Variety",
+                    "description": "Sun кидає свій посох, завдаючи фізичного урону ворогам та створюючи копію, яка атакує ворогів.",
+                    "cooldown": "10 секунд",
+                    "mana_cost": 60
+                },
+                "skill2": {
+                    "name": "Swift Exchange",
+                    "description": "Sun разом із копією стрімко атакує ворога, завдаючи подвійного урону.",
+                    "cooldown": "7 секунд",
+                    "mana_cost": 40
+                },
+                "ultimate": {
+                    "name": "Instantaneous Move",
+                    "description": "Sun створює кілька копій, які слідують за ним та атакують ворогів, підвищуючи загальний урон.",
+                    "cooldown": "40 секунд",
+                    "mana_cost": 100
+                }
+            }
+        },
+        {
+            "name": "Yin",
+            "class": "Борець",
+            "attack_type": "Фізичний",
+            "additional_effects": "Може перетворюватися на \"Лей Чи\", отримуючи посилені навички та збільшуючи урон.",
+            "recommended_items": [
+                "Warrior Boots",
+                "Bloodlust Axe",
+                "War Axe",
+                "Queen's Wings",
+                "Immortality"
+            ],
+            "base_stats": {
+                "health": 2750,
+                "physical_attack": 120,
+                "physical_defense": 25,
+                "magic_defense": 10,
+                "movement_speed": 260,
+                "attack_speed": 0.8,
+                "health_regen": 6.8,
+                "mana_regen": 3.2
+            },
+            "skills": {
+                "passive": {
+                    "name": "Leave It to Me",
+                    "description": "Yin отримує додатковий урон, коли поблизу немає союзників, що підвищує його ефективність у ситуаціях один на один."
+                },
+                "skill1": {
+                    "name": "Charged Punch",
+                    "description": "Yin заряджає свій кулак, підвищуючи швидкість руху на 60% протягом 2 секунд. Наступна базова атака завдає посиленого фізичного урону та оглушує ціль.",
+                    "cooldown": "7 секунд",
+                    "mana_cost": 40
+                },
+                "skill2": {
+                    "name": "Instant Blast",
+                    "description": "Yin завдає удар по землі, створюючи вибух, який завдає фізичного урону та сповільнює ворогів у зоні дії.",
+                    "cooldown": "10 секунд",
+                    "mana_cost": 50
+                },
+                "ultimate": {
+                    "name": "My Turn",
+                    "description": "Yin захоплює ворога в окрему область на короткий час, змушуючи його битися один на один. Якщо Yin перемагає, час перезарядки ультимативної навички скидається.",
+                    "cooldown": "60 секунд",
+                    "mana_cost": 100
+                }
+            }
+        },
+        {
+            "name": "Yu Zhong",
+            "class": "Борець",
+            "attack_type": "Фізичний",
+            "additional_effects": "Накопичує \"Sha Essence\", яка відновлює здоров'я та збільшує урон.",
+            "recommended_items": [
+                "Warrior Boots",
+                "Bloodlust Axe",
+                "War Axe",
+                "Queen's Wings",
+                "Immortality"
+            ],
+            "base_stats": {
+                "health": 2850,
+                "physical_attack": 117,
+                "physical_defense": 28,
+                "magic_defense": 10,
+                "movement_speed": 270,
+                "attack_speed": 0.85,
+                "health_regen": 7.5,
+                "mana_regen": 0
+            },
+            "skills": {
+                "passive": {
+                    "name": "Cursing Touch",
+                    "description": "Атаки Yu Zhong накопичують ефект \"Sha Essence\" на ворогах, завдаючи періодичного урону та відновлюючи здоров’я Yu Zhong."
+                },
+                "skill1": {
+                    "name": "Dragon Tail",
+                    "description": "Yu Zhong обертається, завдаючи урону ворогам навколо себе. Віддалені вороги отримують більший урон.",
+                    "cooldown": "6 секунд",
+                    "mana_cost": 0
+                },
+                "skill2": {
+                    "name": "Soul Grip",
+                    "description": "Yu Zhong кидає драконячий кіготь, завдаючи фізичного урону та притягуючи ворогів до себе.",
+                    "cooldown": "12 секунд",
+                    "mana_cost": 0
+                },
+                "ultimate": {
+                    "name": "Black Dragon Form",
+                    "description": "Yu Zhong перетворюється на чорного дракона, стаючи невразливим до контролю та завдаючи урону всім ворогам на своєму шляху.",
+                    "cooldown": "80 секунд",
+                    "mana_cost": 0
+                }
+            }
+        },
+        {
+            "name": "Zilong",
+            "class": "Борець",
+            "attack_type": "Фізичний",
+            "additional_effects": "Після використання навичок збільшує швидкість атаки та руху.",
+            "recommended_items": [
+                "Warrior Boots",
+                "Endless Battle",
+                "Blade of Despair",
+                "Queen's Wings",
+                "Immortality"
+            ],
+            "base_stats": {
+                "health": 2700,
+                "physical_attack": 121,
+                "physical_defense": 25,
+                "magic_defense": 10,
+                "movement_speed": 260,
+                "attack_speed": 0.9,
+                "health_regen": 7,
+                "mana_regen": 0
+            },
+            "skills": {
+                "passive": {
+                    "name": "Dragon Flurry",
+                    "description": "Кожна третя базова атака Zilong завдає посиленого урону та відновлює його здоров’я."
+                },
+                "skill1": {
+                    "name": "Spear Flip",
+                    "description": "Zilong підкидає ціль через себе, завдаючи фізичного урону та знижуючи її захист.",
+                    "cooldown": "10 секунд",
+                    "mana_cost": 60
+                },
+                "skill2": {
+                    "name": "Spear Strike",
+                    "description": "Zilong стрімко атакує ворога, завдаючи фізичного урону та наближаючись до нього.",
+                    "cooldown": "6 секунд",
+                    "mana_cost": 40
+                },
+                "ultimate": {
+                    "name": "Supreme Warrior",
+                    "description": "Zilong активує свою силу, збільшуючи швидкість руху та атаки, а також стаючи невразливим до уповільнень.",
+                    "cooldown": "30 секунд",
+                    "mana_cost": 120
+                }
+            }
+        },
+        {
+            "name": "Thamuz",
+            "class": "Борець",
+            "attack_type": "Фізичний",
+            "additional_effects": "Базові атаки можуть викликати ефект \"Scorch\", завдаючи додаткового урону протягом часу.",
+            "recommended_items": [
+                "Warrior Boots",
+                "Bloodlust Axe",
+                "War Axe",
+                "Queen's Wings",
+                "Immortality"
+            ],
+            "base_stats": {
+                "health": 2900,
+                "physical_attack": 125,
+                "physical_defense": 26,
+                "magic_defense": 10,
+                "movement_speed": 265,
+                "attack_speed": 0.85,
+                "health_regen": 7.5,
+                "mana_regen": 0
+            },
+            "skills": {
+                "passive": {
+                    "name": "Grand Lord Lava",
+                    "description": "Кожен раз, коли Thamuz атакує, він залишає слід лави, що завдає періодичний урон ворогам."
+                },
+                "skill1": {
+                    "name": "Molten Scythes",
+                    "description": "Thamuz кидає свої коси вперед, які повертаються до нього, завдаючи урону ворогам на шляху.",
+                    "cooldown": "9 секунд",
+                    "mana_cost": 40
+                },
+                "skill2": {
+                    "name": "Chasm Trample",
+                    "description": "Thamuz стрибає в обрану зону, завдаючи фізичного урону та сповільнюючи ворогів.",
+                    "cooldown": "10 секунд",
+                    "mana_cost": 50
+                },
+                "ultimate": {
+                    "name": "Cauterant Inferno",
+                    "description": "Thamuz активує пекельну форму, підвищуючи швидкість атаки та отримуючи здатність відновлювати здоров’я від атак.",
+                    "cooldown": "45 секунд",
+                    "mana_cost": 100
+                }
+            }
+        }
+    ]
+}
