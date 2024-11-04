@@ -43,7 +43,7 @@ def load_tank_data():
     """
     Завантажує дані з файлу heroes_tanks.json.
     """
-    file_path = os.path.join('json', 'heroes_tanks.json')  # Можливо, необхідно уточнити назву файлу
+    file_path = os.path.join('json', 'heroes_tanks.json')  # Виправлено шлях
     return load_json_data(file_path)
 
 # Функція для завантаження даних про всіх героїв
