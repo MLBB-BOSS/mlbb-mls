@@ -10,33 +10,36 @@ logger = logging.getLogger(__name__)
 # Словник з героями за класами
 HEROES_BY_CLASS = {
     'Танк': [
-        'Akai', 'Barats', 'Baxia', 'Belerick', 'Franco',
-        'Gatotkaca', 'Gloo', 'Grock', 'Hylos', 'Johnson',
-        'Khufra', 'Lolita', 'Minotaur', 'Tigreal'
+        'Akai', 'Atlas', 'Barats', 'Baxia', 'Belerick', 'Franco',
+        'Gatotkaca', 'Gloo', 'Grock', 'Hylos', 'Johnson', 'Khufra',
+        'Lolita', 'Minotaur', 'Masha', 'Tigreal', 'Uranus', 'Edith', 'Fredrinn'
     ],
     'Маг': [
-        'Alice', 'Esmeralda', 'Eudora', 'Gord', 'Harley',
-        'Kimmy', 'Lunox', 'Nana', 'Valir', 'Xavier', 'Zhuxin'
+        'Alice', 'Aurora', 'Cecilion', 'Chang\'e', 'Cyclops', 'Esmeralda',
+        'Eudora', 'Gord', 'Harley', 'Kadita', 'Kagura', 'Kimmy', 'Lunox', 
+        'Lylia', 'Nana', 'Odette', 'Pharsa', 'Vale', 'Valentina', 'Vexana', 
+        'Xavier', 'Yve', 'Zhask', 'Zhuxin'
     ],
     'Стрілець': [
-        'Beatrix', 'Brody', 'Bruno', 'Claude', 'Clint',
-        'Dyrroth', 'Granger', 'Hanabi', 'Hilda', 'Karrie',
-        'Layla', 'Lesley', 'Martis', 'Miya', 'Wanwan'
+        'Beatrix', 'Brody', 'Bruno', 'Claude', 'Clint', 'Dyrroth', 'Granger',
+        'Hanabi', 'Hilda', 'Irithel', 'Karrie', 'Kimmy', 'Layla', 'Lesley',
+        'Martis', 'Melissa', 'Miya', 'Moskov', 'Natan', 'Popol and Kupa', 
+        'Wanwan', 'Yi Sun-Shin'
     ],
     'Підтримка': [
-        'Angela', 'Carmilla', 'Chip', 'Diggie', 'Estes',
-        'Floryn', 'Kaja', 'Nana', 'Rafaela'
+        'Angela', 'Carmilla', 'Chip', 'Diggie', 'Estes', 'Faramis', 'Floryn',
+        'Kaja', 'Mathilda', 'Nana', 'Rafaela'
     ],
     'Борець': [
-        'Aldous', 'Alpha', 'Alucard', 'Argus', 'Arlott', 'Aulus',
-        'Badang', 'Balmond', 'Bane', 'Chou', 'Freya', 'Guinivere',
-        'Jawhead', 'Khaleed', 'LapuLapu', 'Leomord', 'Masha',
-        'Minsitthar', 'Paquito', 'Phoveus', 'Roger', 'Ruby', 'Silvanna',
-        'Sun', 'Terizla', 'Thamuz', 'X.Borg', 'Yin', 'YuZhong', 'Zilong'
+        'Aldous', 'Alpha', 'Alucard', 'Argus', 'Arlott', 'Aulus', 'Badang',
+        'Balmond', 'Bane', 'Chou', 'Dyrroth', 'Freya', 'Guinevere', 'Jawhead',
+        'Khaleed', 'LapuLapu', 'Leomord', 'Martis', 'Masha', 'Minsitthar', 
+        'Paquito', 'Phoveus', 'Roger', 'Ruby', 'Silvanna', 'Sun', 'Terizla', 
+        'Thamuz', 'X.Borg', 'Yin', 'Yu Zhong', 'Zilong'
     ],
     'Убивця': [
-        'Benedetta', 'Fanny', 'Gusion', 'Hanzo', 'Helcurt',
-        'Julian', 'Karina', 'Lancelot', 'Natalia', 'Saber', 'Selena'
+        'Aamon', 'Benedetta', 'Fanny', 'Gusion', 'Hanzo', 'Helcurt', 'Joy',
+        'Julian', 'Karina', 'Lancelot', 'Ling', 'Natalia', 'Saber', 'Selena'
     ]
 }
 
@@ -125,7 +128,6 @@ async def handle_selecting_hero(update: Update, context: ContextTypes.DEFAULT_TY
 
     context.user_data['selected_hero'] = hero_name
 
-    # Відображаємо опції для обраного героя
     buttons = [
         [KeyboardButton("ℹ️ Загальна інформація"), KeyboardButton("🎯 Контрпіки")],
         [KeyboardButton("📖 Гайди"), KeyboardButton("🗺️ Стратегії")],
@@ -135,55 +137,3 @@ async def handle_selecting_hero(update: Update, context: ContextTypes.DEFAULT_TY
     reply_markup = ReplyKeyboardMarkup(buttons, resize_keyboard=True)
     await update.message.reply_text(f"Ви обрали героя {hero_name}. Оберіть опцію:", reply_markup=reply_markup)
     return States.HERO_FUNCTIONS_MENU
-
-async def handle_hero_functions_menu(update: Update, context: ContextTypes.DEFAULT_TYPE) -> int:
-    user_input = update.message.text.strip()
-    hero_name = context.user_data.get('selected_hero')
-
-    if user_input == "🔙 Назад":
-        return await handle_selecting_hero(update, context)
-
-    # Оскільки даних поки немає, просто повідомляємо про вибір
-    await update.message.reply_text(f"Ви обрали опцію '{user_input}' для героя {hero_name}. Ця функція буде реалізована пізніше.")
-    return States.HERO_FUNCTIONS_MENU
-
-async def handle_comparison_first_hero(update: Update, context: ContextTypes.DEFAULT_TYPE) -> int:
-    first_hero = update.message.text.strip()
-    context.user_data['first_hero'] = first_hero
-    await update.message.reply_text(f"Ви обрали {first_hero}. Тепер оберіть другого героя для порівняння:")
-    await list_all_heroes(update, context)
-    return States.COMPARISON_SECOND_HERO
-
-async def handle_comparison_second_hero(update: Update, context: ContextTypes.DEFAULT_TYPE) -> int:
-    second_hero = update.message.text.strip()
-    first_hero = context.user_data.get('first_hero')
-    # Тут ви можете реалізувати функцію порівняння
-    await update.message.reply_text(f"Порівняння {first_hero} та {second_hero} буде реалізовано пізніше.")
-    reply_markup = get_characters_menu_keyboard()
-    await update.message.reply_text("🦸 Оберіть опцію:", reply_markup=reply_markup)
-    return States.CHARACTERS_MENU
-
-async def handle_selecting_counter_hero(update: Update, context: ContextTypes.DEFAULT_TYPE) -> int:
-    hero_name = update.message.text.strip()
-    # Тут ви можете реалізувати функцію відображення контр-героїв
-    await update.message.reply_text(f"Контр-герої для {hero_name} будуть реалізовані пізніше.")
-    reply_markup = get_characters_menu_keyboard()
-    await update.message.reply_text("🦸 Оберіть опцію:", reply_markup=reply_markup)
-    return States.CHARACTERS_MENU
-
-async def list_all_heroes(update: Update, context: ContextTypes.DEFAULT_TYPE) -> None:
-    all_heroes = []
-    for heroes in HEROES_BY_CLASS.values():
-        all_heroes.extend(heroes)
-    buttons = []
-    row = []
-    for idx, hero in enumerate(all_heroes, 1):
-        row.append(KeyboardButton(hero))
-        if idx % 3 == 0:
-            buttons.append(row)
-            row = []
-    if row:
-        buttons.append(row)
-    buttons.append([KeyboardButton("🔙 Назад")])
-    reply_markup = ReplyKeyboardMarkup(buttons, resize_keyboard=True)
-    await update.message.reply_text("Оберіть героя:", reply_markup=reply_markup)
