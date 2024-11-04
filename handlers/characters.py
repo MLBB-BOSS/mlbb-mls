@@ -16,14 +16,14 @@ HEROES_BY_CLASS = {
     ],
     'Маг': [
         'Alice', 'Aurora', 'Cecilion', 'Chang\'e', 'Cyclops', 'Esmeralda',
-        'Eudora', 'Gord', 'Harley', 'Kadita', 'Kagura', 'Kimmy', 'Lunox', 
-        'Lylia', 'Nana', 'Odette', 'Pharsa', 'Vale', 'Valentina', 'Vexana', 
+        'Eudora', 'Gord', 'Harley', 'Kadita', 'Kagura', 'Kimmy', 'Lunox',
+        'Lylia', 'Nana', 'Odette', 'Pharsa', 'Vale', 'Valentina', 'Vexana',
         'Xavier', 'Yve', 'Zhask', 'Zhuxin'
     ],
     'Стрілець': [
         'Beatrix', 'Brody', 'Bruno', 'Claude', 'Clint', 'Dyrroth', 'Granger',
         'Hanabi', 'Hilda', 'Irithel', 'Karrie', 'Kimmy', 'Layla', 'Lesley',
-        'Martis', 'Melissa', 'Miya', 'Moskov', 'Natan', 'Popol and Kupa', 
+        'Martis', 'Melissa', 'Miya', 'Moskov', 'Natan', 'Popol and Kupa',
         'Wanwan', 'Yi Sun-Shin'
     ],
     'Підтримка': [
@@ -33,8 +33,8 @@ HEROES_BY_CLASS = {
     'Борець': [
         'Aldous', 'Alpha', 'Alucard', 'Argus', 'Arlott', 'Aulus', 'Badang',
         'Balmond', 'Bane', 'Chou', 'Dyrroth', 'Freya', 'Guinevere', 'Jawhead',
-        'Khaleed', 'LapuLapu', 'Leomord', 'Martis', 'Masha', 'Minsitthar', 
-        'Paquito', 'Phoveus', 'Roger', 'Ruby', 'Silvanna', 'Sun', 'Terizla', 
+        'Khaleed', 'LapuLapu', 'Leomord', 'Martis', 'Masha', 'Minsitthar',
+        'Paquito', 'Phoveus', 'Roger', 'Ruby', 'Silvanna', 'Sun', 'Terizla',
         'Thamuz', 'X.Borg', 'Yin', 'Yu Zhong', 'Zilong'
     ],
     'Убивця': [
@@ -151,6 +151,13 @@ async def handle_hero_functions_menu(update: Update, context: ContextTypes.DEFAU
 async def handle_comparison_first_hero(update: Update, context: ContextTypes.DEFAULT_TYPE) -> int:
     first_hero = update.message.text.strip()
     context.user_data['first_hero'] = first_hero
+
+    # Перевіряємо, чи обраний герой існує в списку всіх героїв
+    all_heroes = [hero for heroes in HEROES_BY_CLASS.values() for hero in heroes]
+    if first_hero not in all_heroes:
+        await update.message.reply_text("⚠️ Будь ласка, оберіть героя з меню.")
+        return States.COMPARISON_FIRST_HERO
+
     await update.message.reply_text(f"Ви обрали {first_hero}. Тепер оберіть другого героя для порівняння:")
     await list_all_heroes(update, context)
     return States.COMPARISON_SECOND_HERO
@@ -158,7 +165,29 @@ async def handle_comparison_first_hero(update: Update, context: ContextTypes.DEF
 async def handle_comparison_second_hero(update: Update, context: ContextTypes.DEFAULT_TYPE) -> int:
     second_hero = update.message.text.strip()
     first_hero = context.user_data.get('first_hero')
+
+    # Перевіряємо, чи обраний герой існує в списку всіх героїв
+    all_heroes = [hero for heroes in HEROES_BY_CLASS.values() for hero in heroes]
+    if second_hero not in all_heroes:
+        await update.message.reply_text("⚠️ Будь ласка, оберіть героя з меню.")
+        return States.COMPARISON_SECOND_HERO
+
     await update.message.reply_text(f"Порівняння {first_hero} та {second_hero} буде реалізовано пізніше.")
+    reply_markup = get_characters_menu_keyboard()
+    await update.message.reply_text("🦸 Оберіть опцію:", reply_markup=reply_markup)
+    return States.CHARACTERS_MENU
+
+async def handle_selecting_counter_hero(update: Update, context: ContextTypes.DEFAULT_TYPE) -> int:
+    hero_name = update.message.text.strip()
+
+    # Перевіряємо, чи обраний герой існує в списку всіх героїв
+    all_heroes = [hero for heroes in HEROES_BY_CLASS.values() for hero in heroes]
+    if hero_name not in all_heroes:
+        await update.message.reply_text("⚠️ Будь ласка, оберіть героя з меню.")
+        return States.SELECTING_COUNTER_HERO
+
+    # Тут ви можете реалізувати функцію відображення контр-героїв
+    await update.message.reply_text(f"Контр-герої для {hero_name} будуть реалізовані пізніше.")
     reply_markup = get_characters_menu_keyboard()
     await update.message.reply_text("🦸 Оберіть опцію:", reply_markup=reply_markup)
     return States.CHARACTERS_MENU
