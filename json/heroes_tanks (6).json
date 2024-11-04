@@ -1,0 +1,773 @@
+{
+  "heroes": [
+    {
+      "name": "Belerick",
+      "class": "Танк / Підтримка",
+      "role": "Захисник і маг",
+      "speed": "Середня",
+      "hp": "Високе",
+      "physical_defense": "Добрий",
+      "magical_defense": "Середній",
+      "attack_speed": "Середня",
+      "skills": [
+        {
+          "name": "Deadly Thorns",
+          "mana_cost": "Невідомо",
+          "cooldown": "Невідомо"
+        },
+        {
+          "name": "Ancient Seed",
+          "mana_cost": 60,
+          "cooldown": "9 секунд"
+        },
+        {
+          "name": "Nature's Strike",
+          "mana_cost": 50,
+          "cooldown": "7 секунд"
+        },
+        {
+          "name": "Wrath of Dryad",
+          "mana_cost": 100,
+          "cooldown": "40 секунд"
+        }
+      ],
+      "strategies": {
+        "aggressive": "Використовувати навички для контролю ворогів і завдання шкоди.",
+        "defensive": "Захищати союзників та відбивати шкоду.",
+        "micro": "Позиціонування та використання навичок для затримки ворогів."
+      },
+      "recommendations": {
+        "early_game": "Підтримка лінії та контроль ворогів.",
+        "mid_game": "Ініціювання боїв та затримка ворогів.",
+        "late_game": "Захист союзників та підтримка фронту."
+      },
+      "drafts": {
+        "ideal_allies": "Герої, що добре поєднуються з Belerick.",
+        "avoid_enemies": "Типи ворогів, яких слід уникати.",
+        "strong_drafts": "Командні склади з Belerick як ініціатором."
+      }
+    },
+    {
+      "name": "Baxia",
+      "class": "Танк",
+      "role": "Танк",
+      "speed": "Висока",
+      "hp": "Високе",
+      "physical_defense": "Добрий",
+      "magical_defense": "Середній",
+      "attack_speed": "Середня",
+      "skills": [
+        {
+          "name": "Baxia Mark",
+          "mana_cost": "Невідомо",
+          "cooldown": "Невідомо"
+        },
+        {
+          "name": "Shield Unity",
+          "mana_cost": 70,
+          "cooldown": "11 секунд"
+        },
+        {
+          "name": "Tortoise's Puissance",
+          "mana_cost": 50,
+          "cooldown": "8 секунд"
+        },
+        {
+          "name": "Bounce, Bounce",
+          "mana_cost": 120,
+          "cooldown": "40 секунд"
+        }
+      ],
+      "strategies": {
+        "aggressive": "Використовувати високу швидкість для ініціювання боїв та пресингу ворогів.",
+        "defensive": "Захищати союзників і зменшувати отриману шкоду навичками.",
+        "micro": "Позиціонування та контроль простору за допомогою навичок."
+      },
+      "recommendations": {
+        "early_game": "Фарм та захист лінії.",
+        "mid_game": "Ініціювання боїв та контроль ворогів.",
+        "late_game": "Підтримка команди та захист ключових героїв."
+      },
+      "drafts": {
+        "ideal_allies": "Герої, що добре поєднуються з Baxia.",
+        "avoid_enemies": "Типи ворогів, яких слід остерігатися.",
+        "strong_drafts": "Командні склади з Baxia як ініціатором."
+      }
+    },
+    {
+      "name": "Grock",
+      "class": "Танк",
+      "role": "Танк / Підтримка",
+      "speed": "Середня, збільшується біля стін",
+      "hp": "Високе",
+      "physical_defense": "Добрий",
+      "magical_defense": "Середній",
+      "attack_speed": "Середня",
+      "skills": [
+        {
+          "name": "Ancestral Gift",
+          "mana_cost": "Невідомо",
+          "cooldown": "Невідомо"
+        },
+        {
+          "name": "Power of Nature",
+          "mana_cost": 60,
+          "cooldown": "7 секунд"
+        },
+        {
+          "name": "Guardian's Barrier",
+          "mana_cost": 70,
+          "cooldown": "12 секунд"
+        },
+        {
+          "name": "Wild Charge",
+          "mana_cost": 100,
+          "cooldown": "40 секунд"
+        }
+      ],
+      "strategies": {
+        "aggressive": "Ініціювати бої, завдаючи шкоди та контролюючи ворогів.",
+        "defensive": "Захищати команду за допомогою стін та щитів.",
+        "micro": "Контроль простору та розділення ворогів."
+      },
+      "recommendations": {
+        "early_game": "Фарм та захист лінії.",
+        "mid_game": "Ініціювання боїв та контроль ворогів.",
+        "late_game": "Підтримка команди та контроль важливих зон."
+      },
+      "drafts": {
+        "ideal_allies": "Герої, що добре поєднуються з Grock.",
+        "avoid_enemies": "Типи ворогів, яких слід остерігатися.",
+        "strong_drafts": "Командні склади з Grock як контролером простору."
+      }
+    },
+    {
+      "name": "Atlas",
+      "class": "Танк",
+      "role": "Танк / Ініціатор",
+      "speed": "Середня",
+      "hp": "3109 на 1 рівні, зростає до 7000+ на максимальному рівні",
+      "physical_defense": "Добрий",
+      "magical_defense": "Середній",
+      "attack_speed": "Середня",
+      "skills": [
+        {
+          "name": "Frigid Breath",
+          "mana_cost": "Невідомо",
+          "cooldown": "Невідомо"
+        },
+        {
+          "name": "Perfect Match",
+          "mana_cost": 70,
+          "cooldown": "12 секунд"
+        },
+        {
+          "name": "Fatal Links",
+          "mana_cost": 150,
+          "cooldown": "48 секунд"
+        }
+      ],
+      "strategies": {
+        "aggressive": "Використовувати навички для ініціювання боїв та контролю ворогів.",
+        "defensive": "Захищати команду, сповільнюючи та знижуючи атаки ворогів.",
+        "micro": "Позиціонування та використання навичок для максимального контролю."
+      },
+      "recommendations": {
+        "early_game": "Фарм та контроль лінії.",
+        "mid_game": "Ініціювання боїв та контроль ворогів.",
+        "late_game": "Підтримка команди та максимальне використання навичок."
+      },
+      "drafts": {
+        "ideal_allies": "Герої, що добре поєднуються з Atlas.",
+        "avoid_enemies": "Типи ворогів, яких слід остерігатися.",
+        "strong_drafts": "Командні склади з Atlas як ініціатором."
+      }
+    },
+    {
+      "name": "Edith",
+      "class": "Танк / Стрілець",
+      "role": "Танк / Стрілець",
+      "speed": "Висока",
+      "hp": "3200 на 1 рівні, зростає до 7100+ на максимальному рівні",
+      "physical_defense": "Добрий",
+      "magical_defense": "Середній",
+      "attack_speed": "Середня",
+      "skills": [
+        {
+          "name": "Phylax Form",
+          "mana_cost": "Невідомо",
+          "cooldown": "Невідомо"
+        },
+        {
+          "name": "Divine Retribution",
+          "mana_cost": 120,
+          "cooldown": "50 секунд"
+        }
+      ],
+      "strategies": {
+        "aggressive": "Використовувати Edith як стрільця для завдання шкоди ворогам з відстані.",
+        "defensive": "Захищати команду за допомогою Phylax Form для притягування ворогів.",
+        "micro": "Зміна форм та ефективне використання навичок."
+      },
+      "recommendations": {
+        "early_game": "Підтримка команди та контроль лінії.",
+        "mid_game": "Використання обох форм для підтримки команди.",
+        "late_game": "Ефективне завдання шкоди з відстані та захист союзників."
+      },
+      "drafts": {
+        "ideal_allies": "Герої, що доповнюють Edith у ролі танка та стрільця.",
+        "avoid_enemies": "Типи ворогів, яких слід остерігатися.",
+        "strong_drafts": "Командні склади з Edith як гнучким героєм."
+      }
+    },
+    {
+      "name": "Franco",
+      "class": "Танк",
+      "role": "Танк / Ініціатор",
+      "speed": "Середня",
+      "hp": "3400 на 1 рівні, зростає до 7200+ на максимальному рівні",
+      "physical_defense": "Добрий",
+      "magical_defense": "Середній",
+      "attack_speed": "Середня",
+      "skills": [
+        {
+          "name": "Iron Hook",
+          "mana_cost": "Невідомо",
+          "cooldown": "Невідомо"
+        },
+        {
+          "name": "Fury Shock",
+          "mana_cost": 75,
+          "cooldown": "8 секунд"
+        },
+        {
+          "name": "Brutal Massacre",
+          "mana_cost": 120,
+          "cooldown": "38 секунд"
+        }
+      ],
+      "strategies": {
+        "aggressive": "Використовувати Iron Hook для ініціювання боїв і витягування ключових ворогів.",
+        "defensive": "Захищати команду за допомогою Fury Shock та контролю простору.",
+        "micro": "Точне використання навичок для максимального ефекту."
+      },
+      "recommendations": {
+        "early_game": "Контроль ворогів за допомогою Iron Hook.",
+        "mid_game": "Ініціювання боїв та використання Brutal Massacre.",
+        "late_game": "Захист ключових героїв та контроль ворогів."
+      },
+      "drafts": {
+        "ideal_allies": "Герої, що добре поєднуються з Franco.",
+        "avoid_enemies": "Типи ворогів, яких слід остерігатися.",
+        "strong_drafts": "Командні склади з Franco як ініціатором."
+      }
+    },
+    {
+      "name": "Gatotkaca",
+      "class": "Танк",
+      "role": "Танк / Маг",
+      "speed": "Середня",
+      "hp": "Високе",
+      "physical_defense": "Добрий",
+      "magical_defense": "Середній",
+      "attack_speed": "Середня",
+      "skills": [
+        {
+          "name": "Steel Bones",
+          "mana_cost": "Невідомо",
+          "cooldown": "Невідомо"
+        },
+        {
+          "name": "Blast Iron Fist",
+          "mana_cost": 60,
+          "cooldown": "9 секунд"
+        },
+        {
+          "name": "Unbreakable",
+          "mana_cost": 70,
+          "cooldown": "12 секунд"
+        },
+        {
+          "name": "Avatar of the Guardian",
+          "mana_cost": 100,
+          "cooldown": "50 секунд"
+        }
+      ],
+      "strategies": {
+        "aggressive": "Використовувати Avatar of the Guardian для ініціювання боїв і завдання магічної шкоди.",
+        "defensive": "Змушувати ворогів атакувати Gatotkaca та захищати союзників.",
+        "micro": "Ефективне використання навичок для контролю ворогів і підтримки здоров'я."
+      },
+      "recommendations": {
+        "early_game": "Фарм та контроль лінії.",
+        "mid_game": "Ініціювання боїв та контроль ворогів.",
+        "late_game": "Максимальне використання навичок для підтримки команди."
+      },
+      "drafts": {
+        "ideal_allies": "Герої, що добре поєднуються з Gatotkaca.",
+        "avoid_enemies": "Типи ворогів, яких слід остерігатися.",
+        "strong_drafts": "Командні склади з Gatotkaca як ініціатором та магом."
+      }
+    },
+    {
+      "name": "Hylos",
+      "class": "Танк / Підтримка",
+      "role": "Танк / Підтримка",
+      "speed": "Середня",
+      "hp": "Високе",
+      "physical_defense": "Добрий",
+      "magical_defense": "Середній",
+      "attack_speed": "Середня",
+      "skills": [
+        {
+          "name": "Thickened Blood",
+          "mana_cost": "Невідомо",
+          "cooldown": "Невідомо"
+        },
+        {
+          "name": "Law and Order",
+          "mana_cost": 70,
+          "cooldown": "10 секунд"
+        },
+        {
+          "name": "Ring of Punishment",
+          "mana_cost": 50,
+          "cooldown": "5 секунд"
+        },
+        {
+          "name": "Glorious Pathway",
+          "mana_cost": 100,
+          "cooldown": "40 секунд"
+        }
+      ],
+      "strategies": {
+        "aggressive": "Використовувати Glorious Pathway та Law and Order для ініціювання боїв.",
+        "defensive": "Захищати команду за допомогою Ring of Punishment та Thickened Blood.",
+        "micro": "Контроль позиціонування та використання навичок для підтримки команди."
+      },
+      "recommendations": {
+        "early_game": "Підтримка команди та контроль лінії.",
+        "mid_game": "Ініціювання боїв та підтримка команди.",
+        "late_game": "Максимальне використання навичок для підтримки команди."
+      },
+      "drafts": {
+        "ideal_allies": "Герої, що добре поєднуються з Hylos.",
+        "avoid_enemies": "Типи ворогів, яких слід остерігатися.",
+        "strong_drafts": "Командні склади з Hylos як підтримкою."
+      }
+    },
+    {
+      "name": "Gloo",
+      "class": "Танк",
+      "role": "Танк / Контролер",
+      "speed": "Середня",
+      "hp": "Високе",
+      "physical_defense": "Добрий",
+      "magical_defense": "Середній",
+      "attack_speed": "Середня",
+      "skills": [
+        {
+          "name": "Stick, Stick",
+          "mana_cost": "Невідомо",
+          "cooldown": "Невідомо"
+        },
+        {
+          "name": "Slam, Slam",
+          "mana_cost": 60,
+          "cooldown": "8 секунд"
+        },
+        {
+          "name": "Pass, Pass",
+          "mana_cost": 80,
+          "cooldown": "12 секунд"
+        },
+        {
+          "name": "Split, Split",
+          "mana_cost": 100,
+          "cooldown": "50 секунд"
+        }
+      ],
+      "strategies": {
+        "aggressive": "Використовувати Split, Split для ініціювання боїв та контролю ворогів.",
+        "defensive": "Захищати команду за допомогою Pass, Pass та сповільнення ворогів.",
+        "micro": "Контроль простору та ефективне використання навичок."
+      },
+      "recommendations": {
+        "early_game": "Фарм та контроль лінії.",
+        "mid_game": "Ініціювання боїв та контроль ворогів.",
+        "late_game": "Максимальне використання навичок для підтримки команди."
+      },
+      "drafts": {
+        "ideal_allies": "Герої, що добре поєднуються з Gloo.",
+        "avoid_enemies": "Типи ворогів, яких слід остерігатися.",
+        "strong_drafts": "Командні склади з Gloo як контролером."
+      }
+    },
+    {
+      "name": "Barats",
+      "class": "Танк / Боєць",
+      "role": "Танк / Боєць",
+      "speed": "Середня",
+      "hp": "3600 на 1 рівні, зростає до 7500+ на максимальному рівні",
+      "physical_defense": "Добрий",
+      "magical_defense": "Середній",
+      "attack_speed": "Середня",
+      "skills": [
+        {
+          "name": "Big Guy",
+          "mana_cost": "Невідомо",
+          "cooldown": "Невідомо"
+        },
+        {
+          "name": "So-Called Teamwork",
+          "mana_cost": "Невідомо",
+          "cooldown": "Невідомо"
+        },
+        {
+          "name": "Missile Expert",
+          "mana_cost": "Невідомо",
+          "cooldown": "Невідомо"
+        },
+        {
+          "name": "Detona's Welcome",
+          "mana_cost": "Невідомо",
+          "cooldown": "Невідомо"
+        }
+      ],
+      "strategies": {
+        "aggressive": "Використовувати Detona's Welcome для нейтралізації ворогів та завдання шкоди.",
+        "defensive": "Захищати команду за допомогою Big Guy та завдання шкоди.",
+        "micro": "Ефективне використання навичок для контролю та завдання шкоди."
+      },
+      "recommendations": {
+        "early_game": "Накопичення зарядів та контроль лінії.",
+        "mid_game": "Ініціювання боїв та використання навичок.",
+        "late_game": "Максимальне використання Detona's Welcome."
+      },
+      "drafts": {
+        "ideal_allies": "Герої, що добре поєднуються з Barats.",
+        "avoid_enemies": "Типи ворогів, яких слід остерігатися.",
+        "strong_drafts": "Командні склади з Barats як танком та бійцем."
+      }
+    },
+    {
+      "name": "Akai",
+      "class": "Танк",
+      "role": "Танк / Контролер",
+      "speed": "Середня",
+      "hp": "3500 на 1 рівні, зростає до 7400+ на максимальному рівні",
+      "physical_defense": "Добрий",
+      "magical_defense": "Середній",
+      "attack_speed": "Середня",
+      "skills": [
+        {
+          "name": "Tai Chi",
+          "mana_cost": "Невідомо",
+          "cooldown": "Невідомо"
+        },
+        {
+          "name": "Thousand Pounder",
+          "mana_cost": 70,
+          "cooldown": "14 секунд"
+        },
+        {
+          "name": "Blender",
+          "mana_cost": 60,
+          "cooldown": "11 секунд"
+        },
+        {
+          "name": "Heavy Spin",
+          "mana_cost": 120,
+          "cooldown": "50 секунд"
+        }
+      ],
+      "strategies": {
+        "aggressive": "Ініціювати бої та контролювати ворогів за допомогою навичок.",
+        "defensive": "Захищати команду за допомогою щитів та сповільнення ворогів.",
+        "micro": "Ефективне використання навичок для контролю позиціонування ворогів."
+      },
+      "recommendations": {
+        "early_game": "Фарм та контроль лінії.",
+        "mid_game": "Ініціювання боїв та використання Heavy Spin.",
+        "late_game": "Максимальне використання навичок для підтримки команди."
+      },
+      "drafts": {
+        "ideal_allies": "Герої, що добре поєднуються з Akai.",
+        "avoid_enemies": "Типи ворогів, яких слід остерігатися.",
+        "strong_drafts": "Командні склади з Akai як контролером."
+      }
+    },
+    {
+      "name": "Uranus",
+      "class": "Танк",
+      "role": "Танк / Відновлювач",
+      "speed": "Середня",
+      "hp": "3800 на 1 рівні, зростає до 7700+ на максимальному рівні",
+      "physical_defense": "Добрий",
+      "magical_defense": "Середній",
+      "attack_speed": "Середня",
+      "skills": [
+        {
+          "name": "Radiance",
+          "mana_cost": "Невідомо",
+          "cooldown": "Невідомо"
+        },
+        {
+          "name": "Ionic Edge",
+          "mana_cost": "Невідомо",
+          "cooldown": "Невідомо"
+        },
+        {
+          "name": "Transcendent Ward",
+          "mana_cost": "Невідомо",
+          "cooldown": "Невідомо"
+        },
+        {
+          "name": "Consecration",
+          "mana_cost": "Невідомо",
+          "cooldown": "Невідомо"
+        }
+      ],
+      "strategies": {
+        "aggressive": "Ініціювати бої та завдавати шкоди ворогам.",
+        "defensive": "Використовувати відновлювальні навички для тривалості в бою.",
+        "micro": "Ефективне використання навичок для контролю ворогів та відновлення здоров'я."
+      },
+      "recommendations": {
+        "early_game": "Фарм та відновлення здоров'я.",
+        "mid_game": "Ініціювання боїв та підтримка команди.",
+        "late_game": "Максимальне використання навичок для підтримки команди."
+      },
+      "drafts": {
+        "ideal_allies": "Герої, що добре поєднуються з Uranus.",
+        "avoid_enemies": "Типи ворогів, яких слід остерігатися.",
+        "strong_drafts": "Командні склади з Uranus як відновлювачем."
+      }
+    },
+    {
+      "name": "Johnson",
+      "class": "Танк",
+      "role": "Танк / Ініціатор",
+      "speed": "Середня",
+      "hp": "3300-7200",
+      "physical_defense": "Високий",
+      "magical_defense": "Середній",
+      "attack_speed": "Середня",
+      "skills": [
+        {
+          "name": "Electro-airbag",
+          "mana_cost": "Невідомо",
+          "cooldown": "Невідомо"
+        },
+        {
+          "name": "Deadly Pincers",
+          "mana_cost": 70,
+          "cooldown": "9 секунд"
+        },
+        {
+          "name": "Rapid Touchdown",
+          "mana_cost": 120,
+          "cooldown": "53 секунди"
+        }
+      ],
+      "strategies": {
+        "aggressive": "Використовувати Rapid Touchdown для ініціювання боїв.",
+        "defensive": "Захищати команду за допомогою щита та оглушення ворогів.",
+        "micro": "Ефективне використання навичок для контролю позиціонування та ініціації."
+      },
+      "recommendations": {
+        "early_game": "Фарм та контроль лінії.",
+        "mid_game": "Ініціювання боїв з Rapid Touchdown.",
+        "late_game": "Максимальне використання навичок для підтримки команди."
+      },
+      "drafts": {
+        "ideal_allies": "Герої, що добре поєднуються з Johnson.",
+        "avoid_enemies": "Типи ворогів, яких слід остерігатися.",
+        "strong_drafts": "Командні склади з Johnson як ініціатором."
+      }
+    },
+    {
+      "name": "Lolita",
+      "class": "Танк / Підтримка",
+      "role": "Танк / Підтримка",
+      "speed": "Середня",
+      "hp": "3200-7000",
+      "physical_defense": "Добрий",
+      "magical_defense": "Середній",
+      "attack_speed": "Середня",
+      "skills": [
+        {
+          "name": "Noumenon Blast",
+          "mana_cost": "Невідомо",
+          "cooldown": "Невідомо"
+        },
+        {
+          "name": "Guardian's Bulwark",
+          "mana_cost": 70,
+          "cooldown": "9 секунд"
+        },
+        {
+          "name": "Energy Rocket",
+          "mana_cost": 50,
+          "cooldown": "7 секунд"
+        }
+      ],
+      "strategies": {
+        "aggressive": "Використовувати Noumenon Blast для ініціювання боїв.",
+        "defensive": "Захищати команду за допомогою Guardian's Bulwark.",
+        "micro": "Ефективне використання навичок для контролю ворогів."
+      },
+      "recommendations": {
+        "early_game": "Підтримка команди та контроль лінії.",
+        "mid_game": "Ініціювання боїв та використання навичок.",
+        "late_game": "Максимальне використання навичок для підтримки команди."
+      },
+      "drafts": {
+        "ideal_allies": "Герої, що добре поєднуються з Lolita.",
+        "avoid_enemies": "Типи ворогів, яких слід остерігатися.",
+        "strong_drafts": "Командні склади з Lolita як підтримкою."
+      }
+    },
+    {
+      "name": "Tigreal",
+      "class": "Танк",
+      "role": "Танк / Ініціатор",
+      "speed": "Середня",
+      "hp": "3000 на 1 рівні, зростає до 6800+",
+      "physical_defense": "Високий",
+      "magical_defense": "Середній",
+      "attack_speed": "Середня",
+      "skills": [
+        {
+          "name": "Fearless Warrior",
+          "mana_cost": "Невідомо",
+          "cooldown": "Невідомо"
+        },
+        {
+          "name": "Attack Wave",
+          "mana_cost": 60,
+          "cooldown": "8 секунд"
+        },
+        {
+          "name": "Sacred Hammer",
+          "mana_cost": 70,
+          "cooldown": "12 секунд"
+        },
+        {
+          "name": "Implosion",
+          "mana_cost": 120,
+          "cooldown": "45 секунд"
+        }
+      ],
+      "strategies": {
+        "aggressive": "Використовувати Sacred Hammer та Implosion для ініціювання боїв.",
+        "defensive": "Захищати команду за допомогою Fearless Warrior та Attack Wave.",
+        "micro": "Ефективне використання навичок для контролю ворогів."
+      },
+      "recommendations": {
+        "early_game": "Фарм та контроль лінії.",
+        "mid_game": "Ініціювання боїв та використання навичок.",
+        "late_game": "Максимальне використання навичок для підтримки команди."
+      },
+      "drafts": {
+        "ideal_allies": "Герої, що добре поєднуються з Tigreal.",
+        "avoid_enemies": "Типи ворогів, яких слід остерігатися.",
+        "strong_drafts": "Командні склади з Tigreal як ініціатором."
+      }
+    },
+    {
+      "name": "Khufra",
+      "class": "Танк",
+      "role": "Танк / Контролер",
+      "speed": "Середня",
+      "hp": "Високе",
+      "physical_defense": "Добрий",
+      "magical_defense": "Середній",
+      "attack_speed": "Середня",
+      "skills": [
+        {
+          "name": "Spell Curse",
+          "mana_cost": "Невідомо",
+          "cooldown": "Невідомо"
+        },
+        {
+          "name": "Tyrant's Revenge",
+          "mana_cost": 70,
+          "cooldown": "14 секунд"
+        },
+        {
+          "name": "Bouncing Ball",
+          "mana_cost": 60,
+          "cooldown": "11 секунд"
+        },
+        {
+          "name": "Tyrant's Rage",
+          "mana_cost": 120,
+          "cooldown": "50 секунд"
+        }
+      ],
+      "strategies": {
+        "aggressive": "Використовувати Tyrant's Revenge та Tyrant's Rage для ініціювання боїв.",
+        "defensive": "Захищати команду за допомогою Bouncing Ball та Spell Curse.",
+        "micro": "Ефективне використання навичок для контролю ворогів."
+      },
+      "recommendations": {
+        "early_game": "Фарм та контроль лінії.",
+        "mid_game": "Ініціювання боїв та використання навичок.",
+        "late_game": "Максимальне використання навичок для підтримки команди."
+      },
+      "drafts": {
+        "ideal_allies": "Герої, що добре поєднуються з Khufra.",
+        "avoid_enemies": "Типи ворогів, яких слід остерігатися.",
+        "strong_drafts": "Командні склади з Khufra як контролером."
+      }
+    },
+    {
+      "name": "Fredrinn",
+      "class": "Танк / Боєць",
+      "role": "Танк / Боєць",
+      "speed": "Середня",
+      "hp": "Високе",
+      "physical_defense": "Добрий",
+      "magical_defense": "Середній",
+      "attack_speed": "Середня",
+      "skills": [
+        {
+          "name": "Crystalline Armor",
+          "mana_cost": "Невідомо",
+          "cooldown": "Невідомо"
+        },
+        {
+          "name": "Piercing Strike",
+          "mana_cost": 40,
+          "cooldown": "8 секунд"
+        },
+        {
+          "name": "Brave Assault",
+          "mana_cost": 60,
+          "cooldown": "12 секунд"
+        },
+        {
+          "name": "Energy Eruption",
+          "mana_cost": 100,
+          "cooldown": "45 секунд"
+        }
+      ],
+      "strategies": {
+        "aggressive": "Використовувати Brave Assault та Energy Eruption для ініціювання боїв.",
+        "defensive": "Захищати команду за допомогою Crystalline Armor та Piercing Strike.",
+        "micro": "Ефективне використання навичок для контролю ворогів."
+      },
+      "recommendations": {
+        "early_game": "Фарм та накопичення щитів.",
+        "mid_game": "Ініціювання боїв та використання навичок.",
+        "late_game": "Максимальне використання навичок для підтримки команди."
+      },
+      "drafts": {
+        "ideal_allies": "Герої, що добре поєднуються з Fredrinn.",
+        "avoid_enemies": "Типи ворогів, яких слід остерігатися.",
+        "strong_drafts": "Командні склади з Fredrinn як танком та бійцем."
+      }
+    }
+  ]
+}
