@@ -24,4 +24,4 @@ class States(Enum):
     EMBLEMS_MENU = auto()
     ITEMS_MENU = auto()
     RECOMMENDATIONS_MENU = auto()
-    # Додайте інші стани за потребою
+    # Додайте інші стани за потребою 
