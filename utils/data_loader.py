@@ -30,7 +30,23 @@ def load_fighter_data():
     file_path = os.path.join('json', 'fighter.json')  # Виправлено шлях
     return load_json_data(file_path)
 
-# Функція для завантаження даних про всіх героїв (якщо у вас є інші класи героїв у проекті)
+# Функція для завантаження даних про магів
+def load_mage_data():
+    """
+    Завантажує дані з файлу mage.json.
+    """
+    file_path = os.path.join('json', 'mage.json')
+    return load_json_data(file_path)
+
+# Функція для завантаження даних про танків
+def load_tank_data():
+    """
+    Завантажує дані з файлу heroes_tanks.json.
+    """
+    file_path = os.path.join('json', 'heroes_tanks.json')  # Можливо, необхідно уточнити назву файлу
+    return load_json_data(file_path)
+
+# Функція для завантаження даних про всіх героїв
 def load_all_heroes():
     """
     Завантажує дані для всіх класів героїв.
@@ -40,11 +56,18 @@ def load_all_heroes():
     # Додаємо дані борців
     fighters = load_fighter_data()
     if fighters:
-        all_heroes['fighter'] = fighters.get('heroes', [])
+        all_heroes['Борець'] = fighters.get('heroes', [])
+
+    # Додаємо дані магів
+    mages = load_mage_data()
+    if mages:
+        all_heroes['Маг'] = mages.get('heroes', [])
+
+    # Додаємо дані танків
+    tanks = load_tank_data()
+    if tanks:
+        all_heroes['Танк'] = tanks.get('heroes', [])
 
     # Додайте інші класи за потреби
-    # all_heroes['mage'] = load_mage_data()
-    # all_heroes['tank'] = load_tank_data()
-    # ...
 
     return all_heroes
