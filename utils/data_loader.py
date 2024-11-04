@@ -3,6 +3,7 @@ import json
 import os
 import logging
 
+# Ініціалізація логування
 logger = logging.getLogger(__name__)
 
 def load_json_data(file_path):
@@ -21,25 +22,12 @@ def load_json_data(file_path):
         logger.error(f"Помилка декодування JSON у файлі {file_path}.")
         return None
 
-def load_fighter_data():
+def load_hero_data(class_name, hero_name):
     """
-    Завантажує дані з файлу fighter.json.
+    Завантажує дані про конкретного героя з відповідної папки.
     """
-    file_path = os.path.join('data', 'heroes', 'fighter.json')  # Оновлений шлях
-    return load_json_data(file_path)
-
-def load_mage_data():
-    """
-    Завантажує дані з файлу mage.json.
-    """
-    file_path = os.path.join('data', 'heroes', 'mage.json')  # Оновлений шлях
-    return load_json_data(file_path)
-
-def load_marksmen_data():
-    """
-    Завантажує дані з файлу marksmen.json.
-    """
-    file_path = os.path.join('data', 'heroes', 'marksmen.json')  # Оновлений шлях
+    file_name = f"{hero_name.lower().replace(' ', '_')}.json"
+    file_path = os.path.join('data', 'heroes', class_name, file_name)
     return load_json_data(file_path)
 
 def load_all_heroes():
@@ -48,21 +36,15 @@ def load_all_heroes():
     """
     all_heroes = {}
 
-    # Додаємо дані борців
-    fighters = load_fighter_data()
-    if fighters:
-        all_heroes['Борець'] = fighters.get('heroes', [])
-
-    # Додаємо дані магів
-    mages = load_mage_data()
-    if mages:
-        all_heroes['Маг'] = mages.get('heroes', [])
-
-    # Додаємо дані стрільців
-    marksmen = load_marksmen_data()
-    if marksmen:
-        all_heroes['Стрілець'] = marksmen.get('heroes', [])
-
-    # Додайте інші класи за потреби
+    heroes_dir = os.path.join('data', 'heroes')
+    for class_dir in os.listdir(heroes_dir):
+        class_path = os.path.join(heroes_dir, class_dir)
+        if os.path.isdir(class_path):
+            all_heroes[class_dir] = []
+            for hero_file in os.listdir(class_path):
+                if hero_file.endswith('.json'):
+                    hero_data = load_json_data(os.path.join(class_path, hero_file))
+                    if hero_data:
+                        all_heroes[class_dir].append(hero_data)
 
     return all_heroes
