@@ -1,0 +1,32 @@
+{
+    "name": "Benedetta",
+    "class": "Assassin",
+    "attack_type": "Physical",
+    "additional_effects": "",
+    "recommended_items": [],
+    "base_stats": {},
+    "skills": {
+        "passive": {
+            "name": "Elapsed Daytime",
+            "description": "Коли Benedetta накопичує достатньо енергії, вона може здійснити різкий ривок, завдаючи шкоди ворогам на своєму шляху."
+        },
+        "skill1": {
+            "name": "Phantom Slash",
+            "description": "Benedetta відступає назад, залишаючи примару, яка атакує ворогів. Після цього вона швидко повертається вперед, завдаючи додаткової шкоди.",
+            "cooldown": "7 секунд.",
+            "mana_cost": 50
+        },
+        "skill2": {
+            "name": "An Eye for An Eye",
+            "description": "Benedetta захищається від атак і негативних ефектів. Якщо захист блокує атаку, вона завдає контрудару, оглушуючи ворогів.",
+            "cooldown": "15 секунд.",
+            "mana_cost": 60
+        },
+        "ultimate": {
+            "name": "Alecto: Final Blow",
+            "description": "Benedetta швидко прорізає шлях вперед, залишаючи слід, що вибухає, завдаючи шкоди та уповільнюючи ворогів.",
+            "cooldown": "40 секунд.",
+            "mana_cost": 100
+        }
+    }
+}
