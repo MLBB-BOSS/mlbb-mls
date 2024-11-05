@@ -1,6 +1,6 @@
 {
     "name": "Bane",
-    "class": "Борець",
+    "class": "Fighter",
     "attack_type": "Фізичний",
     "additional_effects": "Після використання навичок наступна базова атака завдає додаткового урону та сповільнює ворогів.",
     "recommended_items": [
