@@ -1,3 +1,4 @@
+from telegram.ext import ContextTypes
 async def get_hero_info(hero_name: str, context: ContextTypes.DEFAULT_TYPE) -> str: 
     """Функція для отримання детальної інформації про героя через OpenAI API."""
     try:
