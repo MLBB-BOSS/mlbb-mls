@@ -1,4 +1,5 @@
 # handlers/start_handler.py
+
 from telegram import Update
 from telegram.ext import ContextTypes
 from handlers.main_menu import get_main_menu_keyboard
