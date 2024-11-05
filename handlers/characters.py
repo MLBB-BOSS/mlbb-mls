@@ -2,7 +2,7 @@
 from telegram import Update, ReplyKeyboardMarkup, KeyboardButton
 from telegram.ext import ContextTypes
 from handlers.states import States
-from utils.data_loader import load_all_heroes, load_hero_data
+from utils.data_loader import load_all_heroes
 import asyncio
 import logging
 
@@ -23,6 +23,8 @@ async def handle_characters_menu(update: Update, context: ContextTypes.DEFAULT_T
     user_input = update.message.text.strip()
     user_id = update.effective_user.id
     current_time = asyncio.get_running_loop().time()
+    if 'last_message_time' not in context.bot_data:
+        context.bot_data['last_message_time'] = {}
     context.bot_data['last_message_time'][user_id] = current_time
 
     if user_input == "⚔️ Порівняння героїв":
@@ -36,10 +38,9 @@ async def handle_characters_menu(update: Update, context: ContextTypes.DEFAULT_T
         return States.SELECTING_COUNTER_HERO
 
     elif user_input == "🗂 Список героїв":
-        classes = list(HEROES_BY_CLASS.keys())
         buttons = []
-        for cls in classes:
-            buttons.append([KeyboardButton(cls)])
+        for class_name in HEROES_BY_CLASS.keys():
+            buttons.append([KeyboardButton(class_name)])
         buttons.append([KeyboardButton("🔙 Назад")])
         reply_markup = ReplyKeyboardMarkup(buttons, resize_keyboard=True)
         await update.message.reply_text("Оберіть клас героя:", reply_markup=reply_markup)
@@ -181,8 +182,7 @@ async def handle_hero_functions_menu(update: Update, context: ContextTypes.DEFAU
 
     return States.HERO_FUNCTIONS_MENU
 
-# Додано відсутні функції для уникнення ImportError
-
+# Обробники для інших станів
 async def handle_comparison_first_hero(update: Update, context: ContextTypes.DEFAULT_TYPE) -> int:
     await update.message.reply_text("Функція порівняння героїв наразі не реалізована.")
     return States.CHARACTERS_MENU
