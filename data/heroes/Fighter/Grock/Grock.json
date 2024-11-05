@@ -1,6 +1,6 @@
 {
     "name": "Grock",
-    "class": "Борець",
+    "class": "Fighter",
     "attack_type": "Фізичний",
     "additional_effects": "Перебуваючи біля стін або турелей, отримує додатковий захист та урон.",
     "recommended_items": [
