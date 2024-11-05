@@ -1,11 +1,12 @@
 # utils/data_loader.py
+
 import json
 import os
 import logging
 
 logger = logging.getLogger(__name__)
 
-def load_all_heroes():
+def load_all_heroes() -> Dict[str, list]:
     heroes_by_class = {}
     heroes_path = 'data/heroes'
     for class_name in os.listdir(heroes_path):
@@ -29,7 +30,7 @@ def load_all_heroes():
             logger.warning(f"Очікувалась директорія для класу, але знайдено файл: {class_path}")
     return heroes_by_class
 
-def load_heroes_data():
+def load_heroes_data() -> Dict[str, dict]:
     heroes_data = {}
     heroes_path = 'data/heroes'
     for class_name in os.listdir(heroes_path):
