@@ -132,7 +132,7 @@ async def handle_hero_functions_menu(update: Update, context: ContextTypes.DEFAU
         return States.HERO_FUNCTIONS_MENU
 
 async def get_hero_info(hero_name: str, context: ContextTypes.DEFAULT_TYPE) -> str:
-    """Функція для отримання детальної інформації про героя через AI API."""
+    """Функція для отримання детальної інформації про героя через OpenAI API."""
     try:
         # Отримання базової інформації про героя
         heroes_data = context.bot_data.get('heroes_data', {})
@@ -197,14 +197,17 @@ async def get_hero_info(hero_name: str, context: ContextTypes.DEFAULT_TYPE) -> s
 
         # Перевірка наявності кешованої відповіді
         cache = context.bot_data.get('ai_responses', {})
-        cache_key = f"{hero_name}_{hero_class}"
+        cache_key = f"{hero_name}_{hero_class}"  # Виправлено: hero_class має бути визначено
+        if not cache_key:
+            cache_key = f"{hero_name}"
+
         if cache_key in cache:
             logger.info(f"Отримано дані з кешу для {hero_name} ({hero_class})")
             return cache[cache_key]
 
         # Виклик OpenAI API
         response = await openai.ChatCompletion.acreate(
-            model="gpt-4",
+            model="gpt-3.5-turbo",  # Заміна моделі на GPT-3.5-turbo
             messages=[
                 {"role": "system", "content": system_prompt},
                 {"role": "user", "content": user_prompt}
@@ -225,13 +228,10 @@ async def get_hero_info(hero_name: str, context: ContextTypes.DEFAULT_TYPE) -> s
         logger.info(f"Відповідь від AI успішно отримана для героя: {hero_name}")
 
         return formatted_text
-    except Exception as e:
-        logger.error(f"Помилка при зверненні до OpenAI API: {e}")
-        return "⚠️ Сталася невідома помилка при обробці вашого запиту."
 
-def format_ai_response(ai_text: str) -> str:
-    """Форматуємо відповідь від AI для відправки користувачу."""
-    # Додайте додаткове форматування, наприклад, HTML
-    formatted_text = ai_text.replace('\n', '<br>')
-    return formatted_text
-                           
+    def format_ai_response(ai_text: str) -> str:
+        """Форматуємо відповідь від AI для відправки користувачу."""
+        # Замінюємо символи нового рядка на <br> для HTML форматування
+        formatted_text = ai_text.replace('\n', '<br>')
+        return formatted_text
+        
