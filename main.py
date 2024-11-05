@@ -1,4 +1,5 @@
 # main.py
+
 import logging
 import os
 from telegram.ext import (
@@ -16,8 +17,9 @@ from handlers.characters import (
     handle_hero_functions_menu
 )
 from handlers.profile import profile_handler, profile_menu_handler
-from handlers.start_handler import start  # Переконайтеся, що цей файл існує
+from handlers.start_handler import start
 from utils.data_loader import load_all_heroes, load_heroes_data
+import asyncio
 
 # Налаштування логування
 logging.basicConfig(
@@ -26,9 +28,9 @@ logging.basicConfig(
 )
 logger = logging.getLogger(__name__)
 
-def main():
-    TELEGRAM_BOT_TOKEN = os.environ.get('TELEGRAM_BOT_TOKEN')
-    OPENAI_API_KEY = os.environ.get('OPENAI_API_KEY')
+async def main():
+    TELEGRAM_BOT_TOKEN = os.getenv('TELEGRAM_BOT_TOKEN')
+    OPENAI_API_KEY = os.getenv('OPENAI_API_KEY')
 
     if not TELEGRAM_BOT_TOKEN:
         logger.error("Будь ласка, встановіть TELEGRAM_BOT_TOKEN як змінну середовища.")
@@ -48,9 +50,9 @@ def main():
     # Додаємо обробник команди /start
     application.add_handler(CommandHandler('start', start))
 
-    # Додаємо обробник розмови
+    # Додаємо ConversationHandler для складних сценаріїв
     conv_handler = ConversationHandler(
-        entry_points=[MessageHandler(filters.TEXT & ~filters.COMMAND, main_menu_handler)],
+        entry_points=[CommandHandler('start', start)],
         states={
             States.MAIN_MENU: [
                 MessageHandler(filters.TEXT & ~filters.COMMAND, main_menu_handler)
@@ -79,13 +81,34 @@ def main():
     # Додаємо обробник невідомих команд
     application.add_handler(MessageHandler(filters.COMMAND, unknown_command))
 
+    # Додаємо обробник тригерних слів
+    application.add_handler(MessageHandler(filters.TEXT & ~filters.COMMAND, handle_trigger_words))
+
     # Зберігаємо завантажені дані в bot_data
     application.bot_data['heroes_by_class'] = heroes_by_class
     application.bot_data['heroes_data'] = heroes_data
 
     logger.info("🔄 Бот запущено.")
-    application.run_polling()
+    await application.run_polling()
+
+# Функція для обробки тригерних слів (якщо потрібна)
+async def handle_trigger_words(update: Update, context: ContextTypes.DEFAULT_TYPE) -> None:
+    user_id = update.effective_user.id
+    message_text = update.message.text.lower()
+
+    TRIGGER_WORDS = ["герой", "персонаж", "геймплей", "mlbb", "mobile legends"]  # Приклад тригерних слів
+
+    if any(trigger in message_text for trigger in TRIGGER_WORDS):
+        # Вибір випадкового героя
+        heroes_data = context.bot_data.get('heroes_data', {})
+        if not heroes_data:
+            await update.message.reply_text("⚠️ Інформація про героїв наразі недоступна.")
+            return
+
+        hero_name = random.choice(list(heroes_data.keys()))
+        gpt_response = await handle_gpt_query(hero_name, context)
+        await update.message.reply_text(gpt_response, parse_mode='HTML', disable_web_page_preview=True)
 
 if __name__ == '__main__':
-    main()
+    asyncio.run(main())
     
