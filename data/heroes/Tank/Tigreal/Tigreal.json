@@ -1,0 +1,49 @@
+{
+    "name": "Tigreal",
+    "class": "Tank",
+    "role": "Танк / Ініціатор",
+    "speed": "Середня",
+    "hp": "3000 на 1 рівні, зростає до 6800+",
+    "physical_defense": "Високий",
+    "magical_defense": "Середній",
+    "attack_speed": "Середня",
+    "skills": {
+        "passive": {
+            "name": "Fearless Warrior",
+            "description": "Пасивна навичка Tigreal, яка надає йому додаткову фізичну захисту при кожному використанні навички."
+        },
+        "skill1": {
+            "name": "Attack Wave",
+            "description": "Tigreal створює хвилю ударів, завдаючи фізичного урону ворогам на шляху.",
+            "cooldown": "8 секунд",
+            "mana_cost": 60
+        },
+        "skill2": {
+            "name": "Sacred Hammer",
+            "description": "Tigreal піднімає молот, завдаючи фізичного урону ворогам у вибраній області та сповільнюючи їх.",
+            "cooldown": "12 секунд",
+            "mana_cost": 70
+        },
+        "ultimate": {
+            "name": "Implosion",
+            "description": "Tigreal створює магічну сферу, яка затягує ворогів у центр та завдає значного фізичного урону.",
+            "cooldown": "45 секунд",
+            "mana_cost": 120
+        }
+    },
+    "strategies": {
+        "aggressive": "Використовувати Sacred Hammer та Implosion для ініціювання боїв.",
+        "defensive": "Захищати команду за допомогою Fearless Warrior та Attack Wave.",
+        "micro": "Ефективне використання навичок для контролю ворогів."
+    },
+    "recommendations": {
+        "early_game": "Фарм та контроль лінії.",
+        "mid_game": "Ініціювання боїв та використання навичок.",
+        "late_game": "Максимальне використання навичок для підтримки команди."
+    },
+    "drafts": {
+        "ideal_allies": "Герої, що добре поєднуються з Tigreal.",
+        "avoid_enemies": "Типи ворогів, яких слід остерігатися.",
+        "strong_drafts": "Командні склади з Tigreal як ініціатором."
+    }
+}
