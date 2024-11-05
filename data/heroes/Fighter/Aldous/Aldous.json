@@ -1,0 +1,47 @@
+{
+    "name": "Aldous",
+    "class": "Борець",
+    "attack_type": "Фізичний",
+    "additional_effects": "Накопичує \"Soul Steal\" при вбивстві ворогів, що підвищує урон від базових атак.",
+    "recommended_items": [
+        "Warrior Boots",
+        "Endless Battle",
+        "Blade of Despair",
+        "Queen's Wings",
+        "Immortality"
+    ],
+    "base_stats": {
+        "health": 2750,
+        "physical_attack": 120,
+        "physical_defense": 25,
+        "magic_defense": 15,
+        "movement_speed": 260,
+        "attack_speed": 0.9,
+        "health_regen": 7,
+        "mana_regen": 0
+    },
+    "skills": {
+        "passive": {
+            "name": "Contract: Transform",
+            "description": "Кожного разу, коли Aldous вбиває ворога, його атака підсилюється, накопичуючи \"Soul Steal\". Бонус до атаки накопичується при кожному вдалому вбивстві або допомозі."
+        },
+        "skill1": {
+            "name": "Contract: Soul Steal",
+            "description": "Aldous заряджає свою атаку, завдаючи додаткового фізичного урону. При вдалому вбивстві героїв і міньйонів навичка посилюється.",
+            "cooldown": "5 секунд",
+            "mana_cost": 40
+        },
+        "skill2": {
+            "name": "Contract: Explosion",
+            "description": "Aldous активує захисний щит, який поглинає урон. Через кілька секунд щит вибухає, завдаючи урону навколо та оглушуючи ворогів.",
+            "cooldown": "8 секунд",
+            "mana_cost": 60
+        },
+        "ultimate": {
+            "name": "Contract: Chase Fate",
+            "description": "Aldous виявляє всіх ворожих героїв на карті. Він може вибрати ворога та миттєво на нього націлитися, наносячи значний урон.",
+            "cooldown": "60 секунд",
+            "mana_cost": 100
+        }
+    }
+}
