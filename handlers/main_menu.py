@@ -3,8 +3,8 @@ from telegram import Update, ReplyKeyboardMarkup, KeyboardButton
 from telegram.ext import ContextTypes
 from handlers.states import States
 from handlers.characters import get_hero_classes_keyboard
-from handlers.profile import profile_handler
-from handlers.tier_list import send_tier_list  # Імпортуємо нову функцію
+from handlers.profile import profile_handler, profile_menu_handler
+from handlers.tier_list import send_tier_list  # Якщо існує
 import logging
 
 logger = logging.getLogger(__name__)
@@ -34,3 +34,7 @@ async def main_menu_handler(update: Update, context: ContextTypes.DEFAULT_TYPE) 
     else:
         await update.message.reply_text("Ця функція наразі недоступна. Оберіть іншу опцію.")
         return States.MAIN_MENU
+
+async def unknown_command(update: Update, context: ContextTypes.DEFAULT_TYPE) -> None:
+    await update.message.reply_text("⚠️ Вибачте, я не розумію цю команду. Будь ласка, оберіть опцію з клавіатури.")
+    
