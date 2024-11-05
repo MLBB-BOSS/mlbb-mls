@@ -1,0 +1,32 @@
+{
+    "name": "Arlott",
+    "class": "Assassin",
+    "attack_type": "Physical",
+    "additional_effects": "",
+    "recommended_items": [],
+    "base_stats": {},
+    "skills": {
+        "passive": {
+            "name": "Demonic Gaze",
+            "description": "Arlott може позначати ворогів після використання навичок, і його атаки стають ефективнішими проти цих цілей."
+        },
+        "skill1": {
+            "name": "Dauntless Strike",
+            "description": "Arlott завдає потужного удару списом, уповільнюючи ворогів і завдаючи їм шкоди.",
+            "cooldown": "9 секунд.",
+            "mana_cost": 50
+        },
+        "skill2": {
+            "name": "Vengeance",
+            "description": "Arlott робить ривок вперед, наносячи шкоду ворогам на своєму шляху. Якщо він влучає в позначену ціль, час перезарядки навички скорочується.",
+            "cooldown": "12 секунд.",
+            "mana_cost": 70
+        },
+        "ultimate": {
+            "name": "Furious Pursuit",
+            "description": "Arlott збільшує свою швидкість та наносить посилені атаки протягом короткого часу.",
+            "cooldown": "40 секунд.",
+            "mana_cost": 100
+        }
+    }
+}
