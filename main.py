@@ -9,7 +9,7 @@ from telegram.ext import (
     filters
 )
 from handlers.states import States
-from handlers.main_menu import main_menu_handler
+from handlers.main_menu import main_menu_handler, unknown_command
 from handlers.characters import (
     handle_selecting_hero_class,
     handle_selecting_hero,
@@ -17,6 +17,7 @@ from handlers.characters import (
 )
 from handlers.profile import profile_handler, profile_menu_handler
 from handlers.start_handler import start  # Переконайтеся, що цей файл існує
+from utils.data_loader import load_all_heroes, load_heroes_data
 
 # Налаштування логування
 logging.basicConfig(
@@ -27,10 +28,21 @@ logger = logging.getLogger(__name__)
 
 def main():
     TELEGRAM_BOT_TOKEN = os.environ.get('TELEGRAM_BOT_TOKEN')
+    OPENAI_API_KEY = os.environ.get('OPENAI_API_KEY')
+
     if not TELEGRAM_BOT_TOKEN:
         logger.error("Будь ласка, встановіть TELEGRAM_BOT_TOKEN як змінну середовища.")
         return
 
+    if not OPENAI_API_KEY:
+        logger.error("Будь ласка, встановіть OPENAI_API_KEY як змінну середовища.")
+        return
+
+    # Завантаження даних про героїв
+    heroes_by_class = load_all_heroes()
+    heroes_data = load_heroes_data()
+
+    # Ініціалізація бота
     application = ApplicationBuilder().token(TELEGRAM_BOT_TOKEN).build()
 
     # Додаємо обробник команди /start
@@ -66,6 +78,10 @@ def main():
 
     # Додаємо обробник невідомих команд
     application.add_handler(MessageHandler(filters.COMMAND, unknown_command))
+
+    # Зберігаємо завантажені дані в bot_data
+    application.bot_data['heroes_by_class'] = heroes_by_class
+    application.bot_data['heroes_data'] = heroes_data
 
     logger.info("🔄 Бот запущено.")
     application.run_polling()
