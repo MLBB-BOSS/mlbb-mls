@@ -1,20 +1,19 @@
 # handlers/states.py
-from telegram.ext import ConversationHandler
 
 class States:
     MAIN_MENU = 0
     SELECTING_HERO_CLASS = 1
     SELECTING_HERO = 2
     HERO_FUNCTIONS_MENU = 3
-    STATISTICS = 4
-    GUIDES = 5
-    BUILDS = 6
-    NEWS = 7
-    EVENTS = 8
-    QUIZZES = 9
+    GUIDES = 4
+    BUILDS = 5
+    NEWS = 6
+    EVENTS = 7
+    QUIZZES = 8
+    QUIZ_IN_PROGRESS = 9
     ACHIEVEMENTS = 10
     COMMUNITY = 11
     POLLS = 12
     PROFILE = 13
     HELP = 14
-    # Add other states as needed
+    # Додайте інші стани за потреби
