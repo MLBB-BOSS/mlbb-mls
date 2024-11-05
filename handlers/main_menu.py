@@ -40,38 +40,38 @@ async def main_menu_handler(update: Update, context: ContextTypes.DEFAULT_TYPE) 
         await update.message.reply_text("Оберіть клас героя:", reply_markup=reply_markup)
         return States.SELECTING_HERO_CLASS
     elif user_input == "📊 Статистика":
-        await update.message.reply_text("Тут буде статистика героїв та мета гри...")
-        return States.STATISTICS
+        await statistics_handler(update, context)
+        return States.MAIN_MENU
     elif user_input == "📖 Гайди":
-        await update.message.reply_text("Доступні гайди по стратегії, використанню героїв та багато іншого...")
-        return States.GUIDES
+        await guides_handler(update, context)
+        return States.MAIN_MENU
     elif user_input == "🛠 Збірки":
-        await update.message.reply_text("Рекомендовані збірки предметів та емблем для героїв...")
-        return States.BUILDS
+        await builds_handler(update, context)
+        return States.MAIN_MENU
     elif user_input == "📰 Новини":
-        await update.message.reply_text("Останні новини та оновлення MLBB...")
-        return States.NEWS
+        await news_handler(update, context)
+        return States.MAIN_MENU
     elif user_input == "🎉 Події":
-        await update.message.reply_text("Інформація про поточні та майбутні події...")
-        return States.EVENTS
+        await events_handler(update, context)
+        return States.MAIN_MENU
     elif user_input == "📝 Вікторини":
-        await update.message.reply_text("Вікторини про MLBB...")
-        return States.QUIZZES
+        await quizzes_handler(update, context)
+        return States.MAIN_MENU
     elif user_input == "🏆 Досягнення":
-        await update.message.reply_text("Ваші досягнення у боті...")
-        return States.ACHIEVEMENTS
+        await achievements_handler(update, context)
+        return States.MAIN_MENU
     elif user_input == "🌐 Спільнота":
-        await update.message.reply_text("Приєднуйтесь до спільноти MLBB...")
-        return States.COMMUNITY
+        await community_handler(update, context)
+        return States.MAIN_MENU
     elif user_input == "📊 Опитування":
-        await update.message.reply_text("Поточні опитування та голосування...")
-        return States.POLLS
+        await polls_handler(update, context)
+        return States.MAIN_MENU
     elif user_input == "👤 Мій Профіль":
-        await update.message.reply_text("Ваш профіль гравця...")
-        return States.PROFILE
+        await profile_handler(update, context)
+        return States.MAIN_MENU
     elif user_input == "ℹ️ Допомога":
-        await update.message.reply_text("Інструкції по боту та допомога...")
-        return States.HELP
+        await help_handler(update, context)
+        return States.MAIN_MENU
     else:
         reply_markup = get_main_menu_keyboard()
         await update.message.reply_text("⚠️ Будь ласка, оберіть опцію з меню.", reply_markup=reply_markup)
