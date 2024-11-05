@@ -5,6 +5,9 @@ class States:
     SELECTING_HERO_CLASS = 1
     SELECTING_HERO = 2
     HERO_FUNCTIONS_MENU = 3
+    SEARCH_HERO = 4
+    PROFILE_MENU = 5
+    HERO_FUNCTIONS_MENU = 3
     STATISTICS = 4
     GUIDES = 5
     BUILDS = 6
@@ -17,4 +20,4 @@ class States:
     PROFILE = 13
     HELP = 14
     GUIDES_MENU = 15
-    # Додайте інші стани за потреби
+    # handlers/states.py
