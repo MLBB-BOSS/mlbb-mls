@@ -1,6 +1,6 @@
 {
     "name": "Gatotkaca",
-    "class": "Борець",
+    "class": "Fighter",
     "attack_type": "Фізичний",
     "additional_effects": "Отримуючи урон, накопичує \"Rage\", що збільшує урон базових атак.",
     "recommended_items": [
