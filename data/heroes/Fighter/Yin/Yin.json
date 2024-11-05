@@ -1,0 +1,47 @@
+{
+    "name": "Yin",
+    "class": "Борець",
+    "attack_type": "Фізичний",
+    "additional_effects": "Може перетворюватися на \"Лей Чи\", отримуючи посилені навички та збільшуючи урон.",
+    "recommended_items": [
+        "Warrior Boots",
+        "Bloodlust Axe",
+        "War Axe",
+        "Queen's Wings",
+        "Immortality"
+    ],
+    "base_stats": {
+        "health": 2750,
+        "physical_attack": 120,
+        "physical_defense": 25,
+        "magic_defense": 10,
+        "movement_speed": 260,
+        "attack_speed": 0.8,
+        "health_regen": 6.8,
+        "mana_regen": 3.2
+    },
+    "skills": {
+        "passive": {
+            "name": "Leave It to Me",
+            "description": "Yin отримує додатковий урон, коли поблизу немає союзників, що підвищує його ефективність у ситуаціях один на один."
+        },
+        "skill1": {
+            "name": "Charged Punch",
+            "description": "Yin заряджає свій кулак, підвищуючи швидкість руху на 60% протягом 2 секунд. Наступна базова атака завдає посиленого фізичного урону та оглушує ціль.",
+            "cooldown": "7 секунд",
+            "mana_cost": 40
+        },
+        "skill2": {
+            "name": "Instant Blast",
+            "description": "Yin завдає удар по землі, створюючи вибух, який завдає фізичного урону та сповільнює ворогів у зоні дії.",
+            "cooldown": "10 секунд",
+            "mana_cost": 50
+        },
+        "ultimate": {
+            "name": "My Turn",
+            "description": "Yin захоплює ворога в окрему область на короткий час, змушуючи його битися один на один. Якщо Yin перемагає, час перезарядки ультимативної навички скидається.",
+            "cooldown": "60 секунд",
+            "mana_cost": 100
+        }
+    }
+}
