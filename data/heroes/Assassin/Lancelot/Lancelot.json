@@ -1,0 +1,32 @@
+{
+    "name": "Lancelot",
+    "class": "Assassin",
+    "attack_type": "Physical",
+    "additional_effects": "",
+    "recommended_items": [],
+    "base_stats": {},
+    "skills": {
+        "passive": {
+            "name": "Soul Cutter",
+            "description": "Кожні 10 секунд Lancelot виконує посилену базову атаку, яка знижує фізичний захист цілі на 10% на 4 секунди."
+        },
+        "skill1": {
+            "name": "Puncture",
+            "description": "Lancelot стрімко атакує вперед, завдаючи фізичного урону ворогам на шляху. Якщо він влучає в нову ціль, перезарядка навички скидається.",
+            "cooldown": "14 секунд.",
+            "mana_cost": 50
+        },
+        "skill2": {
+            "name": "Thorned Rose",
+            "description": "Ланселот виконує трикутний удар, завдаючи фізичної шкоди ворогам у зоні дії та уповільнюючи їх на 1 секунду.",
+            "cooldown": "8 секунд.",
+            "mana_cost": 60
+        },
+        "ultimate": {
+            "name": "Phantom Execution",
+            "description": "Ланселот підкидає обрану ціль у повітря та завдає їй три послідовні удари, кожен з яких завдає фізичного урону.",
+            "cooldown": "40 секунд.",
+            "mana_cost": 100
+        }
+    }
+}
