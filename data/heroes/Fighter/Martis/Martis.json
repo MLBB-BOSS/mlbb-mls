@@ -1,6 +1,6 @@
 {
     "name": "Martis",
-    "class": "Борець",
+    "class": "Fighter",
     "attack_type": "Фізичний",
     "additional_effects": "Після використання навичок збільшує швидкість атаки та руху.",
     "recommended_items": [
