@@ -19,15 +19,45 @@ def get_main_menu_keyboard():
 async def main_menu_handler(update: Update, context: ContextTypes.DEFAULT_TYPE) -> int:
     user_input = update.message.text.strip()
     if user_input == "🦸 Герої":
-        # Ваш код для обробки вибору "Герої"
-        pass
-    elif user_input == "🔍 Пошук":
-        await update.message.reply_text("Введіть ім'я героя для пошуку:")
-        return States.SEARCH_HERO
+        from handlers.characters import handle_selecting_hero_class
+        await handle_selecting_hero_class(update, context)
+        return States.SELECTING_HERO_CLASS
+    elif user_input == "📊 Статистика":
+        await update.message.reply_text("📊 Статистика наразі недоступна.")
+        return States.MAIN_MENU
+    elif user_input == "📖 Гайди":
+        await update.message.reply_text("📖 Гайди наразі недоступні.")
+        return States.MAIN_MENU
+    elif user_input == "🛠 Збірки":
+        await update.message.reply_text("🛠 Збірки наразі недоступні.")
+        return States.MAIN_MENU
+    elif user_input == "📰 Новини":
+        await update.message.reply_text("📰 Новини наразі недоступні.")
+        return States.MAIN_MENU
+    elif user_input == "🎉 Події":
+        await update.message.reply_text("🎉 Події наразі недоступні.")
+        return States.MAIN_MENU
+    elif user_input == "📝 Вікторини":
+        await update.message.reply_text("📝 Вікторини наразі недоступні.")
+        return States.MAIN_MENU
+    elif user_input == "🏆 Досягнення":
+        await update.message.reply_text("🏆 Досягнення наразі недоступні.")
+        return States.MAIN_MENU
+    elif user_input == "🌐 Спільнота":
+        await update.message.reply_text("🌐 Спільнота наразі недоступна.")
+        return States.MAIN_MENU
+    elif user_input == "📊 Опитування":
+        await update.message.reply_text("📊 Опитування наразі недоступні.")
+        return States.MAIN_MENU
     elif user_input == "👤 Мій Профіль":
         from handlers.profile import profile_handler
         return await profile_handler(update, context)
-    # Інші умови...
+    elif user_input == "ℹ️ Допомога":
+        await update.message.reply_text("ℹ️ Допомога наразі недоступна.")
+        return States.MAIN_MENU
+    elif user_input == "🔍 Пошук":
+        from handlers.search import handle_search_menu
+        return await handle_search_menu(update, context)
     else:
         reply_markup = get_main_menu_keyboard()
         await update.message.reply_text("⚠️ Будь ласка, оберіть опцію з меню.", reply_markup=reply_markup)
