@@ -1,0 +1,49 @@
+{
+    "name": "Fredrinn",
+    "class": "Tank / Fighter",
+    "role": "Танк / Боєць",
+    "speed": "Середня",
+    "hp": "Високе",
+    "physical_defense": "Добрий",
+    "magical_defense": "Середній",
+    "attack_speed": "Середня",
+    "skills": {
+        "passive": {
+            "name": "Crystalline Armor",
+            "description": "Пасивна навичка Fredrinn, яка дозволяє йому поглинати частину отриманого урону та відновлювати здоров'я."
+        },
+        "skill1": {
+            "name": "Piercing Strike",
+            "description": "Fredrinn завдає фізичного урону ворогам у вибраному напрямку, проходячи через них без зупинок.",
+            "cooldown": "8 секунд",
+            "mana_cost": 40
+        },
+        "skill2": {
+            "name": "Brave Assault",
+            "description": "Fredrinn здійснює серію швидких ударів, завдаючи фізичного урону ворогам поруч.",
+            "cooldown": "12 секунд",
+            "mana_cost": 60
+        },
+        "ultimate": {
+            "name": "Energy Eruption",
+            "description": "Fredrinn викликає енергетичний вибух, завдаючи магічного урону ворогам у вибраній області.",
+            "cooldown": "45 секунд",
+            "mana_cost": 100
+        }
+    },
+    "strategies": {
+        "aggressive": "Використовувати Brave Assault та Energy Eruption для ініціювання боїв.",
+        "defensive": "Захищати команду за допомогою Crystalline Armor та Piercing Strike.",
+        "micro": "Ефективне використання навичок для контролю ворогів."
+    },
+    "recommendations": {
+        "early_game": "Фарм та накопичення щитів.",
+        "mid_game": "Ініціювання боїв та використання навичок.",
+        "late_game": "Максимальне використання Energy Eruption."
+    },
+    "drafts": {
+        "ideal_allies": "Герої, що добре поєднуються з Fredrinn.",
+        "avoid_enemies": "Типи ворогів, яких слід остерігатися.",
+        "strong_drafts": "Командні склади з Fredrinn як танком та бійцем."
+    }
+}
