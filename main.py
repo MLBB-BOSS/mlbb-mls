@@ -16,6 +16,7 @@ from handlers.characters import (
     handle_hero_functions_menu
 )
 from handlers.profile import profile_handler, profile_menu_handler
+from handlers.start_handler import start  # Переконайтеся, що цей файл існує
 
 # Налаштування логування
 logging.basicConfig(
@@ -32,15 +33,7 @@ def main():
 
     application = ApplicationBuilder().token(TELEGRAM_BOT_TOKEN).build()
 
-    # Завантаження даних героїв та збереження у bot_data
-    from utils.data_loader import load_all_heroes, load_heroes_data
-    heroes_by_class = load_all_heroes()
-    heroes_data = load_heroes_data()
-    application.bot_data['heroes_by_class'] = heroes_by_class
-    application.bot_data['heroes_data'] = heroes_data
-
     # Додаємо обробник команди /start
-    from handlers.start_handler import start
     application.add_handler(CommandHandler('start', start))
 
     # Додаємо обробник розмови
@@ -66,10 +59,13 @@ def main():
         },
         fallbacks=[
             CommandHandler('start', start),
-            # Додайте обробник для невідомих команд, якщо необхідно
+            MessageHandler(filters.COMMAND, unknown_command)  # Обробка невідомих команд
         ]
     )
     application.add_handler(conv_handler)
+
+    # Додаємо обробник невідомих команд
+    application.add_handler(MessageHandler(filters.COMMAND, unknown_command))
 
     logger.info("🔄 Бот запущено.")
     application.run_polling()
