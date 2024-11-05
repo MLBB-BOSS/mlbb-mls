@@ -1,5 +1,6 @@
-import os
+# utils/data_loader.py
 import json
+import os
 import logging
 
 logger = logging.getLogger(__name__)
@@ -52,3 +53,4 @@ def load_heroes_data():
                 else:
                     logger.warning(f"Очікувалась директорія для героя, але знайдено файл: {hero_path}")
     return heroes_data
+    
