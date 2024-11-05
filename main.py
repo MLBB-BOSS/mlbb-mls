@@ -16,9 +16,8 @@ from handlers.characters import (
     handle_selecting_hero,
     handle_hero_functions_menu
 )
-# Видаляємо зайві імпорти
 
-# Налаштування логування
+# Set up logging
 logging.basicConfig(
     format='%(asctime)s - %(name)s - %(levelname)s - %(message)s',
     level=logging.INFO
@@ -28,10 +27,6 @@ logger = logging.getLogger(__name__)
 def main():
     application = ApplicationBuilder().token(TELEGRAM_BOT_TOKEN).build()
 
-    # Ініціалізація bot_data
-    application.bot_data['last_message_time'] = {}
-
-    # Додаємо ConversationHandler
     conv_handler = ConversationHandler(
         entry_points=[CommandHandler('start', start)],
         states={
@@ -39,17 +34,16 @@ def main():
             States.SELECTING_HERO_CLASS: [MessageHandler(filters.TEXT & ~filters.COMMAND, handle_selecting_hero_class)],
             States.SELECTING_HERO: [MessageHandler(filters.TEXT & ~filters.COMMAND, handle_selecting_hero)],
             States.HERO_FUNCTIONS_MENU: [MessageHandler(filters.TEXT & ~filters.COMMAND, handle_hero_functions_menu)],
-            # Додайте інші стани за потребою
+            # Add other states as needed
         },
         fallbacks=[
             CommandHandler('start', start),
-            # Можна додати обробник для невідомих команд
+            # Add a handler for unknown commands if necessary
         ]
     )
     application.add_handler(conv_handler)
 
-    # Запуск бота
-    logger.info("🔄 Бот запущено.")
+    logger.info("🔄 Bot started.")
     application.run_polling()
 
 if __name__ == '__main__':
