@@ -2,82 +2,42 @@
 from telegram import Update, ReplyKeyboardMarkup, KeyboardButton
 from telegram.ext import ContextTypes
 from handlers.states import States
+from utils.data_loader import load_all_heroes
 import asyncio
 import logging
 
 logger = logging.getLogger(__name__)
 
-def get_characters_menu_keyboard():
-    buttons = [
-        [KeyboardButton("⚔️ Порівняння героїв"), KeyboardButton("🎯 Контргерої")],
-        [KeyboardButton("🗂 Список героїв")],
-        [KeyboardButton("🔙 Назад")]
-    ]
-    return ReplyKeyboardMarkup(buttons, resize_keyboard=True)
+# Завантаження всіх героїв
+HEROES_BY_CLASS = load_all_heroes()
 
-def get_guides_menu_keyboard():
+def get_main_menu_keyboard():
     buttons = [
-        [KeyboardButton("📝 Гайд 1"), KeyboardButton("📝 Гайд 2")],
-        [KeyboardButton("🔙 Назад")]
+        [KeyboardButton("🦸 Герої")],
+        # Ви можете додати інші кнопки за потребою
     ]
     return ReplyKeyboardMarkup(buttons, resize_keyboard=True)
 
 async def main_menu_handler(update: Update, context: ContextTypes.DEFAULT_TYPE) -> int:
-    user_id = update.effective_user.id
-    current_time = asyncio.get_running_loop().time()
-    context.bot_data['last_message_time'][user_id] = current_time
-
     user_input = update.message.text.strip()
-    logger.debug(f"Вибір з головного меню: {user_input}")
-
-    # Логіка обробки вибору меню
     if user_input == "🦸 Герої":
-        # Переходимо до підменю Героїв
-        reply_markup = get_characters_menu_keyboard()
-        await update.message.reply_text("🦸 Оберіть опцію:", reply_markup=reply_markup)
-        return States.CHARACTERS_MENU
-
-    elif user_input == "📚 Гайди":
-        # Переходимо до підменю Гайдів
-        reply_markup = get_guides_menu_keyboard()
-        await update.message.reply_text("📚 Оберіть гайд:", reply_markup=reply_markup)
-        return States.GUIDES_MENU
-
-    elif user_input == "🏆 Турніри":
-        # Переходимо до підменю Турнірів
-        await update.message.reply_text("🏆 Функція 'Турніри' ще не реалізована.")
-        return States.MAIN_MENU
-
-    elif user_input == "🔄 Оновлення":
-        # Переходимо до підменю Оновлень
-        await update.message.reply_text("🔄 Функція 'Оновлення' ще не реалізована.")
-        return States.MAIN_MENU
-
-    elif user_input == "🆓 Початківець":
-        # Переходимо до підменю Початківця
-        await update.message.reply_text("🆓 Функція 'Початківець' ще не реалізована.")
-        return States.MAIN_MENU
-
-    elif user_input == "🔍 Пошук":
-        # Переходимо до підменю Пошуку
-        await update.message.reply_text("🔍 Функція 'Пошук' ще не реалізована.")
-        return States.MAIN_MENU
-
-    elif user_input == "📰 Новини":
-        # Переходимо до підменю Новин
-        await update.message.reply_text("📰 Функція 'Новини' ще не реалізована.")
-        return States.MAIN_MENU
-
-    elif user_input == "💡 Допомога":
-        # Переходимо до підменю Допомоги
-        await update.message.reply_text("💡 Функція 'Допомога' ще не реалізована.")
-        return States.MAIN_MENU
-
-    elif user_input == "🎮 Вікторини":
-        # Переходимо до підменю Вікторин
-        await update.message.reply_text("🎮 Функція 'Вікторини' ще не реалізована.")
-        return States.MAIN_MENU
-
+        # Відображаємо клавіатуру з класами героїв
+        buttons = []
+        classes = list(HEROES_BY_CLASS.keys())
+        row = []
+        for idx, class_name in enumerate(classes, 1):
+            row.append(KeyboardButton(class_name))
+            if idx % 3 == 0:
+                buttons.append(row)
+                row = []
+        if row:
+            buttons.append(row)
+        buttons.append([KeyboardButton("🔙 Назад")])
+        reply_markup = ReplyKeyboardMarkup(buttons, resize_keyboard=True)
+        await update.message.reply_text("Оберіть клас героя:", reply_markup=reply_markup)
+        return States.SELECTING_HERO_CLASS
     else:
-        await update.message.reply_text("⚠️ Будь ласка, оберіть опцію з меню.")
+        # Якщо введено невідому команду
+        reply_markup = get_main_menu_keyboard()
+        await update.message.reply_text("⚠️ Будь ласка, оберіть опцію з меню.", reply_markup=reply_markup)
         return States.MAIN_MENU
