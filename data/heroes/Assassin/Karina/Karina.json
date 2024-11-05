@@ -1,0 +1,32 @@
+{
+    "name": "Karina",
+    "class": "Assassin",
+    "attack_type": "Magical",
+    "additional_effects": "",
+    "recommended_items": [],
+    "base_stats": {},
+    "skills": {
+        "passive": {
+            "name": "Shadow Combo",
+            "description": "Після двох послідовних базових атак третя атака завдає магічного урону та знижує перезарядку її навичок на 1 секунду."
+        },
+        "skill1": {
+            "name": "Dance of Blades",
+            "description": "Karina входить у стан, який відбиває базові атаки ворогів, зменшуючи отриманий урон на 50% та завдаючи магічного урону атакуючим. Триває 3 секунди.",
+            "cooldown": "8 секунд.",
+            "mana_cost": 60
+        },
+        "skill2": {
+            "name": "Dance of Death",
+            "description": "Karina обертається, завдаючи магічного урону всім ворогам поблизу.",
+            "cooldown": "6 секунд.",
+            "mana_cost": 50
+        },
+        "ultimate": {
+            "name": "Shadow Assault",
+            "description": "Karina стрімко атакує обрану ціль, завдаючи магічного урону. Якщо ціль гине протягом 5 секунд після атаки, перезарядка навички скидається.",
+            "cooldown": "36 секунд.",
+            "mana_cost": 100
+        }
+    }
+}
