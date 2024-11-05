@@ -8,12 +8,12 @@ logger = logging.getLogger(__name__)
 
 def get_main_menu_keyboard():
     buttons = [
-        [KeyboardButton("🦸 Герої")],
-        # Додайте інші кнопки за потребою
+        [KeyboardButton("🦸 Heroes")],
+        # Add other buttons as needed
     ]
     return ReplyKeyboardMarkup(buttons, resize_keyboard=True)
 
 async def start(update: Update, context: ContextTypes.DEFAULT_TYPE) -> int:
     reply_markup = get_main_menu_keyboard()
-    await update.message.reply_text("👋 Вітаю! Оберіть опцію з меню:", reply_markup=reply_markup)
+    await update.message.reply_text("👋 Welcome! Choose an option from the menu:", reply_markup=reply_markup)
     return States.MAIN_MENU
