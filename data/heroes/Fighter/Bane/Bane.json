@@ -1,0 +1,47 @@
+{
+    "name": "Bane",
+    "class": "Борець",
+    "attack_type": "Фізичний",
+    "additional_effects": "Після використання навичок наступна базова атака завдає додаткового урону та сповільнює ворогів.",
+    "recommended_items": [
+        "Magic Shoes",
+        "Bloodlust Axe",
+        "Hunter Strike",
+        "Queen's Wings",
+        "Immortality"
+    ],
+    "base_stats": {
+        "health": 2770,
+        "physical_attack": 120,
+        "physical_defense": 25,
+        "magic_defense": 10,
+        "movement_speed": 260,
+        "attack_speed": 0.9,
+        "health_regen": 7,
+        "mana_regen": 0
+    },
+    "skills": {
+        "passive": {
+            "name": "Shark Bite",
+            "description": "Після кожного використання навичок атака Bane підсилюється, додаючи додатковий урон."
+        },
+        "skill1": {
+            "name": "Crab Claw Cannon",
+            "description": "Bane стріляє гарматним ядром у ворога, завдаючи фізичного урону та знижуючи його швидкість.",
+            "cooldown": "6 секунд",
+            "mana_cost": 50
+        },
+        "skill2": {
+            "name": "Ale",
+            "description": "Bane випиває еліксир, відновлюючи здоров'я та підвищуючи свій урон.",
+            "cooldown": "8 секунд",
+            "mana_cost": 40
+        },
+        "ultimate": {
+            "name": "Deadly Catch",
+            "description": "Bane закликає зграю акул, які завдають урону ворогам у великій зоні.",
+            "cooldown": "50 секунд",
+            "mana_cost": 100
+        }
+    }
+}
