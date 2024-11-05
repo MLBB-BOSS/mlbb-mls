@@ -1,6 +1,6 @@
 {
     "name": "Jawhead",
-    "class": "Борець",
+    "class": "Fighter",
     "attack_type": "Фізичний",
     "additional_effects": "Після використання навичок отримує \"Енергію\", яка підсилює наступні базові атаки.",
     "recommended_items": [
