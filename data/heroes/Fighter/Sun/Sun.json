@@ -1,6 +1,6 @@
 {
     "name": "Sun",
-    "class": "Борець",
+    "class": "Fighter",
     "attack_type": "Фізичний",
     "additional_effects": "Базові атаки створюють клони, які атакують ворогів, завдаючи частину урону від оригіналу.",
     "recommended_items": [
