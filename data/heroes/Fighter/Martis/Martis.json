@@ -1,0 +1,41 @@
+{
+    "name": "Martis",
+    "class": "Борець",
+    "attack_type": "Фізичний",
+    "additional_effects": "Після використання навичок збільшує швидкість атаки та руху.",
+    "recommended_items": [
+        "Warrior Boots",
+        "Bloodlust Axe",
+        "War Axe",
+        "Queen's Wings",
+        "Immortality"
+    ],
+    "base_stats": {
+        "health": 2700,
+        "physical_attack": 121,
+        "physical_defense": 25,
+        "magic_defense": 10,
+        "movement_speed": 260,
+        "attack_speed": 0.9,
+        "health_regen": 7,
+        "mana_regen": 0
+    },
+    "skills": {
+        "passive": {
+            "name": "Ashura's Wrath",
+            "description": "Martis отримує додаткову швидкість атаки кожного разу, коли використовує навички."
+        },
+        "skill1": {
+            "name": "Ashura Aura",
+            "description": "Martis тягне ворогів у напрямку себе, завдаючи фізичного урону."
+        },
+        "skill2": {
+            "name": "Mortal Coil",
+            "description": "Martis завдає серію атак перед собою, отримуючи імунітет до контролю під час використання."
+        },
+        "ultimate": {
+            "name": "Decimation",
+            "description": "Martis завдає фінального удару ворогу з низьким здоров'ям. Якщо ціль гине від цієї атаки, навичка скидається."
+        }
+    }
+}
