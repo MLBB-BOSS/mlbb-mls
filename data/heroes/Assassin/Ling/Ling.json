@@ -1,0 +1,35 @@
+{
+    "name": "Ling",
+    "class": "Assassin",
+    "attack_type": "Physical",
+    "additional_effects": "",
+    "recommended_items": [],
+    "base_stats": {},
+    "skills": {
+        "passive": {
+            "name": "Cloud Walker",
+            "description": "Ling може пересуватися по стінах, не витрачаючи енергію. Під час перебування на стіні його відновлення енергії збільшується на 2.5 одиниці за секунду."
+        },
+        "skill1": {
+            "name": "Finch Poise",
+            "description": "Ling стрибає на обрану стіну, входячи в стан 'Cloud Walker'. Використання навички під час перебування на стіні дозволяє йому стрибати на інші стіни без перезарядки.",
+            "cooldown": "11 секунд.",
+            "mana_cost": null,
+            "energy_cost": 35
+        },
+        "skill2": {
+            "name": "Defiant Sword",
+            "description": "Ling стрімко атакує обрану ціль, завдаючи фізичного урону. Якщо він використовує навичку під час перебування на стіні, атака стає критичною та уповільнює ворога на 30% на 1.5 секунди.",
+            "cooldown": "5 секунд.",
+            "mana_cost": null,
+            "energy_cost": 40
+        },
+        "ultimate": {
+            "name": "Tempest of Blades",
+            "description": "Ling стрибає в повітря, стаючи невразливим, та завдає серію ударів по землі, завдаючи фізичного урону та створюючи поле, яке уповільнює ворогів на 75% на 2 секунди.",
+            "cooldown": "50 секунд.",
+            "mana_cost": null,
+            "energy_cost": 120
+        }
+    }
+}
