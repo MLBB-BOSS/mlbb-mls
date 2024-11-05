@@ -1,0 +1,48 @@
+{
+    "name": "Cici",
+    "class": "Борець",
+    "attack_type": "Фізичний",
+    "additional_effects": "Після використання навичок базові атаки завдають додаткового фізичного урону та сповільнюють ворогів.",
+    "recommended_items": [
+        "Magic Shoes",
+        "Hunter Strike",
+        "Blade of Despair",
+        "Brute Force Breastplate",
+        "Malefic Roar",
+        "War Axe"
+    ],
+    "base_stats": {
+        "health": 2609,
+        "physical_attack": 129,
+        "physical_defense": 18,
+        "magic_defense": 10,
+        "movement_speed": 260,
+        "attack_speed": 1.07,
+        "health_regen": 6.0,
+        "mana_regen": 0
+    },
+    "skills": {
+        "passive": {
+            "name": "Performer’s Delight",
+            "description": "Після завдання урону Cici отримує стек «Delight», який підвищує її швидкість руху та вампіризм навичок. Ефекти подвоюються при максимальній кількості стеків (10)."
+        },
+        "skill1": {
+            "name": "Yo-Yo Blitz",
+            "description": "Cici кидає йо-йо в найближчого ворога, завдаючи фізичного урону, що залежить від максимального здоров'я цілі. Навичка триває 3,5 секунди та може влучити до 10 разів. Під час атаки Cici може рухатися та використовувати інші навички.",
+            "cooldown": "8 секунд",
+            "mana_cost": 50
+        },
+        "skill2": {
+            "name": "Buoyant Bounce",
+            "description": "Cici стрибає в обрану точку. Якщо вона приземляється на ворога, завдає фізичного урону та може виконати ще один стрибок у напрямку джойстика.",
+            "cooldown": "12 секунд",
+            "mana_cost": 60
+        },
+        "ultimate": {
+            "name": "Curtain Call",
+            "description": "Cici кидає йо-йо в обраного ворожого героя та зв'язує його з іншим найближчим ворогом, завдаючи фізичного урону, сповільнюючи їх та притягуючи один до одного. Під час дії навички Cici може використовувати Yo-Yo Blitz для атаки обох цілей одночасно.",
+            "cooldown": "40 секунд",
+            "mana_cost": 100
+        }
+    }
+}
