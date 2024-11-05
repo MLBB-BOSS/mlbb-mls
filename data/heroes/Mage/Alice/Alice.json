@@ -1,0 +1,28 @@
+{
+    "name": "Alice",
+    "class": "Маг",
+    "skills": {
+        "passive": {
+            "name": "Blood Ancestry",
+            "description": "Кожен раз, коли вороги гинуть поблизу, Alice отримує додаткове здоров'я."
+        },
+        "skill1": {
+            "name": "Flowing Blood",
+            "description": "Alice випускає кривавий потік, який завдає шкоди ворогам і дозволяє телепортуватися до місця його розташування.",
+            "cooldown": "6 секунд",
+            "mana_cost": 50
+        },
+        "skill2": {
+            "name": "Blood Awe",
+            "description": "Alice завдає шкоди навколишнім ворогам і знерухомлює їх.",
+            "cooldown": "8 секунд",
+            "mana_cost": 90
+        },
+        "ultimate": {
+            "name": "Blood Ode",
+            "description": "Alice активує ауру, поглинаючи здоров'я ворогів навколо себе та відновлюючи своє.",
+            "cooldown": "45 секунд",
+            "mana_cost": 135
+        }
+    }
+}
