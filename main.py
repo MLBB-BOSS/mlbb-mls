@@ -19,9 +19,7 @@ from handlers.characters import (
     handle_hero_functions_menu,
     handle_comparison_first_hero,
     handle_comparison_second_hero,
-    handle_selecting_counter_hero,
-    show_fighter_list,
-    handle_fighter_selection
+    handle_selecting_counter_hero
 )
 from handlers.guides import handle_guides_menu
 from handlers.tournaments import handle_tournaments_menu
@@ -47,7 +45,7 @@ from handlers.trigger_handler import trigger_handler
 # Налаштування логування
 logging.basicConfig(
     format='%(asctime)s - %(name)s - %(levelname)s - %(message)s',
-    level=logging.DEBUG
+    level=logging.INFO  # Змінив рівень логування на INFO для зменшення кількості повідомлень
 )
 logger = logging.getLogger(__name__)
 
@@ -91,9 +89,6 @@ def main():
         ]
     )
     application.add_handler(conv_handler)
-
-    # Додаємо окремий обробник для команди /fighters
-    application.add_handler(CommandHandler("fighters", show_fighter_list))
 
     # Запуск бота
     logger.info("🔄 Бот запущено.")
