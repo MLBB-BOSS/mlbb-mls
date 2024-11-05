@@ -1,8 +1,8 @@
 # handlers/start_handler.py
-from telegram import Update, ReplyKeyboardMarkup
+from telegram import Update
 from telegram.ext import ContextTypes
-from handlers.states import States
 from handlers.main_menu import get_main_menu_keyboard
+from handlers.states import States
 
 async def start(update: Update, context: ContextTypes.DEFAULT_TYPE) -> int:
     reply_markup = get_main_menu_keyboard()
