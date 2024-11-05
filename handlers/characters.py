@@ -1,135 +1,3 @@
-# handlers/characters.py
-
-from telegram import Update, ReplyKeyboardMarkup, KeyboardButton
-from telegram.ext import ContextTypes
-from handlers.states import States
-import logging
-import os
-import openai
-from utils.data_loader import load_heroes_data
-
-logger = logging.getLogger(__name__)
-
-# Ініціалізація OpenAI API
-openai.api_key = os.getenv("OPENAI_API_KEY")
-
-def get_hero_classes_keyboard(context):
-    heroes_by_class = context.bot_data.get('heroes_by_class', {})
-    buttons = []
-    row = []
-    for idx, class_name in enumerate(heroes_by_class.keys(), 1):
-        row.append(KeyboardButton(class_name))
-        if idx % 3 == 0:
-            buttons.append(row)
-            row = []
-    if row:
-        buttons.append(row)
-    buttons.append([KeyboardButton("🔙 Назад")])
-    return ReplyKeyboardMarkup(buttons, resize_keyboard=True)
-
-def get_heroes_keyboard(context):
-    selected_class = context.user_data.get('selected_class')
-    heroes = context.bot_data.get('heroes_by_class', {}).get(selected_class, [])
-    buttons = []
-    row = []
-    for idx, hero_name in enumerate(heroes, 1):
-        row.append(KeyboardButton(hero_name))
-        if idx % 3 == 0:
-            buttons.append(row)
-            row = []
-    if row:
-        buttons.append(row)
-    buttons.append([KeyboardButton("🔙 Назад")])
-    return ReplyKeyboardMarkup(buttons, resize_keyboard=True)
-
-async def handle_selecting_hero_class(update: Update, context: ContextTypes.DEFAULT_TYPE) -> int:
-    selected_class = update.message.text.strip()
-    heroes_by_class = context.bot_data.get('heroes_by_class', {})
-
-    if selected_class == "🔙 Назад":
-        from handlers.main_menu import get_main_menu_keyboard
-        reply_markup = get_main_menu_keyboard()
-        await update.message.reply_text("🔙 Повернення до головного меню:", reply_markup=reply_markup)
-        return States.MAIN_MENU
-
-    # Якщо вибраний клас не є дійсним, показуємо список класів
-    if selected_class not in heroes_by_class:
-        reply_markup = get_hero_classes_keyboard(context)
-        await update.message.reply_text("Будь ласка, оберіть клас героя з меню:", reply_markup=reply_markup)
-        return States.SELECTING_HERO_CLASS
-
-    context.user_data['selected_class'] = selected_class
-    heroes = heroes_by_class[selected_class]
-
-    # Логування списку героїв
-    logger.info(f"Heroes in class {selected_class}: {heroes}")
-
-    if not heroes:
-        await update.message.reply_text(f"⚠️ Немає доступних героїв у класі {selected_class}.")
-        return States.SELECTING_HERO_CLASS
-
-    reply_markup = get_heroes_keyboard(context)
-    await update.message.reply_text(f"Виберіть героя з класу {selected_class}:", reply_markup=reply_markup)
-    return States.SELECTING_HERO
-
-async def handle_selecting_hero(update: Update, context: ContextTypes.DEFAULT_TYPE) -> int:
-    try:
-        hero_name = update.message.text.strip()
-        if hero_name == "🔙 Назад":
-            reply_markup = get_hero_classes_keyboard(context)
-            await update.message.reply_text("Оберіть клас героя:", reply_markup=reply_markup)
-            return States.SELECTING_HERO_CLASS
-
-        selected_class = context.user_data.get('selected_class')
-        heroes = context.bot_data.get('heroes_by_class', {}).get(selected_class, [])
-
-        if hero_name not in heroes:
-            await update.message.reply_text("⚠️ Будь ласка, виберіть героя з меню.")
-            return States.SELECTING_HERO
-
-        context.user_data['selected_hero'] = hero_name
-
-        buttons = [
-            [KeyboardButton("ℹ️ Загальна інформація"), KeyboardButton("🛠️ Побудови")],
-            [KeyboardButton("📖 Гайди"), KeyboardButton("🗺️ Стратегії")],
-            [KeyboardButton("🎯 Контр-Піки"), KeyboardButton("⚔️ Порівняння")],
-            [KeyboardButton("🔙 Назад")]
-        ]
-        reply_markup = ReplyKeyboardMarkup(buttons, resize_keyboard=True)
-        await update.message.reply_text(f"Ви вибрали {hero_name}. Виберіть опцію:", reply_markup=reply_markup)
-        return States.HERO_FUNCTIONS_MENU
-    except Exception as e:
-        logger.error(f"Помилка в handle_selecting_hero: {e}")
-        await update.message.reply_text("Виникла помилка. Спробуйте ще раз.")
-        return States.SELECTING_HERO
-
-async def handle_hero_functions_menu(update: Update, context: ContextTypes.DEFAULT_TYPE) -> int:
-    try:
-        user_input = update.message.text.strip()
-        hero_name = context.user_data.get('selected_hero')
-        hero_class = context.user_data.get('selected_class')
-
-        if user_input == "🔙 Назад":
-            reply_markup = get_heroes_keyboard(context)
-            await update.message.reply_text(f"Виберіть героя з класу {hero_class}:", reply_markup=reply_markup)
-            return States.SELECTING_HERO
-
-        if user_input == "ℹ️ Загальна інформація":
-            hero_info = await get_hero_info(hero_name, context)
-            if hero_info:
-                await update.message.reply_text(hero_info, parse_mode='HTML', disable_web_page_preview=True)
-            else:
-                await update.message.reply_text("⚠️ Виникла помилка при отриманні інформації про героя.")
-        else:
-            # Можна додати реалізацію інших функцій у майбутньому
-            await update.message.reply_text(f"Ви вибрали '{user_input}' для героя {hero_name}. Ця функція буде реалізована пізніше.")
-
-        return States.HERO_FUNCTIONS_MENU
-    except Exception as e:
-        logger.error(f"Помилка в handle_hero_functions_menu: {e}")
-        await update.message.reply_text("Виникла помилка. Спробуйте ще раз.")
-        return States.HERO_FUNCTIONS_MENU
-
 async def get_hero_info(hero_name: str, context: ContextTypes.DEFAULT_TYPE) -> str:
     """Функція для отримання детальної інформації про героя через OpenAI API."""
     try:
@@ -206,7 +74,7 @@ async def get_hero_info(hero_name: str, context: ContextTypes.DEFAULT_TYPE) -> s
 
         # Виклик OpenAI API
         response = await openai.ChatCompletion.acreate(
-            model="gpt-3.5-turbo",  # Використання GPT-3.5-turbo
+            model="gpt-3.5-turbo",
             messages=[
                 {"role": "system", "content": system_prompt},
                 {"role": "user", "content": user_prompt}
@@ -228,9 +96,7 @@ async def get_hero_info(hero_name: str, context: ContextTypes.DEFAULT_TYPE) -> s
 
         return formatted_text
 
-def format_ai_response(ai_text: str) -> str:
-    """Форматуємо відповідь від AI для відправки користувачу."""
-    # Замінюємо символи нового рядка на <br> для HTML форматування
-    formatted_text = ai_text.replace('\n', '<br>')
-    return formatted_text
+    except Exception as e:
+        logger.error(f"Помилка під час отримання інформації про героя: {e}")
+        return "⚠️ Виникла помилка при обробці запиту. Спробуйте пізніше."
         
