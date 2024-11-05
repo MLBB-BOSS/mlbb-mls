@@ -1,6 +1,6 @@
 {
     "name": "Guinevere",
-    "class": "Борець",
+    "class": "Fighter",
     "attack_type": "Фізичний",
     "additional_effects": "Базові атаки знижують час перезарядки її навичок.",
     "recommended_items": [
