@@ -1,6 +1,6 @@
 {
     "name": "Freya",
-    "class": "Борець",
+    "class": "Fighter",
     "attack_type": "Фізичний",
     "additional_effects": "Після використання навичок отримує \"Священні Удари\", які підсилюють базові атаки.",
     "recommended_items": [
