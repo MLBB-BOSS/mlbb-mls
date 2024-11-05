@@ -26,7 +26,7 @@ from handlers.achievements import achievements_handler
 from handlers.community import community_handler
 from handlers.polls import polls_handler
 from handlers.profile import profile_handler
-from handlers.help_handler import help_handler  # Змінено імпорт на help_handler
+from handlers.help_handler import help_handler
 
 # Налаштування логування
 logging.basicConfig(
@@ -37,6 +37,13 @@ logger = logging.getLogger(__name__)
 
 def main():
     application = ApplicationBuilder().token(TELEGRAM_BOT_TOKEN).build()
+
+    # Завантаження даних героїв та збереження у bot_data
+    from utils.data_loader import load_all_heroes, load_heroes_data
+    heroes_by_class = load_all_heroes()
+    heroes_data = load_heroes_data()
+    application.bot_data['heroes_by_class'] = heroes_by_class
+    application.bot_data['heroes_data'] = heroes_data
 
     conv_handler = ConversationHandler(
         entry_points=[CommandHandler('start', start)],
