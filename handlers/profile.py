@@ -1,5 +1,4 @@
 # handlers/profile.py
-
 import logging
 from telegram import Update, ReplyKeyboardMarkup, KeyboardButton
 from telegram.ext import ContextTypes
@@ -65,3 +64,4 @@ async def show_user_statistics(update: Update, context: ContextTypes.DEFAULT_TYP
         f"⏰ Останній вхід: {stats['last_login']}"
     )
     await update.message.reply_text(stats_text, parse_mode='Markdown')
+    
