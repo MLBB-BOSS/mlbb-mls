@@ -37,7 +37,7 @@ async def main_menu_handler(update: Update, context: ContextTypes.DEFAULT_TYPE) 
         await update.message.reply_text("Оберіть клас героя:", reply_markup=reply_markup)
         return States.SELECTING_HERO_CLASS
     else:
-        # Якщо введено невідому команду
         reply_markup = get_main_menu_keyboard()
         await update.message.reply_text("⚠️ Будь ласка, оберіть опцію з меню.", reply_markup=reply_markup)
         return States.MAIN_MENU
+
