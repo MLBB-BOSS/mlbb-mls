@@ -1,6 +1,6 @@
 {
     "name": "Thamuz",
-    "class": "Борець",
+    "class": "Fighter",
     "attack_type": "Фізичний",
     "additional_effects": "Базові атаки можуть викликати ефект \"Scorch\", завдаючи додаткового урону протягом часу.",
     "recommended_items": [
