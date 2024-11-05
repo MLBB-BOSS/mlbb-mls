@@ -1,0 +1,48 @@
+{
+    "name": "Kaja",
+    "class": "Підтримка/Боєць",
+    "attack_type": "Магічний",
+    "additional_effects": "Після використання навичок базові атаки завдають додаткового магічного урону та знижують захист ворогів.",
+    "recommended_items": [
+        "Tough Boots",
+        "Clock of Destiny",
+        "Lightning Truncheon",
+        "Holy Crystal",
+        "Immortality"
+    ],
+    "base_stats": {
+        "health": 2700,
+        "physical_attack": 110,
+        "magic_attack": 0,
+        "physical_defense": 24,
+        "magic_defense": 15,
+        "movement_speed": 265,
+        "attack_speed": 0.8,
+        "health_regen": 6.8,
+        "mana_regen": 3.2
+    },
+    "skills": {
+        "passive": {
+            "name": "Wrath Sanction",
+            "description": "Базові атаки Kaja завдають додаткового магічного урону з періодичним ефектом під час кожної третьої атаки."
+        },
+        "skill1": {
+            "name": "Ring of Order",
+            "description": "Kaja випускає електричне кільце, яке завдає магічного урону ворогам у зоні дії, а також уповільнює їх на кілька секунд.",
+            "cooldown": "7 секунд",
+            "mana_cost": 0
+        },
+        "skill2": {
+            "name": "Lightning Bomb",
+            "description": "Kaja здійснює ривок вперед, залишаючи за собою лінію з бомбами, які вибухають при контакті з ворогом, завдаючи магічного урону.",
+            "cooldown": "8 секунд",
+            "mana_cost": 0
+        },
+        "ultimate": {
+            "name": "Divine Judgment",
+            "description": "Kaja обирає ворога, притягує його до себе та завдає значного магічного урону. Під час цього навичка відключає можливість руху обраного ворога на кілька секунд.",
+            "cooldown": "55 секунд",
+            "mana_cost": 0
+        }
+    }
+}
