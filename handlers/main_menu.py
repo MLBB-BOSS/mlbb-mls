@@ -1,6 +1,8 @@
 from telegram import Update, ReplyKeyboardMarkup, KeyboardButton
 from telegram.ext import ContextTypes
 from handlers.states import States
+from handlers.characters import get_hero_classes_keyboard
+from handlers.profile import profile_handler
 import logging
 
 logger = logging.getLogger(__name__)
