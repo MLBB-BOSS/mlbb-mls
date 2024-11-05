@@ -1,0 +1,49 @@
+{
+    "name": "Hylos",
+    "class": "Tank / Support",
+    "role": "Танк / Підтримка",
+    "speed": "Середня",
+    "hp": "Високе",
+    "physical_defense": "Добрий",
+    "magical_defense": "Середній",
+    "attack_speed": "Середня",
+    "skills": {
+        "passive": {
+            "name": "Thickened Blood",
+            "description": "Пасивна навичка Hylos, яка збільшує його фізичну захисту при кожному використанні навички."
+        },
+        "skill1": {
+            "name": "Law and Order",
+            "description": "Hylos використовує свою силу, щоб завдати фізичного урону ворогам та накласти сповільнення на них.",
+            "cooldown": "10 секунд",
+            "mana_cost": 70
+        },
+        "skill2": {
+            "name": "Ring of Punishment",
+            "description": "Hylos створює кільце навколо себе, яке поглинає урон та завдає фізичного урону ворогам, які знаходяться всередині.",
+            "cooldown": "5 секунд",
+            "mana_cost": 50
+        },
+        "ultimate": {
+            "name": "Glorious Pathway",
+            "description": "Hylos створює шлях з енергії, який збільшує швидкість руху союзників та завдає фізичного урону ворогам на своєму шляху.",
+            "cooldown": "40 секунд",
+            "mana_cost": 100
+        }
+    },
+    "strategies": {
+        "aggressive": "Використовувати Glorious Pathway та Law and Order для ініціювання боїв.",
+        "defensive": "Захищати команду за допомогою Ring of Punishment та Thickened Blood.",
+        "micro": "Контроль позиціонування та використання навичок для підтримки команди."
+    },
+    "recommendations": {
+        "early_game": "Підтримка команди та контроль лінії.",
+        "mid_game": "Ініціювання боїв та підтримка команди.",
+        "late_game": "Максимальне використання навичок для підтримки команди."
+    },
+    "drafts": {
+        "ideal_allies": "Герої, що добре поєднуються з Hylos.",
+        "avoid_enemies": "Типи ворогів, яких слід остерігатися.",
+        "strong_drafts": "Командні склади з Hylos як підтримкою."
+    }
+}
