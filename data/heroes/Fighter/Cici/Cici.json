@@ -1,6 +1,6 @@
 {
     "name": "Cici",
-    "class": "Борець",
+    "class": "Fighter",
     "attack_type": "Фізичний",
     "additional_effects": "Після використання навичок базові атаки завдають додаткового фізичного урону та сповільнюють ворогів.",
     "recommended_items": [
