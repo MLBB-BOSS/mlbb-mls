@@ -1,0 +1,47 @@
+{
+    "name": "Ruby",
+    "class": "Борець",
+    "attack_type": "Фізичний",
+    "additional_effects": "Після використання навичок Ruby може стрибати вперед, завдаючи урону та сповільнюючи ворогів.",
+    "recommended_items": [
+        "Warrior Boots",
+        "Bloodlust Axe",
+        "Queen's Wings",
+        "Oracle",
+        "Immortality"
+    ],
+    "base_stats": {
+        "health": 2700,
+        "physical_attack": 120,
+        "physical_defense": 25,
+        "magic_defense": 10,
+        "movement_speed": 260,
+        "attack_speed": 0.9,
+        "health_regen": 7,
+        "mana_regen": 0
+    },
+    "skills": {
+        "passive": {
+            "name": "Let’s Dance!",
+            "description": "Ruby отримує щит щоразу, коли використовує навички, підвищуючи свою витривалість."
+        },
+        "skill1": {
+            "name": "Be Good!",
+            "description": "Ruby атакує ворога перед собою, завдаючи фізичного урону та притягуючи його до себе.",
+            "cooldown": "5 секунд",
+            "mana_cost": 40
+        },
+        "skill2": {
+            "name": "Don’t Run, Wolf King!",
+            "description": "Ruby стрибає вперед, завдаючи фізичного урону та сповільнюючи ворогів у зоні приземлення.",
+            "cooldown": "6 секунд",
+            "mana_cost": 50
+        },
+        "ultimate": {
+            "name": "I’m Offended!",
+            "description": "Ruby вдаряє серпом у всіх ворогів перед собою, притягуючи їх до себе та завдаючи масового урону.",
+            "cooldown": "30 секунд",
+            "mana_cost": 100
+        }
+    }
+}
