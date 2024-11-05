@@ -6,7 +6,6 @@ from handlers.states import States
 import logging
 import os
 import openai
-import json
 from utils.data_loader import load_heroes_data
 
 logger = logging.getLogger(__name__)
@@ -141,6 +140,9 @@ async def get_hero_info(hero_name: str, context: ContextTypes.DEFAULT_TYPE) -> s
         if not hero_info:
             return "⚠️ Не вдалося знайти інформацію про цього героя."
 
+        # Отримання класу героя для кешування
+        hero_class = hero_info.get('class', 'Unknown')
+
         # Створення системного промпту
         system_prompt = """
 Ти — інформативний і дружній помічник Telegram-бота для надання інформації про героїв гри Mobile Legends: Bang Bang. Відповідай лаконічно, використовуючи українську мову. Використовуй надану базову інформацію про героя для створення повного опису.
@@ -197,17 +199,14 @@ async def get_hero_info(hero_name: str, context: ContextTypes.DEFAULT_TYPE) -> s
 
         # Перевірка наявності кешованої відповіді
         cache = context.bot_data.get('ai_responses', {})
-        cache_key = f"{hero_name}_{hero_class}"  # Виправлено: hero_class має бути визначено
-        if not cache_key:
-            cache_key = f"{hero_name}"
-
+        cache_key = f"{hero_name}_{hero_class}"
         if cache_key in cache:
             logger.info(f"Отримано дані з кешу для {hero_name} ({hero_class})")
             return cache[cache_key]
 
         # Виклик OpenAI API
         response = await openai.ChatCompletion.acreate(
-            model="gpt-3.5-turbo",  # Заміна моделі на GPT-3.5-turbo
+            model="gpt-3.5-turbo",  # Використання GPT-3.5-turbo
             messages=[
                 {"role": "system", "content": system_prompt},
                 {"role": "user", "content": user_prompt}
@@ -229,9 +228,9 @@ async def get_hero_info(hero_name: str, context: ContextTypes.DEFAULT_TYPE) -> s
 
         return formatted_text
 
-    def format_ai_response(ai_text: str) -> str:
-        """Форматуємо відповідь від AI для відправки користувачу."""
-        # Замінюємо символи нового рядка на <br> для HTML форматування
-        formatted_text = ai_text.replace('\n', '<br>')
-        return formatted_text
+def format_ai_response(ai_text: str) -> str:
+    """Форматуємо відповідь від AI для відправки користувачу."""
+    # Замінюємо символи нового рядка на <br> для HTML форматування
+    formatted_text = ai_text.replace('\n', '<br>')
+    return formatted_text
         
