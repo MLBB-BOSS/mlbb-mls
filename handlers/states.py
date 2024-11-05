@@ -5,7 +5,10 @@ class States:
     SELECTING_HERO_CLASS = 1
     SELECTING_HERO = 2
     HERO_FUNCTIONS_MENU = 3
+    PROFILE_MENU = 5
     SEARCH_HERO = 4
+    SEARCH_PERFORMING = 6
+    SEARCH_HERO_GUIDES = 7
     PROFILE_MENU = 5
     HERO_FUNCTIONS_MENU = 3
     STATISTICS = 4
@@ -17,7 +20,7 @@ class States:
     ACHIEVEMENTS = 10
     COMMUNITY = 11
     POLLS = 12
-    PROFILE = 13
+    PROFILE = 8
     HELP = 14
     GUIDES_MENU = 15
     # handlers/states.py
