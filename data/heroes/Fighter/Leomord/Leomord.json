@@ -1,0 +1,47 @@
+{
+    "name": "Leomord",
+    "class": "Борець",
+    "attack_type": "Фізичний",
+    "additional_effects": "Коли Leomord знаходиться на своєму коні, його базові атаки стають дальніми та завдають додаткового урону.",
+    "recommended_items": [
+        "Warrior Boots",
+        "Bloodlust Axe",
+        "Endless Battle",
+        "Queen's Wings",
+        "Immortality"
+    ],
+    "base_stats": {
+        "health": 2850,
+        "physical_attack": 120,
+        "physical_defense": 25,
+        "magic_defense": 10,
+        "movement_speed": 260,
+        "attack_speed": 0.9,
+        "health_regen": 7,
+        "mana_regen": 0
+    },
+    "skills": {
+        "passive": {
+            "name": "The Oath Keeper",
+            "description": "Коли здоров'я ворогів опускається нижче 50%, базові атаки Leomord завдають критичного урону."
+        },
+        "skill1": {
+            "name": "Phantom Stomp",
+            "description": "Leomord завдає удару по землі, завдаючи фізичного урону та сповільнюючи ворогів.",
+            "cooldown": "8 секунд",
+            "mana_cost": 60
+        },
+        "skill2": {
+            "name": "Decimation Assault",
+            "description": "Leomord стрімко кидається вперед, завдаючи фізичного урону та знижуючи швидкість руху ворогів.",
+            "cooldown": "10 секунд",
+            "mana_cost": 50
+        },
+        "ultimate": {
+            "name": "Phantom Steed",
+            "description": "Leomord викликає свого бойового коня Барбароса, сідаючи на нього та отримуючи нові навички, що підвищують його мобільність та урон.",
+            "cooldown": "55 секунд",
+            "mana_cost": 100
+        }
+    }
+}
