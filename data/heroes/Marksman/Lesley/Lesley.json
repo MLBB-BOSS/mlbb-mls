@@ -1,0 +1,49 @@
+{
+    "name": "Lesley",
+    "class": "Marksman",
+    "role": "Стрілець з потужними атаками на середній та дальній відстані",
+    "speed": "Висока",
+    "hp": "Середній",
+    "physical_defense": "Середній",
+    "magical_defense": "Середній",
+    "attack_speed": "Висока",
+    "skills": {
+        "passive": {
+            "name": "Lethal Shot",
+            "description": "Після кількох секунд Lesley заряджає постріл, що наносить критичну шкоду."
+        },
+        "skill1": {
+            "name": "Master of Camouflage",
+            "description": "Lesley стає невидимою та збільшує швидкість руху.",
+            "cooldown": "5 секунд",
+            "mana_cost": 70
+        },
+        "skill2": {
+            "name": "Tactical Grenade",
+            "description": "Lesley кидає гранату, що відштовхує ворогів назад.",
+            "cooldown": "10 секунд",
+            "mana_cost": 50
+        },
+        "ultimate": {
+            "name": "Ultimate Snipe",
+            "description": "Lesley прицільно стріляє в обраного ворога на далекій відстані, наносячи шкоду з кожним попаданням.",
+            "cooldown": "45 секунд",
+            "mana_cost": 100
+        }
+    },
+    "strategies": {
+        "aggressive": "Використовуйте Master of Camouflage для несподіваних атак та завдавання шкоди.",
+        "defensive": "Використовуйте Tactical Grenade для відштовхування ворогів та захисту.",
+        "micro": "Оптимальне використання Ultimate Snipe для завдавання великої шкоди ворогам на дальній відстані."
+    },
+    "recommendations": {
+        "early_game": "Фокус на фарм та контроль території за допомогою Master of Camouflage.",
+        "mid_game": "Активне використання Tactical Grenade для контролю ворогів.",
+        "late_game": "Максимальне використання Ultimate Snipe для командних боїв."
+    },
+    "drafts": {
+        "ideal_allies": "Герої з високою витривалістю та контролем натовпу.",
+        "avoid_enemies": "Герої з високою швидкістю та інтенсивним контролем.",
+        "strong_drafts": "Команди з хорошим балансом між атакою та захистом для максимальної ефективності Lesley."
+    }
+}
