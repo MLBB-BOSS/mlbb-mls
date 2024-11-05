@@ -1,0 +1,49 @@
+{
+    "name": "Karrie",
+    "class": "Marksman",
+    "role": "Стрілець з потужними атаками на середній та дальній відстані",
+    "speed": "Середня",
+    "hp": "Середній",
+    "physical_defense": "Середній",
+    "magical_defense": "Середній",
+    "attack_speed": "Висока",
+    "skills": {
+        "passive": {
+            "name": "Chemistry Refinement",
+            "description": "Наносить комбіновану фізичну та магічну шкоду залежно від рівня атаки."
+        },
+        "skill1": {
+            "name": "Energy Transformation",
+            "description": "Змінює тип атаки, випускаючи кулі, що завдають магічну шкоду.",
+            "cooldown": "Безперервна активація",
+            "mana_cost": 20
+        },
+        "skill2": {
+            "name": "Chemical Refinement",
+            "description": "Прискорюється вперед, залишаючи слід, що завдає шкоди ворогам.",
+            "cooldown": "7 секунд",
+            "mana_cost": 30
+        },
+        "ultimate": {
+            "name": "Maximum Charge",
+            "description": "Збільшує швидкість атаки та дозволяє наносити кілька атак одночасно.",
+            "cooldown": "45 секунд",
+            "mana_cost": 50
+        }
+    },
+    "strategies": {
+        "aggressive": "Використовуйте Energy Transformation для завдавання магічної шкоди та швидких атак.",
+        "defensive": "Використовуйте Chemical Refinement для прискорення та завдавання шкоди ворогам.",
+        "micro": "Оптимальне використання Maximum Charge для збільшення швидкості атаки та завдавання кількох атак."
+    },
+    "recommendations": {
+        "early_game": "Фокус на фарм та контроль території за допомогою Energy Transformation.",
+        "mid_game": "Активне використання Chemical Refinement для прискорення та завдавання шкоди.",
+        "late_game": "Максимальне використання Maximum Charge для командних боїв."
+    },
+    "drafts": {
+        "ideal_allies": "Герої з високою витривалістю та контролем натовпу.",
+        "avoid_enemies": "Герої з високою швидкістю та інтенсивним контролем.",
+        "strong_drafts": "Команди з хорошим балансом між атакою та захистом для максимальної ефективності Karrie."
+    }
+}
