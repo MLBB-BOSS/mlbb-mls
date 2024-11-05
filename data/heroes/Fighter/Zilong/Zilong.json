@@ -1,0 +1,47 @@
+{
+    "name": "Zilong",
+    "class": "Борець",
+    "attack_type": "Фізичний",
+    "additional_effects": "Після використання навичок збільшує швидкість атаки та руху.",
+    "recommended_items": [
+        "Warrior Boots",
+        "Endless Battle",
+        "Blade of Despair",
+        "Queen's Wings",
+        "Immortality"
+    ],
+    "base_stats": {
+        "health": 2700,
+        "physical_attack": 121,
+        "physical_defense": 25,
+        "magic_defense": 10,
+        "movement_speed": 260,
+        "attack_speed": 0.9,
+        "health_regen": 7,
+        "mana_regen": 0
+    },
+    "skills": {
+        "passive": {
+            "name": "Dragon Flurry",
+            "description": "Кожна третя базова атака Zilong завдає посиленого урону та відновлює його здоров’я."
+        },
+        "skill1": {
+            "name": "Spear Flip",
+            "description": "Zilong підкидає ціль через себе, завдаючи фізичного урону та знижуючи її захист.",
+            "cooldown": "10 секунд",
+            "mana_cost": 60
+        },
+        "skill2": {
+            "name": "Spear Strike",
+            "description": "Zilong стрімко атакує ворога, завдаючи фізичного урону та наближаючись до нього.",
+            "cooldown": "6 секунд",
+            "mana_cost": 40
+        },
+        "ultimate": {
+            "name": "Supreme Warrior",
+            "description": "Zilong активує свою силу, збільшуючи швидкість руху та атаки, а також стаючи невразливим до уповільнень.",
+            "cooldown": "30 секунд",
+            "mana_cost": 120
+        }
+    }
+}
