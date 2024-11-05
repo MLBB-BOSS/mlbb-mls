@@ -1,0 +1,32 @@
+{
+    "name": "Zilong",
+    "class": "Assassin",
+    "attack_type": "Physical",
+    "additional_effects": "",
+    "recommended_items": [],
+    "base_stats": {},
+    "skills": {
+        "passive": {
+            "name": "Dragon Flurry",
+            "description": "Після кожних трьох базових атак Zilong виконує додатковий удар, завдаючи підвищеного фізичного урону."
+        },
+        "skill1": {
+            "name": "Spear Flip",
+            "description": "Zilong підкидає ціль через себе, завдаючи фізичного урону та знижуючи її фізичний захист на 15% на 2 секунди.",
+            "cooldown": "10 секунд.",
+            "mana_cost": 60
+        },
+        "skill2": {
+            "name": "Spear Strike",
+            "description": "Zilong стрімко атакує ціль, завдаючи фізичного урону та наближаючись до неї. Після успішного влучання перезарядка навички зменшується на 30%.",
+            "cooldown": "6 секунд.",
+            "mana_cost": 40
+        },
+        "ultimate": {
+            "name": "Supreme Warrior",
+            "description": "Zilong збільшує свою швидкість руху на 40% та швидкість атаки на 45% протягом 7.5 секунд, стаючи невразливим до уповільнень.",
+            "cooldown": "30 секунд.",
+            "mana_cost": 120
+        }
+    }
+}
