@@ -1,10 +1,38 @@
-# handlers/characters.py
 from telegram import Update, ReplyKeyboardMarkup, KeyboardButton
 from telegram.ext import ContextTypes
 from handlers.states import States
 import logging
 
 logger = logging.getLogger(__name__)
+
+def get_hero_classes_keyboard(context):
+    heroes_by_class = context.bot_data.get('heroes_by_class', {})
+    buttons = []
+    row = []
+    for idx, class_name in enumerate(heroes_by_class.keys(), 1):
+        row.append(KeyboardButton(class_name))
+        if idx % 3 == 0:
+            buttons.append(row)
+            row = []
+    if row:
+        buttons.append(row)
+    buttons.append([KeyboardButton("🔙 Назад")])
+    return ReplyKeyboardMarkup(buttons, resize_keyboard=True)
+
+def get_heroes_keyboard(context):
+    selected_class = context.user_data.get('selected_class')
+    heroes = context.bot_data.get('heroes_by_class', {}).get(selected_class, [])
+    buttons = []
+    row = []
+    for idx, hero_name in enumerate(heroes, 1):
+        row.append(KeyboardButton(hero_name))
+        if idx % 3 == 0:
+            buttons.append(row)
+            row = []
+    if row:
+        buttons.append(row)
+    buttons.append([KeyboardButton("🔙 Назад")])
+    return ReplyKeyboardMarkup(buttons, resize_keyboard=True)
 
 async def handle_selecting_hero_class(update: Update, context: ContextTypes.DEFAULT_TYPE) -> int:
     selected_class = update.message.text.strip()
@@ -18,18 +46,7 @@ async def handle_selecting_hero_class(update: Update, context: ContextTypes.DEFA
 
     # Якщо вибраний клас не є дійсним, показуємо список класів
     if selected_class not in heroes_by_class:
-        # Показуємо список класів
-        buttons = []
-        row = []
-        for idx, class_name in enumerate(heroes_by_class.keys(), 1):
-            row.append(KeyboardButton(class_name))
-            if idx % 3 == 0:
-                buttons.append(row)
-                row = []
-        if row:
-            buttons.append(row)
-        buttons.append([KeyboardButton("🔙 Назад")])
-        reply_markup = ReplyKeyboardMarkup(buttons, resize_keyboard=True)
+        reply_markup = get_hero_classes_keyboard(context)
         await update.message.reply_text("Будь ласка, оберіть клас героя з меню:", reply_markup=reply_markup)
         return States.SELECTING_HERO_CLASS
 
@@ -43,63 +60,65 @@ async def handle_selecting_hero_class(update: Update, context: ContextTypes.DEFA
         await update.message.reply_text(f"⚠️ Немає доступних героїв у класі {selected_class}.")
         return States.SELECTING_HERO_CLASS
 
-    buttons = []
-    row = []
-    for idx, hero_name in enumerate(heroes, 1):
-        row.append(KeyboardButton(hero_name))
-        if idx % 3 == 0:
-            buttons.append(row)
-            row = []
-    if row:
-        buttons.append(row)
-    buttons.append([KeyboardButton("🔙 Назад")])
-    reply_markup = ReplyKeyboardMarkup(buttons, resize_keyboard=True)
+    reply_markup = get_heroes_keyboard(context)
     await update.message.reply_text(f"Виберіть героя з класу {selected_class}:", reply_markup=reply_markup)
     return States.SELECTING_HERO
 
 async def handle_selecting_hero(update: Update, context: ContextTypes.DEFAULT_TYPE) -> int:
-    hero_name = update.message.text.strip()
-    if hero_name == "🔙 Назад":
-        # Повернення до вибору класу героїв
-        await handle_selecting_hero_class(update, context)
-        return States.SELECTING_HERO_CLASS
+    try:
+        hero_name = update.message.text.strip()
+        if hero_name == "🔙 Назад":
+            # Повернення до вибору класу героїв
+            reply_markup = get_hero_classes_keyboard(context)
+            await update.message.reply_text("Оберіть клас героя:", reply_markup=reply_markup)
+            return States.SELECTING_HERO_CLASS
 
-    selected_class = context.user_data.get('selected_class')
-    heroes = context.bot_data.get('heroes_by_class', {}).get(selected_class, [])
+        selected_class = context.user_data.get('selected_class')
+        heroes = context.bot_data.get('heroes_by_class', {}).get(selected_class, [])
 
-    if hero_name not in heroes:
-        await update.message.reply_text("⚠️ Будь ласка, виберіть героя з меню.")
+        if hero_name not in heroes:
+            await update.message.reply_text("⚠️ Будь ласка, виберіть героя з меню.")
+            return States.SELECTING_HERO
+
+        context.user_data['selected_hero'] = hero_name
+
+        buttons = [
+            [KeyboardButton("ℹ️ Загальна інформація"), KeyboardButton("🛠️ Побудови")],
+            [KeyboardButton("📖 Гайди"), KeyboardButton("🗺️ Стратегії")],
+            [KeyboardButton("🎯 Контр-Піки"), KeyboardButton("⚔️ Порівняння")],
+            [KeyboardButton("🔙 Назад")]
+        ]
+        reply_markup = ReplyKeyboardMarkup(buttons, resize_keyboard=True)
+        await update.message.reply_text(f"Ви вибрали {hero_name}. Виберіть опцію:", reply_markup=reply_markup)
+        return States.HERO_FUNCTIONS_MENU
+    except Exception as e:
+        logger.error(f"Помилка в handle_selecting_hero: {e}")
+        await update.message.reply_text("Виникла помилка. Спробуйте ще раз.")
         return States.SELECTING_HERO
-
-    context.user_data['selected_hero'] = hero_name
-
-    buttons = [
-        [KeyboardButton("ℹ️ Загальна інформація"), KeyboardButton("🛠️ Побудови")],
-        [KeyboardButton("📖 Гайди"), KeyboardButton("🗺️ Стратегії")],
-        [KeyboardButton("🎯 Контр-Піки"), KeyboardButton("⚔️ Порівняння")],
-        [KeyboardButton("🔙 Назад")]
-    ]
-    reply_markup = ReplyKeyboardMarkup(buttons, resize_keyboard=True)
-    await update.message.reply_text(f"Ви вибрали {hero_name}. Виберіть опцію:", reply_markup=reply_markup)
-    return States.HERO_FUNCTIONS_MENU
 
 async def handle_hero_functions_menu(update: Update, context: ContextTypes.DEFAULT_TYPE) -> int:
-    user_input = update.message.text.strip()
-    hero_name = context.user_data.get('selected_hero')
+    try:
+        user_input = update.message.text.strip()
+        hero_name = context.user_data.get('selected_hero')
 
-    if user_input == "🔙 Назад":
-        # Повернення до вибору героя
-        await handle_selecting_hero(update, context)
-        return States.SELECTING_HERO
+        if user_input == "🔙 Назад":
+            # Повернення до вибору героя
+            reply_markup = get_heroes_keyboard(context)
+            await update.message.reply_text(f"Виберіть героя з класу {context.user_data.get('selected_class')}:", reply_markup=reply_markup)
+            return States.SELECTING_HERO
 
-    if user_input == "ℹ️ Загальна інформація":
-        hero_info = await get_hero_info(hero_name, context)
-        await update.message.reply_text(hero_info, parse_mode='HTML')
-    else:
-        # Можна додати реалізацію інших функцій у майбутньому
-        await update.message.reply_text(f"Ви вибрали '{user_input}' для героя {hero_name}. Ця функція буде реалізована пізніше.")
+        if user_input == "ℹ️ Загальна інформація":
+            hero_info = await get_hero_info(hero_name, context)
+            await update.message.reply_text(hero_info, parse_mode='HTML')
+        else:
+            # Можна додати реалізацію інших функцій у майбутньому
+            await update.message.reply_text(f"Ви вибрали '{user_input}' для героя {hero_name}. Ця функція буде реалізована пізніше.")
 
-    return States.HERO_FUNCTIONS_MENU
+        return States.HERO_FUNCTIONS_MENU
+    except Exception as e:
+        logger.error(f"Помилка в handle_hero_functions_menu: {e}")
+        await update.message.reply_text("Виникла помилка. Спробуйте ще раз.")
+        return States.HERO_FUNCTIONS_MENU
 
 async def get_hero_info(hero_name: str, context: ContextTypes.DEFAULT_TYPE) -> str:
     """Функція для отримання детальної інформації про героя."""
@@ -113,8 +132,8 @@ async def get_hero_info(hero_name: str, context: ContextTypes.DEFAULT_TYPE) -> s
         return "Інформація про героя недоступна."
 
 def format_hero_info(hero):
-    info = f"<b>{hero['name']}</b>\n\n"
-    info += f"Клас: {hero['class']}\n"
+    info = f"<b>{hero.get('name', 'Невідомо')}</b>\n\n"
+    info += f"Клас: {hero.get('class', 'N/A')}\n"
     info += f"Тип атаки: {hero.get('attack_type', 'N/A')}\n"
     info += f"Додаткові ефекти: {hero.get('additional_effects', 'N/A')}\n\n"
 
