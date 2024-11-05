@@ -1,0 +1,35 @@
+{
+    "name": "Hayabusa",
+    "class": "Assassin",
+    "attack_type": "Physical",
+    "additional_effects": "",
+    "recommended_items": [],
+    "base_stats": {},
+    "skills": {
+        "passive": {
+            "name": "Ninjutsu: Trace of Shadow",
+            "description": "Кожна третя базова атака Hayabusa завдає додаткового фізичного урону та відновлює його здоров'я."
+        },
+        "skill1": {
+            "name": "Phantom Shuriken",
+            "description": "Hayabusa кидає три сюрікени в обраному напрямку, завдаючи фізичного урону та сповільнюючи ворогів на 30% на 2 секунди. Кожен сюрікен, що вражає ворога, відновлює енергію Hayabusa.",
+            "cooldown": "7 секунд.",
+            "mana_cost": 0,
+            "energy_cost": 20
+        },
+        "skill2": {
+            "name": "Quad Shadow",
+            "description": "Hayabusa випускає чотири тіні в різні напрямки. Якщо тінь вражає ворога, вона завдає фізичного урону та дозволяє Hayabusa телепортуватися до неї, завдаючи додаткового урону. Після телепортації він може повернутися до початкової позиції протягом 2 секунд.",
+            "cooldown": "18 секунд.",
+            "mana_cost": 0,
+            "energy_cost": 40
+        },
+        "ultimate": {
+            "name": "Ougi: Shadow Kill",
+            "description": "Hayabusa перетворюється на тінь, атакуючи ворогів у зоні дії кілька разів. Якщо в зоні знаходиться лише один ворог, він отримує весь урон; якщо кілька — урон розподіляється між ними.",
+            "cooldown": "40 секунд.",
+            "mana_cost": 0,
+            "energy_cost": 80
+        }
+    }
+}
