@@ -36,8 +36,12 @@ def main():
     application.bot_data['heroes_by_class'] = heroes_by_class
     application.bot_data['heroes_data'] = heroes_data
 
+    # Додаємо обробник команди /start
+    application.add_handler(CommandHandler('start', start))
+
+    # Додаємо обробник розмови
     conv_handler = ConversationHandler(
-        entry_points=[CommandHandler('start', start)],
+        entry_points=[MessageHandler(filters.TEXT & ~filters.COMMAND, main_menu_handler)],
         states={
             States.MAIN_MENU: [
                 MessageHandler(filters.TEXT & ~filters.COMMAND, main_menu_handler)
