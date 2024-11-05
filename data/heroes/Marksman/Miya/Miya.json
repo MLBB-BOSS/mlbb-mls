@@ -1,0 +1,49 @@
+{
+    "name": "Miya",
+    "class": "Marksman",
+    "role": "Стрілець з потужними атаками на середній та дальній відстані",
+    "speed": "Висока",
+    "hp": "Середній",
+    "physical_defense": "Середній",
+    "magical_defense": "Середній",
+    "attack_speed": "Висока",
+    "skills": {
+        "passive": {
+            "name": "Turbo",
+            "description": "Збільшує швидкість атаки після кожної базової атаки."
+        },
+        "skill1": {
+            "name": "Moon Arrow",
+            "description": "Випускає кілька стріл одночасно.",
+            "cooldown": "Безперервна активація",
+            "mana_cost": 20
+        },
+        "skill2": {
+            "name": "Arrow of Eclipse",
+            "description": "Стріляє стрілу, що оглушує ворогів.",
+            "cooldown": "8 секунд",
+            "mana_cost": 70
+        },
+        "ultimate": {
+            "name": "Hidden Moonlight",
+            "description": "Стає невидимою та отримує підвищену швидкість атаки та руху.",
+            "cooldown": "50 секунд",
+            "mana_cost": 100
+        }
+    },
+    "strategies": {
+        "aggressive": "Використовуйте Moon Arrow для завдавання шкоди та зниження захисту ворогів.",
+        "defensive": "Використовуйте Arrow of Eclipse для оглушення ворогів та контролю території.",
+        "micro": "Оптимальне використання Hidden Moonlight для швидкого переміщення та завдавання шкоди."
+    },
+    "recommendations": {
+        "early_game": "Фокус на фарм та контроль території за допомогою Moon Arrow.",
+        "mid_game": "Активне використання Arrow of Eclipse для контролю ворогів.",
+        "late_game": "Максимальне використання Hidden Moonlight для командних боїв."
+    },
+    "drafts": {
+        "ideal_allies": "Герої з високою витривалістю та контролем натовпу.",
+        "avoid_enemies": "Герої з високою швидкістю та інтенсивним контролем.",
+        "strong_drafts": "Команди з хорошим балансом між атакою та захистом для максимальної ефективності Miya."
+    }
+}
