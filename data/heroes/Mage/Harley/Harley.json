@@ -1,0 +1,49 @@
+{
+    "name": "Harley",
+    "class": "Mage",
+    "role": "Мобільний маг з високим вибуховим уроном",
+    "speed": "Висока",
+    "hp": "Низький",
+    "physical_defense": "Низький",
+    "magical_defense": "Низький",
+    "attack_speed": "Середня",
+    "skills": {
+        "passive": {
+            "name": "Magic Master",
+            "description": "Кожна атака Harley зменшує магічний захист цілі."
+        },
+        "skill1": {
+            "name": "Poker Trick",
+            "description": "Harley випускає три карти в напрямку ворогів, завдаючи їм шкоди.",
+            "cooldown": "6 секунд",
+            "mana_cost": 50
+        },
+        "skill2": {
+            "name": "Space Escape",
+            "description": "Harley телепортується вперед, залишаючи на місці попереднього перебування портал для повернення.",
+            "cooldown": "12 секунд",
+            "mana_cost": 70
+        },
+        "ultimate": {
+            "name": "Deadly Magic",
+            "description": "Harley накладає смертельне закляття на ворога, яке вибухає через певний час, завдаючи шкоди.",
+            "cooldown": "35 секунд",
+            "mana_cost": 120
+        }
+    },
+    "strategies": {
+        "aggressive": "Використовуйте комбінацію Deadly Magic та Poker Trick для швидкого знищення цілі.",
+        "defensive": "Використовуйте Space Escape для швидкого відступу.",
+        "micro": "Оптимальне використання Space Escape для маневрування у бою."
+    },
+    "recommendations": {
+        "early_game": "Тиск на ворогів та фарм за допомогою Poker Trick.",
+        "mid_game": "Полювання на слабких ворогів з використанням комбінацій навичок.",
+        "late_game": "Підтримка команди, знищуючи ключових ворогів."
+    },
+    "drafts": {
+        "ideal_allies": "Герої з контролем натовпу, щоб утримувати ворогів на місці.",
+        "avoid_enemies": "Герої з високою витривалістю та анти-мобільністю.",
+        "strong_drafts": "Команди, що можуть відволікати ворогів, дозволяючи Harley діяти вільно."
+    }
+}
