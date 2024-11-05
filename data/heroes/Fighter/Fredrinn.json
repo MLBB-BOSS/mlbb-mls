@@ -1,0 +1,53 @@
+{
+    "name": "Fredrinn",
+    "class": "Борець",
+    "attack_type": "Фізичний",
+    "additional_effects": "Накопичує \"Комбо Очки\" при влучанні навичками по ворогах, що підсилює його навички.",
+    "recommended_items": [
+        "Warrior Boots",
+        "Bloodlust Axe",
+        "War Axe",
+        "Queen's Wings",
+        "Immortality"
+    ],
+    "base_stats": {
+        "health": 2850,
+        "physical_attack": 120,
+        "physical_defense": 25,
+        "magic_defense": 15,
+        "movement_speed": 260,
+        "attack_speed": 0.85,
+        "health_regen": 7.5,
+        "mana_regen": 0
+    },
+    "skills": {
+        "passive": {
+            "name": "Crystalline Armor",
+            "description": "Fredrinn накопичує \"Комбо Очки\" при влучанні навичками по ворогах (до 4). Він також зберігає частину отриманого урону як \"Кристальну Енергію\", яка поступово зникає."
+        },
+        "skill1": {
+            "name": "Piercing Strike",
+            "description": "Fredrinn завдає удар вперед, завдаючи фізичного урону та сповільнюючи ворогів. Наступна базова атака має збільшену дальність та урон.",
+            "cooldown": "8.5 секунд",
+            "mana_cost": 0
+        },
+        "skill2": {
+            "name": "Brave Assault",
+            "description": "Fredrinn ривком атакує ворога, завдаючи фізичного урону та підкидаючи його в повітря. Наступна базова атака має збільшену швидкість атаки.",
+            "cooldown": "7.5 секунд",
+            "mana_cost": 0
+        },
+        "skill3": {
+            "name": "Energy Eruption",
+            "description": "Fredrinn завдає фізичного урону навколишнім ворогам та провокує їх на атаку себе протягом 1 секунди. Влучання по не-міньйонах збільшує його фізичний та магічний захист на 30 одиниць на 3 секунди та зменшує час перезарядки перших двох навичок на 75%.",
+            "cooldown": "7 секунд",
+            "mana_cost": 1
+        },
+        "ultimate": {
+            "name": "Appraiser's Wrath",
+            "description": "Fredrinn завдає потужного удару вперед, завдаючи фізичного урону, який збільшується залежно від кількості накопиченої \"Кристальної Енергії\".",
+            "cooldown": "36 секунд",
+            "mana_cost": 3
+        }
+    }
+}
