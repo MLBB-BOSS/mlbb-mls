@@ -1,6 +1,6 @@
 {
     "name": "Alpha",
-    "class": "Борець",
+    "class": "Fighter",
     "attack_type": "Фізичний",
     "additional_effects": "Після використання навичок, дрон Бета атакує ціль, завдаючи істинного урону та сповільнюючи її.",
     "recommended_items": [
