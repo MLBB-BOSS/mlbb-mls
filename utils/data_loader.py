@@ -16,39 +16,27 @@ def load_json_data(file_path):
 
 def load_all_heroes():
     all_heroes = {}
-    # Шлях до вашого основного JSON-файлу з героями
-    heroes_file = os.path.join('data', 'heroes', 'heroes.json')  # Переконайтесь, що файл називається 'heroes.json'
-    
-    if not os.path.exists(heroes_file):
-        logger.error(f"Heroes file not found: {heroes_file}")
-        return all_heroes
-
-    data = load_json_data(heroes_file)
-    if data and 'heroes' in data:
-        for hero in data['heroes']:
-            class_name = hero.get('class', 'Unknown')
-            # Переконайтеся, що клас записаний англійською мовою
-            # Якщо ні, розглянемо можливість перекладу або адаптації
-            # Наприклад, якщо "Стрілець" → "Marksman"
-            class_name = translate_class_name(class_name)
-
-            if class_name not in all_heroes:
-                all_heroes[class_name] = []
-            all_heroes[class_name].append(hero)
-    else:
-        logger.error("No heroes found in the JSON file or 'heroes' key is missing.")
-    
+    heroes_dir = os.path.join('data', 'heroes')
+    for class_dir in os.listdir(heroes_dir):
+        class_path = os.path.join(heroes_dir, class_dir)
+        if os.path.isdir(class_path):
+            class_name = class_dir  # Ensure class_name matches "Tank", "Assassin", etc.
+            all_heroes[class_name] = []
+            for hero_dir in os.listdir(class_path):
+                hero_path = os.path.join(class_path, hero_dir)
+                if os.path.isdir(hero_path):
+                    hero_file = os.path.join(hero_path, f"{hero_dir}.json")
+                    if os.path.exists(hero_file):
+                        hero_data = load_json_data(hero_file)
+                        if hero_data:
+                            all_heroes[class_name].append(hero_data)
+                        else:
+                            logger.warning(f"Failed to load hero data for {hero_dir}")
+                    else:
+                        logger.warning(f"Hero file not found: {hero_file}")
+                else:
+                    logger.warning(f"Expected directory for hero, but found file: {hero_path}")
+        else:
+            logger.warning(f"Expected directory for class, but found file: {class_path}")
     logger.info(f"Loaded heroes: { {k: [h['name'] for h in v] for k, v in all_heroes.items()} }")
     return all_heroes
-
-def translate_class_name(ukrainian_class_name):
-    # Функція для перекладу назв класів з української на англійську
-    translations = {
-        "Танк": "Tank",
-        "Стрілець": "Marksman",
-        "Асасин": "Assassin",
-        "Маг": "Mage",
-        "Підтримка": "Support",
-        # Додайте інші класи за потреби
-    }
-    return translations.get(ukrainian_class_name, "Unknown")
