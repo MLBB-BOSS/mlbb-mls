@@ -1,0 +1,47 @@
+{
+    "name": "Grock",
+    "class": "Борець",
+    "attack_type": "Фізичний",
+    "additional_effects": "Перебуваючи біля стін або турелей, отримує додатковий захист та урон.",
+    "recommended_items": [
+        "Warrior Boots",
+        "Cursed Helmet",
+        "Athena's Shield",
+        "Queen's Wings",
+        "Immortality"
+    ],
+    "base_stats": {
+        "health": 2950,
+        "physical_attack": 125,
+        "physical_defense": 27,
+        "magic_defense": 15,
+        "movement_speed": 265,
+        "attack_speed": 0.85,
+        "health_regen": 7.5,
+        "mana_regen": 0
+    },
+    "skills": {
+        "passive": {
+            "name": "Ancestral Gift",
+            "description": "Коли Grock знаходиться поруч зі стінами або спорудами, його швидкість руху, фізичний та магічний захист збільшуються."
+        },
+        "skill1": {
+            "name": "Power of Nature",
+            "description": "Grock заряджає свою зброю, завдаючи фізичного урону та сповільнюючи ворогів. Чим довше заряд, тим більший урон.",
+            "cooldown": "7 секунд",
+            "mana_cost": 80
+        },
+        "skill2": {
+            "name": "Guardian's Barrier",
+            "description": "Grock створює кам'яну стіну, яка блокує шлях ворогам та завдає фізичного урону.",
+            "cooldown": "14 секунд",
+            "mana_cost": 50
+        },
+        "ultimate": {
+            "name": "Wild Charge",
+            "description": "Grock стрімко рухається вперед, завдаючи фізичного урону та підкидаючи ворогів. Якщо він стикається зі стіною, завдає додаткового урону та оглушує ворогів.",
+            "cooldown": "50 секунд",
+            "mana_cost": 120
+        }
+    }
+}
