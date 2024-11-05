@@ -1,6 +1,6 @@
 {
     "name": "Balmond",
-    "class": "Борець",
+    "class": "Fighter",
     "attack_type": "Фізичний",
     "additional_effects": "Після вбивства ворога або міньйона відновлює 5% максимального здоров'я.",
     "recommended_items": [
