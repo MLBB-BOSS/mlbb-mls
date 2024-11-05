@@ -1,6 +1,6 @@
 {
     "name": "Ruby",
-    "class": "Борець",
+    "class": "Fighter",
     "attack_type": "Фізичний",
     "additional_effects": "Після використання навичок Ruby може стрибати вперед, завдаючи урону та сповільнюючи ворогів.",
     "recommended_items": [
