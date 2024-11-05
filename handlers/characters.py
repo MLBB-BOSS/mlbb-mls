@@ -106,25 +106,7 @@ async def handle_selecting_hero(update: Update, context: ContextTypes.DEFAULT_TY
     await update.message.reply_text(f"Ви обрали героя {hero_name}. Оберіть опцію:", reply_markup=reply_markup)
     return States.HERO_FUNCTIONS_MENU
 
-async def handle_fighter_selection(update: Update, context: ContextTypes.DEFAULT_TYPE) -> int:
-    selected_fighter = update.message.text.strip()
-    if selected_fighter == "🔙 Назад":
-        return await handle_selecting_hero(update, context)
-
-    selected_class = context.user_data.get('selected_class')
-    if not selected_class:
-        await update.message.reply_text("⚠️ Клас героя не визначено.")
-        return States.SELECTING_HERO
-
-    hero_info = load_hero_data(selected_class, selected_fighter)
-    if hero_info:
-        reply_text = format_fighter_info(hero_info)
-        await update.message.reply_text(reply_text, parse_mode='HTML')
-    else:
-        await update.message.reply_text("⚠️ Обраний герой не знайдений або файл відсутній.")
-    return States.SELECTING_HERO
-
-def format_fighter_info(hero):
+def format_hero_info(hero):
     info = f"<b>{hero['name']}</b>\n\n"
     info += f"Клас: {hero['class']}\n"
     info += f"Атака: {hero['attack_type']}\n"
@@ -161,39 +143,7 @@ async def get_hero_info(hero_name: str) -> str:
     for class_name, heroes in HEROES_BY_CLASS.items():
         hero_info = next((hero for hero in heroes if hero['name'].lower() == hero_name.lower()), None)
         if hero_info:
-            details = (
-                f"🔸 <b>{hero_info['name']}</b>\n"
-                f"🔹 Клас: {hero_info['class']}\n"
-                f"🔹 Тип атаки: {hero_info['attack_type']}\n"
-                f"🔹 Додаткові ефекти: {hero_info['additional_effects']}\n\n"
-                f"📊 <b>Основні характеристики:</b>\n"
-                f"Здоров'я: {hero_info['base_stats']['health']}\n"
-                f"Атака: {hero_info['base_stats']['physical_attack']}\n"
-                f"Фізичний захист: {hero_info['base_stats']['physical_defense']}\n"
-                f"Магічний захист: {hero_info['base_stats']['magic_defense']}\n"
-                f"Швидкість руху: {hero_info['base_stats']['movement_speed']}\n\n"
-                f"🛠️ <b>Рекомендовані предмети:</b>\n" + ", ".join(hero_info['recommended_items']) + "\n\n"
-                f"🧬 <b>Навички:</b>\n"
-            )
-            skills = hero_info.get('skills', {})
-            if 'passive' in skills:
-                details += f"🔸 <b>Пасивна:</b> {skills['passive']['name']} - {skills['passive']['description']}\n"
-            if 'skill1' in skills:
-                details += f"🔹 <b>Навичка 1:</b> {skills['skill1']['name']} - {skills['skill1']['description']}\n"
-                details += f"    Перезарядка: {skills['skill1'].get('cooldown', 'N/A')}\n"
-                details += f"    Витрати мани: {skills['skill1'].get('mana_cost', 'N/A')}\n"
-            if 'skill2' in skills:
-                details += f"🔹 <b>Навичка 2:</b> {skills['skill2']['name']} - {skills['skill2']['description']}\n"
-                details += f"    Перезарядка: {skills['skill2'].get('cooldown', 'N/A')}\n"
-                details += f"    Витрати мани: {skills['skill2'].get('mana_cost', 'N/A')}\n"
-            if 'skill3' in skills:
-                details += f"🔹 <b>Навичка 3:</b> {skills['skill3']['name']} - {skills['skill3']['description']}\n"
-                details += f"    Перезарядка: {skills['skill3'].get('cooldown', 'N/A')}\n"
-                details += f"    Витрати мани: {skills['skill3'].get('mana_cost', 'N/A')}\n"
-            if 'ultimate' in skills:
-                details += f"💥 <b>Ультимативна:</b> {skills['ultimate']['name']} - {skills['ultimate']['description']}\n"
-                details += f"    Перезарядка: {skills['ultimate'].get('cooldown', 'N/A')}\n"
-                details += f"    Витрати мани: {skills['ultimate'].get('mana_cost', 'N/A')}\n"
+            details = format_hero_info(hero_info)
             return details
     return "Інформація про героя недоступна."
 
@@ -228,5 +178,19 @@ async def handle_hero_functions_menu(update: Update, context: ContextTypes.DEFAU
         await update.message.reply_text(
             f"Ви обрали опцію '{user_input}' для героя {hero_name}. Ця функція буде реалізована пізніше."
         )
-    
+
     return States.HERO_FUNCTIONS_MENU
+
+# Додано відсутні функції для уникнення ImportError
+
+async def handle_comparison_first_hero(update: Update, context: ContextTypes.DEFAULT_TYPE) -> int:
+    await update.message.reply_text("Функція порівняння героїв наразі не реалізована.")
+    return States.CHARACTERS_MENU
+
+async def handle_comparison_second_hero(update: Update, context: ContextTypes.DEFAULT_TYPE) -> int:
+    await update.message.reply_text("Функція порівняння героїв наразі не реалізована.")
+    return States.CHARACTERS_MENU
+
+async def handle_selecting_counter_hero(update: Update, context: ContextTypes.DEFAULT_TYPE) -> int:
+    await update.message.reply_text("Функція контргероїв наразі не реалізована.")
+    return States.CHARACTERS_MENU
