@@ -1,0 +1,32 @@
+{
+    "name": "Joy",
+    "class": "Assassin",
+    "attack_type": "Magical",
+    "additional_effects": "",
+    "recommended_items": [],
+    "base_stats": {},
+    "skills": {
+        "passive": {
+            "name": "Hum of Joy",
+            "description": "Кожен раз, коли Joy використовує навичку, вона отримує додатковий приріст швидкості та короткочасний захист від атак."
+        },
+        "skill1": {
+            "name": "Meow Rhythm",
+            "description": "Joy випускає хвилю енергії в напрямку ворогів, завдаючи їм шкоду та сповільнюючи їх.",
+            "cooldown": "6 секунд.",
+            "mana_cost": 50
+        },
+        "skill2": {
+            "name": "Electric Purr",
+            "description": "Joy робить швидкий ривок вперед, завдаючи шкоди ворогам, які потрапляють під дію навички.",
+            "cooldown": "8 секунд.",
+            "mana_cost": 60
+        },
+        "ultimate": {
+            "name": "Crazy Rhythm",
+            "description": "Joy переходить в стан, де її атаки підсилюються, і вона завдає великої шкоди протягом певного часу.",
+            "cooldown": "45 секунд.",
+            "mana_cost": 100
+        }
+    }
+}
