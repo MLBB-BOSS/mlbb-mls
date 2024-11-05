@@ -1,6 +1,6 @@
 {
     "name": "Leomord",
-    "class": "Борець",
+    "class": "Fighter",
     "attack_type": "Фізичний",
     "additional_effects": "Коли Leomord знаходиться на своєму коні, його базові атаки стають дальніми та завдають додаткового урону.",
     "recommended_items": [
