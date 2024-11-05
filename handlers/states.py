@@ -6,4 +6,4 @@ class States(Enum):
     SELECTING_HERO_CLASS = auto()
     SELECTING_HERO = auto()
     HERO_FUNCTIONS_MENU = auto()
-    # Додайте інші стани за потребою
+    # Add other states as needed
