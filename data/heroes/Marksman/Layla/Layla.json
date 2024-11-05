@@ -1,0 +1,49 @@
+{
+    "name": "Layla",
+    "class": "Marksman",
+    "role": "Стрілець з потужними атаками на середній та дальній відстані",
+    "speed": "Висока",
+    "hp": "Середній",
+    "physical_defense": "Середній",
+    "magical_defense": "Середній",
+    "attack_speed": "Висока",
+    "skills": {
+        "passive": {
+            "name": "Malefic Gun",
+            "description": "Збільшує дальність базових атак та шкоду залежно від рівня Layla."
+        },
+        "skill1": {
+            "name": "Malefic Bomb",
+            "description": "Layla випускає вибуховий снаряд, завдаючи шкоди ворогам на відстані.",
+            "cooldown": "6 секунд",
+            "mana_cost": 50
+        },
+        "skill2": {
+            "name": "Void Projectile",
+            "description": "Layla випускає велику кулю, що вибухає, сповільнюючи ворогів на шляху.",
+            "cooldown": "8 секунд",
+            "mana_cost": 60
+        },
+        "ultimate": {
+            "name": "Destruction Rush",
+            "description": "Layla стріляє потужним лазером на далекій дистанції, завдаючи великої шкоди.",
+            "cooldown": "40 секунд",
+            "mana_cost": 120
+        }
+    },
+    "strategies": {
+        "aggressive": "Використовуйте Malefic Bomb для завдавання шкоди ворогам на відстані.",
+        "defensive": "Використовуйте Void Projectile для сповільнення ворогів та контролю території.",
+        "micro": "Оптимальне використання Destruction Rush для завдавання великої шкоди у командних боях."
+    },
+    "recommendations": {
+        "early_game": "Фокус на фарм та контроль території за допомогою Malefic Bomb.",
+        "mid_game": "Активне використання Void Projectile для контролю ворогів.",
+        "late_game": "Максимальне використання Destruction Rush для командних боїв."
+    },
+    "drafts": {
+        "ideal_allies": "Герої з високою витривалістю та контролем натовпу.",
+        "avoid_enemies": "Герої з високою швидкістю та інтенсивним контролем.",
+        "strong_drafts": "Команди з хорошим балансом між атакою та захистом для максимальної ефективності Layla."
+    }
+}
