@@ -1,6 +1,6 @@
 {
     "name": "Yin",
-    "class": "Борець",
+    "class": "Fighter",
     "attack_type": "Фізичний",
     "additional_effects": "Може перетворюватися на \"Лей Чи\", отримуючи посилені навички та збільшуючи урон.",
     "recommended_items": [
