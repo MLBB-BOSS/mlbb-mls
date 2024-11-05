@@ -1,10 +1,12 @@
 # handlers/main_menu.py
+
 from telegram import Update, ReplyKeyboardMarkup, KeyboardButton
 from telegram.ext import ContextTypes
 from handlers.states import States
 from handlers.characters import get_hero_classes_keyboard
 from handlers.profile import profile_handler, profile_menu_handler
-from handlers.tier_list import send_tier_list  # Якщо існує
+# Якщо існує функція send_tier_list, переконайтеся, що вона імпортована
+# from handlers.tier_list import send_tier_list  # Якщо існує
 import logging
 
 logger = logging.getLogger(__name__)
@@ -29,7 +31,10 @@ async def main_menu_handler(update: Update, context: ContextTypes.DEFAULT_TYPE) 
         await profile_handler(update, context)
         return States.PROFILE_MENU
     elif user_input == "Мета на сьогодні":
-        await send_tier_list(update, context)
+        # Якщо функція send_tier_list існує, розкоментуйте нижче
+        # await send_tier_list(update, context)
+        # return States.MAIN_MENU
+        await update.message.reply_text("Функція 'Мета на сьогодні' ще не реалізована.")
         return States.MAIN_MENU
     else:
         await update.message.reply_text("Ця функція наразі недоступна. Оберіть іншу опцію.")
@@ -37,4 +42,3 @@ async def main_menu_handler(update: Update, context: ContextTypes.DEFAULT_TYPE) 
 
 async def unknown_command(update: Update, context: ContextTypes.DEFAULT_TYPE) -> None:
     await update.message.reply_text("⚠️ Вибачте, я не розумію цю команду. Будь ласка, оберіть опцію з клавіатури.")
-    
