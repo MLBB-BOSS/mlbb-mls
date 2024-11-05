@@ -1,6 +1,6 @@
 {
     "name": "Yu Zhong",
-    "class": "Борець",
+    "class": "Fighter",
     "attack_type": "Фізичний",
     "additional_effects": "Накопичує \"Sha Essence\", яка відновлює здоров'я та збільшує урон.",
     "recommended_items": [
