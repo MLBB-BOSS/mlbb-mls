@@ -5,10 +5,10 @@ from handlers.states import States
 from utils.data_loader import load_all_heroes
 import logging
 
-logger = logging.getLogger(__name__)
+# handlers/characters.py
+import logging
 
-# Завантаження всіх героїв
-HEROES_BY_CLASS = load_all_heroes()
+logger = logging.getLogger(__name__)
 
 async def handle_selecting_hero_class(update: Update, context: ContextTypes.DEFAULT_TYPE) -> int:
     selected_class = update.message.text.strip()
@@ -19,24 +19,20 @@ async def handle_selecting_hero_class(update: Update, context: ContextTypes.DEFA
         return States.MAIN_MENU
 
     if selected_class not in HEROES_BY_CLASS:
-        # Відображаємо клавіатуру з класами знову
-        buttons = []
-        classes = list(HEROES_BY_CLASS.keys())
-        row = []
-        for idx, class_name in enumerate(classes, 1):
-            row.append(KeyboardButton(class_name))
-            if idx % 3 == 0:
-                buttons.append(row)
-                row = []
-        if row:
-            buttons.append(row)
-        buttons.append([KeyboardButton("🔙 Назад")])
-        reply_markup = ReplyKeyboardMarkup(buttons, resize_keyboard=True)
-        await update.message.reply_text("⚠️ Будь ласка, оберіть клас з меню.", reply_markup=reply_markup)
+        await update.message.reply_text("⚠️ Будь ласка, оберіть клас з меню.")
         return States.SELECTING_HERO_CLASS
 
     context.user_data['selected_class'] = selected_class
     heroes = HEROES_BY_CLASS[selected_class]
+    
+    # Логування списку героїв
+    hero_names = [hero['name'] for hero in heroes]
+    logger.info(f"Heroes in class {selected_class}: {hero_names}")
+    
+    if not heroes:
+        await update.message.reply_text(f"⚠️ У класі {selected_class} немає доступних героїв.")
+        return States.SELECTING_HERO_CLASS
+
     buttons = []
     row = []
     for idx, hero in enumerate(heroes, 1):
@@ -50,6 +46,7 @@ async def handle_selecting_hero_class(update: Update, context: ContextTypes.DEFA
     reply_markup = ReplyKeyboardMarkup(buttons, resize_keyboard=True)
     await update.message.reply_text(f"Оберіть героя класу {selected_class}:", reply_markup=reply_markup)
     return States.SELECTING_HERO
+
 
 async def handle_selecting_hero(update: Update, context: ContextTypes.DEFAULT_TYPE) -> int:
     hero_name = update.message.text.strip()
