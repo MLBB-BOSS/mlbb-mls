@@ -12,14 +12,18 @@ HEROES_BY_CLASS = load_all_heroes()
 
 def get_main_menu_keyboard():
     buttons = [
-        [KeyboardButton("🦸 Heroes")],
-        # Add other buttons as needed
+        [KeyboardButton("🦸 Герої"), KeyboardButton("📊 Статистика")],
+        [KeyboardButton("📖 Гайди"), KeyboardButton("🛠 Збірки")],
+        [KeyboardButton("📰 Новини"), KeyboardButton("🎉 Події")],
+        [KeyboardButton("📝 Вікторини"), KeyboardButton("🏆 Досягнення")],
+        [KeyboardButton("🌐 Спільнота"), KeyboardButton("📊 Опитування")],
+        [KeyboardButton("👤 Мій Профіль"), KeyboardButton("ℹ️ Допомога")]
     ]
     return ReplyKeyboardMarkup(buttons, resize_keyboard=True)
 
 async def main_menu_handler(update: Update, context: ContextTypes.DEFAULT_TYPE) -> int:
     user_input = update.message.text.strip()
-    if user_input == "🦸 Heroes":
+    if user_input == "🦸 Герої":
         # Display the keyboard with hero classes
         buttons = []
         classes = list(HEROES_BY_CLASS.keys())
@@ -31,11 +35,44 @@ async def main_menu_handler(update: Update, context: ContextTypes.DEFAULT_TYPE) 
                 row = []
         if row:
             buttons.append(row)
-        buttons.append([KeyboardButton("🔙 Back")])
+        buttons.append([KeyboardButton("🔙 Назад")])
         reply_markup = ReplyKeyboardMarkup(buttons, resize_keyboard=True)
-        await update.message.reply_text("Select a hero class:", reply_markup=reply_markup)
+        await update.message.reply_text("Оберіть клас героя:", reply_markup=reply_markup)
         return States.SELECTING_HERO_CLASS
+    elif user_input == "📊 Статистика":
+        await update.message.reply_text("Тут буде статистика героїв та мета гри...")
+        return States.STATISTICS
+    elif user_input == "📖 Гайди":
+        await update.message.reply_text("Доступні гайди по стратегії, використанню героїв та багато іншого...")
+        return States.GUIDES
+    elif user_input == "🛠 Збірки":
+        await update.message.reply_text("Рекомендовані збірки предметів та емблем для героїв...")
+        return States.BUILDS
+    elif user_input == "📰 Новини":
+        await update.message.reply_text("Останні новини та оновлення MLBB...")
+        return States.NEWS
+    elif user_input == "🎉 Події":
+        await update.message.reply_text("Інформація про поточні та майбутні події...")
+        return States.EVENTS
+    elif user_input == "📝 Вікторини":
+        await update.message.reply_text("Вікторини про MLBB...")
+        return States.QUIZZES
+    elif user_input == "🏆 Досягнення":
+        await update.message.reply_text("Ваші досягнення у боті...")
+        return States.ACHIEVEMENTS
+    elif user_input == "🌐 Спільнота":
+        await update.message.reply_text("Приєднуйтесь до спільноти MLBB...")
+        return States.COMMUNITY
+    elif user_input == "📊 Опитування":
+        await update.message.reply_text("Поточні опитування та голосування...")
+        return States.POLLS
+    elif user_input == "👤 Мій Профіль":
+        await update.message.reply_text("Ваш профіль гравця...")
+        return States.PROFILE
+    elif user_input == "ℹ️ Допомога":
+        await update.message.reply_text("Інструкції по боту та допомога...")
+        return States.HELP
     else:
         reply_markup = get_main_menu_keyboard()
-        await update.message.reply_text("⚠️ Please select an option from the menu.", reply_markup=reply_markup)
+        await update.message.reply_text("⚠️ Будь ласка, оберіть опцію з меню.", reply_markup=reply_markup)
         return States.MAIN_MENU
