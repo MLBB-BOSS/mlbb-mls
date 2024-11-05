@@ -1,0 +1,47 @@
+{
+    "name": "Jawhead",
+    "class": "Борець",
+    "attack_type": "Фізичний",
+    "additional_effects": "Після використання навичок отримує \"Енергію\", яка підсилює наступні базові атаки.",
+    "recommended_items": [
+        "Warrior Boots",
+        "Endless Battle",
+        "Blade of Despair",
+        "Queen's Wings",
+        "Immortality"
+    ],
+    "base_stats": {
+        "health": 2658,
+        "physical_attack": 119,
+        "physical_defense": 24,
+        "magic_defense": 10,
+        "movement_speed": 255,
+        "attack_speed": 0.9,
+        "health_regen": 7,
+        "mana_regen": 0
+    },
+    "skills": {
+        "passive": {
+            "name": "Mecha Suppression",
+            "description": "Базові атаки Jawhead підвищують його урон, накопичуючи посилення."
+        },
+        "skill1": {
+            "name": "Smart Missiles",
+            "description": "Jawhead випускає ракети, які автоматично атакують ворогів навколо нього, завдаючи масового урону.",
+            "cooldown": "6 секунд",
+            "mana_cost": 40
+        },
+        "skill2": {
+            "name": "Ejector",
+            "description": "Jawhead здійснює ривок уперед, підіймаючи ворога або союзника і кидаючи його в обрану зону.",
+            "cooldown": "10 секунд",
+            "mana_cost": 50
+        },
+        "ultimate": {
+            "name": "Unstoppable Force",
+            "description": "Jawhead фокусується на цілі та стрімко рухається до неї, завдаючи великого урону та приголомшуючи ворога.",
+            "cooldown": "45 секунд",
+            "mana_cost": 100
+        }
+    }
+}
