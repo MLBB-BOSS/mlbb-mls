@@ -1,0 +1,47 @@
+{
+    "name": "Sun",
+    "class": "Борець",
+    "attack_type": "Фізичний",
+    "additional_effects": "Базові атаки створюють клони, які атакують ворогів, завдаючи частину урону від оригіналу.",
+    "recommended_items": [
+        "Warrior Boots",
+        "Corrosion Scythe",
+        "Demon Hunter Sword",
+        "Golden Staff",
+        "Immortality"
+    ],
+    "base_stats": {
+        "health": 2850,
+        "physical_attack": 120,
+        "physical_defense": 25,
+        "magic_defense": 10,
+        "movement_speed": 260,
+        "attack_speed": 0.9,
+        "health_regen": 7,
+        "mana_regen": 0
+    },
+    "skills": {
+        "passive": {
+            "name": "Simian God",
+            "description": "Базові атаки Sun створюють копії, які допомагають йому завдавати додатковий урон ворогам."
+        },
+        "skill1": {
+            "name": "Endless Variety",
+            "description": "Sun кидає свій посох, завдаючи фізичного урону ворогам та створюючи копію, яка атакує ворогів.",
+            "cooldown": "10 секунд",
+            "mana_cost": 60
+        },
+        "skill2": {
+            "name": "Swift Exchange",
+            "description": "Sun разом із копією стрімко атакує ворога, завдаючи подвійного урону.",
+            "cooldown": "7 секунд",
+            "mana_cost": 40
+        },
+        "ultimate": {
+            "name": "Instantaneous Move",
+            "description": "Sun створює кілька копій, які слідують за ним та атакують ворогів, підвищуючи загальний урон.",
+            "cooldown": "40 секунд",
+            "mana_cost": 100
+        }
+    }
+}
