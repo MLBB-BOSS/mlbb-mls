@@ -1,3 +1,4 @@
+# handlers/characters.py
 from telegram import Update, ReplyKeyboardMarkup, KeyboardButton
 from telegram.ext import ContextTypes
 from handlers.states import States
@@ -166,3 +167,4 @@ def format_hero_info(hero):
             info += f"    Витрати мани: {skills['ultimate'].get('mana_cost', 'N/A')}\n"
 
     return info
+            
