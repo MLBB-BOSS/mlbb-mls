@@ -10,6 +10,16 @@ async def handle_selecting_hero_class(update: Update, context: ContextTypes.DEFA
     selected_class = update.message.text.strip()
     heroes_by_class = context.bot_data.get('heroes_by_class', {})
 
+    # Перевірка, чи користувач вибрав опцію з головного меню
+    main_menu_options = ["🦸 Герої", "📊 Статистика", "📖 Гайди", "🛠 Збірки", "📰 Новини", "🎉 Події",
+                         "📝 Вікторини", "🏆 Досягнення", "🌐 Спільнота", "📊 Опитування", "👤 Мій Профіль",
+                         "ℹ️ Допомога", "🔍 Пошук"]
+
+    if selected_class in main_menu_options:
+        from handlers.main_menu import main_menu_handler
+        await main_menu_handler(update, context)
+        return States.MAIN_MENU
+
     if selected_class == "🔙 Назад":
         from handlers.main_menu import get_main_menu_keyboard
         reply_markup = get_main_menu_keyboard()
@@ -43,100 +53,3 @@ async def handle_selecting_hero_class(update: Update, context: ContextTypes.DEFA
     reply_markup = ReplyKeyboardMarkup(buttons, resize_keyboard=True)
     await update.message.reply_text(f"Виберіть героя з класу {selected_class}:", reply_markup=reply_markup)
     return States.SELECTING_HERO
-
-async def handle_selecting_hero(update: Update, context: ContextTypes.DEFAULT_TYPE) -> int:
-    hero_name = update.message.text.strip()
-    if hero_name == "🔙 Назад":
-        return await handle_selecting_hero_class(update, context)
-
-    selected_class = context.user_data.get('selected_class')
-    heroes = context.bot_data.get('heroes_by_class', {}).get(selected_class, [])
-
-    if hero_name not in heroes:
-        await update.message.reply_text("⚠️ Будь ласка, виберіть героя з меню.")
-        return States.SELECTING_HERO
-
-    context.user_data['selected_hero'] = hero_name
-
-    buttons = [
-        [KeyboardButton("ℹ️ Загальна інформація"), KeyboardButton("🛠️ Побудови")],
-        [KeyboardButton("📖 Гайди"), KeyboardButton("🗺️ Стратегії")],
-        [KeyboardButton("🎯 Контр-Піки"), KeyboardButton("⚔️ Порівняння")],
-        [KeyboardButton("🔙 Назад")]
-    ]
-    reply_markup = ReplyKeyboardMarkup(buttons, resize_keyboard=True)
-    await update.message.reply_text(f"Ви вибрали {hero_name}. Виберіть опцію:", reply_markup=reply_markup)
-    return States.HERO_FUNCTIONS_MENU
-
-async def handle_hero_functions_menu(update: Update, context: ContextTypes.DEFAULT_TYPE) -> int:
-    user_input = update.message.text.strip()
-    hero_name = context.user_data.get('selected_hero')
-
-    if user_input == "🔙 Назад":
-        return await handle_selecting_hero(update, context)
-
-    if user_input == "ℹ️ Загальна інформація":
-        hero_info = await get_hero_info(hero_name, context)
-        await update.message.reply_text(hero_info, parse_mode='HTML')
-    else:
-        # Можна додати реалізацію інших функцій у майбутньому
-        translated_options = {
-            "🛠️ Побудови": "Builds",
-            "📖 Гайди": "Guides",
-            "🗺️ Стратегії": "Strategies",
-            "🎯 Контр-Піки": "Counter Picks",
-            "⚔️ Порівняння": "Compare"
-        }
-        selected_option = translated_options.get(user_input, user_input)
-        await update.message.reply_text(
-            f"Ви вибрали '{selected_option}' для героя {hero_name}. Ця функція буде реалізована пізніше."
-        )
-
-    return States.HERO_FUNCTIONS_MENU
-
-async def get_hero_info(hero_name: str, context: ContextTypes.DEFAULT_TYPE) -> str:
-    """Функція для отримання детальної інформації про героя."""
-    heroes_data = context.bot_data.get('heroes_data', {})
-    hero_info = heroes_data.get(hero_name)
-
-    if hero_info:
-        details = format_hero_info(hero_info)
-        return details
-    else:
-        return "Інформація про героя недоступна."
-
-def format_hero_info(hero):
-    info = f"<b>{hero['name']}</b>\n\n"
-    info += f"Клас: {hero['class']}\n"
-    info += f"Тип атаки: {hero.get('attack_type', 'N/A')}\n"
-    info += f"Додаткові ефекти: {hero.get('additional_effects', 'N/A')}\n\n"
-
-    if "recommended_items" in hero and hero["recommended_items"]:
-        info += "<b>Рекомендовані предмети:</b>\n" + ", ".join(hero['recommended_items']) + "\n\n"
-
-    if "base_stats" in hero and hero["base_stats"]:
-        info += "<b>Базові статистики:</b>\n"
-        for stat, value in hero['base_stats'].items():
-            stat_formatted = stat.capitalize().replace('_', ' ')
-            info += f"  - {stat_formatted}: {value}\n"
-        info += "\n"
-
-    if "skills" in hero and hero["skills"]:
-        info += "<b>Навички:</b>\n"
-        skills = hero['skills']
-        if 'passive' in skills:
-            info += f"🔸 <b>Пасивна:</b> {skills['passive']['name']} - {skills['passive']['description']}\n"
-        if 'skill1' in skills:
-            info += f"🔹 <b>Навичка 1:</b> {skills['skill1']['name']} - {skills['skill1']['description']}\n"
-            info += f"    Перезарядка: {skills['skill1'].get('cooldown', 'N/A')}\n"
-            info += f"    Витрати мани: {skills['skill1'].get('mana_cost', 'N/A')}\n"
-        if 'skill2' in skills:
-            info += f"🔹 <b>Навичка 2:</b> {skills['skill2']['name']} - {skills['skill2']['description']}\n"
-            info += f"    Перезарядка: {skills['skill2'].get('cooldown', 'N/A')}\n"
-            info += f"    Витрати мани: {skills['skill2'].get('mana_cost', 'N/A')}\n"
-        if 'ultimate' in skills:
-            info += f"💥 <b>Ультимативна:</b> {skills['ultimate']['name']} - {skills['ultimate']['description']}\n"
-            info += f"    Перезарядка: {skills['ultimate'].get('cooldown', 'N/A')}\n"
-            info += f"    Витрати мани: {skills['ultimate'].get('mana_cost', 'N/A')}\n"
-
-    return info
