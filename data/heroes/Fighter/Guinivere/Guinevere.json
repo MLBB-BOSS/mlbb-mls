@@ -1,0 +1,47 @@
+{
+    "name": "Guinevere",
+    "class": "Борець",
+    "attack_type": "Фізичний",
+    "additional_effects": "Базові атаки знижують час перезарядки її навичок.",
+    "recommended_items": [
+        "Arcane Boots",
+        "Concentrated Energy",
+        "Holy Crystal",
+        "Blood Wings",
+        "Immortality"
+    ],
+    "base_stats": {
+        "health": 2750,
+        "physical_attack": 115,
+        "physical_defense": 23,
+        "magic_defense": 10,
+        "movement_speed": 265,
+        "attack_speed": 0.8,
+        "health_regen": 6.8,
+        "mana_regen": 3.2
+    },
+    "skills": {
+        "passive": {
+            "name": "Super Magic",
+            "description": "Guinevere завдає на 25% більше урону ворогам, які знаходяться в повітрі."
+        },
+        "skill1": {
+            "name": "Energy Wave",
+            "description": "Guinevere випускає енергетичну хвилю, яка завдає магічного урону ворогам та знижує їхню швидкість.",
+            "cooldown": "6 секунд",
+            "mana_cost": 50
+        },
+        "skill2": {
+            "name": "Spatial Migration",
+            "description": "Guinevere стрибає вперед, завдаючи фізичного урону та підкидаючи ворогів у повітря.",
+            "cooldown": "8 секунд",
+            "mana_cost": 60
+        },
+        "ultimate": {
+            "name": "Violet Requiem",
+            "description": "Guinevere випускає серію магічних вибухів навколо себе, завдаючи масового урону.",
+            "cooldown": "40 секунд",
+            "mana_cost": 120
+        }
+    }
+}
