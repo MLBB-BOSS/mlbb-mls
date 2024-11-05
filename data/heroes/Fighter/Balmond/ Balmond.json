@@ -1,0 +1,47 @@
+{
+    "name": "Balmond",
+    "class": "Борець",
+    "attack_type": "Фізичний",
+    "additional_effects": "Після вбивства ворога або міньйона відновлює 5% максимального здоров'я.",
+    "recommended_items": [
+        "Warrior Boots",
+        "Bloodlust Axe",
+        "Cursed Helmet",
+        "Queen's Wings",
+        "Immortality"
+    ],
+    "base_stats": {
+        "health": 2590,
+        "physical_attack": 129,
+        "physical_defense": 25,
+        "magic_defense": 10,
+        "movement_speed": 260,
+        "attack_speed": 0.9,
+        "health_regen": 7.5,
+        "mana_regen": 0
+    },
+    "skills": {
+        "passive": {
+            "name": "Bloodthirst",
+            "description": "Balmond відновлює здоров'я при кожному вбивстві ворога, що підвищує його витривалість у битві."
+        },
+        "skill1": {
+            "name": "Soul Lock",
+            "description": "Balmond здійснює ривок до цілі, завдаючи фізичного урону та сповільнюючи ворогів.",
+            "cooldown": "8 секунд",
+            "mana_cost": 60
+        },
+        "skill2": {
+            "name": "Cyclone Sweep",
+            "description": "Balmond обертається з сокирою, завдаючи постійного урону ворогам навколо.",
+            "cooldown": "5 секунд",
+            "mana_cost": 40
+        },
+        "ultimate": {
+            "name": "Lethal Counter",
+            "description": "Balmond завдає удар сокирою по зоні перед собою, завдаючи великого урону ворогам з низьким здоров'ям.",
+            "cooldown": "40 секунд",
+            "mana_cost": 100
+        }
+    }
+}
