@@ -26,7 +26,7 @@ from handlers.achievements import achievements_handler
 from handlers.community import community_handler
 from handlers.polls import polls_handler
 from handlers.profile import profile_handler
-from handlers.help import help_handler
+from handlers.help_handler import help_handler  # Змінено імпорт на help_handler
 
 # Налаштування логування
 logging.basicConfig(
