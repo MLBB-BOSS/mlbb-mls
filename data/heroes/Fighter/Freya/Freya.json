@@ -1,0 +1,47 @@
+{
+    "name": "Freya",
+    "class": "Борець",
+    "attack_type": "Фізичний",
+    "additional_effects": "Після використання навичок отримує \"Священні Удари\", які підсилюють базові атаки.",
+    "recommended_items": [
+        "Warrior Boots",
+        "Bloodlust Axe",
+        "Queen's Wings",
+        "Blade of Despair",
+        "Immortality"
+    ],
+    "base_stats": {
+        "health": 2750,
+        "physical_attack": 125,
+        "physical_defense": 25,
+        "magic_defense": 10,
+        "movement_speed": 265,
+        "attack_speed": 0.9,
+        "health_regen": 7,
+        "mana_regen": 0
+    },
+    "skills": {
+        "passive": {
+            "name": "Spirit Contact",
+            "description": "Кожна третя базова атака Freya підсилюється та завдає додатковий урон, також надаючи їй щит."
+        },
+        "skill1": {
+            "name": "Leap of Faith",
+            "description": "Freya стрибає на вказане місце, завдаючи фізичного урону ворогам та оглушаючи їх.",
+            "cooldown": "10 секунд",
+            "mana_cost": 60
+        },
+        "skill2": {
+            "name": "Spirit Combo",
+            "description": "Freya завдає серію ударів, підвищуючи урон при кожному натисканні.",
+            "cooldown": "5 секунд",
+            "mana_cost": 40
+        },
+        "ultimate": {
+            "name": "Valkyrie Descent",
+            "description": "Freya активує свою силу, отримуючи щит і підвищуючи свій урон. Її атаки підсилюються на певний час.",
+            "cooldown": "40 секунд",
+            "mana_cost": 100
+        }
+    }
+}
