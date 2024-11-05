@@ -3,6 +3,7 @@
 import json
 import os
 import logging
+from typing import Dict
 
 logger = logging.getLogger(__name__)
 
@@ -54,4 +55,3 @@ def load_heroes_data() -> Dict[str, dict]:
                 else:
                     logger.warning(f"Очікувалась директорія для героя, але знайдено файл: {hero_path}")
     return heroes_data
-    
