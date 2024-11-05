@@ -1,0 +1,49 @@
+{
+    "name": "Lolita",
+    "class": "Tank / Support",
+    "role": "Танк / Підтримка",
+    "speed": "Середня",
+    "hp": "3200-7000",
+    "physical_defense": "Добрий",
+    "magical_defense": "Середній",
+    "attack_speed": "Середня",
+    "skills": {
+        "passive": {
+            "name": "Thickened Blood",
+            "description": "Пасивна навичка Lolita, яка дозволяє їй завдавати додаткового урону ворогам, що атакують її."
+        },
+        "skill1": {
+            "name": "Noumenon Blast",
+            "description": "Lolita випускає потужну магічну хвилю, завдаючи магічного урону ворогам у вибраній області.",
+            "cooldown": "Невідомо",
+            "mana_cost": "Невідомо"
+        },
+        "skill2": {
+            "name": "Guardian's Bulwark",
+            "description": "Lolita створює магічний щит навколо себе та союзників, поглинаючи частину отриманого урону.",
+            "cooldown": "9 секунд",
+            "mana_cost": 70
+        },
+        "skill3": {
+            "name": "Energy Rocket",
+            "description": "Lolita запускає ракету, завдаючи магічного урону ворогам на шляху та сповільнюючи їх.",
+            "cooldown": "7 секунд",
+            "mana_cost": 50
+        }
+    },
+    "strategies": {
+        "aggressive": "Використовувати Noumenon Blast для ініціювання боїв.",
+        "defensive": "Захищати команду за допомогою Guardian's Bulwark.",
+        "micro": "Ефективне використання навичок для контролю ворогів."
+    },
+    "recommendations": {
+        "early_game": "Підтримка команди та контроль лінії.",
+        "mid_game": "Ініціювання боїв та використання навичок.",
+        "late_game": "Максимальне використання навичок для підтримки команди."
+    },
+    "drafts": {
+        "ideal_allies": "Герої, що добре поєднуються з Lolita.",
+        "avoid_enemies": "Типи ворогів, яких слід остерігатися.",
+        "strong_drafts": "Командні склади з Lolita як підтримкою."
+    }
+}
