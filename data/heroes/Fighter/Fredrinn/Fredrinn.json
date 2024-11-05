@@ -1,6 +1,6 @@
 {
     "name": "Fredrinn",
-    "class": "Борець",
+    "class": "Fighter",
     "attack_type": "Фізичний",
     "additional_effects": "Накопичує \"Комбо Очки\" при влучанні навичками по ворогах, що підсилює його навички.",
     "recommended_items": [
