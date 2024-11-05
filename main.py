@@ -16,17 +16,7 @@ from handlers.characters import (
     handle_selecting_hero,
     handle_hero_functions_menu
 )
-from handlers.statistics import statistics_handler
-from handlers.guides import guides_handler
-from handlers.builds import builds_handler
-from handlers.news import news_handler
-from handlers.events import events_handler
-from handlers.quizzes import quizzes_handler
-from handlers.achievements import achievements_handler
-from handlers.community import community_handler
-from handlers.polls import polls_handler
 from handlers.profile import profile_handler, profile_menu_handler
-from handlers.help_handler import help_handler
 from handlers.search import handle_search_menu, handle_search_performing, handle_search_hero_guides
 
 # Налаштування логування
