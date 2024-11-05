@@ -1,4 +1,4 @@
-async def get_hero_info(hero_name: str, context: ContextTypes.DEFAULT_TYPE) -> str:
+async def get_hero_info(hero_name: str, context: ContextTypes.DEFAULT_TYPE) -> str: 
     """Функція для отримання детальної інформації про героя через OpenAI API."""
     try:
         # Отримання базової інформації про героя
