@@ -25,8 +25,9 @@ from handlers.quizzes import quizzes_handler
 from handlers.achievements import achievements_handler
 from handlers.community import community_handler
 from handlers.polls import polls_handler
-from handlers.profile import profile_handler
+from handlers.profile import profile_handler, profile_menu_handler
 from handlers.help_handler import help_handler
+from handlers.search import handle_search_menu, handle_search_performing, handle_search_hero_guides
 
 # Налаштування логування
 logging.basicConfig(
@@ -60,39 +61,14 @@ def main():
             States.HERO_FUNCTIONS_MENU: [
                 MessageHandler(filters.TEXT & ~filters.COMMAND, handle_hero_functions_menu)
             ],
-            # Нові стани для нових пунктів меню
-            States.STATISTICS: [
-                MessageHandler(filters.TEXT & ~filters.COMMAND, statistics_handler)
+            States.PROFILE_MENU: [
+                MessageHandler(filters.TEXT & ~filters.COMMAND, profile_menu_handler)
             ],
-            States.GUIDES: [
-                MessageHandler(filters.TEXT & ~filters.COMMAND, guides_handler)
+            States.SEARCH_PERFORMING: [
+                MessageHandler(filters.TEXT & ~filters.COMMAND, handle_search_performing)
             ],
-            States.BUILDS: [
-                MessageHandler(filters.TEXT & ~filters.COMMAND, builds_handler)
-            ],
-            States.NEWS: [
-                MessageHandler(filters.TEXT & ~filters.COMMAND, news_handler)
-            ],
-            States.EVENTS: [
-                MessageHandler(filters.TEXT & ~filters.COMMAND, events_handler)
-            ],
-            States.QUIZZES: [
-                MessageHandler(filters.TEXT & ~filters.COMMAND, quizzes_handler)
-            ],
-            States.ACHIEVEMENTS: [
-                MessageHandler(filters.TEXT & ~filters.COMMAND, achievements_handler)
-            ],
-            States.COMMUNITY: [
-                MessageHandler(filters.TEXT & ~filters.COMMAND, community_handler)
-            ],
-            States.POLLS: [
-                MessageHandler(filters.TEXT & ~filters.COMMAND, polls_handler)
-            ],
-            States.PROFILE: [
-                MessageHandler(filters.TEXT & ~filters.COMMAND, profile_handler)
-            ],
-            States.HELP: [
-                MessageHandler(filters.TEXT & ~filters.COMMAND, help_handler)
+            States.SEARCH_HERO_GUIDES: [
+                MessageHandler(filters.TEXT & ~filters.COMMAND, handle_search_hero_guides)
             ],
             # Додайте інші стани за потреби
         },
