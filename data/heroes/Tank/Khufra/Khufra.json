@@ -1,0 +1,49 @@
+{
+    "name": "Khufra",
+    "class": "Tank",
+    "role": "Танк / Контролер",
+    "speed": "Середня",
+    "hp": "Високе",
+    "physical_defense": "Добрий",
+    "magical_defense": "Середній",
+    "attack_speed": "Середня",
+    "skills": {
+        "passive": {
+            "name": "Spell Curse",
+            "description": "Пасивна навичка Khufra, яка зменшує магічну захисту ворогів поруч при кожному використанні навички."
+        },
+        "skill1": {
+            "name": "Tyrant's Revenge",
+            "description": "Khufra завдає фізичного урону ворогам у вибраній області та накладає сповільнення.",
+            "cooldown": "14 секунд",
+            "mana_cost": 70
+        },
+        "skill2": {
+            "name": "Bouncing Ball",
+            "description": "Khufra кидає магічну кулю, яка відскакує між ворогами, завдаючи фізичного урону та сповільнюючи їх.",
+            "cooldown": "11 секунд",
+            "mana_cost": 60
+        },
+        "ultimate": {
+            "name": "Tyrant's Rage",
+            "description": "Khufra виконує масивний удар, завдаючи фізичного урону всім ворогам поруч та оглушуючи їх.",
+            "cooldown": "50 секунд",
+            "mana_cost": 120
+        }
+    },
+    "strategies": {
+        "aggressive": "Використовувати Tyrant's Revenge та Tyrant's Rage для ініціювання боїв.",
+        "defensive": "Захищати команду за допомогою Bouncing Ball та Spell Curse.",
+        "micro": "Ефективне використання навичок для контролю ворогів."
+    },
+    "recommendations": {
+        "early_game": "Фарм та контроль лінії.",
+        "mid_game": "Ініціювання боїв та використання навичок.",
+        "late_game": "Максимальне використання навичок для підтримки команди."
+    },
+    "drafts": {
+        "ideal_allies": "Герої, що добре поєднуються з Khufra.",
+        "avoid_enemies": "Типи ворогів, яких слід остерігатися.",
+        "strong_drafts": "Командні склади з Khufra як контролером."
+    }
+}
