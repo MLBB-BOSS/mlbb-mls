@@ -1,0 +1,47 @@
+{
+    "name": "Alpha",
+    "class": "Борець",
+    "attack_type": "Фізичний",
+    "additional_effects": "Після використання навичок, дрон Бета атакує ціль, завдаючи істинного урону та сповільнюючи її.",
+    "recommended_items": [
+        "Warrior Boots",
+        "Bloodlust Axe",
+        "War Axe",
+        "Queen's Wings",
+        "Immortality"
+    ],
+    "base_stats": {
+        "health": 2646,
+        "physical_attack": 121,
+        "physical_defense": 25,
+        "magic_defense": 15,
+        "movement_speed": 260,
+        "attack_speed": 0.9,
+        "health_regen": 7,
+        "mana_regen": 0
+    },
+    "skills": {
+        "passive": {
+            "name": "Beta, Advance!",
+            "description": "Після кожної атаки або навички Alpha закликає Бета, свого робота, який атакує ціль, завдаючи додаткового урону."
+        },
+        "skill1": {
+            "name": "Rotary Impact",
+            "description": "Alpha випускає енергетичний удар, завдаючи урону ворогам та знижуючи їх швидкість. Бета також атакує вражених ворогів.",
+            "cooldown": "6 секунд",
+            "mana_cost": 50
+        },
+        "skill2": {
+            "name": "Force Swing",
+            "description": "Alpha завдає потужного удару навколо себе, завдаючи урону та відновлюючи здоров'я за кожного враженого ворога.",
+            "cooldown": "8 секунд",
+            "mana_cost": 60
+        },
+        "ultimate": {
+            "name": "Spear of Alpha",
+            "description": "Alpha стрибає на обрану ціль, оглушуючи її. Бета завдає серії атак, завдаючи додаткового урону ворогам у зоні.",
+            "cooldown": "35 секунд",
+            "mana_cost": 100
+        }
+    }
+}
