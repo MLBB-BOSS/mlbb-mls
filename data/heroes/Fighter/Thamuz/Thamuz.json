@@ -1,0 +1,47 @@
+{
+    "name": "Thamuz",
+    "class": "Борець",
+    "attack_type": "Фізичний",
+    "additional_effects": "Базові атаки можуть викликати ефект \"Scorch\", завдаючи додаткового урону протягом часу.",
+    "recommended_items": [
+        "Warrior Boots",
+        "Bloodlust Axe",
+        "War Axe",
+        "Queen's Wings",
+        "Immortality"
+    ],
+    "base_stats": {
+        "health": 2900,
+        "physical_attack": 125,
+        "physical_defense": 26,
+        "magic_defense": 10,
+        "movement_speed": 265,
+        "attack_speed": 0.85,
+        "health_regen": 7.5,
+        "mana_regen": 0
+    },
+    "skills": {
+        "passive": {
+            "name": "Grand Lord Lava",
+            "description": "Кожен раз, коли Thamuz атакує, він залишає слід лави, що завдає періодичний урон ворогам."
+        },
+        "skill1": {
+            "name": "Molten Scythes",
+            "description": "Thamuz кидає свої коси вперед, які повертаються до нього, завдаючи урону ворогам на шляху.",
+            "cooldown": "9 секунд",
+            "mana_cost": 40
+        },
+        "skill2": {
+            "name": "Chasm Trample",
+            "description": "Thamuz стрибає в обрану зону, завдаючи фізичного урону та сповільнюючи ворогів.",
+            "cooldown": "10 секунд",
+            "mana_cost": 50
+        },
+        "ultimate": {
+            "name": "Cauterant Inferno",
+            "description": "Thamuz активує пекельну форму, підвищуючи швидкість атаки та отримуючи здатність відновлювати здоров’я від атак.",
+            "cooldown": "45 секунд",
+            "mana_cost": 100
+        }
+    }
+}
