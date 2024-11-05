@@ -1,0 +1,47 @@
+{
+    "name": "Yu Zhong",
+    "class": "Борець",
+    "attack_type": "Фізичний",
+    "additional_effects": "Накопичує \"Sha Essence\", яка відновлює здоров'я та збільшує урон.",
+    "recommended_items": [
+        "Warrior Boots",
+        "Bloodlust Axe",
+        "War Axe",
+        "Queen's Wings",
+        "Immortality"
+    ],
+    "base_stats": {
+        "health": 2850,
+        "physical_attack": 117,
+        "physical_defense": 28,
+        "magic_defense": 10,
+        "movement_speed": 270,
+        "attack_speed": 0.85,
+        "health_regen": 7.5,
+        "mana_regen": 0
+    },
+    "skills": {
+        "passive": {
+            "name": "Cursing Touch",
+            "description": "Атаки Yu Zhong накопичують ефект \"Sha Essence\" на ворогах, завдаючи періодичного урону та відновлюючи здоров’я Yu Zhong."
+        },
+        "skill1": {
+            "name": "Dragon Tail",
+            "description": "Yu Zhong обертається, завдаючи урону ворогам навколо себе. Віддалені вороги отримують більший урон.",
+            "cooldown": "6 секунд",
+            "mana_cost": 0
+        },
+        "skill2": {
+            "name": "Soul Grip",
+            "description": "Yu Zhong кидає драконячий кіготь, завдаючи фізичного урону та притягуючи ворогів до себе.",
+            "cooldown": "12 секунд",
+            "mana_cost": 0
+        },
+        "ultimate": {
+            "name": "Black Dragon Form",
+            "description": "Yu Zhong перетворюється на чорного дракона, стаючи невразливим до контролю та завдаючи урону всім ворогам на своєму шляху.",
+            "cooldown": "80 секунд",
+            "mana_cost": 0
+        }
+    }
+}
