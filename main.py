@@ -28,7 +28,7 @@ from handlers.polls import polls_handler
 from handlers.profile import profile_handler
 from handlers.help import help_handler
 
-# Set up logging
+# Налаштування логування
 logging.basicConfig(
     format='%(asctime)s - %(name)s - %(levelname)s - %(message)s',  
     level=logging.INFO
@@ -36,7 +36,6 @@ logging.basicConfig(
 logger = logging.getLogger(__name__)
 
 def main():
-
     application = ApplicationBuilder().token(TELEGRAM_BOT_TOKEN).build()
 
     conv_handler = ConversationHandler(
@@ -54,7 +53,7 @@ def main():
             States.HERO_FUNCTIONS_MENU: [
                 MessageHandler(filters.TEXT & ~filters.COMMAND, handle_hero_functions_menu)
             ],
-            # New states for the new menu options
+            # Нові стани для нових пунктів меню
             States.STATISTICS: [
                 MessageHandler(filters.TEXT & ~filters.COMMAND, statistics_handler)
             ],
@@ -88,16 +87,16 @@ def main():
             States.HELP: [
                 MessageHandler(filters.TEXT & ~filters.COMMAND, help_handler)
             ],
-            # Add other states as needed
+            # Додайте інші стани за потреби
         },
         fallbacks=[
             CommandHandler('start', start),
-            # Add a handler for unknown commands if necessary
+            # Додайте обробник для невідомих команд, якщо необхідно
         ]
     )
     application.add_handler(conv_handler)
 
-    logger.info("🔄 Bot started.")
+    logger.info("🔄 Бот запущено.")
     application.run_polling()
 
 if __name__ == '__main__':
