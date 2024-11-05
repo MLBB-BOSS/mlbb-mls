@@ -18,6 +18,8 @@ def get_main_menu_keyboard():
 
 async def main_menu_handler(update: Update, context: ContextTypes.DEFAULT_TYPE) -> int:
     user_input = update.message.text.strip()
+    logger.info(f"User selected in Main Menu: {user_input}")
+
     if user_input == "🦸 Герої":
         from handlers.characters import handle_selecting_hero_class
         await handle_selecting_hero_class(update, context)
@@ -51,13 +53,15 @@ async def main_menu_handler(update: Update, context: ContextTypes.DEFAULT_TYPE) 
         return States.MAIN_MENU
     elif user_input == "👤 Мій Профіль":
         from handlers.profile import profile_handler
-        return await profile_handler(update, context)
+        await profile_handler(update, context)
+        return States.PROFILE_MENU
     elif user_input == "ℹ️ Допомога":
         await update.message.reply_text("ℹ️ Допомога наразі недоступна.")
         return States.MAIN_MENU
     elif user_input == "🔍 Пошук":
         from handlers.search import handle_search_menu
-        return await handle_search_menu(update, context)
+        await handle_search_menu(update, context)
+        return States.SEARCH_PERFORMING
     else:
         reply_markup = get_main_menu_keyboard()
         await update.message.reply_text("⚠️ Будь ласка, оберіть опцію з меню.", reply_markup=reply_markup)
