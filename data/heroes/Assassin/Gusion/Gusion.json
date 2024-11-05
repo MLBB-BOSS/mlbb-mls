@@ -1,0 +1,32 @@
+{
+    "name": "Gusion",
+    "class": "Assassin",
+    "attack_type": "Magical",
+    "additional_effects": "",
+    "recommended_items": [],
+    "base_stats": {},
+    "skills": {
+        "passive": {
+            "name": "Dagger Specialist",
+            "description": "Після використання навичок Gusion підсилює свої базові атаки, роблячи їх небезпечнішими."
+        },
+        "skill1": {
+            "name": "Sword Spike",
+            "description": "Gusion кидає кинджал у ворога. Якщо він використовує навичку повторно, він телепортується до ворога, завдаючи йому шкоди.",
+            "cooldown": "8 секунд.",
+            "mana_cost": 40
+        },
+        "skill2": {
+            "name": "Shadowblade Slaughter",
+            "description": "Gusion випускає п’ять кинджалів, які завдають шкоди ворогам на шляху, і може повернути їх назад для повторного нанесення шкоди.",
+            "cooldown": "10 секунд.",
+            "mana_cost": 60
+        },
+        "ultimate": {
+            "name": "Incandescence",
+            "description": "Gusion здійснює ривок до вказаного місця, після чого його навички відновлюються, і він може повторно використовувати ривок для додаткового переміщення.",
+            "cooldown": "30 секунд.",
+            "mana_cost": 80
+        }
+    }
+}
