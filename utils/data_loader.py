@@ -10,7 +10,7 @@ logger = logging.getLogger(__name__)
 def load_all_heroes() -> Dict[str, List[str]]:
     """
     Завантажує список всіх героїв, класифікованих за класами.
-    
+
     Returns:
         Dict[str, List[str]]: Словник, де ключі — назви класів, а значення — списки героїв цього класу.
     """
@@ -45,7 +45,7 @@ def load_all_heroes() -> Dict[str, List[str]]:
 def load_heroes_data() -> Dict[str, dict]:
     """
     Завантажує детальну інформацію про кожного героя з JSON-файлів.
-    
+
     Returns:
         Dict[str, dict]: Словник з детальною інформацією про героїв.
     """
