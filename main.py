@@ -42,11 +42,7 @@ async def main():
     await application.run_polling()
 
 if __name__ == '__main__':
-    loop = asyncio.get_event_loop()
     try:
-        loop.run_until_complete(main())
+        asyncio.run(main())  # Запускає main() безпосередньо
     except RuntimeError as e:
-        logger.error(f"Помилка при виконанні: {e}")
-    finally:
-        loop.close()
-        
+        logger.error(f'Помилка при виконанні: {e}')
