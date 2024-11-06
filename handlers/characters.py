@@ -1,4 +1,3 @@
-# Імпорти
 import openai
 import logging
 from telegram.ext import ContextTypes
@@ -38,6 +37,7 @@ async def get_hero_info(hero_name: str, context: ContextTypes.DEFAULT_TYPE) -> s
 
 Навички:
 """
+
         skills = hero_info.get('skills', {})
         for skill_type in ['passive', 'skill1', 'skill2', 'ultimate']:
             skill = skills.get(skill_type)
@@ -94,7 +94,7 @@ async def get_hero_info(hero_name: str, context: ContextTypes.DEFAULT_TYPE) -> s
         ai_text = response.choices[0].message['content'].strip()
 
         # Форматуємо відповідь для Telegram
-        formatted_text = format_ai_response(ai_text)
+        formatted_text = format_ai_response(ai_text)  # Переконайтеся, що функція format_ai_response існує
 
         # Зберігаємо в кеш
         cache[cache_key] = formatted_text
@@ -107,3 +107,4 @@ async def get_hero_info(hero_name: str, context: ContextTypes.DEFAULT_TYPE) -> s
     except Exception as e:
         logger.error(f"Помилка під час отримання інформації про героя: {e}")
         return "⚠️ Виникла помилка при обробці запиту. Спробуйте пізніше."
+        
