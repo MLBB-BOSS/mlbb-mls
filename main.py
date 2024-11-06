@@ -11,15 +11,13 @@ from telegram.ext import (
 )
 from handlers.states import States
 from handlers.main_menu import main_menu_handler, unknown_command
-from handlers.characters import (
-    handle_selecting_hero_class,
-    handle_selecting_hero,
-    handle_hero_functions_menu
-)
 from handlers.profile import profile_handler, profile_menu_handler
 from handlers.start_handler import start
 from utils.data_loader import load_all_heroes, load_heroes_data
+from utils.formatting import format_ai_response  # Імпорт функції форматування
+from utils.gpt_handler import handle_gpt_query  # Імпорт функції для роботи з OpenAI
 import asyncio
+import random
 
 # Налаштування логування
 logging.basicConfig(
@@ -27,6 +25,24 @@ logging.basicConfig(
     level=logging.INFO
 )
 logger = logging.getLogger(__name__)
+
+async def handle_trigger_words(update: Update, context: ContextTypes.DEFAULT_TYPE) -> None:
+    user_id = update.effective_user.id
+    message_text = update.message.text.lower()
+
+    TRIGGER_WORDS = ["герой", "персонаж", "геймплей", "mlbb", "mobile legends"]  # Приклад тригерних слів
+
+    if any(trigger in message_text for trigger in TRIGGER_WORDS):
+        # Вибір випадкового героя
+        heroes_data = context.bot_data.get('heroes_data', {})
+        if not heroes_data:
+            await update.message.reply_text("⚠️ Інформація про героїв наразі недоступна.")
+            return
+
+        hero_name = random.choice(list(heroes_data.keys()))
+        # Виклик функції handle_gpt_query
+        gpt_response = await handle_gpt_query(hero_name, context)
+        await update.message.reply_text(gpt_response, parse_mode='HTML', disable_web_page_preview=True)
 
 async def main():
     TELEGRAM_BOT_TOKEN = os.getenv('TELEGRAM_BOT_TOKEN')
@@ -90,24 +106,6 @@ async def main():
 
     logger.info("🔄 Бот запущено.")
     await application.run_polling()
-
-# Функція для обробки тригерних слів (якщо потрібна)
-async def handle_trigger_words(update: Update, context: ContextTypes.DEFAULT_TYPE) -> None:
-    user_id = update.effective_user.id
-    message_text = update.message.text.lower()
-
-    TRIGGER_WORDS = ["герой", "персонаж", "геймплей", "mlbb", "mobile legends"]  # Приклад тригерних слів
-
-    if any(trigger in message_text for trigger in TRIGGER_WORDS):
-        # Вибір випадкового героя
-        heroes_data = context.bot_data.get('heroes_data', {})
-        if not heroes_data:
-            await update.message.reply_text("⚠️ Інформація про героїв наразі недоступна.")
-            return
-
-        hero_name = random.choice(list(heroes_data.keys()))
-        gpt_response = await handle_gpt_query(hero_name, context)
-        await update.message.reply_text(gpt_response, parse_mode='HTML', disable_web_page_preview=True)
 
 if __name__ == '__main__':
     asyncio.run(main())
