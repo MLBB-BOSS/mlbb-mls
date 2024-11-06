@@ -1,21 +1,20 @@
-# utils/formatting.py
+# utils/gpt_handler.py
 
-import re
+import logging
+from handlers.characters import get_hero_info
+from telegram.ext import ContextTypes
 
-def format_ai_response(ai_text: str) -> str:
+logger = logging.getLogger(__name__)
+
+async def handle_gpt_query(hero_name: str, context: ContextTypes.DEFAULT_TYPE) -> str:
     """
-    Функція для форматування відповіді AI перед відправкою користувачу.
-    
+    Функція для обробки запиту до GPT для отримання інформації про героя.
+
     Args:
-        ai_text (str): Відповідь від AI.
-    
+        hero_name (str): Назва героя.
+        context (ContextTypes.DEFAULT_TYPE): Контекст Telegram бота.
+
     Returns:
-        str: Відформатована відповідь.
+        str: Відповідь від GPT або повідомлення про помилку.
     """
-    # Видалення зайвих пробілів на початку та в кінці
-    formatted_text = ai_text.strip()
-    
-    # Видалення зайвих пробілів між рядками
-    formatted_text = re.sub(r'\n{3,}', '\n\n', formatted_text)
-    
-    return formatted_text
+    return await get_hero_info(hero_name, context)
