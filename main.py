@@ -1,6 +1,7 @@
 import asyncio
 import tracemalloc
-import os  # Додано імпорт модуля os
+import os
+from telegram.ext import ApplicationBuilder, CommandHandler, MessageHandler, filters  # Додано імпорти
 # інші імпорти...
 
 # Start tracing memory allocations
