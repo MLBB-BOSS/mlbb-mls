@@ -18,6 +18,7 @@ from utils.formatting import format_ai_response  # Імпорт функції �
 from utils.gpt_handler import handle_gpt_query  # Імпорт функції для роботи з OpenAI
 import asyncio
 import random
+from telegram import Update
 
 # Налаштування логування
 logging.basicConfig(
