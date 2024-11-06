@@ -28,7 +28,6 @@ logging.basicConfig(
 logger = logging.getLogger(__name__)
 
 async def handle_trigger_words(update: Update, context: ContextTypes.DEFAULT_TYPE) -> None:
-    user_id = update.effective_user.id
     message_text = update.message.text.lower()
 
     TRIGGER_WORDS = ["герой", "персонаж", "геймплей", "mlbb", "mobile legends"]  # Приклад тригерних слів
