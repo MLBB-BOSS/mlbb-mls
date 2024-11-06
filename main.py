@@ -39,16 +39,14 @@ async def main():
     application.add_handler(MessageHandler(filters.TEXT & ~filters.COMMAND, handle_message))
 
     logger.info("🔄 Бот запущено.")
-    await application.initialize()  # Ініціалізація додатку
-
-    try:
-        await application.run_polling()  # Запуск полінгу
-    finally:
-        await application.shutdown()  # Закриття додатку
+    await application.run_polling()
 
 if __name__ == '__main__':
+    loop = asyncio.get_event_loop()
     try:
-        asyncio.run(main())
+        loop.run_until_complete(main())
     except RuntimeError as e:
         logger.error(f"Помилка при виконанні: {e}")
+    finally:
+        loop.close()
         
