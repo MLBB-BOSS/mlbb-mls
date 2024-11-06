@@ -1,6 +1,6 @@
-# handlers/characters.py
 import openai
 import logging
+import asyncio
 from telegram.ext import ContextTypes
 from utils.formatting import format_ai_response  # Імпорт функції форматування
 
@@ -96,18 +96,24 @@ async def get_hero_info(hero_name: str, context: ContextTypes.DEFAULT_TYPE) -> s
             logger.info(f"Отримано дані з кешу для {hero_name} ({hero_class})")
             return cache[cache_key]
 
-        # Виклик OpenAI API
-        response = await openai.ChatCompletion.acreate(
-            model="gpt-3.5-turbo",
-            messages=[
-                {"role": "system", "content": system_prompt},
-                {"role": "user", "content": user_prompt}
-            ],
-            max_tokens=1500,
-            temperature=0.7,
-        )
-
-        ai_text = response.choices[0].message['content'].strip()
+        # Виклик OpenAI API з таймаутом
+        try:
+            response = await asyncio.wait_for(
+                openai.ChatCompletion.acreate(
+                    model="gpt-3.5-turbo",
+                    messages=[
+                        {"role": "system", "content": system_prompt},
+                        {"role": "user", "content": user_prompt}
+                    ],
+                    max_tokens=1500,
+                    temperature=0.7,
+                ),
+                timeout=10  # Таймаут в секундах
+            )
+            ai_text = response.choices[0].message['content'].strip()
+        except asyncio.TimeoutError:
+            logger.error(f"Таймаут під час запиту до OpenAI для героя: {hero_name}")
+            return "⚠️ Відповідь на запит зайняла забагато часу. Спробуйте пізніше."
 
         # Форматуємо відповідь для Telegram
         formatted_text = format_ai_response(ai_text)  # Переконайтеся, що функція format_ai_response існує
