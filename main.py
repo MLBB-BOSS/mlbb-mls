@@ -1,7 +1,7 @@
 import asyncio
 import tracemalloc
+import os  # Додано імпорт модуля os
 # інші імпорти...
-import tracemalloc
 
 # Start tracing memory allocations
 tracemalloc.start()
