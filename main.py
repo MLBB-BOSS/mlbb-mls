@@ -1,11 +1,21 @@
 import asyncio
 import tracemalloc
 import os
-from telegram.ext import ApplicationBuilder, CommandHandler, MessageHandler, filters  # Додано імпорти
-# інші імпорти...
+from telegram.ext import ApplicationBuilder, CommandHandler, MessageHandler, filters
+import logging
+
+# Налаштування логування
+logging.basicConfig(level=logging.INFO)
+logger = logging.getLogger(__name__)
 
 # Start tracing memory allocations
 tracemalloc.start()
+
+async def start(update, context):
+    await update.message.reply_text('Привіт! Я ваш Telegram бот.')
+
+async def handle_message(update, context):
+    await update.message.reply_text(f'Ви сказали: {update.message.text}')
 
 async def main():
     TELEGRAM_BOT_TOKEN = os.getenv('TELEGRAM_BOT_TOKEN')
