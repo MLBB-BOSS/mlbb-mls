@@ -1,4 +1,11 @@
+# Імпорти
+import openai
+import logging
 from telegram.ext import ContextTypes
+
+# Налаштування логування
+logger = logging.getLogger(__name__)
+
 async def get_hero_info(hero_name: str, context: ContextTypes.DEFAULT_TYPE) -> str: 
     """Функція для отримання детальної інформації про героя через OpenAI API."""
     try:
@@ -100,4 +107,3 @@ async def get_hero_info(hero_name: str, context: ContextTypes.DEFAULT_TYPE) -> s
     except Exception as e:
         logger.error(f"Помилка під час отримання інформації про героя: {e}")
         return "⚠️ Виникла помилка при обробці запиту. Спробуйте пізніше."
-        
