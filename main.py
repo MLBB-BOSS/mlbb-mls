@@ -3,7 +3,7 @@
 import logging
 import os
 from telegram.ext import ApplicationBuilder, CommandHandler, MessageHandler, filters, ContextTypes
-from utils.gpt_handler import handle_ai_query  # Імпорт функції для роботи з OpenAI
+from utils.gpt_handler import handle_ai_query
 import asyncio
 from telegram import Update
 
@@ -34,17 +34,17 @@ async def main():
     # Ініціалізація бота
     application = ApplicationBuilder().token(TELEGRAM_BOT_TOKEN).build()
 
-    # Додаємо обробник команди /start
+    # Додаємо обробники
     application.add_handler(CommandHandler('start', start))
-
-    # Додаємо обробник для всіх текстових повідомлень
     application.add_handler(MessageHandler(filters.TEXT & ~filters.COMMAND, handle_message))
 
     logger.info("🔄 Бот запущено.")
-    await application.run_polling()
+    await application.initialize()  # Ініціалізація додатку
 
-    # Правильне завершення роботи додатку
-    await application.shutdown()
+    try:
+        await application.run_polling()  # Запуск полінгу
+    finally:
+        await application.shutdown()  # Закриття додатку
 
 if __name__ == '__main__':
     try:
