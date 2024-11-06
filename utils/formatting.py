@@ -5,10 +5,10 @@ import re
 def format_ai_response(ai_text: str) -> str:
     """
     Функція для форматування відповіді AI перед відправкою користувачу.
-    
+
     Args:
         ai_text (str): Відповідь від AI.
-    
+
     Returns:
         str: Відформатована відповідь.
     """
