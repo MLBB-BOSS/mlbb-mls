@@ -1,3 +1,8 @@
+import tracemalloc
+
+# Start tracing memory allocations
+tracemalloc.start()
+
 async def main():
     TELEGRAM_BOT_TOKEN = os.getenv('TELEGRAM_BOT_TOKEN')
 
@@ -22,3 +27,9 @@ async def main():
     finally:
         await application.stop()
         await application.shutdown()
+
+if __name__ == '__main__':
+    try:
+        asyncio.run(main())  # Запускає main() безпосередньо
+    except RuntimeError as e:
+        logger.error(f'Помилка при виконанні: {e}')
