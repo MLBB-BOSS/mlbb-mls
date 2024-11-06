@@ -43,6 +43,12 @@ async def main():
     logger.info("🔄 Бот запущено.")
     await application.run_polling()
 
+    # Правильне завершення роботи додатку
+    await application.shutdown()
+
 if __name__ == '__main__':
-    # Виклик без додаткового циклу asyncio
-    asyncio.run(main())
+    try:
+        asyncio.run(main())
+    except RuntimeError as e:
+        logger.error(f"Помилка при виконанні: {e}")
+        
