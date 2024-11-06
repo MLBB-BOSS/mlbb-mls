@@ -17,4 +17,3 @@ def get_hero_classes_keyboard() -> ReplyKeyboardMarkup:
     keyboard = [classes[i:i + 2] for i in range(0, len(classes), 2)]
 
     return ReplyKeyboardMarkup(keyboard, resize_keyboard=True, one_time_keyboard=True)
-  
