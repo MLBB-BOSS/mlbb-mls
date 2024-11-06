@@ -1,3 +1,6 @@
+import asyncio
+import tracemalloc
+# інші імпорти...
 import tracemalloc
 
 # Start tracing memory allocations
