@@ -7,7 +7,8 @@ from telegram.ext import (
     CommandHandler,
     MessageHandler,
     ConversationHandler,
-    filters
+    filters,
+    ContextTypes  # Додано імпорт ContextTypes
 )
 from handlers.states import States
 from handlers.main_menu import main_menu_handler, unknown_command
@@ -109,3 +110,4 @@ async def main():
 
 if __name__ == '__main__':
     asyncio.run(main())
+    
