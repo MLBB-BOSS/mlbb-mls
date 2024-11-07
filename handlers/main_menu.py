@@ -3,7 +3,7 @@
 from telegram import Update, ReplyKeyboardMarkup, KeyboardButton
 from telegram.ext import ContextTypes
 from handlers.states import States
-from utils.keyboards import get_hero_classes_keyboard  # Імпорт з utils.keyboards
+from handlers.characters import get_hero_classes_keyboard
 from handlers.profile import profile_handler, profile_menu_handler
 # Якщо існує функція send_tier_list, переконайтеся, що вона імпортована
 # from handlers.tier_list import send_tier_list  # Якщо існує
@@ -11,13 +11,7 @@ import logging
 
 logger = logging.getLogger(__name__)
 
-def get_main_menu_keyboard() -> ReplyKeyboardMarkup:
-    """
-    Створює головну клавіатуру меню.
-
-    Returns:
-        ReplyKeyboardMarkup: Клавіатура з головними опціями.
-    """
+def get_main_menu_keyboard():
     buttons = [
         [KeyboardButton("🦸 Герої"), KeyboardButton("📖 Гайди"), KeyboardButton("🛠 Збірки")],
         [KeyboardButton("📰 Новини"), KeyboardButton("📝 Вікторини"), KeyboardButton("🌐 Спільнота")],
@@ -26,14 +20,11 @@ def get_main_menu_keyboard() -> ReplyKeyboardMarkup:
     return ReplyKeyboardMarkup(buttons, resize_keyboard=True)
 
 async def main_menu_handler(update: Update, context: ContextTypes.DEFAULT_TYPE) -> int:
-    """
-    Обробник головного меню.
-    """
     user_input = update.message.text.strip()
     logger.info(f"User selected in Main Menu: {user_input}")
 
     if user_input == "🦸 Герої":
-        reply_markup = get_hero_classes_keyboard()
+        reply_markup = get_hero_classes_keyboard(context)
         await update.message.reply_text("Будь ласка, оберіть клас героя:", reply_markup=reply_markup)
         return States.SELECTING_HERO_CLASS
     elif user_input == "Профіль":
@@ -50,8 +41,4 @@ async def main_menu_handler(update: Update, context: ContextTypes.DEFAULT_TYPE) 
         return States.MAIN_MENU
 
 async def unknown_command(update: Update, context: ContextTypes.DEFAULT_TYPE) -> None:
-    """
-    Обробник невідомих команд.
-    """
     await update.message.reply_text("⚠️ Вибачте, я не розумію цю команду. Будь ласка, оберіть опцію з клавіатури.")
-    
