@@ -1,7 +1,6 @@
 # handlers/base.py
 
 import logging
-from handlers.base import safe_edit_message
 from aiogram import Router, F, Bot, Dispatcher
 from aiogram.filters import Command
 from aiogram.types import Message, CallbackQuery, ReplyKeyboardRemove
@@ -204,8 +203,8 @@ async def handle_intro_next_1(callback: CallbackQuery, state: FSMContext, bot: B
     interactive_message_id = state_data.get('interactive_message_id')
 
     try:
-        await botsafe_edit_message(bot, chat_id=callback_query.message.chat.id, message_id=callback_query.message.message_id, new_text=(
-            chat_id=callback_query.message.chat.id,
+        await bot.edit_message_text(
+            chat_id=callback.message.chat.id,
             message_id=interactive_message_id,
             text=INTRO_PAGE_2_TEXT,
             parse_mode="HTML",
@@ -214,7 +213,7 @@ async def handle_intro_next_1(callback: CallbackQuery, state: FSMContext, bot: B
     except Exception as e:
         logger.error(f"Не вдалося редагувати інтерактивне повідомлення: {e}")
         await bot.send_message(
-            chat_id=callback_query.message.chat.id,
+            chat_id=callback.message.chat.id,
             text=GENERIC_ERROR_MESSAGE_TEXT,
             reply_markup=get_generic_inline_keyboard()
         )
@@ -231,8 +230,8 @@ async def handle_intro_next_2(callback: CallbackQuery, state: FSMContext, bot: B
     interactive_message_id = state_data.get('interactive_message_id')
 
     try:
-        await botsafe_edit_message(bot, chat_id=callback_query.message.chat.id, message_id=callback_query.message.message_id, new_text=(
-            chat_id=callback_query.message.chat.id,
+        await bot.edit_message_text(
+            chat_id=callback.message.chat.id,
             message_id=interactive_message_id,
             text=INTRO_PAGE_3_TEXT,
             parse_mode="HTML",
@@ -241,7 +240,7 @@ async def handle_intro_next_2(callback: CallbackQuery, state: FSMContext, bot: B
     except Exception as e:
         logger.error(f"Не вдалося редагувати інтерактивне повідомлення: {e}")
         await bot.send_message(
-            chat_id=callback_query.message.chat.id,
+            chat_id=callback.message.chat.id,
             text=GENERIC_ERROR_MESSAGE_TEXT,
             reply_markup=get_generic_inline_keyboard()
         )
@@ -259,7 +258,7 @@ async def handle_intro_start(callback: CallbackQuery, state: FSMContext, bot: Bo
     # Відправляємо основне меню з клавіатурою
     main_menu_text_formatted = MAIN_MENU_TEXT.format(user_first_name=user_first_name)
     main_menu_message = await bot.send_message(
-        chat_id=callback_query.message.chat.id,
+        chat_id=callback.message.chat.id,
         text=main_menu_text_formatted,
         reply_markup=get_main_menu()
     )
@@ -273,8 +272,8 @@ async def handle_intro_start(callback: CallbackQuery, state: FSMContext, bot: Bo
 
     # Оновлюємо інтерактивне повідомлення з описом основного меню
     try:
-        await botsafe_edit_message(bot, chat_id=callback_query.message.chat.id, message_id=callback_query.message.message_id, new_text=(
-            chat_id=callback_query.message.chat.id,
+        await bot.edit_message_text(
+            chat_id=callback.message.chat.id,
             message_id=interactive_message_id,
             text=MAIN_MENU_DESCRIPTION,
             parse_mode="HTML",
@@ -284,7 +283,7 @@ async def handle_intro_start(callback: CallbackQuery, state: FSMContext, bot: Bo
         logger.error(f"Не вдалося редагувати інтерактивне повідомлення: {e}")
         # Якщо не вдалося редагувати, відправляємо нове інтерактивне повідомлення
         interactive_message = await bot.send_message(
-            chat_id=callback_query.message.chat.id,
+            chat_id=callback.message.chat.id,
             text=MAIN_MENU_DESCRIPTION,
             reply_markup=get_generic_inline_keyboard()
         )
@@ -380,7 +379,7 @@ async def handle_main_menu_buttons(message: Message, state: FSMContext, bot: Bot
 
     # Редагуємо інтерактивне повідомлення (Повідомлення 2)
     try:
-        await botsafe_edit_message(bot, chat_id=callback_query.message.chat.id, message_id=callback_query.message.message_id, new_text=(
+        await bot.edit_message_text(
             chat_id=message.chat.id,
             message_id=interactive_message_id,
             text=new_interactive_text,
@@ -455,7 +454,7 @@ async def handle_meta_menu_buttons(message: Message, state: FSMContext, bot: Bot
         await state.update_data(bot_message_id=main_message.message_id)
         # Редагуємо інтерактивне повідомлення
         try:
-            await botsafe_edit_message(bot, chat_id=callback_query.message.chat.id, message_id=callback_query.message.message_id, new_text=(
+            await bot.edit_message_text(
                 chat_id=message.chat.id,
                 message_id=interactive_message_id,
                 text=MAIN_MENU_DESCRIPTION,
@@ -499,7 +498,7 @@ async def handle_meta_menu_buttons(message: Message, state: FSMContext, bot: Bot
 
     # Редагуємо інтерактивне повідомлення (Повідомлення 2)
     try:
-        await botsafe_edit_message(bot, chat_id=callback_query.message.chat.id, message_id=callback_query.message.message_id, new_text=(
+        await bot.edit_message_text(
             chat_id=message.chat.id,
             message_id=interactive_message_id,
             text=new_interactive_text,
@@ -579,7 +578,7 @@ async def handle_m6_menu_buttons(message: Message, state: FSMContext, bot: Bot):
         await state.update_data(bot_message_id=main_message.message_id)
         # Редагуємо інтерактивне повідомлення
         try:
-            await botsafe_edit_message(bot, chat_id=callback_query.message.chat.id, message_id=callback_query.message.message_id, new_text=(
+            await bot.edit_message_text(
                 chat_id=message.chat.id,
                 message_id=interactive_message_id,
                 text=MAIN_MENU_DESCRIPTION,
@@ -623,7 +622,7 @@ async def handle_m6_menu_buttons(message: Message, state: FSMContext, bot: Bot):
 
     # Редагуємо інтерактивне повідомлення (Повідомлення 2)
     try:
-        await botsafe_edit_message(bot, chat_id=callback_query.message.chat.id, message_id=callback_query.message.message_id, new_text=(
+        await bot.edit_message_text(
             chat_id=message.chat.id,
             message_id=interactive_message_id,
             text=new_interactive_text,
@@ -704,7 +703,7 @@ async def handle_gpt_menu_buttons(message: Message, state: FSMContext, bot: Bot)
         await state.update_data(bot_message_id=main_message.message_id)
         # Редагуємо інтерактивне повідомлення
         try:
-            await botsafe_edit_message(bot, chat_id=callback_query.message.chat.id, message_id=callback_query.message.message_id, new_text=(
+            await bot.edit_message_text(
                 chat_id=message.chat.id,
                 message_id=interactive_message_id,
                 text=MAIN_MENU_DESCRIPTION,
@@ -748,7 +747,7 @@ async def handle_gpt_menu_buttons(message: Message, state: FSMContext, bot: Bot)
 
     # Редагуємо інтерактивне повідомлення (Повідомлення 2)
     try:
-        await botsafe_edit_message(bot, chat_id=callback_query.message.chat.id, message_id=callback_query.message.message_id, new_text=(
+        await bot.edit_message_text(
             chat_id=message.chat.id,
             message_id=interactive_message_id,
             text=new_interactive_text,
@@ -893,7 +892,7 @@ async def handle_heroes_menu_buttons(message: Message, state: FSMContext, bot: B
 
     # Редагуємо інтерактивне повідомлення
     try:
-        await botsafe_edit_message(bot, chat_id=callback_query.message.chat.id, message_id=callback_query.message.message_id, new_text=(
+        await bot.edit_message_text(
             chat_id=message.chat.id,
             message_id=interactive_message_id,
             text=new_interactive_text,
@@ -980,7 +979,7 @@ async def handle_hero_class_menu_buttons(message: Message, state: FSMContext, bo
 
     # Редагуємо інтерактивне повідомлення
     try:
-        await botsafe_edit_message(bot, chat_id=callback_query.message.chat.id, message_id=callback_query.message.message_id, new_text=(
+        await bot.edit_message_text(
             chat_id=message.chat.id,
             message_id=interactive_message_id,
             text=new_interactive_text,
@@ -1078,7 +1077,7 @@ async def handle_guides_menu_buttons(message: Message, state: FSMContext, bot: B
 
     # Редагуємо інтерактивне повідомлення
     try:
-        await botsafe_edit_message(bot, chat_id=callback_query.message.chat.id, message_id=callback_query.message.message_id, new_text=(
+        await bot.edit_message_text(
             chat_id=message.chat.id,
             message_id=interactive_message_id,
             text=new_interactive_text,
@@ -1169,7 +1168,7 @@ async def handle_counter_picks_menu_buttons(message: Message, state: FSMContext,
 
     # Редагуємо інтерактивне повідомлення
     try:
-        await botsafe_edit_message(bot, chat_id=callback_query.message.chat.id, message_id=callback_query.message.message_id, new_text=(
+        await bot.edit_message_text(
             chat_id=message.chat.id,
             message_id=interactive_message_id,
             text=new_interactive_text,
@@ -1261,7 +1260,7 @@ async def handle_builds_menu_buttons(message: Message, state: FSMContext, bot: B
 
     # Редагуємо інтерактивне повідомлення
     try:
-        await botsafe_edit_message(bot, chat_id=callback_query.message.chat.id, message_id=callback_query.message.message_id, new_text=(
+        await bot.edit_message_text(
             chat_id=message.chat.id,
             message_id=interactive_message_id,
             text=new_interactive_text,
@@ -1359,7 +1358,7 @@ async def handle_voting_menu_buttons(message: Message, state: FSMContext, bot: B
 
     # Редагуємо інтерактивне повідомлення
     try:
-        await botsafe_edit_message(bot, chat_id=callback_query.message.chat.id, message_id=callback_query.message.message_id, new_text=(
+        await bot.edit_message_text(
             chat_id=message.chat.id,
             message_id=interactive_message_id,
             text=new_interactive_text,
@@ -1449,7 +1448,7 @@ async def handle_profile_menu_buttons(message: Message, state: FSMContext, bot: 
         await state.update_data(bot_message_id=main_message.message_id)
         # Редагуємо інтерактивне повідомлення
         try:
-            await botsafe_edit_message(bot, chat_id=callback_query.message.chat.id, message_id=callback_query.message.message_id, new_text=(
+            await bot.edit_message_text(
                 chat_id=message.chat.id,
                 message_id=interactive_message_id,
                 text=MAIN_MENU_DESCRIPTION,
@@ -1493,7 +1492,7 @@ async def handle_profile_menu_buttons(message: Message, state: FSMContext, bot: 
 
     # Редагуємо інтерактивне повідомлення
     try:
-        await botsafe_edit_message(bot, chat_id=callback_query.message.chat.id, message_id=callback_query.message.message_id, new_text=(
+        await bot.edit_message_text(
             chat_id=message.chat.id,
             message_id=interactive_message_id,
             text=new_interactive_text,
@@ -1596,7 +1595,7 @@ async def handle_statistics_menu_buttons(message: Message, state: FSMContext, bo
 
     # Редагуємо інтерактивне повідомлення
     try:
-        await botsafe_edit_message(bot, chat_id=callback_query.message.chat.id, message_id=callback_query.message.message_id, new_text=(
+        await bot.edit_message_text(
             chat_id=message.chat.id,
             message_id=interactive_message_id,
             text=new_interactive_text,
@@ -1691,7 +1690,7 @@ async def handle_achievements_menu_buttons(message: Message, state: FSMContext, 
 
     # Редагуємо інтерактивне повідомлення
     try:
-        await botsafe_edit_message(bot, chat_id=callback_query.message.chat.id, message_id=callback_query.message.message_id, new_text=(
+        await bot.edit_message_text(
             chat_id=message.chat.id,
             message_id=interactive_message_id,
             text=new_interactive_text,
@@ -1788,7 +1787,7 @@ async def handle_settings_menu_buttons(message: Message, state: FSMContext, bot:
 
     # Редагуємо інтерактивне повідомлення
     try:
-        await botsafe_edit_message(bot, chat_id=callback_query.message.chat.id, message_id=callback_query.message.message_id, new_text=(
+        await bot.edit_message_text(
             chat_id=message.chat.id,
             message_id=interactive_message_id,
             text=new_interactive_text,
@@ -1879,7 +1878,7 @@ async def handle_feedback_menu_buttons(message: Message, state: FSMContext, bot:
 
     # Редагуємо інтерактивне повідомлення
     try:
-        await botsafe_edit_message(bot, chat_id=callback_query.message.chat.id, message_id=callback_query.message.message_id, new_text=(
+        await bot.edit_message_text(
             chat_id=message.chat.id,
             message_id=interactive_message_id,
             text=new_interactive_text,
@@ -1971,7 +1970,7 @@ async def handle_help_menu_buttons(message: Message, state: FSMContext, bot: Bot
 
     # Редагуємо інтерактивне повідомлення
     try:
-        await botsafe_edit_message(bot, chat_id=callback_query.message.chat.id, message_id=callback_query.message.message_id, new_text=(
+        await bot.edit_message_text(
             chat_id=message.chat.id,
             message_id=interactive_message_id,
             text=new_interactive_text,
@@ -2233,7 +2232,7 @@ async def handle_help_menu_buttons(message: Message, state: FSMContext, bot: Bot
 
     # Редагуємо інтерактивне повідомлення
     try:
-        await botsafe_edit_message(bot, chat_id=callback_query.message.chat.id, message_id=callback_query.message.message_id, new_text=(
+        await bot.edit_message_text(
             chat_id=message.chat.id,
             message_id=interactive_message_id,
             text=new_interactive_text,
@@ -2371,7 +2370,7 @@ async def unknown_command(message: Message, state: FSMContext, bot: Bot):
     # Редагуємо інтерактивне повідомлення
     if interactive_message_id:
         try:
-            await botsafe_edit_message(bot, chat_id=callback_query.message.chat.id, message_id=callback_query.message.message_id, new_text=(
+            await bot.edit_message_text(
                 chat_id=message.chat.id,
                 message_id=interactive_message_id,
                 text=new_interactive_text,
@@ -2419,8 +2418,8 @@ async def handle_inline_buttons(callback: CallbackQuery, state: FSMContext, bot:
 
             # Редагуємо інтерактивне повідомлення
             try:
-                await botsafe_edit_message(bot, chat_id=callback_query.message.chat.id, message_id=callback_query.message.message_id, new_text=(
-                    chat_id=callback_query.message.chat.id,
+                await bot.edit_message_text(
+                    chat_id=callback.message.chat.id,
                     message_id=interactive_message_id,
                     text=new_interactive_text,
                     reply_markup=new_interactive_keyboard
@@ -2431,7 +2430,7 @@ async def handle_inline_buttons(callback: CallbackQuery, state: FSMContext, bot:
             # Відправляємо головне меню
             main_menu_text_formatted = MAIN_MENU_TEXT.format(user_first_name=callback.from_user.first_name)
             main_message = await bot.send_message(
-                chat_id=callback_query.message.chat.id,
+                chat_id=callback.message.chat.id,
                 text=main_menu_text_formatted,
                 reply_markup=get_main_menu()
             )
@@ -2442,7 +2441,7 @@ async def handle_inline_buttons(callback: CallbackQuery, state: FSMContext, bot:
             old_bot_message_id = state_data.get('bot_message_id')
             if old_bot_message_id:
                 try:
-                    await bot.delete_message(chat_id=callback_query.message.chat.id, message_id=old_bot_message_id)
+                    await bot.delete_message(chat_id=callback.message.chat.id, message_id=old_bot_message_id)
                 except Exception as e:
                     logger.error(f"Не вдалося видалити повідомлення бота: {e}")
         else:
@@ -2584,8 +2583,8 @@ async def handle_inline_buttons(callback: CallbackQuery, state: FSMContext, bot:
 
             # Редагуємо інтерактивне повідомлення
             try:
-                await botsafe_edit_message(bot, chat_id=callback_query.message.chat.id, message_id=callback_query.message.message_id, new_text=(
-                    chat_id=callback_query.message.chat.id,
+                await bot.edit_message_text(
+                    chat_id=callback.message.chat.id,
                     message_id=interactive_message_id,
                     text=new_interactive_text,
                     reply_markup=new_interactive_keyboard
@@ -2596,7 +2595,7 @@ async def handle_inline_buttons(callback: CallbackQuery, state: FSMContext, bot:
             # Відправляємо головне меню
             main_menu_text_formatted = MAIN_MENU_TEXT.format(user_first_name=callback.from_user.first_name)
             main_message = await bot.send_message(
-                chat_id=callback_query.message.chat.id,
+                chat_id=callback.message.chat.id,
                 text=main_menu_text_formatted,
                 reply_markup=get_main_menu()
             )
@@ -2607,7 +2606,7 @@ async def handle_inline_buttons(callback: CallbackQuery, state: FSMContext, bot:
             old_bot_message_id = state_data.get('bot_message_id')
             if old_bot_message_id:
                 try:
-                    await bot.delete_message(chat_id=callback_query.message.chat.id, message_id=old_bot_message_id)
+                    await bot.delete_message(chat_id=callback.message.chat.id, message_id=old_bot_message_id)
                 except Exception as e:
                     logger.error(f"Не вдалося видалити повідомлення бота: {e}")
         else:
@@ -2737,7 +2736,7 @@ async def unknown_command(message: Message, state: FSMContext, bot: Bot):
     # Редагуємо інтерактивне повідомлення
     if interactive_message_id:
         try:
-            await botsafe_edit_message(bot, chat_id=callback_query.message.chat.id, message_id=callback_query.message.message_id, new_text=(
+            await bot.edit_message_text(
                 chat_id=message.chat.id,
                 message_id=interactive_message_id,
                 text=new_interactive_text,
